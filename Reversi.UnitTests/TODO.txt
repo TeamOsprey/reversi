@@ -1,0 +1,12 @@
+﻿2021-07-27
+- work with the board file to read the currect state of the board
+	- we decided not to proceed with this as it can work out of memory
+- eventually accept the next position from IO
+
+2021-08-03
+- Review the last two tests. We implemented that knowing it is not going to be the expected output after flipping is implemented.
+- Review the lists (black, white, and blank) and make sure our new implementation impact their correctness.
+
+2021-08-10
+- We reviewed Direction class, maybe add property for each direction, or use Dictionary again
+- We talked about collecting squares on each direction, and either flipping them or diposing them as we reach the end of the path
