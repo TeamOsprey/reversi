@@ -1,0 +1,8 @@
+C:\Projects\Test\Reversi\Reversi\bin\Debug\netcoreapp3.1\Reversi.Logic.deps.json
+C:\Projects\Test\Reversi\Reversi\bin\Debug\netcoreapp3.1\Reversi.Logic.dll
+C:\Projects\Test\Reversi\Reversi\bin\Debug\netcoreapp3.1\Reversi.Logic.pdb
+C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.Logic.AssemblyInfoInputs.cache
+C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.Logic.AssemblyInfo.cs
+C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.Logic.csproj.CoreCompileInputs.cache
+C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.Logic.dll
+C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.Logic.pdb
