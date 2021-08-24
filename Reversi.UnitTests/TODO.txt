@@ -1,0 +1,21 @@
+﻿2021-07-27
+- work with the board file to read the currect state of the board
+	- we decided not to proceed with this as it can work out of memory
+- eventually accept the next position from IO
+
+2021-08-03
+- Review the last two tests. We implemented that knowing it is not going to be the expected output after flipping is implemented.
+- Review the lists (black, white, and blank) and make sure our new implementation impact their correctness.
+
+2021-08-10
+- [X] We should review Direction class, maybe add property for each direction, or use Dictionary again
+- [ ] We talked about collecting squares on each direction, and either flipping them or diposing them as we reach the end of the path
+
+2021-08-17
+- We refactored Direction class and added properties for each direction
+- We refactored Game, made it easier to read and ready for accepting directions
+- We ended RED. Maybe we want to comment out the last test until we are done with following refactoring.
+- [ ] Change properties of Direction class from new int[] to a new type (e.g. Vector {Row, Column}). We need to think about the name for the new type.
+- [ ] We can change the Board to collection of Squares
+- [ ] We can add an ADD operation to Square class
+- [ ] We can implement the logic to check different directions
