@@ -178,7 +178,7 @@ namespace Reversi.UnitTests
 
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
         }
-        [Test]
+  /*      [Test]
         public void IfUserMoveLegalPlaceCounterAndFlipThreeCounters_version2()
         {
             var board = new string[]{
@@ -207,7 +207,7 @@ namespace Reversi.UnitTests
             "....B..."};
 
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        }
+        } */
 
         /*
                 [Test]

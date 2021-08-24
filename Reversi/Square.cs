@@ -6,11 +6,13 @@ namespace Reversi.Logic
     {
         public int Row { get; private set; }
         public int Column { get; private set; }
+        public char Colour { get; set; }
 
-        public Square(int row, int col)
+        public Square(int row, int col, char colour = '.')
         {
             Row = row;
             Column = col;
+            Colour = colour;
         }
 
         public bool Equals(Square square)

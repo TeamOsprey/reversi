@@ -26,7 +26,7 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < ReversiBoard.Size; col++)
                 {
-                    switch (ReversiBoard.BoardPosition[row, col])
+                    switch (ReversiBoard.Positions[row, col].Colour)
                     {
                         case 'B':
                             _blackCounters.Add(new Square(row, col));
@@ -47,7 +47,7 @@ namespace Reversi.Logic
             if (!GetLegalPositions().Contains(selectedSquare))
                 return false;
 
-            ReversiBoard.BoardPosition[selectedSquare.Row, selectedSquare.Column] = TurnColor;
+            ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColor;
             CaptureCounters(selectedSquare);
             return true;
         }
@@ -61,20 +61,15 @@ namespace Reversi.Logic
                     break;
             }
 
-            Square currentSquare = UpdateSquare(selectedSquare, Direction.DOWN);
-            while(ReversiBoard.BoardPosition[currentSquare.Row, currentSquare.Column] != TurnColor)
+            Square currentSquare = ReversiBoard.UpdateSquare(selectedSquare, Direction.DOWN);
+            while(currentSquare.Colour != TurnColor)
             {
-                ReversiBoard.BoardPosition[currentSquare.Row, currentSquare.Column] = TurnColor;
-                currentSquare = UpdateSquare(currentSquare, Direction.DOWN);
+                currentSquare.Colour = TurnColor;
+                currentSquare = ReversiBoard.UpdateSquare(currentSquare, Direction.DOWN);
                 // TODO: change it to this syntax currentSquare += Direction.DOWN;
             }
         }
-
-        private Square UpdateSquare(Square originalSquare, int[] direction)
-        {
-            return new Square(originalSquare.Row + direction[0], originalSquare.Column + direction[1]);
-        }
-
+    
         public string[] GetOutput()
         {
             ReversiBoard.SetLegalPositions(GetLegalPositions());

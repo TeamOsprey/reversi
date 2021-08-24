@@ -6,22 +6,28 @@ namespace Reversi.Logic
     {
         public HashSet<Square> LegalPositions { get; set; }
 
-        public char[,] BoardPosition { get; set; }
+        public Square[,] Positions { get; set; }
         public int Size { get; }
 
         public Board(string[] board)
         {
             Size = 8;
-            BoardPosition = new char[Size, Size];
+            Positions = new Square[Size, Size];
 
             for (int row = 0; row < Size; row++)
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    BoardPosition[row, col] = board[row][col];
+                    Positions[row, col] = new Square(row, col, board[row][col]);
                 }
             }
         }
+
+        public Square UpdateSquare(Square originalSquare, int[] direction)
+        {
+            return Positions[originalSquare.Row + direction[0], originalSquare.Column + direction[1]];
+        }
+
 
         public void SetLegalPositions(HashSet<Square> legalPositions)
         {
@@ -37,7 +43,7 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < 8; col++)
                 {
-                    rowString[col] = BoardPosition[row, col];
+                    rowString[col] = Positions[row, col].Colour;
                     if (LegalPositions != null && LegalPositions.Contains(new Square(row, col)))
                     {
                         rowString[col] = '0';

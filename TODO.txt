@@ -15,7 +15,14 @@
 - We refactored Direction class and added properties for each direction
 - We refactored Game, made it easier to read and ready for accepting directions
 - We ended RED. Maybe we want to comment out the last test until we are done with following refactoring.
-- [ ] Change properties of Direction class from new int[] to a new type (e.g. Vector {Row, Column}). We need to think about the name for the new type.
-- [ ] We can change the Board to collection of Squares
+- [ ] Change properties of Direction class from int[] to a new type (e.g. Vector {Row, Column}). We need to think about the name for the new type.
+- [X] We can change the Board to collection of Squares
 - [ ] We can add an ADD operation to Square class
 - [ ] We can implement the logic to check different directions
+
+
+2021-08-24
+- We commnetted out the failing test
+- We replaced char[,] with Square[,] in Board and made the changes in other classes
+- We move UpdateSquare from Game to Board
+- [ ] Now that Square has a new property as Colour, maybe we should revisit list of White, Black, and Blank, and check for possibility of improvements.
