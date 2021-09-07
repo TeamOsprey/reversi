@@ -9,20 +9,25 @@
 
 2021-08-10
 - [X] We should review Direction class, maybe add property for each direction, or use Dictionary again
-- [ ] We talked about collecting squares on each direction, and either flipping them or diposing them as we reach the end of the path
+- [ ] We talked about collecting squares on each direction, and either flipping them or disposing them as we reach the end of the path
 
 2021-08-17
 - We refactored Direction class and added properties for each direction
 - We refactored Game, made it easier to read and ready for accepting directions
 - We ended RED. Maybe we want to comment out the last test until we are done with following refactoring.
-- [ ] Change properties of Direction class from int[] to a new type (e.g. Vector {Row, Column}). We need to think about the name for the new type.
+- [X] Change properties of Direction class from int[] to a new type (e.g. Vector {Row, Column}). We need to think about the name for the new type.
 - [X] We can change the Board to collection of Squares
 - [ ] We can add an ADD operation to Square class
-- [ ] We can implement the logic to check different directions
+- [ ] We can implement the logic to check different directions 
 
 
 2021-08-24
-- We commnetted out the failing test
+- We commented out the failing test
 - We replaced char[,] with Square[,] in Board and made the changes in other classes
 - We move UpdateSquare from Game to Board
 - [ ] Now that Square has a new property as Colour, maybe we should revisit list of White, Black, and Blank, and check for possibility of improvements.
+
+2021-08-31
+- replaced Int[] within Direction with a new Vector classs.
+- updated lists to use existing squares instead of creating new squares.
+- Reconsidering the feasability of line 20 creating an ADD operation to Square class.

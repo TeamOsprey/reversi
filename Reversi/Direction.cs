@@ -4,18 +4,18 @@ namespace Reversi.Logic
 {
     public class Direction
     {
-        public static int[] UP =        new int[] { -1, 0 };
-        public static int[] UPRIGHT  =  new int[] { -1, 1 };
-        public static int[] RIGHT =     new int[] { 0, 1 };
-        public static int[] DOWNRIGHT = new int[] { 1, 1 };
-        public static int[] DOWN =      new int[] { 1, 0 };
-        public static int[] DOWNLEFT =  new int[] { 1, -1 };
-        public static int[] LEFT =      new int[] { 0, -1 };
-        public static int[] UPLEFT =    new int[] { -1, -1 };
+        public static Vector UP =        new Vector(-1, 0);
+        public static Vector UPRIGHT  =  new Vector(-1, 1);
+        public static Vector RIGHT =     new Vector(0, 1 );
+        public static Vector DOWNRIGHT = new Vector( 1, 1);
+        public static Vector DOWN =      new Vector(1, 0);
+        public static Vector DOWNLEFT =  new Vector(1, -1);
+        public static Vector LEFT =      new Vector(0, -1);
+        public static Vector UPLEFT =    new Vector(-1, -1);
 
-        public static List<int[]> GetDirections()
+        public static List<Vector> GetDirections()
         {
-            return new List<int[]> { UP, UPRIGHT, RIGHT, DOWNRIGHT, DOWN, DOWNLEFT, LEFT, UPLEFT };
+            return new List<Vector> { UP, UPRIGHT, RIGHT, DOWNRIGHT, DOWN, DOWNLEFT, LEFT, UPLEFT };
         }
     }
 }

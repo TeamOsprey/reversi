@@ -10,7 +10,7 @@ namespace Reversi.Logic
         private List<Square> _blackCounters = new List<Square>();
         private List<Square> _whiteCounters = new List<Square>();
         private List<Square> _blankSquares = new List<Square>();
-        private List<int[]> directions = Direction.GetDirections();
+        private List<Vector> directions = Direction.GetDirections();
 
         public Game(string[] board, char turnColor)
         {
@@ -29,13 +29,13 @@ namespace Reversi.Logic
                     switch (ReversiBoard.Positions[row, col].Colour)
                     {
                         case 'B':
-                            _blackCounters.Add(new Square(row, col));
+                            _blackCounters.Add(ReversiBoard.Positions[row, col]);
                             break;
                         case 'W':
-                            _whiteCounters.Add(new Square(row, col));
+                            _whiteCounters.Add(ReversiBoard.Positions[row, col]);
                             break;
                         case '.':
-                            _blankSquares.Add(new Square(row, col));
+                            _blankSquares.Add(ReversiBoard.Positions[row, col]);
                             break;
                     }
                 }
@@ -65,7 +65,7 @@ namespace Reversi.Logic
             while(currentSquare.Colour != TurnColor)
             {
                 currentSquare.Colour = TurnColor;
-                currentSquare = ReversiBoard.UpdateSquare(currentSquare, Direction.DOWN);
+                currentSquare = ReversiBoard.UpdateSquare(currentSquare, Direction.DOWN);;
                 // TODO: change it to this syntax currentSquare += Direction.DOWN;
             }
         }
@@ -93,7 +93,7 @@ namespace Reversi.Logic
             return returnValue;
         }
 
-        private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, int[] direction)
+        private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction)
         {
             bool result = false;
             var nextSquare = GetSquareInDirection(startSquare, direction);
@@ -109,9 +109,9 @@ namespace Reversi.Logic
             return result;
         }
 
-        private Square GetSquareInDirection(Square startSquare, int[] direction)
+        private Square GetSquareInDirection(Square startSquare, Vector direction)
         {
-            Square nextSquare = new Square(startSquare.Row + direction[0], startSquare.Column + direction[1]);
+            Square nextSquare = new Square(startSquare.Row + direction.Horizontal, startSquare.Column + direction.Vertical);
             return nextSquare;
         }
 

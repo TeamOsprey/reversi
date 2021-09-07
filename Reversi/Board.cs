@@ -23,9 +23,9 @@ namespace Reversi.Logic
             }
         }
 
-        public Square UpdateSquare(Square originalSquare, int[] direction)
+        public Square UpdateSquare(Square originalSquare, Vector direction)
         {
-            return Positions[originalSquare.Row + direction[0], originalSquare.Column + direction[1]];
+            return Positions[originalSquare.Row + direction.Horizontal, originalSquare.Column + direction.Vertical];
         }
 
 
