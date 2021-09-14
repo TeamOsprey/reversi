@@ -17,7 +17,8 @@
 - We ended RED. Maybe we want to comment out the last test until we are done with following refactoring.
 - [X] Change properties of Direction class from int[] to a new type (e.g. Vector {Row, Column}). We need to think about the name for the new type.
 - [X] We can change the Board to collection of Squares
-- [ ] We can add an ADD operation to Square class
+- [-] We can add an ADD operation to Square class
+		-- We attempted this and realized that it will not clean or simplify the code.
 - [ ] We can implement the logic to check different directions 
 
 
@@ -31,3 +32,10 @@
 - replaced Int[] within Direction with a new Vector classs.
 - updated lists to use existing squares instead of creating new squares.
 - Reconsidering the feasability of line 20 creating an ADD operation to Square class.
+
+2021-09-14
+- We tried the idea of adding operator to square to go to different direction. That didn't work as for navigate on board we need access to the board 
+but in Square class, where we can define operator method, we don't have that information.
+- We also added a test that required going to UP direction but that failed
+- We noticed there are some uncertainity on how directions are defined. We fixed UP and DOWn but the rest of directions must be fixed.
+- We ended up with most of tests failing and that's related to how navigation on board is defined.

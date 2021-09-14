@@ -26,16 +26,17 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < ReversiBoard.Size; col++)
                 {
-                    switch (ReversiBoard.Positions[row, col].Colour)
+                    var currentSquare = ReversiBoard.Positions[row, col];
+                    switch (currentSquare.Colour)
                     {
                         case 'B':
-                            _blackCounters.Add(ReversiBoard.Positions[row, col]);
+                            _blackCounters.Add(currentSquare);
                             break;
                         case 'W':
-                            _whiteCounters.Add(ReversiBoard.Positions[row, col]);
+                            _whiteCounters.Add(currentSquare);
                             break;
                         case '.':
-                            _blankSquares.Add(ReversiBoard.Positions[row, col]);
+                            _blankSquares.Add(currentSquare);
                             break;
                     }
                 }
@@ -61,15 +62,27 @@ namespace Reversi.Logic
                     break;
             }
 
-            Square currentSquare = ReversiBoard.UpdateSquare(selectedSquare, Direction.DOWN);
-            while(currentSquare.Colour != TurnColor)
+            if (selectedSquare.Column != 7)
             {
-                currentSquare.Colour = TurnColor;
-                currentSquare = ReversiBoard.UpdateSquare(currentSquare, Direction.DOWN);;
-                // TODO: change it to this syntax currentSquare += Direction.DOWN;
+                Square currentSquare = ReversiBoard.Add(selectedSquare, Direction.DOWN);
+                while (currentSquare.Colour != TurnColor)
+                {
+                    currentSquare.Colour = TurnColor;
+                    currentSquare = ReversiBoard.Add(currentSquare, Direction.DOWN);
+                }
+            }
+            else
+            {
+                Square currentSquare = ReversiBoard.Add(selectedSquare, Direction.UP);
+                while (currentSquare.Colour != TurnColor)
+                {
+                    currentSquare.Colour = TurnColor;
+                    currentSquare = ReversiBoard.Add(currentSquare, Direction.UP);
+                }
+
             }
         }
-    
+
         public string[] GetOutput()
         {
             ReversiBoard.SetLegalPositions(GetLegalPositions());
