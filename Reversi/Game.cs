@@ -7,8 +7,6 @@ namespace Reversi.Logic
     {
         public Board ReversiBoard { get; set; }
         public char TurnColor { get; private set; }
-        private List<Square> _blackCounters = new List<Square>();
-        private List<Square> _whiteCounters = new List<Square>();
         private List<Square> _blankSquares = new List<Square>();
         private List<Vector> directions = Direction.GetDirections();
 
@@ -29,12 +27,6 @@ namespace Reversi.Logic
                     var currentSquare = ReversiBoard.Positions[row, col];
                     switch (currentSquare.Colour)
                     {
-                        case 'B':
-                            _blackCounters.Add(currentSquare);
-                            break;
-                        case 'W':
-                            _whiteCounters.Add(currentSquare);
-                            break;
                         case '.':
                             _blankSquares.Add(currentSquare);
                             break;
@@ -62,7 +54,7 @@ namespace Reversi.Logic
                     break;
             }
 
-            if (selectedSquare.Column != 7)
+            if (selectedSquare.Row != 7)
             {
                 Square currentSquare = ReversiBoard.Add(selectedSquare, Direction.DOWN);
                 while (currentSquare.Colour != TurnColor)
@@ -109,42 +101,19 @@ namespace Reversi.Logic
         private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction)
         {
             bool result = false;
-            var nextSquare = GetSquareInDirection(startSquare, direction);
-            while (PositionsWithOpponentColor().Contains(nextSquare))
+            var nextSquare = ReversiBoard.Add(startSquare, direction);
+
+            while (nextSquare != null && nextSquare.Colour != TurnColor && nextSquare.Colour != '.')
             {
-                nextSquare = GetSquareInDirection(nextSquare, direction);
-                if (PositionsWithTurnColor().Contains(nextSquare))
+                nextSquare = ReversiBoard.Add(nextSquare, direction);
+
+                if (nextSquare != null && nextSquare.Colour == TurnColor)
                 {
                     returnValue.Add(startSquare);
                     result = true;
                 }
             }
             return result;
-        }
-
-        private Square GetSquareInDirection(Square startSquare, Vector direction)
-        {
-            Square nextSquare = new Square(startSquare.Row + direction.Horizontal, startSquare.Column + direction.Vertical);
-            return nextSquare;
-        }
-
-        private List<Square> PositionsWithTurnColor()
-        {
-            return (TurnColor == 'W' ? _whiteCounters : _blackCounters);
-        }
-
-        private List<Square> PositionsWithOpponentColor()
-        {
-            return (TurnColor == 'B' ? _whiteCounters : _blackCounters);
-        }
-
-
-        private bool IsBlank(Square square)
-        {
-            if (_whiteCounters == null && _blackCounters == null)
-                return true;
-
-            return !_whiteCounters.Contains(square) && !_blackCounters.Contains(square);
         }
     }
 

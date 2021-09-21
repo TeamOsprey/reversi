@@ -25,9 +25,23 @@ namespace Reversi.Logic
 
         public Square Add(Square originalSquare, Vector direction)
         {
-            return Positions[originalSquare.Row + direction.Vertical, originalSquare.Column + direction.Horizontal];
+            int row = originalSquare.Row + direction.Vertical;
+            int column = originalSquare.Column + direction.Horizontal;
+
+            if (IsRowInBounds(row) && IsColumnInBounds(column))
+                return Positions[row, column];
+            else
+                return null;
         }
 
+        private bool IsRowInBounds(int row)
+        {
+            return 0 <= row && row < Size;
+        }
+        private bool IsColumnInBounds(int column)
+        {
+            return 0 <= column && column < Size;
+        }
 
         public void SetLegalPositions(HashSet<Square> legalPositions)
         {
