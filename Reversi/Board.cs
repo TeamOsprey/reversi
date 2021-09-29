@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Reversi.Logic
 {
@@ -41,6 +42,19 @@ namespace Reversi.Logic
         private bool IsColumnInBounds(int column)
         {
             return 0 <= column && column < Size;
+        }
+
+        public List<Square> GetBlankPositions()
+        {
+            List<Square> allPositions = new List<Square>();
+
+            foreach (Square item in Positions)
+            {
+                allPositions.Add(item);
+            }
+
+            var blankPositions = (from square in allPositions where square.Colour == '.' select square).ToList();
+            return blankPositions;
         }
 
         public void SetLegalPositions(HashSet<Square> legalPositions)

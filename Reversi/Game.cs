@@ -7,7 +7,6 @@ namespace Reversi.Logic
     {
         public Board ReversiBoard { get; set; }
         public char TurnColor { get; private set; }
-        private List<Square> _blankSquares = new List<Square>();
         private List<Vector> directions = Direction.GetDirections();
 
         public Game(string[] board, char turnColor)
@@ -15,25 +14,8 @@ namespace Reversi.Logic
             ReversiBoard = new Board(board);
 
             TurnColor = turnColor;
-            SetCounter();
         }
 
-        private void SetCounter()
-        {
-            for (int row = 0; row < ReversiBoard.Size; row++)
-            {
-                for (int col = 0; col < ReversiBoard.Size; col++)
-                {
-                    var currentSquare = ReversiBoard.Positions[row, col];
-                    switch (currentSquare.Colour)
-                    {
-                        case '.':
-                            _blankSquares.Add(currentSquare);
-                            break;
-                    }
-                }
-            }
-        }
 
         public bool PlaceCounter(Square selectedSquare)
         {
@@ -50,8 +32,26 @@ namespace Reversi.Logic
             
             foreach (var direction in directions)
             {
-                //if (direction == directions)
-                    break;
+                //if (direction == Direction.DOWN)
+                //{
+                //    Square currentSquare = ReversiBoard.Add(selectedSquare, Direction.DOWN);
+                //    while (currentSquare.Colour != TurnColor)
+                //    {
+                //        currentSquare.Colour = TurnColor;
+                //        currentSquare = ReversiBoard.Add(currentSquare, Direction.DOWN);
+                //    }
+                //}
+
+                //else if (direction == Direction.UP)
+                //{
+                //    Square currentSquare = ReversiBoard.Add(selectedSquare, Direction.UP);
+                //    while (currentSquare.Colour != TurnColor)
+                //    {
+                //        currentSquare.Colour = TurnColor;
+                //        currentSquare = ReversiBoard.Add(currentSquare, Direction.UP);
+                //    }
+                //}
+                //break;
             }
 
             if (selectedSquare.Row != 7)
@@ -84,9 +84,10 @@ namespace Reversi.Logic
 
         private HashSet<Square> GetLegalPositions()
         {
+         
             HashSet<Square> returnValue = new HashSet<Square>();
-
-            foreach (var startSquare in _blankSquares)
+            //var emptySquares = ReversiBoard.Positions(x => x.colour == '-');
+            foreach (var startSquare in ReversiBoard.GetBlankPositions())
             {
                 foreach (var direction in directions)
                 {
@@ -116,5 +117,4 @@ namespace Reversi.Logic
             return result;
         }
     }
-
 }

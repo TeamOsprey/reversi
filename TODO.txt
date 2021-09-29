@@ -44,4 +44,8 @@ but in Square class, where we can define operator method, we don't have that inf
 - We fixed all directions
 - We got rid of _blackCounters and _whiteCounters lists
 - We retired one GetNextSquare in Game, replaced it with Board.Add
-- [ ] We should revisit list of Blank, and check for possibility of improvements
+- [X] We should revisit list of Blank, and check for possibility of improvements
+
+2021-09-28
+- We replaced _blanksqures list with Board.GetBlankPosition using a LinQ statement.
+- We are examining other options for capturing counters.
