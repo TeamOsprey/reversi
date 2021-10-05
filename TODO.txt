@@ -9,7 +9,7 @@
 
 2021-08-10
 - [X] We should review Direction class, maybe add property for each direction, or use Dictionary again
-- [ ] We talked about collecting squares on each direction, and either flipping them or disposing them as we reach the end of the path
+- [X] We talked about collecting squares on each direction, and either flipping them or disposing them as we reach the end of the path
 
 2021-08-17
 - We refactored Direction class and added properties for each direction
@@ -49,3 +49,11 @@ but in Square class, where we can define operator method, we don't have that inf
 2021-09-28
 - We replaced _blanksqures list with Board.GetBlankPosition using a LinQ statement.
 - We are examining other options for capturing counters.
+
+2021-10-05
+- We covered place counter for all directions and flipping of the captured counters
+- [ ] Add the logic to check for first 4 legal moves: 
+		* if the board is empty, only one counter can be placed in one of the legal 4 central squares
+		* if there is aone counter in the middle 4 squares, the opponent can place in 3 remaining middle squares
+		* continue until all 4 counters are placed
+- [ ] Recognize the PASS turn

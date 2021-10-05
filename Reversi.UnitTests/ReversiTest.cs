@@ -28,7 +28,7 @@ namespace Reversi.UnitTests
             Assert.AreEqual('B', output[4][5]);
             Assert.AreEqual('W', output[5][4]);
             Assert.AreEqual('W', output[5][5]);
-            Assert.AreEqual('B', reversi.TurnColor);
+            Assert.AreEqual('B', reversi.TurnColour);
         }
 
         [Test]

@@ -212,37 +212,66 @@ namespace Reversi.UnitTests
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
         } 
 
-        /*
-                [Test]
-                public void IfWhiteUserMoveLegalFlipTwoLinesIfNeeded()
-                {
-                    var board = new string[]{
+        [Test]
+        public void IfWhiteUserMoveLegalFlipCorrectLineOnly()
+        {
+            var board = new string[]{
+            "........",
+            "........",
+            "........",
+            "........",
+            "........",
+            "...BB...",
+            "..B.B...",
+            "....W..."};
+
+            var reversi = new Game(board, 'W');
+            Square selectedSquare = new Square(4, 4);
+
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+
+            var expected = new string[]{
+            "........",
+            "........",
+            "........",
+            "........",
+            "....W...",
+            "...BW...",
+            "..B.W...",
+            "....W..."};
+
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
+
+        [Test]
+        public void IfOnlyOneLineLegalOnlyFlipThatLine()
+        {
+            var board = new string[]{
                     "........",
                     "........",
                     "........",
                     "........",
                     "........",
                     "...BB...",
-                    "..W.B...",
-                    "....W..."};
+                    "..B.B...",
+                    ".B..W..."};
 
-                    var reversi = new Game(board, 'W');
-                    Square selectedSquare = new Square(4, 4);
+            var reversi = new Game(board, 'W');
+            Square selectedSquare = new Square(4, 4);
 
-                    Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
-                    var expected = new string[]{
+            var expected = new string[]{
                     "........",
                     "........",
                     "........",
                     "........",
                     "....W...",
-                    "...WW...",
-                    "..W.W...",
-                    "....W..."};
+                    "...BW...",
+                    "..B.W...",
+                    ".B..W..."};
 
-                    CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-                }
-        */
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
     }
 }
