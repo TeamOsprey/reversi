@@ -210,7 +210,7 @@ namespace Reversi.UnitTests
             "....B..."};
 
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        } 
+        }
 
         [Test]
         public void IfWhiteUserMoveLegalFlipCorrectLineOnly()
@@ -304,5 +304,37 @@ namespace Reversi.UnitTests
 
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
         }
+
+        [Test]
+        public void IfEmptyBoardOnlyAcceptCentreSquareForPlacement()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(0, 3);
+
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+
+            var expected = new string[]{
+                    "...B....",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........"};
+
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
+
     }
 }

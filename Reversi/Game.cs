@@ -70,6 +70,10 @@ namespace Reversi.Logic
         {
          
             HashSet<Square> returnValue = new HashSet<Square>();
+            if (ReversiBoard.GetBlankPositions().Count == 64)
+            {
+                returnValue.Add(new Square(3, 3));
+            }
 
             foreach (var startSquare in ReversiBoard.GetBlankPositions())
             {
