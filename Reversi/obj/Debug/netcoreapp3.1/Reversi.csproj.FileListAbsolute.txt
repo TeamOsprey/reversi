@@ -1,9 +1,0 @@
-C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.csprojAssemblyReference.cache
-C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.AssemblyInfoInputs.cache
-C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.AssemblyInfo.cs
-C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.csproj.CoreCompileInputs.cache
-C:\Projects\Test\Reversi\Reversi\bin\Debug\netcoreapp3.1\Reversi.deps.json
-C:\Projects\Test\Reversi\Reversi\bin\Debug\netcoreapp3.1\Reversi.dll
-C:\Projects\Test\Reversi\Reversi\bin\Debug\netcoreapp3.1\Reversi.pdb
-C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.dll
-C:\Projects\Test\Reversi\Reversi\obj\Debug\netcoreapp3.1\Reversi.pdb

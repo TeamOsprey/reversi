@@ -1,5 +1,7 @@
 OBJ
-bin
-obj
+[Bb]in
+[Oo]bj
 **/obj
 **/bin
+Reversi/bin
+Reversi/obj
