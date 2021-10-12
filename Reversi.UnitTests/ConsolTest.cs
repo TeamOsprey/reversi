@@ -273,5 +273,36 @@ namespace Reversi.UnitTests
 
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
         }
+
+        [Test]
+        public void IfEmptyBoardAcceptCentreSquareForPlacement()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(3, 3);
+
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+
+            var expected = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...B....",
+                    "........",
+                    "........",
+                    "........",
+                    "........"};
+
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
     }
 }

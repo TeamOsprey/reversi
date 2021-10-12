@@ -46,14 +46,14 @@ namespace Reversi.Logic
 
         public List<Square> GetBlankPositions()
         {
-            List<Square> allPositions = new List<Square>();
+            List<Square> blankPositions = new List<Square>();
 
             foreach (Square item in Positions)
             {
-                allPositions.Add(item);
+                if (item.Colour == '.')
+                    blankPositions.Add(item);
             }
 
-            var blankPositions = (from square in allPositions where square.Colour == '.' select square).ToList();
             return blankPositions;
         }
 
