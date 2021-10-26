@@ -57,3 +57,4 @@ but in Square class, where we can define operator method, we don't have that inf
 		* if there is aone counter in the middle 4 squares, the opponent can place in 3 remaining middle squares
 		* continue until all 4 counters are placed
 - [ ] Recognize the PASS turn
+- [ ] Develop the Consol app to play by sending commands
