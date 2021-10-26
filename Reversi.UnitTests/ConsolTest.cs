@@ -385,5 +385,86 @@ namespace Reversi.UnitTests
 
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
         }
+
+        [Test]
+        public void IfTwoCountersOnBoardAcceptCentreSquareForPlacement()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "........",
+                    "........",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'W');
+            Square selectedSquare = new Square(4,4);
+
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+
+            var expected = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "....W...",
+                    "........",
+                    "........",
+                    "........"};
+
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
+
+        [Test]
+        public void IfThreeCountersOnBoardAcceptCentreSquareForPlacement()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "....W...",
+                    "........",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(4, 3);
+
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+
+            var expected = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "...BW...",
+                    "........",
+                    "........",
+                    "........"};
+
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
+
+        [Test]
+        public void IfThreeCountersOnBoardDoNotAcceptOutOfCentreSquareForPlacement()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "....W...",
+                    "........",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(5, 4);
+
+            Assert.IsFalse(reversi.PlaceCounter(selectedSquare));
+        }
     }
 }

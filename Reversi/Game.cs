@@ -68,14 +68,20 @@ namespace Reversi.Logic
 
         private HashSet<Square> GetLegalPositions()
         {
-         
             HashSet<Square> returnValue = new HashSet<Square>();
-            if (ReversiBoard.GetBlankPositions().Count > 61)
+            if (ReversiBoard.GetBlankPositions().Count > 60)
             {
-                returnValue.Add(new Square(3, 3));
-                returnValue.Add(new Square(3, 4));
+                AddCentreSquares(returnValue);
             }
+            else
+            {
+                AddLegalPositionsToSet(returnValue);
+            }
+            return returnValue;
+        }
 
+        private void AddLegalPositionsToSet(HashSet<Square> returnValue)
+        {
             foreach (var startSquare in ReversiBoard.GetBlankPositions())
             {
                 foreach (var direction in directions)
@@ -84,8 +90,14 @@ namespace Reversi.Logic
                         break;
                 }
             }
+        }
 
-            return returnValue;
+        private static void AddCentreSquares(HashSet<Square> returnValue)
+        {
+            returnValue.Add(new Square(3, 3));
+            returnValue.Add(new Square(3, 4));
+            returnValue.Add(new Square(4, 4));
+            returnValue.Add(new Square(4, 3));
         }
 
         private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction)
