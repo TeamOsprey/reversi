@@ -466,5 +466,37 @@ namespace Reversi.UnitTests
 
             Assert.IsFalse(reversi.PlaceCounter(selectedSquare));
         }
+
+        [Test]
+        public void IfFourCountersOnBoardAcceptOutOfCentreSquareForPlacement()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "...BW...",
+                    "........",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(5, 4);
+
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+
+            var expected = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "...BB...",
+                    "....B...",
+                    "........",
+                    "........"};
+
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+
+        }
     }
 }
