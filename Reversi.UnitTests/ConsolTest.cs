@@ -500,7 +500,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void IfWhitePasses()
+        public void IfWhitePassesBoardStateDoesNotChange()
         {
             var board = new string[]{
                     "........",
@@ -513,21 +513,60 @@ namespace Reversi.UnitTests
                     "........"};
 
             var reversi = new Game(board, 'W');
-            Square selectedSquare = new Square(5, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+            reversi.Pass();
 
             var expected = new string[]{
                     "........",
                     "........",
                     "........",
-                    "...WB...",
                     "...BB...",
-                    "....B...",
+                    "...BB...",
+                    "...BB...",
                     "........",
                     "........"};
 
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
+        [Test]
+
+        public void IfWhitePassesItBecomesBlackTurn()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...BB...",
+                    "...BB...",
+                    "...BB...",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'W');
+
+            reversi.Pass();
+
+            Assert.AreEqual('B', reversi.GetCurrentPlayer());
+        }
+
+        [Test]
+        public void IfBlackPassesItBecomesWhiteTurn()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...BB...",
+                    "...BB...",
+                    "...BB...",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'B');
+
+            reversi.Pass();
+
+            Assert.AreEqual('W', reversi.GetCurrentPlayer());
         }
     }
 }

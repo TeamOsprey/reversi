@@ -27,6 +27,16 @@ namespace Reversi.Logic
             return true;
         }
 
+        public void Pass()
+        {
+            TurnColour = 'B';
+        }
+
+        public char GetCurrentPlayer()
+        {
+            return TurnColour;
+        }
+
         private void CaptureCounters(Square selectedSquare)
         {
             foreach (var direction in directions)
