@@ -498,5 +498,36 @@ namespace Reversi.UnitTests
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
 
         }
+
+        [Test]
+        public void IfWhitePasses()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...BB...",
+                    "...BB...",
+                    "...BB...",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'W');
+            Square selectedSquare = new Square(5, 4);
+
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
+
+            var expected = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...WB...",
+                    "...BB...",
+                    "....B...",
+                    "........",
+                    "........"};
+
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+        }
     }
 }
