@@ -8,6 +8,7 @@ namespace Reversi.Logic
         public Board ReversiBoard { get; set; }
         public char TurnColour { get; private set; }
         private List<Vector> directions = Direction.GetDirections();
+        public string Status { get; private set; }
 
         public Game(string[] board, char turnColor)
         {
@@ -30,11 +31,22 @@ namespace Reversi.Logic
         public void Pass()
         {
             TurnColour = 'B';
+
         }
 
         public char GetCurrentPlayer()
         {
             return TurnColour;
+        }
+
+        public string GetStatus()
+        {
+            if (GetLegalPositions().Count < 1)
+            {
+                Status = "PASS";
+            }
+
+            return Status;
         }
 
         private void CaptureCounters(Square selectedSquare)
