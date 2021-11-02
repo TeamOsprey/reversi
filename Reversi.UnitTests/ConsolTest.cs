@@ -550,6 +550,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
+        [Ignore("")]
         public void IfBlackPassesItBecomesWhiteTurn()
         {
             var board = new string[]{
@@ -567,6 +568,26 @@ namespace Reversi.UnitTests
             reversi.Pass();
 
             Assert.AreEqual('W', reversi.GetCurrentPlayer());
+        }
+
+        [Test]
+        public void IfPlayerHasNoLegalMoveSetToPass()
+        {
+            var board = new string[]{
+                    "........",
+                    "........",
+                    "........",
+                    "...BB...",
+                    "...BB...",
+                    "...BB...",
+                    "........",
+                    "........"};
+
+            var reversi = new Game(board, 'W');
+
+           
+
+            Assert.AreEqual("PASS", reversi.GetStatus());
         }
     }
 }
