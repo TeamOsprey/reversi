@@ -30,7 +30,8 @@ namespace Reversi.Logic
 
         public void Pass()
         {
-            TurnColour = 'B';
+            if (GetStatus() != "PASS") return;
+            TurnColour = GetCurrentPlayer() == 'B' ? 'W' : 'B';
 
         }
 
