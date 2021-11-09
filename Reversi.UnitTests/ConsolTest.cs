@@ -573,18 +573,22 @@ namespace Reversi.UnitTests
         public void IfPlayerHasNoLegalMoveSetToPass()
         {
             var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...BB...",
-                    "...BB...",
-                    "........",
-                    "........"};
+                "BWWWWWWW",
+                "BWBBW...",
+                "BWBBW...",
+                "BWWWW...",
+                "BWWWW...",
+                "BWWWW...",
+                "BWWBW...",
+                "BBBBBW.."};
+            
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(7,6 );
 
-            var reversi = new Game(board, 'W');
+            
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
-           
+
 
             Assert.AreEqual("PASS", reversi.GetStatus());
         }

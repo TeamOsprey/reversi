@@ -25,6 +25,9 @@ namespace Reversi.Logic
 
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
+
+            TurnColour = GetCurrentPlayer() == 'B' ? 'W' : 'B';
+            GetStatus();
             return true;
         }
 
