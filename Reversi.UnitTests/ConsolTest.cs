@@ -580,15 +580,9 @@ namespace Reversi.UnitTests
                 "BWWWW...",
                 "BWWWW...",
                 "BWWBW...",
-                "BBBBBW.."};
+                "BBBBBBB."};
             
-            var reversi = new Game(board, 'B');
-            Square selectedSquare = new Square(7,6 );
-
-            
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
-
-
+            var reversi = new Game(board, 'W');
 
             Assert.AreEqual("PASS", reversi.GetStatus());
         }

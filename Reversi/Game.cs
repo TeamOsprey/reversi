@@ -15,6 +15,8 @@ namespace Reversi.Logic
             ReversiBoard = new Board(board);
 
             TurnColour = turnColor;
+
+            GetStatus();
         }
 
 
@@ -26,8 +28,6 @@ namespace Reversi.Logic
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
 
-            TurnColour = GetCurrentPlayer() == 'B' ? 'W' : 'B';
-            GetStatus();
             return true;
         }
 
@@ -51,6 +51,11 @@ namespace Reversi.Logic
             }
 
             return Status;
+        }
+
+        private void IsGameOver()
+        {
+            throw new NotImplementedException();
         }
 
         private void CaptureCounters(Square selectedSquare)

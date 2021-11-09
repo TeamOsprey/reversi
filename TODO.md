@@ -64,3 +64,10 @@ but in Square class, where we can define operator method, we don't have that inf
 - We started working on Pass rule and finished in GREEN state!
 - Next week we will need to start with checking the rules about when and how to Pass
 	- Shall we only inform the player or give option to initiate thePass?
+
+## 2021-11-09
+- We agreed that setting the status of Game doesn't belong to the class' constructor
+- We talked about some redesign before we continue
+	- We may need to set the status of Game right inside the PlaceCounter method. So we won't wait for the next player to make the move before we find out what status is.
+	- We will probably need a method to give us the legal positions by providing it the player's color
+	- We need to redesign Game, to work without reconstruction of its instant for every move
