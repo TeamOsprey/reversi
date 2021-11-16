@@ -71,3 +71,8 @@ but in Square class, where we can define operator method, we don't have that inf
 	- We may need to set the status of Game right inside the PlaceCounter method. So we won't wait for the next player to make the move before we find out what status is.
 	- We will probably need a method to give us the legal positions by providing it the player's color
 	- We need to redesign Game, to work without reconstruction of its instant for every move
+
+## 2021-11-16
+- We have begun to set up automated process to pass when next player has no moves.
+	- considering combining Changeturn and Pass methods to automatically pass when change turn would lead to a no move situation.
+	- can extend to check next two moves for two no move situations and leading to end game condition.

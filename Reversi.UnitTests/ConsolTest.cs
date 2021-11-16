@@ -602,7 +602,7 @@ namespace Reversi.UnitTests
             var reversi = new Game(board, 'B');
             Square selectedSquare = new Square(5, 4);
 
-
+            reversi.PlaceCounter(selectedSquare);
 
             Assert.AreEqual('W', reversi.GetCurrentPlayer());
         }
@@ -625,5 +625,41 @@ namespace Reversi.UnitTests
 
             Assert.AreEqual('W', reversi.GetCurrentPlayer());
         }
+        [Test]
+        public void IfPlayersMoveIsOverNextPlayerTurnsPass()
+        {
+            //var board = new string[]{
+            //    "BWWWWWWW",
+            //    "BWBBW...",
+            //    "BWBBW...",
+            //    "BWWWW...",
+            //    "BWWWW...",
+            //    "BWWWW...",
+            //    "BWWBW...",
+            //    "BBBBBW.."};
+
+            //var reversi = new Game(board, 'B');
+            //Square selectedSquare = new Square(7, 6);
+
+            //reversi.PlaceCounter(selectedSquare);
+
+            var board = new string[]{
+                "BWWWWWWW",
+                "BWBBW...",
+                "BWBBW...",
+                "BWWWW...",
+                "BWWWW...",
+                "BWWWW...",
+                "BWWBW...",
+                "BBBBBBB."};
+
+            var reversi = new Game(board, 'W');
+
+            Assert.AreEqual("PASS", reversi.GetStatus());
+            Assert.AreEqual("PASS", reversi.GetStatus());
+
+            //Assert.AreEqual('B', reversi.GetCurrentPlayer());
+        }
+
     }
 }

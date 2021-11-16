@@ -36,6 +36,7 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             TurnColour = TurnColour == 'W' ? 'B' : 'W';
+
         }
 
         public void Pass()
