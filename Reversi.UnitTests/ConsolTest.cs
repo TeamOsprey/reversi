@@ -653,6 +653,7 @@ namespace Reversi.UnitTests
                 "BWWBW...",
                 "BBBBBBB."};
 
+
             var reversi = new Game(board, 'W');
 
             Assert.AreEqual("PASS", reversi.GetStatus());
