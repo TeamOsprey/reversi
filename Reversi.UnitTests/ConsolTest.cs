@@ -586,7 +586,26 @@ namespace Reversi.UnitTests
 
             Assert.AreEqual("PASS", reversi.GetStatus());
         }
+        [Test]
+        public void IfPlayersMoveIsOverTurnSwitchesToNextPlayer()
+        {
+            var board = new string[]{
+                "........",
+                "........",
+                "........",
+                "...WB...",
+                "...BW...",
+                "........",
+                "........",
+                "........"};
 
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(5, 4);
+
+
+
+            Assert.AreEqual('W', reversi.GetCurrentPlayer());
+        }
         [Test]
         public void IfTryToPassInIllegalState()
         {

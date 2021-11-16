@@ -28,7 +28,14 @@ namespace Reversi.Logic
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
 
+            ChangeTurn();
+
             return true;
+        }
+
+        private void ChangeTurn()
+        {
+            TurnColour = TurnColour == 'W' ? 'B' : 'W';
         }
 
         public void Pass()
