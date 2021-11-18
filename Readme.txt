@@ -9,5 +9,5 @@ List of requirements for the command-line application:
 	made by each player are in the four central squares of the board. The players place their 
 	disks alternately with their colors facing up and no captures are made. 
 - Recognizing when the game is over
-- Who won (based on the number of counters on the board)
+- Who won (based on the number of counters on the board) 
  
