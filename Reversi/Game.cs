@@ -30,11 +30,16 @@ namespace Reversi.Logic
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
 
+            EndTurn();
+
+            return true;
+        }
+
+        private void EndTurn()
+        {
             ChangeTurn();
             SetStatus();
             if (Status == "PASS") ChangeTurn();
-
-            return true;
         }
 
         private void ChangeTurn()
@@ -43,26 +48,17 @@ namespace Reversi.Logic
 
         }
 
-        public void Pass()
-        {
-            if (SetStatus() != "PASS") return;
-            TurnColour = GetCurrentPlayer() == 'B' ? 'W' : 'B';
-
-        }
-
         public char GetCurrentPlayer()
         {
             return TurnColour;
         }
 
-        public string SetStatus()
+        public void SetStatus()
         {
             if (GetLegalPositions().Count < 1)
             {
                 Status = "PASS";
             }
-
-            return Status;
         }
 
         private void IsGameOver()

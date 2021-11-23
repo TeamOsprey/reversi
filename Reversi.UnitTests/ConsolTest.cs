@@ -500,72 +500,6 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void IfWhitePassesBoardStateDoesNotChange()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...BB...",
-                    "...BB...",
-                    "........",
-                    "........"};
-
-            var reversi = new Game(board, 'W');
-
-            reversi.Pass();
-
-            var expected = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...BB...",
-                    "...BB...",
-                    "........",
-                    "........"};
-
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        }
-        [Test]
-
-        public void IfWhitePassesItBecomesBlackTurn()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...BB...",
-                    "...BB...",
-                    "........",
-                    "........"};
-
-            var reversi = new Game(board, 'W');
-
-            Assert.AreEqual('B', reversi.GetCurrentPlayer());
-        }
-
-        [Test]
-        public void IfBlackPassesItBecomesWhiteTurn()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...BB...",
-                    "...BB...",
-                    "........",
-                    "........"};
-
-            var reversi = new Game(board, 'B');
-
-            Assert.AreEqual('W', reversi.GetCurrentPlayer());
-        }
-
-        [Test]
         public void IfPlayerHasNoLegalMoveSetToPass()
         {
             var board = new string[]{
@@ -580,7 +514,7 @@ namespace Reversi.UnitTests
             
             var reversi = new Game(board, 'W');
 
-            Assert.AreEqual("PASS", reversi.SetStatus());
+            Assert.AreEqual("PASS", reversi.Status);
         }
         [Test]
         public void IfPlayersMoveIsOverTurnSwitchesToNextPlayer()
@@ -602,43 +536,11 @@ namespace Reversi.UnitTests
 
             Assert.AreEqual('W', reversi.GetCurrentPlayer());
         }
-        [Test]
-        public void IfTryToPassInIllegalState()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...BB...",
-                    "...BW...",
-                    "........",
-                    "........"};
-
-            var reversi = new Game(board, 'W');
-            reversi.Pass();
 
 
-            Assert.AreEqual('W', reversi.GetCurrentPlayer());
-        }
         [Test]
         public void IfPlayersMoveIsOverNextPlayerTurnsPass()
         {
-            //var board = new string[]{
-            //    "BWWWWWWW",
-            //    "BWBBW...",
-            //    "BWBBW...",
-            //    "BWWWW...",
-            //    "BWWWW...",
-            //    "BWWWW...",
-            //    "BWWBW...",
-            //    "BBBBBW.."};
-
-            //var reversi = new Game(board, 'B');
-            //Square selectedSquare = new Square(7, 6);
-
-            //reversi.PlaceCounter(selectedSquare);
-
             var board = new string[]{
                 "BWWWWWWW",
                 "BWBBW...",
@@ -647,15 +549,14 @@ namespace Reversi.UnitTests
                 "BWWWW...",
                 "BWWWW...",
                 "BWWBW...",
-                "BBBBBBB."};
+                "BBBBBW.."};
 
+            var reversi = new Game(board, 'B');
+            Square selectedSquare = new Square(7, 6);
 
-            var reversi = new Game(board, 'W');
+            reversi.PlaceCounter(selectedSquare);
 
-            Assert.AreEqual("PASS", reversi.SetStatus());
-            Assert.AreEqual("PASS", reversi.SetStatus());
-
-            //Assert.AreEqual('B', reversi.GetCurrentPlayer());
+            Assert.AreEqual('B', reversi.GetCurrentPlayer());
         }
 
     }
