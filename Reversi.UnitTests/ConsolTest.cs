@@ -544,8 +544,6 @@ namespace Reversi.UnitTests
 
             var reversi = new Game(board, 'W');
 
-            reversi.Pass();
-
             Assert.AreEqual('B', reversi.GetCurrentPlayer());
         }
 
@@ -563,8 +561,6 @@ namespace Reversi.UnitTests
                     "........"};
 
             var reversi = new Game(board, 'B');
-
-            reversi.Pass();
 
             Assert.AreEqual('W', reversi.GetCurrentPlayer());
         }
