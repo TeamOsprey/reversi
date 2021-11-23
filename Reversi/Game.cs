@@ -56,6 +56,7 @@ namespace Reversi.Logic
             if (GetLegalPositions().Count < 1)
             {
                 Status = "PASS";
+                ChangeTurn();
             }
 
             return Status;
