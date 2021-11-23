@@ -580,7 +580,7 @@ namespace Reversi.UnitTests
             
             var reversi = new Game(board, 'W');
 
-            Assert.AreEqual("PASS", reversi.GetStatus());
+            Assert.AreEqual("PASS", reversi.SetStatus());
         }
         [Test]
         public void IfPlayersMoveIsOverTurnSwitchesToNextPlayer()
@@ -652,8 +652,8 @@ namespace Reversi.UnitTests
 
             var reversi = new Game(board, 'W');
 
-            Assert.AreEqual("PASS", reversi.GetStatus());
-            Assert.AreEqual("PASS", reversi.GetStatus());
+            Assert.AreEqual("PASS", reversi.SetStatus());
+            Assert.AreEqual("PASS", reversi.SetStatus());
 
             //Assert.AreEqual('B', reversi.GetCurrentPlayer());
         }

@@ -16,7 +16,9 @@ namespace Reversi.Logic
 
             TurnColour = turnColor;
 
-            GetStatus();
+            SetStatus();
+            //if (Status == "PASS") ChangeTurn();
+            
         }
 
 
@@ -29,6 +31,8 @@ namespace Reversi.Logic
             CaptureCounters(selectedSquare);
 
             ChangeTurn();
+            SetStatus();
+            if (Status == "PASS") ChangeTurn();
 
             return true;
         }
@@ -41,7 +45,7 @@ namespace Reversi.Logic
 
         public void Pass()
         {
-            if (GetStatus() != "PASS") return;
+            if (SetStatus() != "PASS") return;
             TurnColour = GetCurrentPlayer() == 'B' ? 'W' : 'B';
 
         }
@@ -51,12 +55,11 @@ namespace Reversi.Logic
             return TurnColour;
         }
 
-        public string GetStatus()
+        public string SetStatus()
         {
             if (GetLegalPositions().Count < 1)
             {
                 Status = "PASS";
-                ChangeTurn();
             }
 
             return Status;
