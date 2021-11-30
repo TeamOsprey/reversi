@@ -584,5 +584,28 @@ namespace Reversi.UnitTests
 
         }
 
+        [Test]
+        public void InitiateGameWithStatusInProgress()
+        {
+            var reversi = new Game();
+            Assert.AreEqual("In Progress", reversi.Status);
+        }
+
+        [Test]
+        public void GameOverTest()
+        {
+            var board = new string[]{
+                "BWWWWWWW",
+                "BWBBWBBB",
+                "BWBBWBBB",
+                "BWWWWBBB",
+                "BWWWWBBB",
+                "BWWWWBBB",
+                "BWWBWBBB",
+                "BBBBBBBW"};
+
+            var reversi = new Game(board, 'B');
+            Assert.AreEqual("Game Over", reversi.Status);
+        }
     }
 }

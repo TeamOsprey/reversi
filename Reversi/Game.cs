@@ -25,6 +25,7 @@ namespace Reversi.Logic
         {
             ReversiBoard = new Board();
             TurnColour = 'B';
+            Status = "In Progress";
         }
 
         public bool PlaceCounter(Square selectedSquare)
