@@ -56,7 +56,7 @@ but in Square class, where we can define operator method, we don't have that inf
 		* if the board is empty, only one counter can be placed in one of the legal 4 central squares
 		* if there is aone counter in the middle 4 squares, the opponent can place in 3 remaining middle squares
 		* continue until all 4 counters are placed
-- [ ] Recognize the PASS turn
+- [X] Recognize the PASS turn
 - [ ] Develop the Consol app to play by sending commands
 
 
@@ -69,10 +69,15 @@ but in Square class, where we can define operator method, we don't have that inf
 - We agreed that setting the status of Game doesn't belong to the class' constructor
 - We talked about some redesign before we continue
 	- We may need to set the status of Game right inside the PlaceCounter method. So we won't wait for the next player to make the move before we find out what status is.
-	- We will probably need a method to give us the legal positions by providing it the player's color
+	- [ ] We will probably need a method to give us the legal positions by providing it the player's color
 	- We need to redesign Game, to work without reconstruction of its instant for every move
 
 ## 2021-11-16
 - We have begun to set up automated process to pass when next player has no moves.
 	- considering combining Changeturn and Pass methods to automatically pass when change turn would lead to a no move situation.
 	- can extend to check next two moves for two no move situations and leading to end game condition.
+
+## 2021-11-30
+- We worked on Game Over condition but there are still issues in the implementation
+- As mentioned in line 72, we agreed the change could remove the complexity of the current design
+- Create a enumerable for game's status
