@@ -559,5 +559,30 @@ namespace Reversi.UnitTests
             Assert.AreEqual('B', reversi.GetCurrentPlayer());
         }
 
+        [Test]
+        public void InitiateGameWithTurnColourBlack()
+        {
+            var reversi = new Game();
+            Assert.AreEqual('B', reversi.GetCurrentPlayer());
+        }
+
+        [Test]
+        public void InitiateGameWithCorrectBoard()
+        {
+            var expected = new string[]{
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........"};
+
+            var reversi = new Game();
+            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+
+        }
+
     }
 }

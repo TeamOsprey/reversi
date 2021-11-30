@@ -24,6 +24,20 @@ namespace Reversi.Logic
             }
         }
 
+        public Board()
+        {
+
+            Size = 8;
+            Positions = new Square[Size, Size];
+            for (int row = 0; row < Size; row++)
+            {
+                for (int col = 0; col < Size; col++)
+                {
+                    Positions[row, col] = new Square(row, col, '.');
+                }
+            }
+        }
+
         public Square Add(Square originalSquare, Vector direction)
         {
             int row = originalSquare.Row + direction.Vertical;

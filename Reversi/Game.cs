@@ -21,6 +21,11 @@ namespace Reversi.Logic
             
         }
 
+        public Game()
+        {
+            ReversiBoard = new Board();
+            TurnColour = 'B';
+        }
 
         public bool PlaceCounter(Square selectedSquare)
         {
