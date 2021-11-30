@@ -45,7 +45,11 @@ namespace Reversi.Logic
         {
             ChangeTurn();
             SetStatus();
-            if (Status == "PASS") ChangeTurn();
+            if (Status == "PASS")
+            {
+                ChangeTurn();
+                SetStatus();
+            }
         }
 
         private void ChangeTurn()
@@ -63,7 +67,14 @@ namespace Reversi.Logic
         {
             if (GetLegalPositions().Count < 1)
             {
-                Status = "PASS";
+                if (Status == "PASS")
+                {
+                    Status = "Game Over";
+                }
+                else
+                {
+                    Status = "PASS";
+                }
             }
         }
 
