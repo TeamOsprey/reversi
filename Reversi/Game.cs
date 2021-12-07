@@ -8,9 +8,9 @@ namespace Reversi.Logic
         public Board ReversiBoard { get; set; }
         public char TurnColour { get; private set; }
         private List<Vector> directions = Direction.GetDirections();
-        public string Status { get; private set; }
+        public Status Status { get; private set; }
 
-        public Game(string[] board, char turnColor, string status)
+        public Game(string[] board, char turnColor, Status status)
         {
             ReversiBoard = new Board(board);
 
@@ -32,7 +32,7 @@ namespace Reversi.Logic
         {
             ReversiBoard = new Board();
             TurnColour = 'B';
-            Status = "In Progress";
+            Status = Status.INPROGESS;
         }
 
         public bool PlaceCounter(Square selectedSquare)
@@ -52,7 +52,7 @@ namespace Reversi.Logic
         {
             ChangeTurn();
             SetStatus();
-            if (Status == "PASS")
+            if (Status == Status.PASS)
             {
                 ChangeTurn();
                 SetStatus();
@@ -74,20 +74,18 @@ namespace Reversi.Logic
         {
             if (GetLegalPositions().Count < 1)
             {
-                if (Status == "PASS")
+                if (Status == Status.PASS)
                 {
-                    Status = "Game Over";
+                    Status = Status.GAMEOVER;
                 }
                 else
                 {
-                    Status = "PASS";
+                    Status = Status.PASS;
                 }
             }
             else {
-                Status = "In Progress";
+                Status = Status.INPROGESS;
             }
-
-
         }
 
         private void IsGameOver()
@@ -189,9 +187,8 @@ namespace Reversi.Logic
 
     public enum Status
     {
-        INPROGESS = "In Progress",
-        "Pass",
-        "Game Over"
-
+        INPROGESS,
+        PASS,
+        GAMEOVER
     }
 }

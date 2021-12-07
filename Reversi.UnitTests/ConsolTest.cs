@@ -514,7 +514,7 @@ namespace Reversi.UnitTests
             
             var reversi = new Game(board, 'W');
 
-            Assert.AreEqual("PASS", reversi.Status);
+            Assert.AreEqual(Status.PASS, reversi.Status);
         }
         [Test]
         public void IfPlayersMoveIsOverTurnSwitchesToNextPlayer()
@@ -588,7 +588,7 @@ namespace Reversi.UnitTests
         public void InitiateGameWithStatusInProgress()
         {
             var reversi = new Game();
-            Assert.AreEqual("In Progress", reversi.Status);
+            Assert.AreEqual(Status.INPROGESS, reversi.Status);
         }
 
         [Test]
@@ -604,8 +604,26 @@ namespace Reversi.UnitTests
                 "BWWBWBBB",
                 "BBBBBBBW"};
 
-            var reversi = new Game(board, 'B', "PASS");
-            Assert.AreEqual("Game Over", reversi.Status);
+            var reversi = new Game(board, 'B', Status.PASS);
+            Assert.AreEqual(Status.GAMEOVER, reversi.Status);
         }
+
+        [Test]
+        public void GameOverWhenBoardIsFilled()
+        {
+            var board = new string[]{
+                "BWWWWWWW",
+                "BWBBWBBB",
+                "BWBBWBBB",
+                "BWWWWBBB",
+                "BWWWWBBB",
+                "BWWWWBBB",
+                "BWWBWBBB",
+                "BBBBBBBW"};
+
+            var reversi = new Game(board, 'B', Status.INPROGESS);
+            Assert.AreEqual(Status.GAMEOVER, reversi.Status);
+        }
+
     }
 }

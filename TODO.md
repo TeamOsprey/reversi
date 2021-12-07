@@ -80,4 +80,4 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2021-11-30
 - We worked on Game Over condition but there are still issues in the implementation
 - As mentioned in line 72, we agreed the change could remove the complexity of the current design
-- [ ] Create an enumerable for game's status
+- [X] Create an enumerable for game's status
