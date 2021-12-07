@@ -20,11 +20,6 @@ namespace Reversi.Logic
             return (Row == square.Row) && (Column == square.Column);
         }
 
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as Square);
-        }
-
         public override int GetHashCode() => (Row, Column).GetHashCode();
     }
 }

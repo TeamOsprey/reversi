@@ -7,6 +7,7 @@ namespace Reversi.Logic
     {
         public Board ReversiBoard { get; set; }
         public char TurnColour { get; private set; }
+        public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
 
@@ -72,16 +73,13 @@ namespace Reversi.Logic
 
         public void SetStatus()
         {
-            if (GetLegalPositions().Count < 1)
+            if(ReversiBoard.GetBlankPositions().Count == 0 || (GetLegalPositions(TurnColour).Count < 1 && GetLegalPositions(OpponentColour).Count < 1))
             {
-                if (Status == Status.PASS)
-                {
-                    Status = Status.GAMEOVER;
-                }
-                else
-                {
-                    Status = Status.PASS;
-                }
+                Status = Status.GAMEOVER;
+            }
+            else if (GetLegalPositions(TurnColour).Count < 1)
+            {
+                Status = Status.PASS;
             }
             else {
                 Status = Status.INPROGESS;
@@ -119,10 +117,18 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour == TurnColour;
         }
+        private bool SquareIsSameColour(Square currentSquare, char color)
+        {
+            return currentSquare != null && currentSquare.Colour == color;
+        }
 
         private bool SquareIsOpponentColour(Square currentSquare)
         {
             return currentSquare != null && currentSquare.Colour != TurnColour && currentSquare.Colour != '.';
+        }
+        private bool SquareIsOtherColour(Square currentSquare, char color)
+        {
+            return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != '.';
         }
 
         public string[] GetOutput()
@@ -146,6 +152,20 @@ namespace Reversi.Logic
             return returnValue;
         }
 
+        private HashSet<Square> GetLegalPositions(char color)
+        {
+            HashSet<Square> returnValue = new HashSet<Square>();
+            if (ReversiBoard.GetBlankPositions().Count > 60)
+            {
+                AddCentreSquares(returnValue);
+            }
+            else
+            {
+                AddLegalPositionsToSet(returnValue, color);
+            }
+            return returnValue;
+        }
+
         private void AddLegalPositionsToSet(HashSet<Square> returnValue)
         {
             foreach (var startSquare in ReversiBoard.GetBlankPositions())
@@ -153,6 +173,18 @@ namespace Reversi.Logic
                 foreach (var direction in directions)
                 {
                     if (IsNextPositionValid(startSquare, returnValue, direction))
+                        break;
+                }
+            }
+        }
+
+        private void AddLegalPositionsToSet(HashSet<Square> returnValue, char color)
+        {
+            foreach (var startSquare in ReversiBoard.GetBlankPositions())
+            {
+                foreach (var direction in directions)
+                {
+                    if (IsNextPositionValid(startSquare, returnValue, direction, color))
                         break;
                 }
             }
@@ -176,6 +208,24 @@ namespace Reversi.Logic
                 nextSquare = ReversiBoard.Add(nextSquare, direction);
 
                 if (SquareIsTurnColour(nextSquare))
+                {
+                    returnValue.Add(startSquare);
+                    result = true;
+                }
+            }
+            return result;
+        }
+
+        private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
+        {
+            bool result = false;
+            var nextSquare = ReversiBoard.Add(startSquare, direction);
+
+            while (SquareIsOtherColour(nextSquare, color))
+            {
+                nextSquare = ReversiBoard.Add(nextSquare, direction);
+
+                if (SquareIsSameColour(nextSquare, color))
                 {
                     returnValue.Add(startSquare);
                     result = true;
