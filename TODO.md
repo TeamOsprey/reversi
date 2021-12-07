@@ -81,3 +81,11 @@ but in Square class, where we can define operator method, we don't have that inf
 - We worked on Game Over condition but there are still issues in the implementation
 - As mentioned in line 72, we agreed the change could remove the complexity of the current design
 - [X] Create an enumerable for game's status
+
+## 2021-12-07
+ - We improved SetStatus method
+ - [ ] Introduce a new class for SavedGame with board, turncolor, and status as properties
+ - We need to do lots of cleanups
+	- [ ] (do line#87 first) Remove the obsolete Game constructor and update all affected unit tests
+	- Remove all duplicated methods that don't have color argument
+	- there must be room to make SetStatus method cleaner
