@@ -604,7 +604,7 @@ namespace Reversi.UnitTests
                 "BWWBWBBB",
                 "BBBBBBBW"};
 
-            var reversi = new Game(board, 'B');
+            var reversi = new Game(board, 'B', "PASS");
             Assert.AreEqual("Game Over", reversi.Status);
         }
     }

@@ -10,15 +10,23 @@ namespace Reversi.Logic
         private List<Vector> directions = Direction.GetDirections();
         public string Status { get; private set; }
 
-        public Game(string[] board, char turnColor)
+        public Game(string[] board, char turnColor, string status)
         {
             ReversiBoard = new Board(board);
 
             TurnColour = turnColor;
 
+            Status = status;
+            SetStatus();
+        }
+
+        public Game(string[] board, char turnColor)
+        {
+            ReversiBoard = new Board(board);
+
+            TurnColour = turnColor;
             SetStatus();
             //if (Status == "PASS") ChangeTurn();
-            
         }
 
         public Game()
