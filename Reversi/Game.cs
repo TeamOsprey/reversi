@@ -26,7 +26,6 @@ namespace Reversi.Logic
 
             TurnColour = turnColor;
             SetStatus();
-            //if (Status == "PASS") ChangeTurn();
         }
 
         public Game()
@@ -84,6 +83,11 @@ namespace Reversi.Logic
                     Status = "PASS";
                 }
             }
+            else {
+                Status = "In Progress";
+            }
+
+
         }
 
         private void IsGameOver()
@@ -181,5 +185,13 @@ namespace Reversi.Logic
             }
             return result;
         }
+    }
+
+    public enum Status
+    {
+        INPROGESS = "In Progress",
+        "Pass",
+        "Game Over"
+
     }
 }
