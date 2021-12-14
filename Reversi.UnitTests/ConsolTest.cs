@@ -592,19 +592,19 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void GameOverTest()
+        public void GameOverTestWhenNoLegalMovesForBothPlayers()
         {
             var board = new string[]{
-                "BWWWWWWW",
-                "BWBBWBBB",
-                "BWBBWBBB",
-                "BWWWWBBB",
-                "BWWWWBBB",
-                "BWWWWBBB",
-                "BWWBWBBB",
-                "BBBBBBBW"};
+                "WWWWWWWW",
+                "WWWWWWWW",
+                "WWWWWWWW",
+                "WWWWWWW.",
+                "WWWWWW..",
+                "WWWWWW.B",
+                "WWWWWWW.",
+                "WWWWWWWW"};
 
-            var reversi = new Game(board, 'B', Status.PASS);
+            var reversi = new Game(board, 'B');
             Assert.AreEqual(Status.GAMEOVER, reversi.Status);
         }
 
@@ -621,7 +621,7 @@ namespace Reversi.UnitTests
                 "BWWBWBBB",
                 "BBBBBBBW"};
 
-            var reversi = new Game(board, 'B', Status.INPROGESS);
+            var reversi = new Game(board, 'B');
             Assert.AreEqual(Status.GAMEOVER, reversi.Status);
         }
 

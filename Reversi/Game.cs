@@ -11,16 +11,6 @@ namespace Reversi.Logic
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
 
-        public Game(string[] board, char turnColor, Status status)
-        {
-            ReversiBoard = new Board(board);
-
-            TurnColour = turnColor;
-
-            Status = status;
-            SetStatus();
-        }
-
         public Game(string[] board, char turnColor)
         {
             ReversiBoard = new Board(board);
@@ -38,7 +28,7 @@ namespace Reversi.Logic
 
         public bool PlaceCounter(Square selectedSquare)
         {
-            if (!GetLegalPositions().Contains(selectedSquare))
+            if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
                 return false;
 
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
@@ -102,7 +92,7 @@ namespace Reversi.Logic
                     currentLine.Add(currentSquare);
                     currentSquare = ReversiBoard.Add(currentSquare, direction);
                 }
-                if (SquareIsTurnColour(currentSquare))
+                if (SquareIsSameColour(currentSquare, TurnColour))
                 {
                     foreach (var square in currentLine)
                     {
@@ -113,10 +103,6 @@ namespace Reversi.Logic
             }
         }
 
-        private bool SquareIsTurnColour(Square currentSquare)
-        {
-            return currentSquare != null && currentSquare.Colour == TurnColour;
-        }
         private bool SquareIsSameColour(Square currentSquare, char color)
         {
             return currentSquare != null && currentSquare.Colour == color;
@@ -133,23 +119,9 @@ namespace Reversi.Logic
 
         public string[] GetOutput()
         {
-            ReversiBoard.SetLegalPositions(GetLegalPositions());
+            ReversiBoard.SetLegalPositions(GetLegalPositions(TurnColour));
 
             return ReversiBoard.GetCurrentState();
-        }
-
-        private HashSet<Square> GetLegalPositions()
-        {
-            HashSet<Square> returnValue = new HashSet<Square>();
-            if (ReversiBoard.GetBlankPositions().Count > 60)
-            {
-                AddCentreSquares(returnValue);
-            }
-            else
-            {
-                AddLegalPositionsToSet(returnValue);
-            }
-            return returnValue;
         }
 
         private HashSet<Square> GetLegalPositions(char color)
@@ -207,7 +179,7 @@ namespace Reversi.Logic
             {
                 nextSquare = ReversiBoard.Add(nextSquare, direction);
 
-                if (SquareIsTurnColour(nextSquare))
+                if (SquareIsSameColour(nextSquare, TurnColour))
                 {
                     returnValue.Add(startSquare);
                     result = true;
