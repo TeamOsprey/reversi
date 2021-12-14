@@ -10,6 +10,7 @@ namespace Reversi.Logic
         public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
+        public string ReturnCode { get; private set; }
 
         public Game(string[] board, char turnColor)
         {
@@ -17,6 +18,7 @@ namespace Reversi.Logic
 
             TurnColour = turnColor;
             SetStatus();
+            SetReturnCode();
             ActOnStatus();
         }
 
@@ -25,6 +27,11 @@ namespace Reversi.Logic
             ReversiBoard = new Board();
             TurnColour = 'B';
             Status = Status.INPROGESS;
+        }
+
+        private void SetReturnCode()
+        {
+            if (Status == Status.PASS) ReturnCode = "PASS";
         }
 
         public bool PlaceCounter(Square selectedSquare)
@@ -39,7 +46,6 @@ namespace Reversi.Logic
 
             return true;
         }
-
         private void EndTurn()
         {
             ChangeTurn();

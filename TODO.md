@@ -86,6 +86,11 @@ but in Square class, where we can define operator method, we don't have that inf
  - We improved SetStatus method
  - [ ] Introduce a new class for SavedGame with board, turncolor, and status as properties
  - We need to do lots of cleanups
-	- [ ] (do line#87 first) Remove the obsolete Game constructor and update all affected unit tests
-	- Remove all duplicated methods that don't have color argument
-	- there must be room to make SetStatus method cleaner
+	- [x] (do line#87 first) Remove the obsolete Game constructor and update all affected unit tests
+	- [x] Remove all duplicated methods that don't have color argument
+	- [ ] there must be room to make SetStatus method cleaner
+
+## 2021-12-14
+ - We performed code cleanup
+ - We added ActOnStatus function to constructor but it is causing test issues as it is performing an action
+ - [ ] We should start next meeting by revisiting best practice for constructor to decide how to properly code this section

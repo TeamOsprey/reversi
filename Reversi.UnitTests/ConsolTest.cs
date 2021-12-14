@@ -514,7 +514,7 @@ namespace Reversi.UnitTests
             
             var reversi = new Game(board, 'W');
 
-            Assert.AreEqual(Status.PASS, reversi.Status);
+            Assert.AreEqual("PASS", reversi.ReturnCode);
         }
         [Test]
         public void IfPlayersMoveIsOverTurnSwitchesToNextPlayer()
