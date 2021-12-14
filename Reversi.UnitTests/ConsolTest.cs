@@ -625,5 +625,21 @@ namespace Reversi.UnitTests
             Assert.AreEqual(Status.GAMEOVER, reversi.Status);
         }
 
+        [Test]
+        public void GameConstructorChangesTurnWhenBoardPassedInIsInPassedState()
+        {
+            var board = new string[]{
+                "BWWWWWWW",
+                "BWBBWBBB",
+                "BWBBWBBB",
+                "BWWWWBBB",
+                "BWWWWBB.",
+                "BWWWWBBB",
+                "BWWBWBBB",
+                "BBBBBBBW"};
+
+            var reversi = new Game(board, 'B');
+            Assert.AreEqual('W', reversi.TurnColour);
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace Reversi.Logic
 
             TurnColour = turnColor;
             SetStatus();
+            ActOnStatus();
         }
 
         public Game()
@@ -43,6 +44,11 @@ namespace Reversi.Logic
         {
             ChangeTurn();
             SetStatus();
+            ActOnStatus();
+        }
+
+        private void ActOnStatus()
+        {
             if (Status == Status.PASS)
             {
                 ChangeTurn();
@@ -53,7 +59,6 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             TurnColour = TurnColour == 'W' ? 'B' : 'W';
-
         }
 
         public char GetCurrentPlayer()
@@ -63,7 +68,7 @@ namespace Reversi.Logic
 
         public void SetStatus()
         {
-            if(ReversiBoard.GetBlankPositions().Count == 0 || (GetLegalPositions(TurnColour).Count < 1 && GetLegalPositions(OpponentColour).Count < 1))
+            if(IsGameOver())
             {
                 Status = Status.GAMEOVER;
             }
@@ -76,9 +81,9 @@ namespace Reversi.Logic
             }
         }
 
-        private void IsGameOver()
+        private bool IsGameOver()
         {
-            throw new NotImplementedException();
+            return ReversiBoard.GetBlankPositions().Count == 0 || (GetLegalPositions(TurnColour).Count < 1 && GetLegalPositions(OpponentColour).Count < 1);
         }
 
         private void CaptureCounters(Square selectedSquare)
@@ -87,7 +92,7 @@ namespace Reversi.Logic
             {
                 Square currentSquare = ReversiBoard.Add(selectedSquare, direction);
                 List<Square> currentLine = new List<Square>();
-                while (SquareIsOpponentColour(currentSquare))
+                while (SquareIsOtherColour(currentSquare, TurnColour))
                 {
                     currentLine.Add(currentSquare);
                     currentSquare = ReversiBoard.Add(currentSquare, direction);
@@ -99,7 +104,6 @@ namespace Reversi.Logic
                         square.Colour = TurnColour;
                     }
                 }
-
             }
         }
 
@@ -108,10 +112,6 @@ namespace Reversi.Logic
             return currentSquare != null && currentSquare.Colour == color;
         }
 
-        private bool SquareIsOpponentColour(Square currentSquare)
-        {
-            return currentSquare != null && currentSquare.Colour != TurnColour && currentSquare.Colour != '.';
-        }
         private bool SquareIsOtherColour(Square currentSquare, char color)
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != '.';
@@ -138,18 +138,6 @@ namespace Reversi.Logic
             return returnValue;
         }
 
-        private void AddLegalPositionsToSet(HashSet<Square> returnValue)
-        {
-            foreach (var startSquare in ReversiBoard.GetBlankPositions())
-            {
-                foreach (var direction in directions)
-                {
-                    if (IsNextPositionValid(startSquare, returnValue, direction))
-                        break;
-                }
-            }
-        }
-
         private void AddLegalPositionsToSet(HashSet<Square> returnValue, char color)
         {
             foreach (var startSquare in ReversiBoard.GetBlankPositions())
@@ -168,24 +156,6 @@ namespace Reversi.Logic
             returnValue.Add(new Square(3, 4));
             returnValue.Add(new Square(4, 4));
             returnValue.Add(new Square(4, 3));
-        }
-
-        private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction)
-        {
-            bool result = false;
-            var nextSquare = ReversiBoard.Add(startSquare, direction);
-
-            while (SquareIsOpponentColour(nextSquare))
-            {
-                nextSquare = ReversiBoard.Add(nextSquare, direction);
-
-                if (SquareIsSameColour(nextSquare, TurnColour))
-                {
-                    returnValue.Add(startSquare);
-                    result = true;
-                }
-            }
-            return result;
         }
 
         private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
