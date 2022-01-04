@@ -94,3 +94,10 @@ but in Square class, where we can define operator method, we don't have that inf
  - We performed code cleanup
  - We added ActOnStatus function to constructor but it is causing test issues as it is performing an action
  - [x] We should start next meeting by revisiting best practice for constructor to decide how to properly code this section
+
+ ## 2022-01-04
+ - Talked about responsibility for Core logic layer to act on game over status. 
+	- one suggestion, to leave responsibility to UI, another suggestion to have interface class for output.
+	- Static message handler classt to output messages to consol.
+- discussed moving to creating UI for application. Consol vs GUI. Technology used, Blazor vs Javascript.
+	[ ] --- ________________

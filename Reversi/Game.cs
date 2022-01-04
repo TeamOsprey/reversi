@@ -64,6 +64,7 @@ namespace Reversi.Logic
                 ChangeTurn();
                 SetStatus();
             }
+
         }
 
         private void ChangeTurn()
@@ -78,17 +79,23 @@ namespace Reversi.Logic
 
         public void SetStatus()
         {
-            if(IsGameOver())
+            if (IsGameOver())
             {
                 Status = Status.GAMEOVER;
             }
-            else if (GetLegalPositions(TurnColour).Count < 1)
+            else if (IsPass())
             {
                 Status = Status.PASS;
             }
-            else {
+            else
+            {
                 Status = Status.INPROGESS;
             }
+        }
+
+        private bool IsPass()
+        {
+            return GetLegalPositions(TurnColour).Count < 1;
         }
 
         private bool IsGameOver()
