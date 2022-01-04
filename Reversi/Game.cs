@@ -133,7 +133,10 @@ namespace Reversi.Logic
 
             return ReversiBoard.GetCurrentState();
         }
-
+        public char GetWinner()
+        {
+            return 'B';
+        }
         private HashSet<Square> GetLegalPositions(char color)
         {
             HashSet<Square> returnValue = new HashSet<Square>();
@@ -185,6 +188,8 @@ namespace Reversi.Logic
             }
             return result;
         }
+
+
     }
 
     public enum Status

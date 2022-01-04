@@ -626,7 +626,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void GameConstructorChangesTurnWhenBoardPassedInIsInPassedState()
+        public void GameLoadChangesTurnWhenBoardPassedInIsInPassedState()
         {
             var board = new string[]{
                 "BWWWWWWW",
@@ -640,6 +640,22 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, 'B');
             Assert.AreEqual('W', reversi.TurnColour);
+        }
+        [Test]
+        public void WhenStatusIsGameOverDeclareWinner()
+        {
+            var board = new string[]{
+                "BWWWWWWW",
+                "BWBBWBBB",
+                "BWBBWBBB",
+                "BWWWWBBB",
+                "BWWWWBBB",
+                "BWWWWBBB",
+                "BWWBWBBB",
+                "BBBBBBBW"};
+
+            var reversi = Game.Load(board, 'B');
+            Assert.AreEqual(reversi.GetWinner(),'B');
         }
     }
 }

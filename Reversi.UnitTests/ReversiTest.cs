@@ -171,7 +171,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void will_not_return_path_over_the_edge()
+        public void path_over_the_edge_passes_to_other_colour()
         {
             var board = new string[]{
             "........",
@@ -188,7 +188,7 @@ namespace Reversi.UnitTests
             "........",
             "........",
             "........",
-            "WWBB....",
+            "WWBB0...",
             "........",
             "........",
             "........"};
@@ -199,7 +199,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void path_will_not_extend_past_own_counter()
+        public void path_extending_past_own_counter_passes()
         {
             var board = new string[]{
             "........",
@@ -216,7 +216,7 @@ namespace Reversi.UnitTests
             "........",
             "........",
             "........",
-            "..BWWB..",
+            ".0BWWB0.",
             "........",
             "........",
             "........"};

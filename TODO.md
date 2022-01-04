@@ -69,7 +69,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - We agreed that setting the status of Game doesn't belong to the class' constructor
 - We talked about some redesign before we continue
 	- We may need to set the status of Game right inside the PlaceCounter method. So we won't wait for the next player to make the move before we find out what status is.
-	- [ ] We will probably need a method to give us the legal positions by providing it the player's color
+	- [x] We will probably need a method to give us the legal positions by providing it the player's color
 	- We need to redesign Game, to work without reconstruction of its instant for every move
 
 ## 2021-11-16
@@ -84,7 +84,7 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2021-12-07
  - We improved SetStatus method
- - [ ] Introduce a new class for SavedGame with board, turncolor, and status as properties
+ - [-] Introduce a new class for SavedGame with board, turncolor, and status as properties
  - We need to do lots of cleanups
 	- [x] (do line#87 first) Remove the obsolete Game constructor and update all affected unit tests
 	- [x] Remove all duplicated methods that don't have color argument
@@ -93,4 +93,4 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2021-12-14
  - We performed code cleanup
  - We added ActOnStatus function to constructor but it is causing test issues as it is performing an action
- - [ ] We should start next meeting by revisiting best practice for constructor to decide how to properly code this section
+ - [x] We should start next meeting by revisiting best practice for constructor to decide how to properly code this section
