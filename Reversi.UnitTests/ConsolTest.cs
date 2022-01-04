@@ -655,7 +655,7 @@ namespace Reversi.UnitTests
                 "BBBBBBBW"};
 
             var reversi = Game.Load(board, 'B');
-            Assert.AreEqual(reversi.GetWinner(),'B');
+            Assert.AreEqual('B', reversi.GetWinner());
         }
     }
 }

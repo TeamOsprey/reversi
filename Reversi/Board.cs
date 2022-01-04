@@ -71,6 +71,19 @@ namespace Reversi.Logic
             return blankPositions;
         }
 
+        public int GetNumberOfPositionsByColor(char color)
+        {
+            int count = 0;
+
+            foreach (Square item in Positions)
+            {
+                if (item.Colour == color)
+                    count++;
+            }
+
+            return count;
+        }
+
         public void SetLegalPositions(HashSet<Square> legalPositions)
         {
             LegalPositions = legalPositions;

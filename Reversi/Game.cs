@@ -135,7 +135,10 @@ namespace Reversi.Logic
         }
         public char GetWinner()
         {
-            return 'B';
+            var white = GetNumberOfColor('W');
+            var black = GetNumberOfColor('B');
+
+            return (white > black) ? 'W' : 'B';
         }
         private HashSet<Square> GetLegalPositions(char color)
         {
@@ -189,6 +192,10 @@ namespace Reversi.Logic
             return result;
         }
 
+        private int GetNumberOfColor(char color)
+        {
+            return ReversiBoard.GetNumberOfPositionsByColor(color);
+        }
 
     }
 
