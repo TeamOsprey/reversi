@@ -638,7 +638,7 @@ namespace Reversi.UnitTests
                 "BWWBWBBB",
                 "BBBBBBBW"};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
             Assert.AreEqual('W', reversi.TurnColour);
         }
     }

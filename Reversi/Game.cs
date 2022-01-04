@@ -12,14 +12,10 @@ namespace Reversi.Logic
         public Status Status { get; private set; }
         public string ReturnCode { get; private set; }
 
-        public Game(string[] board, char turnColor)
+        private Game(string[] board, char turnColor)
         {
             ReversiBoard = new Board(board);
-
             TurnColour = turnColor;
-            SetStatus();
-            SetReturnCode();
-            ActOnStatus();
         }
 
         public Game()
@@ -29,6 +25,14 @@ namespace Reversi.Logic
             Status = Status.INPROGESS;
         }
 
+        public static Game Load(string[] board, char turnColour)
+        {
+            var game = new Game(board, turnColour);
+            game.SetStatus();
+            game.SetReturnCode();
+            game.ActOnStatus();
+            return game;
+        }
         private void SetReturnCode()
         {
             if (Status == Status.PASS) ReturnCode = "PASS";
