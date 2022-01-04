@@ -17,7 +17,7 @@ namespace Reversi.App
             "....W...",
             "....B..."};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
             Console.WriteLine(string.Join('\n', reversi.ReversiBoard.GetCurrentState()));
         }
     }

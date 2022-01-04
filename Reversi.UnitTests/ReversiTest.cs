@@ -21,7 +21,7 @@ namespace Reversi.UnitTests
             "........"};
 
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
             var output = reversi.GetOutput();
 
             Assert.AreEqual('B', output[4][4]);
@@ -53,7 +53,7 @@ namespace Reversi.UnitTests
             "....0...",
             "........"};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
 
@@ -81,7 +81,7 @@ namespace Reversi.UnitTests
             "....0..."};
 
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -109,7 +109,7 @@ namespace Reversi.UnitTests
             "....W...",
             "....B..."};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -137,7 +137,7 @@ namespace Reversi.UnitTests
             ".....W..",
             "......0."};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -165,7 +165,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -193,7 +193,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -221,7 +221,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -249,7 +249,7 @@ namespace Reversi.UnitTests
             "..000...",
             "........"};
 
-            var reversi = new Game(board, 'B');
+            var reversi = Game.Load(board, 'B');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -277,7 +277,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = new Game(board, 'W');
+            var reversi = Game.Load(board, 'W');
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
