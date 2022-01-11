@@ -99,5 +99,11 @@ but in Square class, where we can define operator method, we don't have that inf
  - Talked about responsibility for Core logic layer to act on game over status. 
 	- one suggestion, to leave responsibility to UI, another suggestion to have interface class for output.
 	- Static message handler classt to output messages to consol.
-- discussed moving to creating UI for application. Consol vs GUI. Technology used, Blazor vs Javascript.
-	[ ] --- ________________
+ - discussed moving to creating UI for application. Consol vs GUI. Technology used, Blazor vs Javascript.
+
+## 2022-01-11
+ - We started using Result as the return object
+ - We started using Message to capture the activities behind PlaceCounter.
+ - For the next session we are going to discuss further on what PlaceCounter should return. 
+   One suggestion is to return Game, so the UI can access the latest properties of Game: lke the turn, Status, and maybe the Message
+
