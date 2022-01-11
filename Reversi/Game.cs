@@ -1,30 +1,31 @@
 ﻿using System.Collections.Generic;
 using System;
+using CSharpFunctionalExtensions;
 
 namespace Reversi.Logic
 {
     public class Game
     {
+        #region fields
         public Board ReversiBoard { get; set; }
         public char TurnColour { get; private set; }
         public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
         public string ReturnCode { get; private set; }
-
+        #endregion
+        #region constructors
         private Game(string[] board, char turnColor)
         {
             ReversiBoard = new Board(board);
             TurnColour = turnColor;
         }
-
         public Game()
         {
             ReversiBoard = new Board();
             TurnColour = 'B';
             Status = Status.INPROGESS;
         }
-
         public static Game Load(string[] board, char turnColour)
         {
             var game = new Game(board, turnColour);
@@ -33,30 +34,49 @@ namespace Reversi.Logic
             game.ActOnStatus();
             return game;
         }
-        private void SetReturnCode()
-        {
-            if (Status == Status.PASS) ReturnCode = "PASS";
-        }
-
-        public bool PlaceCounter(Square selectedSquare)
+        #endregion
+        #region public methods
+        public Result PlaceCounter(Square selectedSquare)
         {
             if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
-                return false;
+                return Result.Failure("Position is not legal.");
 
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
 
             EndTurn();
 
-            return true;
+            return Result.Success();
         }
+        public char GetCurrentPlayer()
+        {
+            return TurnColour;
+        }
+        public string[] GetOutput()
+        {
+            ReversiBoard.SetLegalPositions(GetLegalPositions(TurnColour));
+
+            return ReversiBoard.GetCurrentState();
+        }
+        public char GetWinner()
+        {
+            var white = GetNumberOfColor('W');
+            var black = GetNumberOfColor('B');
+
+            return (white > black) ? 'W' : 'B';
+        }
+        #endregion
+        #region private methods
         private void EndTurn()
         {
             ChangeTurn();
             SetStatus();
             ActOnStatus();
         }
-
+        private void SetReturnCode()
+        {
+            if (Status == Status.PASS) ReturnCode = "PASS";
+        }
         private void ActOnStatus()
         {
             if (Status == Status.PASS)
@@ -66,18 +86,11 @@ namespace Reversi.Logic
             }
 
         }
-
         private void ChangeTurn()
         {
             TurnColour = TurnColour == 'W' ? 'B' : 'W';
         }
-
-        public char GetCurrentPlayer()
-        {
-            return TurnColour;
-        }
-
-        public void SetStatus()
+        private void SetStatus()
         {
             if (IsGameOver())
             {
@@ -92,17 +105,14 @@ namespace Reversi.Logic
                 Status = Status.INPROGESS;
             }
         }
-
         private bool IsPass()
         {
             return GetLegalPositions(TurnColour).Count < 1;
         }
-
         private bool IsGameOver()
         {
             return ReversiBoard.GetBlankPositions().Count == 0 || (GetLegalPositions(TurnColour).Count < 1 && GetLegalPositions(OpponentColour).Count < 1);
         }
-
         private void CaptureCounters(Square selectedSquare)
         {
             foreach (var direction in directions)
@@ -123,29 +133,13 @@ namespace Reversi.Logic
                 }
             }
         }
-
         private bool SquareIsSameColour(Square currentSquare, char color)
         {
             return currentSquare != null && currentSquare.Colour == color;
         }
-
         private bool SquareIsOtherColour(Square currentSquare, char color)
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != '.';
-        }
-
-        public string[] GetOutput()
-        {
-            ReversiBoard.SetLegalPositions(GetLegalPositions(TurnColour));
-
-            return ReversiBoard.GetCurrentState();
-        }
-        public char GetWinner()
-        {
-            var white = GetNumberOfColor('W');
-            var black = GetNumberOfColor('B');
-
-            return (white > black) ? 'W' : 'B';
         }
         private HashSet<Square> GetLegalPositions(char color)
         {
@@ -160,7 +154,6 @@ namespace Reversi.Logic
             }
             return returnValue;
         }
-
         private void AddLegalPositionsToSet(HashSet<Square> returnValue, char color)
         {
             foreach (var startSquare in ReversiBoard.GetBlankPositions())
@@ -172,7 +165,6 @@ namespace Reversi.Logic
                 }
             }
         }
-
         private static void AddCentreSquares(HashSet<Square> returnValue)
         {
             returnValue.Add(new Square(3, 3));
@@ -180,7 +172,6 @@ namespace Reversi.Logic
             returnValue.Add(new Square(4, 4));
             returnValue.Add(new Square(4, 3));
         }
-
         private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
         {
             bool result = false;
@@ -198,18 +189,18 @@ namespace Reversi.Logic
             }
             return result;
         }
-
         private int GetNumberOfColor(char color)
         {
             return ReversiBoard.GetNumberOfPositionsByColor(color);
         }
-
+#endregion
     }
-
+    #region enum
     public enum Status
     {
         INPROGESS,
         PASS,
         GAMEOVER
     }
+#endregion
 }
