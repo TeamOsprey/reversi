@@ -12,7 +12,7 @@ namespace Reversi.Logic
         public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
-        public string ReturnCode { get; private set; }
+        public string Message { get; set; }
         #endregion
         #region constructors
         private Game(string[] board, char turnColor)
@@ -30,23 +30,26 @@ namespace Reversi.Logic
         {
             var game = new Game(board, turnColour);
             game.SetStatus();
-            game.SetReturnCode();
             game.ActOnStatus();
             return game;
         }
         #endregion
         #region public methods
-        public Result PlaceCounter(Square selectedSquare)
+        public Result<string> PlaceCounter(Square selectedSquare)
         {
+            Message = "";
             if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
-                return Result.Failure("Position is not legal.");
+            {
+                Message = Message + "Position is not legal";
+                return Result.Failure<string>(Message);
+            }
 
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
 
             EndTurn();
 
-            return Result.Success();
+            return Result.Success<string>(Message);
         }
         public char GetCurrentPlayer()
         {
@@ -73,10 +76,7 @@ namespace Reversi.Logic
             SetStatus();
             ActOnStatus();
         }
-        private void SetReturnCode()
-        {
-            if (Status == Status.PASS) ReturnCode = "PASS";
-        }
+
         private void ActOnStatus()
         {
             if (Status == Status.PASS)
@@ -89,6 +89,7 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             TurnColour = TurnColour == 'W' ? 'B' : 'W';
+            Message += "It is now " + TurnColour + "'s turn.";
         }
         private void SetStatus()
         {

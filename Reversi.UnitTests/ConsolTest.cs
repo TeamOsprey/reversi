@@ -500,23 +500,6 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void IfPlayerHasNoLegalMoveSetToPass()
-        {
-            var board = new string[]{
-                "BWWWWWWW",
-                "BWBBW...",
-                "BWBBW...",
-                "BWWWW...",
-                "BWWWW...",
-                "BWWWW...",
-                "BWWBW...",
-                "BBBBBBB."};
-            
-            var reversi = Game.Load(board, 'W');
-
-            Assert.AreEqual("PASS", reversi.ReturnCode);
-        }
-        [Test]
         public void IfPlayersMoveIsOverTurnSwitchesToNextPlayer()
         {
             var board = new string[]{
