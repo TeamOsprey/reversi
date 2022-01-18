@@ -672,6 +672,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(1, 1);
+            reversi.PlaceCounter(selectedSquare);
 
             Assert.IsTrue(reversi.MoveInvalid);
         }
@@ -691,6 +692,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(7, 6);
+            reversi.PlaceCounter(selectedSquare);
 
             Assert.IsTrue(reversi.PassOccured);
         }

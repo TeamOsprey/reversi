@@ -42,8 +42,10 @@ namespace Reversi.Logic
         #region public methods
         public bool PlaceCounter(Square selectedSquare)
         {
+            ResetFlags();
             if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
             {
+                MoveInvalid = true;
                 return false;
             }
 
@@ -78,6 +80,7 @@ namespace Reversi.Logic
             ChangeTurn();
             SetStatus();
             ActOnStatus();
+            TurnComplete = true;
         }
 
         private void ActOnStatus()
@@ -103,6 +106,7 @@ namespace Reversi.Logic
             else if (IsPass())
             {
                 Status = Status.PASS;
+                PassOccured = true;
             }
             else
             {
