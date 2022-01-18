@@ -107,3 +107,10 @@ but in Square class, where we can define operator method, we don't have that inf
  - For the next session we are going to discuss further on what PlaceCounter should return. 
    One suggestion is to return Game, so the UI can access the latest properties of Game: like the turn, Status, and maybe the Message
 
+## 2022-01-18
+ - We reverted back to before result introduced
+ - We decided to use flags to capture more than one status
+ - Next session:
+	- Refactor flags to separate class
+	- Revisit what to do with status class
+	- Mock up UI.
