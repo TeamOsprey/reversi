@@ -674,5 +674,42 @@ namespace Reversi.UnitTests
         //    var reversi = Game.Load(board, 'B');
         //    Assert.AreEqual('B', reversi.GetWinner());
         //}
+        // [Test]
+        // public void WhenPlacingIllegalCounterMessageWarnsUs()
+        // {
+        //     var board = new string[]{
+        //             "........",
+        //             "........",
+        //             "........",
+        //             "........",
+        //             "........",
+        //             "........",
+        //             "........",
+        //             "........"};
+        //
+        //     var reversi = Game.Load(board, 'B');
+        //     Square selectedSquare = new Square(1, 1);
+        //
+        //     Assert.AreEqual("Position is not legal", reversi.PlaceCounter(selectedSquare).Error);
+        // }
+        //
+        // [Test]
+        // public void IfPlayersMoveIsOverNextPlayerTurnsPassAndMessageDeclarePass()
+        // {
+        //     var board = new string[]{
+        //         "BWWWWWWW",
+        //         "BWBBW...",
+        //         "BWBBW...",
+        //         "BWWWW...",
+        //         "BWWWW...",
+        //         "BWWWW...",
+        //         "BWWBW...",
+        //         "BBBBBW.."};
+        //
+        //     var reversi = Game.Load(board, 'B');
+        //     Square selectedSquare = new Square(7, 6);
+        //
+        //     Assert.AreEqual("It is now B's turn.", reversi.PlaceCounter(selectedSquare).Value);
+        // }
     }
 }
