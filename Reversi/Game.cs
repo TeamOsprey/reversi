@@ -12,7 +12,6 @@ namespace Reversi.Logic
         public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
-        public string Message { get; set; }
         #endregion
         #region constructors
         private Game(string[] board, char turnColor)
@@ -35,13 +34,11 @@ namespace Reversi.Logic
         }
         #endregion
         #region public methods
-        public Result<string> PlaceCounter(Square selectedSquare)
+        public bool PlaceCounter(Square selectedSquare)
         {
-            Message = "";
             if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
             {
-                Message = Message + "Position is not legal";
-                return Result.Failure<string>(Message);
+                return false;
             }
 
             ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
@@ -49,7 +46,7 @@ namespace Reversi.Logic
 
             EndTurn();
 
-            return Result.Success<string>(Message);
+            return true;
         }
         public char GetCurrentPlayer()
         {
@@ -89,7 +86,6 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             TurnColour = TurnColour == 'W' ? 'B' : 'W';
-            Message += "It is now " + TurnColour + "'s turn.";
         }
         private void SetStatus()
         {
