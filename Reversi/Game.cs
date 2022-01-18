@@ -12,6 +12,12 @@ namespace Reversi.Logic
         public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
+
+        public bool MoveInvalid;
+        public bool PassOccured;
+        public bool GameOver;
+        public bool TurnComplete;
+        
         #endregion
         #region constructors
         private Game(string[] board, char turnColor)
@@ -189,6 +195,13 @@ namespace Reversi.Logic
         private int GetNumberOfColor(char color)
         {
             return ReversiBoard.GetNumberOfPositionsByColor(color);
+        }
+        private void ResetFlags()
+        {
+            MoveInvalid = false;
+            PassOccured = false;
+            TurnComplete = false;
+            GameOver = false;
         }
 #endregion
     }
