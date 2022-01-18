@@ -52,7 +52,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(4, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(4, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
             "........",
@@ -102,7 +102,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'W');
             Square selectedSquare = new Square(4, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
             "........",
@@ -133,7 +133,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'W');
             Square selectedSquare = new Square(1, 1);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsFailure);
+            Assert.IsFalse(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
             "........",
@@ -164,7 +164,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(3, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
             "........",
@@ -197,7 +197,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(7, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
             "........",
@@ -228,7 +228,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'W');
             Square selectedSquare = new Square(4, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
             "........",
@@ -259,7 +259,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'W');
             Square selectedSquare = new Square(4, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
                     "........",
@@ -290,7 +290,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(3, 3);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
                     "........",
@@ -321,7 +321,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(0, 3);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsFailure);
+            Assert.IsFalse(reversi.PlaceCounter(selectedSquare));
         }
 
         [Test]
@@ -340,7 +340,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(3, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
                     "........",
@@ -371,7 +371,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(3, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
                     "........",
@@ -402,7 +402,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'W');
             Square selectedSquare = new Square(4,4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
                     "........",
@@ -433,7 +433,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(4, 3);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
                     "........",
@@ -464,7 +464,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(5, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsFailure);
+            Assert.IsFalse(reversi.PlaceCounter(selectedSquare));
         }
 
         [Test]
@@ -483,7 +483,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(5, 4);
 
-            Assert.IsTrue(reversi.PlaceCounter(selectedSquare).IsSuccess);
+            Assert.IsTrue(reversi.PlaceCounter(selectedSquare));
 
             var expected = new string[]{
                     "........",
@@ -499,6 +499,23 @@ namespace Reversi.UnitTests
 
         }
 
+        [Test]
+        public void IfPlayerHasNoLegalMoveSetToPass()
+        {
+            var board = new string[]{
+                "BWWWWWWW",
+                "BWBBW...",
+                "BWBBW...",
+                "BWWWW...",
+                "BWWWW...",
+                "BWWWW...",
+                "BWWBW...",
+                "BBBBBBB."};
+            
+            var reversi = Game.Load(board, 'W');
+
+            Assert.AreEqual("PASS", reversi.ReturnCode);
+        }
         [Test]
         public void IfPlayersMoveIsOverTurnSwitchesToNextPlayer()
         {
@@ -641,42 +658,21 @@ namespace Reversi.UnitTests
             Assert.AreEqual('B', reversi.GetWinner());
         }
 
-        [Test]
-        public void WhenPlacingIllegalCounterMessageWarnsUs()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
+        //[Test]
+        //public void WhenLoadingGameOverBoardDeclareWinner()
+        //{
+        //    var board = new string[]{
+        //        "BWWWWWWW",
+        //        "BWBBWBBB",
+        //        "BWBBWBBB",
+        //        "BWWWWBBB",
+        //        "BWWWWBBB",
+        //        "BWWWWBBB",
+        //        "BWWBWBBB",
+        //        "BBBBBBBW"};
 
-            var reversi = Game.Load(board, 'B');
-            Square selectedSquare = new Square(1, 1);
-
-            Assert.AreEqual("Position is not legal", reversi.PlaceCounter(selectedSquare).Error);
-        }
-
-        [Test]
-        public void IfPlayersMoveIsOverNextPlayerTurnsPassAndMessageDeclarePass()
-        {
-            var board = new string[]{
-                "BWWWWWWW",
-                "BWBBW...",
-                "BWBBW...",
-                "BWWWW...",
-                "BWWWW...",
-                "BWWWW...",
-                "BWWBW...",
-                "BBBBBW.."};
-
-            var reversi = Game.Load(board, 'B');
-            Square selectedSquare = new Square(7, 6);
-
-            Assert.AreEqual("It is now B's turn.", reversi.PlaceCounter(selectedSquare).Value);
-        }
+        //    var reversi = Game.Load(board, 'B');
+        //    Assert.AreEqual('B', reversi.GetWinner());
+        //}
     }
 }
