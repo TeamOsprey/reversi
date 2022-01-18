@@ -105,5 +105,5 @@ but in Square class, where we can define operator method, we don't have that inf
  - We started using Result as the return object
  - We started using Message to capture the activities behind PlaceCounter.
  - For the next session we are going to discuss further on what PlaceCounter should return. 
-   One suggestion is to return Game, so the UI can access the latest properties of Game: lke the turn, Status, and maybe the Message
+   One suggestion is to return Game, so the UI can access the latest properties of Game: like the turn, Status, and maybe the Message
 

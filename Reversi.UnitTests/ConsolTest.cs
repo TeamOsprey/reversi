@@ -699,17 +699,18 @@ namespace Reversi.UnitTests
         public void IfPlayersMoveCausesGameOverFlagDeclareGameOver()
         {
             var board = new string[]{
-                 "BWWWWWWW",
-                 "BWBBW...",
-                 "BWBBW...",
-                 "BWWWW...",
-                 "BWWWW...",
-                 "BWWWW...",
-                 "BWWBW...",
-                 "BBBBBW.."};
+                "BWWWWWWW",
+                "BWBBWBBB",
+                "BWBBWBBB",
+                "BWWWWBBB",
+                "BWWWWBW.",
+                "BWWWWBBB",
+                "BWWBWBBB",
+                "BBBBBBBW"};
 
             var reversi = Game.Load(board, 'B');
-            Square selectedSquare = new Square(7, 6);
+            Square selectedSquare = new Square(4, 7);
+            reversi.PlaceCounter(selectedSquare);
 
             Assert.IsTrue(reversi.GameOver);
         }
@@ -729,6 +730,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, 'B');
             Square selectedSquare = new Square(7, 6);
+            reversi.PlaceCounter(selectedSquare);
 
             Assert.IsTrue(reversi.TurnComplete);
         }

@@ -98,6 +98,7 @@ namespace Reversi.Logic
             if (IsGameOver())
             {
                 Status = Status.GAMEOVER;
+                GameOver = true;
             }
             else if (IsPass())
             {
