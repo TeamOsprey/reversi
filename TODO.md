@@ -52,7 +52,7 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2021-10-05
 - We covered place counter for all directions and flipping of the captured counters
-- [ ] Add the logic to check for first 4 legal moves: 
+- [X] Add the logic to check for first 4 legal moves: 
 		* if the board is empty, only one counter can be placed in one of the legal 4 central squares
 		* if there is aone counter in the middle 4 squares, the opponent can place in 3 remaining middle squares
 		* continue until all 4 counters are placed
@@ -114,3 +114,9 @@ but in Square class, where we can define operator method, we don't have that inf
 	[x] Refactor flags to separate class
 	[x] Revisit what to do with status class
 	- Mock up UI.
+
+## 2022-01-25
+- We added new Constants file for constants.
+- Replaced Status flags with State class to track flags.
+- Next week, start with mockup for console app.
+- 
