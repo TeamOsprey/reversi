@@ -11,8 +11,8 @@ namespace Reversi.Logic
         public char TurnColour { get; private set; }
         public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
         private List<Vector> directions = Direction.GetDirections();
-        public Status Status { get; private set; }
-
+        private const char BLACK = 'B';
+        private const char WHITE = 'W';
         public State State = new State();
 
         #endregion
@@ -26,7 +26,7 @@ namespace Reversi.Logic
         {
             ReversiBoard = new Board();
             TurnColour = 'B';
-            Status = Status.INPROGESS;
+            State.InProgress = true;
         }
         public static Game Load(string[] board, char turnColour)
         {
@@ -82,7 +82,7 @@ namespace Reversi.Logic
 
         private void ActOnStatus()
         {
-            if (Status == Status.PASS)
+            if (State.PassOccured)
             {
                 ChangeTurn();
                 SetStatus();
@@ -96,19 +96,11 @@ namespace Reversi.Logic
         private void SetStatus()
         {
             if (IsGameOver())
-            {
-                Status = Status.GAMEOVER;
                 State.GameOver = true;
-            }
             else if (IsPass())
-            {
-                Status = Status.PASS;
                 State.PassOccured = true;
-            }
             else
-            {
-                Status = Status.INPROGESS;
-            }
+                State.InProgress = true;
         }
         private bool IsPass()
         {
@@ -200,12 +192,4 @@ namespace Reversi.Logic
         }
 #endregion
     }
-    #region enum
-    public enum Status
-    {
-        INPROGESS,
-        PASS,
-        GAMEOVER
-    }
-#endregion
 }

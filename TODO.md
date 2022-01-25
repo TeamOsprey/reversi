@@ -88,7 +88,7 @@ but in Square class, where we can define operator method, we don't have that inf
  - We need to do lots of cleanups
 	- [x] (do line#87 first) Remove the obsolete Game constructor and update all affected unit tests
 	- [x] Remove all duplicated methods that don't have color argument
-	- [ ] there must be room to make SetStatus method cleaner
+	- [x] there must be room to make SetStatus method cleaner
 
 ## 2021-12-14
  - We performed code cleanup
@@ -111,6 +111,6 @@ but in Square class, where we can define operator method, we don't have that inf
  - We reverted back to before result introduced
  - We decided to use flags to capture more than one status
  - Next session:
-	- Refactor flags to separate class
-	- Revisit what to do with status class
+	[x] Refactor flags to separate class
+	[x] Revisit what to do with status class
 	- Mock up UI.
