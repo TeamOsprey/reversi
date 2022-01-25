@@ -674,7 +674,7 @@ namespace Reversi.UnitTests
             Square selectedSquare = new Square(1, 1);
             reversi.PlaceCounter(selectedSquare);
 
-            Assert.IsTrue(reversi.MoveInvalid);
+            Assert.IsTrue(reversi.State.MoveInvalid);
         }
 
         [Test]
@@ -694,7 +694,7 @@ namespace Reversi.UnitTests
             Square selectedSquare = new Square(7, 6);
             reversi.PlaceCounter(selectedSquare);
 
-            Assert.IsTrue(reversi.PassOccured);
+            Assert.IsTrue(reversi.State.PassOccured);
         }
 
         [Test]
@@ -714,7 +714,7 @@ namespace Reversi.UnitTests
             Square selectedSquare = new Square(4, 7);
             reversi.PlaceCounter(selectedSquare);
 
-            Assert.IsTrue(reversi.GameOver);
+            Assert.IsTrue(reversi.State.GameOver);
         }
 
         [Test]
@@ -734,7 +734,7 @@ namespace Reversi.UnitTests
             Square selectedSquare = new Square(7, 6);
             reversi.PlaceCounter(selectedSquare);
 
-            Assert.IsTrue(reversi.TurnComplete);
+            Assert.IsTrue(reversi.State.TurnComplete);
         }
     }
 }

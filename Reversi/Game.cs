@@ -13,11 +13,8 @@ namespace Reversi.Logic
         private List<Vector> directions = Direction.GetDirections();
         public Status Status { get; private set; }
 
-        public bool MoveInvalid;
-        public bool PassOccured;
-        public bool GameOver;
-        public bool TurnComplete;
-        
+        public State State = new State();
+
         #endregion
         #region constructors
         private Game(string[] board, char turnColor)
@@ -42,10 +39,10 @@ namespace Reversi.Logic
         #region public methods
         public bool PlaceCounter(Square selectedSquare)
         {
-            ResetFlags();
+            State = new State();
             if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
             {
-                MoveInvalid = true;
+                State.MoveInvalid = true;
                 return false;
             }
 
@@ -80,7 +77,7 @@ namespace Reversi.Logic
             ChangeTurn();
             SetStatus();
             ActOnStatus();
-            TurnComplete = true;
+            State.TurnComplete = true;
         }
 
         private void ActOnStatus()
@@ -101,12 +98,12 @@ namespace Reversi.Logic
             if (IsGameOver())
             {
                 Status = Status.GAMEOVER;
-                GameOver = true;
+                State.GameOver = true;
             }
             else if (IsPass())
             {
                 Status = Status.PASS;
-                PassOccured = true;
+                State.PassOccured = true;
             }
             else
             {
@@ -200,13 +197,6 @@ namespace Reversi.Logic
         private int GetNumberOfColor(char color)
         {
             return ReversiBoard.GetNumberOfPositionsByColor(color);
-        }
-        private void ResetFlags()
-        {
-            MoveInvalid = false;
-            PassOccured = false;
-            TurnComplete = false;
-            GameOver = false;
         }
 #endregion
     }
