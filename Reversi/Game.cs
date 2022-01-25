@@ -9,10 +9,8 @@ namespace Reversi.Logic
         #region fields
         public Board ReversiBoard { get; set; }
         public char TurnColour { get; private set; }
-        public char OpponentColour { get { return TurnColour == 'W' ? 'B' : 'W'; } }
+        public char OpponentColour { get { return TurnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE; } }
         private List<Vector> directions = Direction.GetDirections();
-        private const char BLACK = 'B';
-        private const char WHITE = 'W';
         public State State = new State();
 
         #endregion
@@ -25,7 +23,7 @@ namespace Reversi.Logic
         public Game()
         {
             ReversiBoard = new Board();
-            TurnColour = 'B';
+            TurnColour = Constants.BLACK;
             State.InProgress = true;
         }
         public static Game Load(string[] board, char turnColour)
@@ -37,7 +35,31 @@ namespace Reversi.Logic
         }
         #endregion
         #region public methods
-        public bool PlaceCounter(Square selectedSquare)
+        public bool PlaceCounter(int row, int col)
+        {
+            return PlaceCounter(new Square(row, col));
+        }
+
+        public char GetCurrentPlayer()
+        {
+            return TurnColour;
+        }
+        public string[] GetOutput()
+        {
+            ReversiBoard.SetLegalPositions(GetLegalPositions(TurnColour));
+
+            return ReversiBoard.GetCurrentState();
+        }
+        public char GetWinner()
+        {
+            var white = GetNumberOfColor(Constants.WHITE);
+            var black = GetNumberOfColor(Constants.BLACK);
+
+            return (white > black) ? Constants.WHITE : Constants.BLACK;
+        }
+        #endregion
+        #region private methods
+        private bool PlaceCounter(Square selectedSquare)
         {
             State = new State();
             if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
@@ -53,25 +75,7 @@ namespace Reversi.Logic
 
             return true;
         }
-        public char GetCurrentPlayer()
-        {
-            return TurnColour;
-        }
-        public string[] GetOutput()
-        {
-            ReversiBoard.SetLegalPositions(GetLegalPositions(TurnColour));
 
-            return ReversiBoard.GetCurrentState();
-        }
-        public char GetWinner()
-        {
-            var white = GetNumberOfColor('W');
-            var black = GetNumberOfColor('B');
-
-            return (white > black) ? 'W' : 'B';
-        }
-        #endregion
-        #region private methods
         private void EndTurn()
         {
             ChangeTurn();
@@ -91,7 +95,7 @@ namespace Reversi.Logic
         }
         private void ChangeTurn()
         {
-            TurnColour = TurnColour == 'W' ? 'B' : 'W';
+            TurnColour = TurnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE;
         }
         private void SetStatus()
         {
@@ -136,7 +140,7 @@ namespace Reversi.Logic
         }
         private bool SquareIsOtherColour(Square currentSquare, char color)
         {
-            return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != '.';
+            return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Constants.PERIOD;
         }
         private HashSet<Square> GetLegalPositions(char color)
         {

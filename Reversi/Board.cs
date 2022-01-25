@@ -33,7 +33,7 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    Positions[row, col] = new Square(row, col, '.');
+                    Positions[row, col] = new Square(row, col, Constants.PERIOD);
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace Reversi.Logic
 
             foreach (Square item in Positions)
             {
-                if (item.Colour == '.')
+                if (item.Colour == Constants.PERIOD)
                     blankPositions.Add(item);
             }
 
