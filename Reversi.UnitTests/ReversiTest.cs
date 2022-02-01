@@ -28,7 +28,7 @@ namespace Reversi.UnitTests
             Assert.AreEqual(Constants.BLACK, output[4][5]);
             Assert.AreEqual(Constants.WHITE, output[5][4]);
             Assert.AreEqual(Constants.WHITE, output[5][5]);
-            Assert.AreEqual(Constants.BLACK, reversi.TurnColour);
+            Assert.AreEqual(Constants.BLACK, reversi.GetCurrentPlayer());
         }
 
         [Test]

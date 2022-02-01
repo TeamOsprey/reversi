@@ -8,8 +8,8 @@ namespace Reversi.Logic
     {
         #region fields
         public Board ReversiBoard { get; set; }
-        public char TurnColour { get; private set; }
-        public char OpponentColour { get { return TurnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE; } }
+        private char TurnColour { get; set; }
+        private char OpponentColour { get { return TurnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE; } }
         private List<Vector> directions = Direction.GetDirections();
         public State State = new State();
 
@@ -56,6 +56,11 @@ namespace Reversi.Logic
             var black = GetNumberOfColor(Constants.BLACK);
 
             return (white > black) ? Constants.WHITE : Constants.BLACK;
+        }
+
+        public string[] DisplayBoard()
+        {
+            return ReversiBoard.GetCurrentState();
         }
         #endregion
         #region private methods

@@ -7,18 +7,14 @@ namespace Reversi.App
     {
         static void Main(string[] args)
         {
-            var board = new string[]{
-            "........",
-            "........",
-            "........",
-            "........",
-            "........",
-            "....W...",
-            "....W...",
-            "....B..."};
+            var reversi = new Game();
 
-            var reversi = Game.Load(board, Constants.BLACK);
-            Console.WriteLine(string.Join('\n', reversi.ReversiBoard.GetCurrentState()));
+            var board = reversi.DisplayBoard();
+            var currentPlayer = reversi.GetCurrentPlayer();
+            Console.WriteLine(string.Join('\n', board));
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }

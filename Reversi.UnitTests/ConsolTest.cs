@@ -604,7 +604,7 @@ namespace Reversi.UnitTests
                 "BBBBBBBW"};
 
             var reversi = Game.Load(board, Constants.BLACK);
-            Assert.AreEqual(Constants.WHITE, reversi.TurnColour);
+            Assert.AreEqual(Constants.WHITE, reversi.GetCurrentPlayer());
         }
         [Test]
         public void WhenStatusIsGameOverDeclareWinner()
