@@ -9,12 +9,20 @@ namespace Reversi.App
         {
             var reversi = new Game();
 
-            var board = reversi.DisplayBoard();
-            var currentPlayer = reversi.GetCurrentPlayer();
-            Console.WriteLine(string.Join('\n', board));
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
+            do
+            {
+                var board = reversi.DisplayBoard();
+                var currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
+
+                Console.WriteLine(string.Join('\n', board));
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Current turn: " + currentPlayer);
+                Console.Write("Enter coordinates (row,col): ");
+                var coords = Console.ReadLine();
+                var coordsSplit = coords.Split(',');
+                reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]));
+            } while (!reversi.State.GameOver);
         }
     }
 }
