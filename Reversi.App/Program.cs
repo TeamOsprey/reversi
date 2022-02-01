@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Reversi.Logic;
 
 namespace Reversi.App
@@ -13,8 +14,9 @@ namespace Reversi.App
             {
                 var board = reversi.DisplayBoard();
                 var currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
+                var GuidedBoard = board.Prepend(" 01234567");
 
-                Console.WriteLine(string.Join('\n', board));
+                Console.WriteLine(string.Join('\n', GuidedBoard));
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("Current turn: " + currentPlayer);
