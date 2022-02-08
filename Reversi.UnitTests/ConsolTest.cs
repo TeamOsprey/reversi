@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Reversi.App;
 using Reversi.Logic;
 using System;
 using System.Collections.Generic;
@@ -570,7 +571,7 @@ namespace Reversi.UnitTests
                 "WWWWWWWW"};
 
             var reversi = Game.Load(board, Constants.BLACK);
-            Assert.IsTrue( reversi.State.GameOver);
+            Assert.IsTrue(reversi.State.GameOver);
         }
 
         [Test]
@@ -713,6 +714,33 @@ namespace Reversi.UnitTests
             reversi.PlaceCounter(7, 6);
 
             Assert.IsTrue(reversi.State.TurnComplete);
+        }
+
+        [Test]
+        public void ConsoleAddsGuideToNewBoard()
+        {
+            var board = new string[]{
+                     "........",
+                     "........",
+                     "........",
+                     "........",
+                     "........",
+                     "........",
+                     "........",
+                     "........"};
+
+            var outputBoard = new string[]{
+                     " 01234567",
+                     "0........",
+                     "1........",
+                     "2........",
+                     "3........",
+                     "4........",
+                     "5........",
+                     "6........",
+                     "7........"};
+
+            Assert.AreEqual(outputBoard, Program.PrependGuidesToStringArrays(board));
         }
     }
 }

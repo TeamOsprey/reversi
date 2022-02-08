@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Reversi.Logic;
 
 namespace Reversi.App
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -29,7 +30,7 @@ namespace Reversi.App
             } while (!reversi.State.GameOver);
         }
 
-        private static string[] PrependGuidesToStringArrays(string[] Original)
+        public static IEnumerable<string> PrependGuidesToStringArrays(string[] Original)
         {
             string[] guidedArray = new string[8];
             int counter = 0;
@@ -39,7 +40,9 @@ namespace Reversi.App
                 guidedArray[counter] = counter+S;
                 counter++;
             }
-            return guidedArray;
+            var finalArray = guidedArray.Prepend(" 01234567");
+
+            return finalArray;
         }
 
     }
