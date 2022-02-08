@@ -124,5 +124,5 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-02-01
 - Create basic mock of console display.
 - Created basic console app.
-	[] - Creating guides for board display.
+	[x] - Creating guides for board display.
 	[] - Handle and display states as required.

@@ -16,11 +16,18 @@ namespace Reversi.App
                 var board = reversi.DisplayBoard();
                 var currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
                 var guidedBoard = PrependGuidesToStringArrays(board);
-                var finalBoard = guidedBoard.Prepend(" 01234567");
 
-                Console.WriteLine(string.Join('\n', finalBoard));
+                Console.WriteLine(string.Join('\n', guidedBoard));
                 Console.WriteLine();
                 Console.WriteLine();
+
+                if (reversi.State.MoveInvalid)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid Move");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
                 Console.WriteLine("Current turn: " + currentPlayer);
                 Console.Write("Enter coordinates (row,col): ");
                 var coords = Console.ReadLine();
