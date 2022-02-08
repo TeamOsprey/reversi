@@ -7,6 +7,9 @@ namespace Reversi.App
 {
     public class Program
     {
+        static IEnumerable<string> guidedBoard;
+        static string currentPlayer;
+
         static void Main(string[] args)
         {
             var reversi = new Game();
@@ -14,22 +17,11 @@ namespace Reversi.App
             do
             {
                 var board = reversi.DisplayBoard();
-                var currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
-                var guidedBoard = PrependGuidesToStringArrays(board);
+                currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
+                guidedBoard = PrependGuidesToStringArrays(board);
+                
+                DisplayBoard(reversi);
 
-                Console.WriteLine(string.Join('\n', guidedBoard));
-                Console.WriteLine();
-                Console.WriteLine();
-
-                if (reversi.State.MoveInvalid)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid Move");
-                    Console.ForegroundColor = ConsoleColor.White;
-                }
-
-                Console.WriteLine("Current turn: " + currentPlayer);
-                Console.Write("Enter coordinates (row,col): ");
                 var coords = Console.ReadLine();
                 var coordsSplit = coords.Split(',');
                 reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]));
@@ -50,6 +42,28 @@ namespace Reversi.App
             var finalArray = guidedArray.Prepend(" 01234567");
 
             return finalArray;
+        }
+
+        private static void DisplayBoard(Game reversi)
+        {
+            Console.WriteLine(string.Join('\n', guidedBoard));
+            Console.WriteLine();
+            Console.WriteLine();
+
+            if (reversi.State.MoveInvalid)
+            {
+                WriteErrorMessage("Invalid Move!");
+            }
+
+            Console.WriteLine("Current turn: " + currentPlayer);
+            Console.Write("Enter coordinates (row,col): ");
+        }
+
+        private static void WriteErrorMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
     }
