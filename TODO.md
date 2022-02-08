@@ -125,4 +125,9 @@ but in Square class, where we can define operator method, we don't have that inf
 - Create basic mock of console display.
 - Created basic console app.
 	[x] - Creating guides for board display.
-	[] - Handle and display states as required.
+	[x] - Handle and display states as required.
+
+## 2022-02-08
+- Further refactoring of program. Possibly extracting methods to a new class.
+- play test full game, testing all states.
+- discuss next step, Web API/Blazor?
