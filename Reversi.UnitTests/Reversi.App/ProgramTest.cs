@@ -31,7 +31,7 @@ namespace Reversi.UnitTests.Reversi.App
                      "7........"};
             var gameBoardUi = new GameBoardUi();
 
-            Assert.AreEqual(outputBoard, gameBoardUi.PrependGuidesToStringArrays(board));
+            Assert.AreEqual(outputBoard, gameBoardUi.guidedBoard);
         }
     }
 }

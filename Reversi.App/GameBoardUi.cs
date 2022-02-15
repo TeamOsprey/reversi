@@ -7,18 +7,29 @@ namespace Reversi.App
 {
     public class GameBoardUi
     {
-        IEnumerable<string> guidedBoard;
+        public IEnumerable<string> guidedBoard;
         public Game reversi;
 
-        public void SetupBoard()
+        public GameBoardUi()
         {
             reversi = new Game();
+            SetupBoard();
+        }
 
+        public void TakeTurn()
+        {
+            SetupBoard();
+            DisplayBoard();
+            GetPlayerInput();
+        }
+
+        private void SetupBoard()
+        {
             var board = reversi.DisplayBoard();
             guidedBoard = PrependGuidesToStringArrays(board);
         }
  
-        public IEnumerable<string> PrependGuidesToStringArrays(string[] Original)
+        private IEnumerable<string> PrependGuidesToStringArrays(string[] Original)
         {
             string[] guidedArray = new string[8];
             int counter = 0;
@@ -32,7 +43,7 @@ namespace Reversi.App
 
             return finalArray;
         }
-        public void DisplayBoard()
+        private void DisplayBoard()
         {
             var currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
 
@@ -51,13 +62,15 @@ namespace Reversi.App
             Console.WriteLine("Current turn: " + currentPlayer);
             Console.Write("Enter coordinates (row,col): ");
         }
-        public void GetPlayerInput()
+ 
+        private void GetPlayerInput()
         {
             var coords = Console.ReadLine();
             var coordsSplit = coords.Split(',');
             reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]));
             Console.Clear();
         }
+        
         private void WriteErrorMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;

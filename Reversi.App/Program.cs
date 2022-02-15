@@ -6,11 +6,9 @@
         {
             var gameBoardUi = new GameBoardUi();
 
-            gameBoardUi.SetupBoard();
             do
             {
-                gameBoardUi.DisplayBoard();
-                gameBoardUi.GetPlayerInput();
+                gameBoardUi.TakeTurn();
             } while (!gameBoardUi.reversi.State.GameOver);
         }
     }

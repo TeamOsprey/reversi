@@ -128,6 +128,11 @@ but in Square class, where we can define operator method, we don't have that inf
 	[x] - Handle and display states as required.
 
 ## 2022-02-08
-- Further refactoring of program. Possibly extracting methods to a new class.
-- play test full game, testing all states.
-- discuss next step, Web API/Blazor?
+- [X] Further refactoring of program. Possibly extracting methods to a new class.
+- [ ] play test full game, testing all states.
+- [ ] discuss next step, Web API/Blazor?
+
+## 2022-02-15
+- We ended in Green state
+- We extracted the logic from Program to a new class, GameBoardUi
+- Handle bad inputs for UI
