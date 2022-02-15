@@ -5,7 +5,7 @@ using Reversi.Logic;
 
 namespace Reversi.App
 {
-    public class Program
+    public class Program : GameBoard
     {
         static IEnumerable<string> guidedBoard;
         static string currentPlayer;
@@ -13,13 +13,11 @@ namespace Reversi.App
         static void Main(string[] args)
         {
             var reversi = new Game();
+            var gameBoard = new GameBoard();
 
             do
             {
-                var board = reversi.DisplayBoard();
-                currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
-                guidedBoard = PrependGuidesToStringArrays(board);
-
+                gameBoard.SetupBoard(reversi);
                 DisplayBoard(reversi);
 
                 GetPlayerInput(reversi);
@@ -34,23 +32,10 @@ namespace Reversi.App
             Console.Clear();
         }
 
-        public static IEnumerable<string> PrependGuidesToStringArrays(string[] Original)
-        {
-            string[] guidedArray = new string[8];
-            int counter = 0;
-
-            foreach(string S in Original)
-            {
-                guidedArray[counter] = counter+S;
-                counter++;
-            }
-            var finalArray = guidedArray.Prepend(" 01234567");
-
-            return finalArray;
-        }
-
         private static void DisplayBoard(Game reversi)
         {
+            currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
+
             Console.WriteLine(string.Join('\n', guidedBoard));
             Console.WriteLine();
             Console.WriteLine();
