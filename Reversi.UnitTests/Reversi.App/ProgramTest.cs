@@ -29,8 +29,9 @@ namespace Reversi.UnitTests.Reversi.App
                      "5........",
                      "6........",
                      "7........"};
+            var gameBoardUi = new GameBoardUi();
 
-            Assert.AreEqual(outputBoard, Program.PrependGuidesToStringArrays(board));
+            Assert.AreEqual(outputBoard, gameBoardUi.PrependGuidesToStringArrays(board));
         }
     }
 }

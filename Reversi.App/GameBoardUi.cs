@@ -7,10 +7,13 @@ namespace Reversi.App
 {
     public class GameBoardUi
     {
-        static IEnumerable<string> guidedBoard;
+        IEnumerable<string> guidedBoard;
+        public Game reversi;
 
-        public void SetupBoard(Game reversi)
+        public void SetupBoard()
         {
+            reversi = new Game();
+
             var board = reversi.DisplayBoard();
             guidedBoard = PrependGuidesToStringArrays(board);
         }
@@ -29,7 +32,7 @@ namespace Reversi.App
 
             return finalArray;
         }
-        public void DisplayBoard(Game reversi)
+        public void DisplayBoard()
         {
             var currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
 
@@ -48,7 +51,7 @@ namespace Reversi.App
             Console.WriteLine("Current turn: " + currentPlayer);
             Console.Write("Enter coordinates (row,col): ");
         }
-        public void GetPlayerInput(Game reversi)
+        public void GetPlayerInput()
         {
             var coords = Console.ReadLine();
             var coordsSplit = coords.Split(',');
