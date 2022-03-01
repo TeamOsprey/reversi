@@ -136,3 +136,9 @@ but in Square class, where we can define operator method, we don't have that inf
 - We ended in Green state
 - We extracted the logic from Program to a new class, GameBoardUi
 - Handle bad inputs for UI
+
+## 2022-03-01
+- We watched half of a tutorial on Blazor to get an idea of how we can use it in Revesi: https://www.youtube.com/watch?v=MetcuX1OHD0
+- We created a new MVC Core project (Reversi.Web) then created a simple Razor component to its home page.
+- We think we can utilize some of the functionalities of Blazor for features such as hovering, placing counter on a squares, avoiding page refresh
+- Next session we are going to start with a simple UI for Reversi and thinking about simple components we can develop for UI
