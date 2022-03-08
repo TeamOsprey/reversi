@@ -9,4 +9,4 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@(await Html.RenderComponentAsync<Component>(RenderMode.ServerPrerendered))
+@(await Html.RenderComponentAsync<ButtonComponent>(RenderMode.ServerPrerendered, new { message="0,1" }))

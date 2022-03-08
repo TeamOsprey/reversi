@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+
+<h3>Component</h3>
+
+<button  @onclick='args => Display(message)'>Click Me!</button>
+<p>message: @displayMessage</p>
+
+@code {
+    [Parameter]
+    public string message { get; set; }
+    string displayMessage = "";
+
+    void Display(string test)
+    {
+        displayMessage = test;
+    }
+    }
