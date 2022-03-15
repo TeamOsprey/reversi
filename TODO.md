@@ -146,3 +146,10 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-03-08
 - Tested Blazor components parameters.
 [ ]- Create clickable grid of gameboard using blazor components.
+
+## 2022-03-15
+- Created new Grid Component to store all tiles (and a new Tile component)
+- Created Grid for tiles, color coded it
+	- Used Game.GetOutput() to get legal positions and found a bug that will need fixed in SetLegalPositions.
+[ ]- Fix GetOutput for first 4 moves of the game
+[ ]- Pass more information to tile component to allow for returning coordinates on button press

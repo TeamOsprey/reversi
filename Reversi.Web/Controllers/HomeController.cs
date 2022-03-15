@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Reversi.Logic;
 
 namespace Reversi.Web.Controllers
 {
@@ -20,7 +21,16 @@ namespace Reversi.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var game = new Game();
+
+            //testing game
+            game.PlaceCounter(4, 4);
+            game.PlaceCounter(3, 3);
+            game.PlaceCounter(3, 4);
+            game.PlaceCounter(4, 3);
+            //--test code
+
+            return View(game.GetOutput());
         }
 
         public IActionResult Privacy()

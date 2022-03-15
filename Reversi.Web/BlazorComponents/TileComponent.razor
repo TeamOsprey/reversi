@@ -1,0 +1,22 @@
+﻿
+@using Microsoft.AspNetCore.Components.Web
+
+<button style="background: @color; height: 20px; width: 20px;" ></button>
+
+@code {
+    [Parameter]
+    public string  message { get; set; }
+
+    public string color => GetColorFromMessage();
+
+    private string GetColorFromMessage()
+    {
+        return message switch
+        {
+            "B" => "Black",
+            "W" => "White",
+            "0" => "Green",
+            _ => "Red"
+            };
+    }
+}

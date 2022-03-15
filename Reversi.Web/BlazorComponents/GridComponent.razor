@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Reversi.Logic
+
+<h3>Grid Component</h3>
+
+<table>
+    @foreach (var rowIndex in DisplayedBoard)
+    {
+        <tr>
+            @foreach (var character in rowIndex)
+            {
+                <td>
+                    <TileComponent message="@character.ToString()"></TileComponent>
+                </td>
+            }
+        </tr>
+    }
+</table>
+@code {
+
+    [Parameter]
+    public string[] DisplayedBoard { get; set; }
+   
+}
