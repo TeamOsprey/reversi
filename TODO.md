@@ -153,3 +153,12 @@ but in Square class, where we can define operator method, we don't have that inf
 	- Used Game.GetOutput() to get legal positions and found a bug that will need fixed in SetLegalPositions.
 [ ]- Fix GetOutput for first 4 moves of the game
 [ ]- Pass more information to tile component to allow for returning coordinates on button press
+
+## 2022-03-22
+- Added onclick functions to tile components
+- Added row/col information to tile components
+[ ]- Find a way to pass tile coordinates to controller without page refresh (ideally)
+- Possible solutions to look at next week are:
+	- Update a hidden parameter in a form to be passed to a controller in some way (through json?).
+	- Injecting a service to perform these actions
+[ ]- Need to revisit blazor Weather video https://www.youtube.com/watch?v=MetcuX1OHD0 to get better understanding of his service calls
