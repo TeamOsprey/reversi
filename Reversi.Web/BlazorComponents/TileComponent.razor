@@ -1,11 +1,18 @@
-﻿
-@using Microsoft.AspNetCore.Components.Web
+﻿@inject IJSRuntime JsRuntime
 
-<button style="background: @color; height: 20px; width: 20px;" ></button>
+@using System.Diagnostics
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+
+<button style="background: @color; height: 40px; width: 40px;" @onclick="CreateMessage"></button>
 
 @code {
     [Parameter]
-    public string  message { get; set; }
+    public string message { get; set; }
+    [Parameter]
+    public int row { get; set; }
+    [Parameter]
+    public int column { get; set; }
 
     public string color => GetColorFromMessage();
 
@@ -17,6 +24,13 @@
             "W" => "White",
             "0" => "Green",
             _ => "Red"
-            };
+        };
+
+    }
+
+    public async Task CreateMessage()
+    {
+        await JsRuntime.InvokeVoidAsync("alert", $"{row},{column}"); // Alert
+
     }
 }
