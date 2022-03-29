@@ -157,8 +157,15 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-03-22
 - Added onclick functions to tile components
 - Added row/col information to tile components
-[ ]- Find a way to pass tile coordinates to controller without page refresh (ideally)
+- [ ] Find a way to pass tile coordinates to controller without page refresh (ideally)
 - Possible solutions to look at next week are:
 	- Update a hidden parameter in a form to be passed to a controller in some way (through json?).
 	- Injecting a service to perform these actions
-[ ]- Need to revisit blazor Weather video https://www.youtube.com/watch?v=MetcuX1OHD0 to get better understanding of his service calls
+-[X] Need to revisit blazor Weather video https://www.youtube.com/watch?v=MetcuX1OHD0 to get better understanding of his service calls
+
+## 2022-03-29
+- We found the way to inject services to Razor components
+- We started implementing GameService to eventually send the selected tile coordinates to PlaceCounter and get the updated Game intance back
+- A possible solution to pass coordinates to the parent Razor component: https://www.pragimtech.com/blog/blazor/pass-data-from-child-to-parent-component-in-blazor/
+- A possible way to pass the board to the service: https://beansoftware.com/asp.net-tutorials/managing-state-web-service.aspx
+- Next session we will try to pass the coordinates to Game and return updated Game intance to Grid component
