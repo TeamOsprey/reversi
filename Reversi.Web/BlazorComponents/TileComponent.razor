@@ -1,8 +1,10 @@
 ﻿@inject IJSRuntime JsRuntime
+@inject IGameService GameService
 
 @using System.Diagnostics
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.JSInterop
+@using Reversi.Web.Services.Interfaces
 
 <button style="background: @color; height: 40px; width: 40px;" @onclick="CreateMessage"></button>
 
@@ -30,6 +32,8 @@
 
     public async Task CreateMessage()
     {
+        GameService.PlaceCounter(row, column);
+
         await JsRuntime.InvokeVoidAsync("alert", $"{row},{column}"); // Alert
 
     }
