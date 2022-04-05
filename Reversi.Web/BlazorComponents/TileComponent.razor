@@ -1,12 +1,8 @@
-﻿@inject IJSRuntime JsRuntime
-@inject IGameService GameService
+﻿
 
-@using System.Diagnostics
 @using Microsoft.AspNetCore.Components.Web
-@using Microsoft.JSInterop
-@using Reversi.Web.Services.Interfaces
 
-<button style="background: @color; height: 40px; width: 40px;" @onclick="CreateMessage"></button>
+<button style="background: @color; height: 40px; width: 40px;" @onclick="MakeMove"></button>
 
 @code {
     [Parameter]
@@ -15,6 +11,8 @@
     public int row { get; set; }
     [Parameter]
     public int column { get; set; }
+    [Parameter]
+    public EventCallback<string> OnMoveSelected { get; set; }
 
     public string color => GetColorFromMessage();
 
@@ -25,16 +23,13 @@
             "B" => "Black",
             "W" => "White",
             "0" => "Green",
-            _ => "Red"
+            _ => "Gray"
         };
-
     }
 
-    public async Task CreateMessage()
+    public async Task MakeMove()
     {
-        GameService.PlaceCounter(row, column);
-
-        await JsRuntime.InvokeVoidAsync("alert", $"{row},{column}"); // Alert
-
+        await OnMoveSelected.InvokeAsync($"{row},{column}");
     }
+
 }

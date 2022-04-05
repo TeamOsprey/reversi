@@ -130,7 +130,7 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-02-08
 - [X] Further refactoring of program. Possibly extracting methods to a new class.
 - [ ] play test full game, testing all states.
-- [ ] discuss next step, Web API/Blazor?
+- [x] discuss next step, Web API/Blazor?
 
 ## 2022-02-15
 - We ended in Green state
@@ -145,19 +145,19 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-03-08
 - Tested Blazor components parameters.
-[ ]- Create clickable grid of gameboard using blazor components.
+[x]- Create clickable grid of gameboard using blazor components.
 
 ## 2022-03-15
 - Created new Grid Component to store all tiles (and a new Tile component)
 - Created Grid for tiles, color coded it
 	- Used Game.GetOutput() to get legal positions and found a bug that will need fixed in SetLegalPositions.
 [ ]- Fix GetOutput for first 4 moves of the game
-[ ]- Pass more information to tile component to allow for returning coordinates on button press
+[x]- Pass more information to tile component to allow for returning coordinates on button press
 
 ## 2022-03-22
 - Added onclick functions to tile components
 - Added row/col information to tile components
-- [ ] Find a way to pass tile coordinates to controller without page refresh (ideally)
+- [x] Find a way to pass tile coordinates to controller without page refresh (ideally)
 - Possible solutions to look at next week are:
 	- Update a hidden parameter in a form to be passed to a controller in some way (through json?).
 	- Injecting a service to perform these actions
@@ -169,3 +169,10 @@ but in Square class, where we can define operator method, we don't have that inf
 - A possible solution to pass coordinates to the parent Razor component: https://www.pragimtech.com/blog/blazor/pass-data-from-child-to-parent-component-in-blazor/
 - A possible way to pass the board to the service: https://beansoftware.com/asp.net-tutorials/managing-state-web-service.aspx
 - Next session we will try to pass the coordinates to Game and return updated Game intance to Grid component
+
+## 2022-04-05
+- We used the service to track and update the game for the blazor components. 
+- We also passed coordinates from child to parent component by using invoke event from https://www.pragimtech.com/blog/blazor/pass-data-from-child-to-parent-component-in-blazor/.
+- We realized we did not need to bind manually, any time the component was updated the view updates on its own.
+-[ ] Need to find a way to initiate game inside controller instead of inside the service.
+-[ ] Set up more UI components (turn indicator, messaging)

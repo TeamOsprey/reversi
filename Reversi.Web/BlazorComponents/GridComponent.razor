@@ -1,6 +1,6 @@
-﻿@using System.Data
-@using Microsoft.AspNetCore.Components.Web
-@using Reversi.Logic
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Reversi.Web.Services.Interfaces
+@inject IGameService GameService
 
 <h3>Grid Component</h3>
 
@@ -11,7 +11,7 @@
             @for (int col = 0; col < DisplayedBoard[row].Length; col++)
             {
                 <td>
-                    <TileComponent message="@DisplayedBoard[row][col].ToString()" row="@row" column="@col"></TileComponent>
+                    <TileComponent message="@DisplayedBoard[row][col].ToString()" row="@row" column="@col" OnMoveSelected="MoveSelected"></TileComponent>
                 </td>
             }
         </tr>
@@ -19,8 +19,14 @@
 </table>
 @code {
 
-    [Parameter]
-    public string[] DisplayedBoard { get; set; }
-    
+    public string[] DisplayedBoard => GameService.GetOutput();
+
+    protected async Task MoveSelected(string move)
+    {
+        var row = int.Parse(move.Split(',')[0]);
+        var column = int.Parse(move.Split(',')[1]);
+
+        GameService.PlaceCounter(row, column);
+    }
 
 }

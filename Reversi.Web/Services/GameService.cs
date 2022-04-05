@@ -10,14 +10,19 @@ namespace Reversi.Web.Services
 {
     public class GameService : IGameService
     {
+        public Game Game;
+        public GameService()
+        {
+            Game = new Game();
+        }
         public void PlaceCounter(int row, int col)
         {
-            Debug.WriteLine("You are in GameService: " + row + ", " + col);
+            Game.PlaceCounter(row, col);
+        }
 
-            var game = new Game();
-
-            //testing game
-            game.PlaceCounter(row, col);
+        public string[] GetOutput()
+        {
+            return Game.GetOutput();
         }
     }
 }

@@ -7,32 +7,31 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Reversi.Logic;
+using Reversi.Web.Services;
+using Reversi.Web.Services.Interfaces;
 
 namespace Reversi.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IGameService _gameService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IGameService gameService)
         {
             _logger = logger;
+            _gameService = gameService;
         }
 
         public IActionResult Index()
         {
-            var game = new Game();
+            _gameService.PlaceCounter(4, 4);
+            _gameService.PlaceCounter(3, 3);
+            _gameService.PlaceCounter(3, 4);
+            _gameService.PlaceCounter(4, 3);
 
-            //testing game
-            game.PlaceCounter(4, 4);
-            game.PlaceCounter(3, 3);
-            game.PlaceCounter(3, 4);
-            game.PlaceCounter(4, 3);
-            //--test code
-
-            return View(game.GetOutput());
+            return View();
         }
-
         public IActionResult Privacy()
         {
             return View();
