@@ -7,6 +7,7 @@ namespace Reversi.Web.Services
     public class GameService : IGameService
     {
         public Game Game;
+
         public GameService(Game game)
         {
             Game = game;

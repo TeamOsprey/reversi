@@ -2,9 +2,7 @@
 @using Reversi.Web.Services.Interfaces
 @inject IGameService GameService
 
-<h3>Grid Component</h3>
-
-<GameInformation />
+<GameInformation  @ref="_gameInformation" />
 
 <table>
     @for (int row = 0; row < DisplayedBoard.Length; row++)
@@ -21,6 +19,8 @@
 </table>
 @code {
 
+    private GameInformation _gameInformation;
+
     public string[] DisplayedBoard => GameService.GetOutput();
 
     protected async Task MoveSelected(string move)
@@ -29,6 +29,7 @@
         var column = int.Parse(move.Split(',')[1]);
 
         GameService.PlaceCounter(row, column);
+        _gameInformation.Refresh();
     }
 
 }

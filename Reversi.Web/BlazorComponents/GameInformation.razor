@@ -8,4 +8,8 @@
 @code {
     public string CurrentPlayer => GameService.GetCurrentPlayer();
 
+    public void Refresh()
+    {
+        StateHasChanged();
+    }
 }
