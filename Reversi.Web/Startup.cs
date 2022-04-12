@@ -4,13 +4,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Reversi.Logic;
 using Reversi.Web.Services;
 using Reversi.Web.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Reversi.Logic;
 
 namespace Reversi.Web
 {
@@ -28,7 +24,11 @@ namespace Reversi.Web
         {
             services.AddControllersWithViews();
             services.AddServerSideBlazor();
-            services.AddSingleton<IGameService, GameService>();
+            services.AddSingleton<IGameService, GameService>(op =>
+            {
+                GameService gameSrv = new GameService(new Game());
+                return gameSrv;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

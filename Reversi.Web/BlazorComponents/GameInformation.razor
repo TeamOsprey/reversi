@@ -1,0 +1,11 @@
+﻿@using Reversi.Web.Services.Interfaces;
+@using Microsoft.AspNetCore.Components.Web
+@inject IGameService GameService
+
+<b>Current Player: </b>
+<label>@CurrentPlayer</label>
+
+@code {
+    public string CurrentPlayer => GameService.GetCurrentPlayer();
+
+}

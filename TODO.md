@@ -57,7 +57,7 @@ but in Square class, where we can define operator method, we don't have that inf
 		* if there is aone counter in the middle 4 squares, the opponent can place in 3 remaining middle squares
 		* continue until all 4 counters are placed
 - [X] Recognize the PASS turn
-- [ ] Develop the Consol app to play by sending commands
+- [X] Develop the Consol app to play by sending commands
 
 
 ## 2021-11-02
@@ -129,13 +129,13 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-02-08
 - [X] Further refactoring of program. Possibly extracting methods to a new class.
-- [ ] play test full game, testing all states.
+- [X] play test full game, testing all states.
 - [x] discuss next step, Web API/Blazor?
 
 ## 2022-02-15
 - We ended in Green state
 - We extracted the logic from Program to a new class, GameBoardUi
- [ ] - Handle bad inputs for UI
+ [ ] Handle bad inputs for UI
 
 ## 2022-03-01
 - We watched half of a tutorial on Blazor to get an idea of how we can use it in Revesi: https://www.youtube.com/watch?v=MetcuX1OHD0
@@ -145,14 +145,14 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-03-08
 - Tested Blazor components parameters.
-[x]- Create clickable grid of gameboard using blazor components.
+- [x] Create clickable grid of gameboard using blazor components.
 
 ## 2022-03-15
 - Created new Grid Component to store all tiles (and a new Tile component)
 - Created Grid for tiles, color coded it
 	- Used Game.GetOutput() to get legal positions and found a bug that will need fixed in SetLegalPositions.
-[ ]- Fix GetOutput for first 4 moves of the game
-[x]- Pass more information to tile component to allow for returning coordinates on button press
+- [ ] Fix GetOutput for first 4 moves of the game
+- [x] Pass more information to tile component to allow for returning coordinates on button press
 
 ## 2022-03-22
 - Added onclick functions to tile components
