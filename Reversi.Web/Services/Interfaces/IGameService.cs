@@ -5,5 +5,6 @@
         public void PlaceCounter(int row, int col);
         public string[] GetOutput();
         public string GetCurrentPlayer();
+        public string GetMessage();
     }
 }

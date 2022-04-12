@@ -1,0 +1,15 @@
+﻿@using Reversi.Web.Services.Interfaces;
+@using Microsoft.AspNetCore.Components.Web
+@inject IGameService GameService
+
+<label style="color:red">@Message</label>
+<br />
+
+@code {
+    public string Message => GameService.GetMessage();
+
+    public void Refresh()
+    {
+        StateHasChanged();
+    }
+}

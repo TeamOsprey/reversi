@@ -26,5 +26,19 @@ namespace Reversi.Web.Services
         {
             return (Game.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
         }
+
+        public string GetMessage()
+        {
+            string msg = "";
+            
+            if (Game.State.MoveInvalid)
+                msg = "Invalid Move!";
+            if (Game.State.PassOccured)
+                msg += "User had no possible moves. Turn passed!";
+            if (Game.State.GameOver)
+                msg += "Game Over!";
+
+            return msg;
+        }
     }
 }
