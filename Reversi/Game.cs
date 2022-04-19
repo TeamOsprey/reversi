@@ -20,11 +20,12 @@ namespace Reversi.Logic
             ReversiBoard = new Board(board);
             TurnColour = turnColor;
         }
-        public Game()
+        public Game(bool randomizeStartingMoves = false)
         {
             ReversiBoard = new Board();
             TurnColour = Constants.BLACK;
             State.InProgress = true;
+            if(randomizeStartingMoves) RandomizeStartingMoves();
         }
         public static Game Load(string[] board, char turnColour)
         {
@@ -62,6 +63,8 @@ namespace Reversi.Logic
         {
             return ReversiBoard.GetCurrentState();
         }
+
+
         #endregion
         #region private methods
         private bool PlaceCounter(Square selectedSquare)
@@ -80,7 +83,29 @@ namespace Reversi.Logic
 
             return true;
         }
+        private void RandomizeStartingMoves()
+        {
+            List<int[]> initialValues = new List<int[]>
+            {
+                new int[] { 3,3 },
+                new int[] { 3,4 },
+                new int[] { 4,4 },
+                new int[] { 4,3 },
+            };
+            var visited = new HashSet<int>();
 
+            var random = new Random();
+            do
+            {
+                var selected = random.Next(0, 4);
+                if (!visited.Contains(selected))
+                {
+                    visited.Add(selected);
+                    PlaceCounter(initialValues[selected][0], initialValues[selected][1]);
+                }
+
+            } while (visited.Count < 4);
+        }
         private void EndTurn()
         {
             ChangeTurn();

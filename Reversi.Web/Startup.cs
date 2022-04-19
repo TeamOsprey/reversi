@@ -26,7 +26,7 @@ namespace Reversi.Web
             services.AddServerSideBlazor();
             services.AddSingleton<IGameService, GameService>(op =>
             {
-                GameService gameSrv = new GameService(new Game());
+                GameService gameSrv = new GameService(new Game(true));
                 return gameSrv;
             });
         }

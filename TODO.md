@@ -151,7 +151,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - Created new Grid Component to store all tiles (and a new Tile component)
 - Created Grid for tiles, color coded it
 	- Used Game.GetOutput() to get legal positions and found a bug that will need fixed in SetLegalPositions.
-- [ ] Fix GetOutput for first 4 moves of the game
+- [-] Fix GetOutput for first 4 moves of the game
 - [x] Pass more information to tile component to allow for returning coordinates on button press
 
 ## 2022-03-22
@@ -185,4 +185,10 @@ but in Square class, where we can define operator method, we don't have that inf
 - [X] Next session we will add scores to Game Information component
 
 ## 2022-04-19
+- We found an alternative method for refreshing components, we randomized the start positions of the game.
 - [ ] Look into concern about new refresh method refreshing everything everytime someone clicks. Perhaps use a more targetted refresh.
+- [ ] Need to fix first 4 moves for start game that using false for randomization 
+- [ ] Discuss path forward
+	- Android
+	- 2 player in Blazor
+	- AI (random or smart)
