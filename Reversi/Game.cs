@@ -195,7 +195,7 @@ namespace Reversi.Logic
             }
             return result;
         }
-        private int GetNumberOfColor(char color)
+        public int GetNumberOfColor(char color)
         {
             return ReversiBoard.GetNumberOfPositionsByColor(color);
         }

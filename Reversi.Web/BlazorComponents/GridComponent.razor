@@ -2,8 +2,11 @@
 @using Reversi.Web.Services.Interfaces
 @inject IGameService GameService
 
-<MessageComponent @ref="_messageComponent" />
-<GameInformation  @ref="_gameInformation" />
+<CascadingValue Value="@GameService">
+    <MessageComponent />
+    <GameInformation />
+    <ScoreComponent />
+</CascadingValue>
 
 <table>
     @for (int row = 0; row < DisplayedBoard.Length; row++)
@@ -19,10 +22,6 @@
     }
 </table>
 @code {
-
-    private GameInformation _gameInformation;
-    private MessageComponent _messageComponent;
-
     public string[] DisplayedBoard => GameService.GetOutput();
 
     protected async Task MoveSelected(string move)
@@ -31,8 +30,6 @@
         var column = int.Parse(move.Split(',')[1]);
 
         GameService.PlaceCounter(row, column);
-        _gameInformation.Refresh();
-        _messageComponent.Refresh();
     }
 
 }

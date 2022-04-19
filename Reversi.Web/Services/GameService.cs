@@ -40,5 +40,10 @@ namespace Reversi.Web.Services
 
             return msg;
         }
+
+        public int GetScoreByColor(char color)
+        {
+            return Game.GetNumberOfColor(color);
+        }
     }
 }

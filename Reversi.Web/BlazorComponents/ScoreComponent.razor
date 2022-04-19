@@ -1,14 +1,15 @@
 ﻿@using Reversi.Web.Services.Interfaces;
 @using Microsoft.AspNetCore.Components.Web
 
-<b>Current Player: </b>
-<label>@CurrentPlayer</label>
-
+<b>Black: </b>
+<label>@NumberOfBlack</label>
+<b>White: </b>
+<label>@NumberOfWhite</label>
 @code {
     [CascadingParameter]
     public IGameService GameService { get; set; }
-    public string CurrentPlayer => GameService.GetCurrentPlayer();
-
+    public int NumberOfBlack => GameService.GetScoreByColor('B'); 
+    public int NumberOfWhite => GameService.GetScoreByColor('W');
     public void Refresh()
     {
         StateHasChanged();

@@ -174,11 +174,14 @@ but in Square class, where we can define operator method, we don't have that inf
 - We used the service to track and update the game for the blazor components. 
 - We also passed coordinates from child to parent component by using invoke event from https://www.pragimtech.com/blog/blazor/pass-data-from-child-to-parent-component-in-blazor/.
 - We realized we did not need to bind manually, any time the component was updated the view updates on its own.
--[ ] Need to find a way to initiate game inside controller instead of inside the service.
+-[-] Need to find a way to initiate game inside controller instead of inside the service.
 -[X] Set up more UI components (turn indicator, messaging)
 
 ## 2022-04-12
 - We added two new components: Message and Game Information components
-[X] Need to find a way to initiate game inside Startup instead of inside the service.
-[ ] Next session we will improve the new componnets
-[ ] Next session we will add scores to Game Informaiton component
+- [X] Need to find a way to initiate game inside Startup instead of inside the service.
+- [X] Next session we will improve the new components
+	- Changed Refresh mechanics of blazor components from @ref method to Cascading Value method where we cascade the service. 
+- [X] Next session we will add scores to Game Information component
+
+## 2022-04-19
