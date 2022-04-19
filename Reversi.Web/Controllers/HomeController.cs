@@ -21,13 +21,6 @@ namespace Reversi.Web.Controllers
 
         public IActionResult Index()
         {
-            
-
-            //_gameService.PlaceCounter(4, 4);
-            //_gameService.PlaceCounter(3, 3);
-            //_gameService.PlaceCounter(3, 4);
-            //_gameService.PlaceCounter(4, 3);
-
             return View();
         }
         public IActionResult Privacy()
