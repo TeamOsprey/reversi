@@ -185,3 +185,4 @@ but in Square class, where we can define operator method, we don't have that inf
 - [X] Next session we will add scores to Game Information component
 
 ## 2022-04-19
+- [ ] Look into concern about new refresh method refreshing everything everytime someone clicks. Perhaps use a more targetted refresh.
