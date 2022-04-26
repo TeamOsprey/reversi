@@ -30,7 +30,48 @@ namespace Reversi.UnitTests
             Assert.AreEqual(Constants.WHITE, output[5][5]);
             Assert.AreEqual(Constants.BLACK, reversi.GetCurrentPlayer());
         }
+        [Test]
+        public void for_first_move_4_center_squares_valid()
+        {
+            var board = new string[]{
+            "........",
+            "........",
+            "........",
+            "........",
+            "........",
+            "........",
+            "........",
+            "........"};
 
+
+            var reversi = Game.Load(board, Constants.BLACK);
+            var output = reversi.GetOutput();
+
+            Assert.AreEqual('0', output[4][4]);
+            Assert.AreEqual('0', output[3][3]);
+            Assert.AreEqual('0', output[4][3]);
+            Assert.AreEqual('0', output[3][4]);
+        }
+        [Test]
+        public void after_first_move_that_position_is_not_valid()
+        {
+            var board = new string[]{
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........",
+                "........"};
+
+
+            var reversi = Game.Load(board, Constants.BLACK);
+            reversi.PlaceCounter(3, 3);
+            var output = reversi.GetOutput();
+
+            Assert.AreNotEqual('0', output[3][3]);
+        }
         [Test]
         public void return_the_only_legal_position()
         {
