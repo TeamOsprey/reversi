@@ -12,6 +12,13 @@ namespace Reversi.Logic
         private char OpponentColour { get { return TurnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE; } }
         private List<Vector> directions = Direction.GetDirections();
         public State State = new State();
+        private static List<int[]> initialValues = new List<int[]>
+            {
+                new int[] { 3,3 },
+                new int[] { 3,4 },
+                new int[] { 4,4 },
+                new int[] { 4,3 },
+            };
 
         #endregion
         #region constructors
@@ -85,13 +92,6 @@ namespace Reversi.Logic
         }
         private void RandomizeStartingMoves()
         {
-            List<int[]> initialValues = new List<int[]>
-            {
-                new int[] { 3,3 },
-                new int[] { 3,4 },
-                new int[] { 4,4 },
-                new int[] { 4,3 },
-            };
             var visited = new HashSet<int>();
 
             var random = new Random();
@@ -175,9 +175,10 @@ namespace Reversi.Logic
         private HashSet<Square> GetLegalPositions(char color)
         {
             HashSet<Square> returnValue = new HashSet<Square>();
-            if (ReversiBoard.GetBlankPositions().Count > 60)
+            var blankPositions = ReversiBoard.GetBlankPositions();
+            if (blankPositions.Count > 60)
             {
-                AddCentreSquares(returnValue);
+                AddCentreSquares(returnValue, ReversiBoard.GetBlankPositions());
             }
             else
             {
@@ -196,9 +197,11 @@ namespace Reversi.Logic
                 }
             }
         }
-        private static void AddCentreSquares(HashSet<Square> returnValue)
+        private static void AddCentreSquares(HashSet<Square> returnValue, List<Square> blankPositions)
         {
-            returnValue.Add(new Square(3, 3));
+            foreach(var init in initialValues)
+            if(!blankPositions.Contains(new Square(3,3)))
+                returnValue.Add(new Square(3, 3));
             returnValue.Add(new Square(3, 4));
             returnValue.Add(new Square(4, 4));
             returnValue.Add(new Square(4, 3));
