@@ -200,11 +200,8 @@ namespace Reversi.Logic
         private static void AddCentreSquares(HashSet<Square> returnValue, List<Square> blankPositions)
         {
             foreach(var init in initialValues)
-            if(!blankPositions.Contains(new Square(3,3)))
-                returnValue.Add(new Square(3, 3));
-            returnValue.Add(new Square(3, 4));
-            returnValue.Add(new Square(4, 4));
-            returnValue.Add(new Square(4, 3));
+                if(blankPositions.Contains(new Square(init[0], init[1])))
+                    returnValue.Add(new Square(init[0], init[1]));
         }
         private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
         {
