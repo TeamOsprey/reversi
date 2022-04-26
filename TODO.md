@@ -187,7 +187,7 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-04-19
 - We found an alternative method for refreshing components, we randomized the start positions of the game.
 - [ ] Look into concern about new refresh method refreshing everything everytime someone clicks. Perhaps use a more targetted refresh.
-- [ ] Need to fix first 4 moves for start game that using false for randomization 
+- [X] Need to fix first 4 moves for start game that using false for randomization 
 - [ ] Discuss path forward
 	- Android
 	- 2 player in Blazor
