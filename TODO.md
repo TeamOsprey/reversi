@@ -186,9 +186,14 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-04-19
 - We found an alternative method for refreshing components, we randomized the start positions of the game.
-- [ ] Look into concern about new refresh method refreshing everything everytime someone clicks. Perhaps use a more targetted refresh.
+- [-] Look into concern about new refresh method refreshing everything everytime someone clicks. Perhaps use a more targetted refresh.
 - [X] Need to fix first 4 moves for start game that using false for randomization 
 - [ ] Discuss path forward
 	- Android
 	- 2 player in Blazor
 	- AI (random or smart)
+
+## 2022-04-26
+- We fixed issues with placing first four tiles, and began refactoring within Game class.
+- [ ] refactor to do, update references to "position" to "square" instead.
+

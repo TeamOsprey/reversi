@@ -178,7 +178,7 @@ namespace Reversi.Logic
             var blankPositions = ReversiBoard.GetBlankPositions();
             if (blankPositions.Count > 60)
             {
-                AddCentreSquares(returnValue, ReversiBoard.GetBlankPositions());
+                AddBlankCentreSquares(returnValue, ReversiBoard.GetBlankPositions());
             }
             else
             {
@@ -197,11 +197,14 @@ namespace Reversi.Logic
                 }
             }
         }
-        private static void AddCentreSquares(HashSet<Square> returnValue, List<Square> blankPositions)
+        private static void AddBlankCentreSquares(HashSet<Square> returnValue, List<Square> blankSquares)
         {
             foreach(var init in initialValues)
-                if(blankPositions.Contains(new Square(init[0], init[1])))
-                    returnValue.Add(new Square(init[0], init[1]));
+            {
+                Square square = new Square(init[0], init[1]);
+                if (blankSquares.Contains(square))
+                    returnValue.Add(square);
+            }
         }
         private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
         {
