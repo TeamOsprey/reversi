@@ -197,3 +197,9 @@ but in Square class, where we can define operator method, we don't have that inf
 - We fixed issues with placing first four tiles, and began refactoring within Game class.
 - [X] refactor to do, update references to "position" to "square" instead.
 
+## 2022-05-03
+- We decided to look into 2 players
+- We found this example which explains the similar scenario we decided to try (using SignalR and Blazor): https://www.c-sharpcorner.com/article/realtime-blazor-tic-tac-toe-game-bot-vs-multiplayer-using-signalr/
+- We also found this example which is simpler and could be a better candidate to start with: https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-6.0&tabs=visual-studio
+- [ ] Next session we will start by implementing the Chat example (and we might keep it for future use)
+- [ ] Look for possible ways to decouple the logic from SignalR library (make it possible to work with other solutions)
