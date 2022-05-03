@@ -54,7 +54,7 @@ namespace Reversi.Logic
         }
         public string[] GetOutput()
         {
-            ReversiBoard.SetLegalPositions(GetLegalPositions(TurnColour));
+            ReversiBoard.SetLegalSquares(GetLegalSquares(TurnColour));
 
             return ReversiBoard.GetCurrentState();
         }
@@ -77,13 +77,13 @@ namespace Reversi.Logic
         private bool PlaceCounter(Square selectedSquare)
         {
             State = new State();
-            if (!GetLegalPositions(TurnColour).Contains(selectedSquare))
+            if (!GetLegalSquares(TurnColour).Contains(selectedSquare))
             {
                 State.MoveInvalid = true;
                 return false;
             }
 
-            ReversiBoard.Positions[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
+            ReversiBoard.Squares[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
 
             EndTurn();
@@ -138,11 +138,11 @@ namespace Reversi.Logic
         }
         private bool IsPass()
         {
-            return GetLegalPositions(TurnColour).Count < 1;
+            return GetLegalSquares(TurnColour).Count < 1;
         }
         private bool IsGameOver()
         {
-            return ReversiBoard.GetBlankPositions().Count == 0 || (GetLegalPositions(TurnColour).Count < 1 && GetLegalPositions(OpponentColour).Count < 1);
+            return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(TurnColour).Count < 1 && GetLegalSquares(OpponentColour).Count < 1);
         }
         private void CaptureCounters(Square selectedSquare)
         {
@@ -172,27 +172,27 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Constants.PERIOD;
         }
-        private HashSet<Square> GetLegalPositions(char color)
+        private HashSet<Square> GetLegalSquares(char color)
         {
             HashSet<Square> returnValue = new HashSet<Square>();
-            var blankPositions = ReversiBoard.GetBlankPositions();
-            if (blankPositions.Count > 60)
+            var blankSquares = ReversiBoard.GetBlankSquares();
+            if (blankSquares.Count > 60)
             {
-                AddBlankCentreSquares(returnValue, ReversiBoard.GetBlankPositions());
+                AddBlankCentreSquares(returnValue, ReversiBoard.GetBlankSquares());
             }
             else
             {
-                AddLegalPositionsToSet(returnValue, color);
+                AddLegalSquaresToSet(returnValue, color);
             }
             return returnValue;
         }
-        private void AddLegalPositionsToSet(HashSet<Square> returnValue, char color)
+        private void AddLegalSquaresToSet(HashSet<Square> returnValue, char color)
         {
-            foreach (var startSquare in ReversiBoard.GetBlankPositions())
+            foreach (var startSquare in ReversiBoard.GetBlankSquares())
             {
                 foreach (var direction in directions)
                 {
-                    if (IsNextPositionValid(startSquare, returnValue, direction, color))
+                    if (IsNextSquareValid(startSquare, returnValue, direction, color))
                         break;
                 }
             }
@@ -206,7 +206,7 @@ namespace Reversi.Logic
                     returnValue.Add(square);
             }
         }
-        private bool IsNextPositionValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
+        private bool IsNextSquareValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
         {
             bool result = false;
             var nextSquare = ReversiBoard.Add(startSquare, direction);
@@ -225,7 +225,7 @@ namespace Reversi.Logic
         }
         public int GetNumberOfColor(char color)
         {
-            return ReversiBoard.GetNumberOfPositionsByColor(color);
+            return ReversiBoard.GetNumberOfSquaresByColor(color);
         }
 #endregion
     }

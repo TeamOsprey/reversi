@@ -5,21 +5,21 @@ namespace Reversi.Logic
 {
     public class Board
     {
-        public HashSet<Square> LegalPositions { get; set; }
+        public HashSet<Square> LegalSquares { get; set; }
 
-        public Square[,] Positions { get; set; }
+        public Square[,] Squares { get; set; }
         public int Size { get; }
 
         public Board(string[] board)
         {
             Size = 8;
-            Positions = new Square[Size, Size];
+            Squares = new Square[Size, Size];
 
             for (int row = 0; row < Size; row++)
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    Positions[row, col] = new Square(row, col, board[row][col]);
+                    Squares[row, col] = new Square(row, col, board[row][col]);
                 }
             }
         }
@@ -28,12 +28,12 @@ namespace Reversi.Logic
         {
 
             Size = 8;
-            Positions = new Square[Size, Size];
+            Squares = new Square[Size, Size];
             for (int row = 0; row < Size; row++)
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    Positions[row, col] = new Square(row, col, Constants.PERIOD);
+                    Squares[row, col] = new Square(row, col, Constants.PERIOD);
                 }
             }
         }
@@ -44,7 +44,7 @@ namespace Reversi.Logic
             int column = originalSquare.Column + direction.Horizontal;
 
             if (IsRowInBounds(row) && IsColumnInBounds(column))
-                return Positions[row, column];
+                return Squares[row, column];
             else
                 return null;
         }
@@ -58,24 +58,24 @@ namespace Reversi.Logic
             return 0 <= column && column < Size;
         }
 
-        public List<Square> GetBlankPositions()
+        public List<Square> GetBlankSquares()
         {
-            List<Square> blankPositions = new List<Square>();
+            List<Square> blankSquares = new List<Square>();
 
-            foreach (Square item in Positions)
+            foreach (Square item in Squares)
             {
                 if (item.Colour == Constants.PERIOD)
-                    blankPositions.Add(item);
+                    blankSquares.Add(item);
             }
 
-            return blankPositions;
+            return blankSquares;
         }
 
-        public int GetNumberOfPositionsByColor(char color)
+        public int GetNumberOfSquaresByColor(char color)
         {
             int count = 0;
 
-            foreach (Square item in Positions)
+            foreach (Square item in Squares)
             {
                 if (item.Colour == color)
                     count++;
@@ -84,9 +84,9 @@ namespace Reversi.Logic
             return count;
         }
 
-        public void SetLegalPositions(HashSet<Square> legalPositions)
+        public void SetLegalSquares(HashSet<Square> legalSquares)
         {
-            LegalPositions = legalPositions;
+            LegalSquares = legalSquares;
         }
 
         public string[] GetCurrentState()
@@ -98,8 +98,8 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < 8; col++)
                 {
-                    rowString[col] = Positions[row, col].Colour;
-                    if (LegalPositions != null && LegalPositions.Contains(new Square(row, col)))
+                    rowString[col] = Squares[row, col].Colour;
+                    if (LegalSquares != null && LegalSquares.Contains(new Square(row, col)))
                     {
                         rowString[col] = '0';
                     }
