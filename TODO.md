@@ -195,5 +195,5 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-04-26
 - We fixed issues with placing first four tiles, and began refactoring within Game class.
-- [ ] refactor to do, update references to "position" to "square" instead.
+- [X] refactor to do, update references to "position" to "square" instead.
 

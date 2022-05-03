@@ -8,7 +8,7 @@ namespace Reversi.UnitTests
     public class ReversiTest
     {
         [Test]
-        public void initial_board_positions_with_black_turn()
+        public void initial_board_squares_with_black_turn()
         {
             var board = new string[]{
             "........",
@@ -53,7 +53,7 @@ namespace Reversi.UnitTests
             Assert.AreEqual('0', output[3][4]);
         }
         [Test]
-        public void after_first_move_that_position_is_not_valid()
+        public void after_first_move_that_square_is_not_valid()
         {
             var board = new string[]{
                 "........",
@@ -73,7 +73,7 @@ namespace Reversi.UnitTests
             Assert.AreNotEqual('0', output[3][3]);
         }
         [Test]
-        public void return_the_only_legal_position()
+        public void return_the_only_legal_square()
         {
             var board = new string[]{
             "........",
@@ -128,7 +128,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void return_the_only_legal_position_for_two_trapped_counters_Above()
+        public void return_the_only_legal_square_for_two_trapped_counters_Above()
         {
             var board = new string[]{
             "........",
@@ -156,7 +156,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void return_the_only_legal_position_for_two_trapped_counters_Diagonal()
+        public void return_the_only_legal_square_for_two_trapped_counters_Diagonal()
         {
             var board = new string[]{
             "........",
@@ -184,7 +184,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void return_the_only_legal_position_for_two_trapped_counters_Left()
+        public void return_the_only_legal_square_for_two_trapped_counters_Left()
         {
             var board = new string[]{
             "........",
@@ -268,7 +268,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void return_multiple_legal_positions()
+        public void return_multiple_legal_squares()
         {
             var board = new string[]{
             "........",
@@ -296,7 +296,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void If_Next_Color_Is_White_Return_Expected_Legal_Positions()
+        public void If_Next_Color_Is_White_Return_Expected_Legal_Squares()
         {
             var board = new string[]{
             "........",
