@@ -200,6 +200,14 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-05-03
 - We decided to look into 2 players
 - We found this example which explains the similar scenario we decided to try (using SignalR and Blazor): https://www.c-sharpcorner.com/article/realtime-blazor-tic-tac-toe-game-bot-vs-multiplayer-using-signalr/
-- We also found this example which is simpler and could be a better candidate to start with: https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-6.0&tabs=visual-studio
-- [ ] Next session we will start by implementing the Chat example (and we might keep it for future use)
+- We also found this example which is simpler and could be a better candidate to start with: https://docs.microsoft.com/en-us/aspnet/core/blazor/tutorials/signalr-blazor?view=aspnetcore-5.0&tabs=visual-studio&pivots=server
+- [X] Next session we will start by implementing the Chat example (and we might keep it for future use)
 - [ ] Look for possible ways to decouple the logic from SignalR library (make it possible to work with other solutions)
+
+## 2022-05-10
+- We implemented chat in the game using signalR. (Note: We had an issue trying to use signalR 6 instead of 5)
+- [ ] Communicate via signalR that the board has changed after a move
+- [ ] Add rules to restrict player moves to their own color's turn. 
+- [ ] Add messaging for when it is/is not your turn.
+- [ ] Limit to two players
+- [ ] Possibly add chat to something to be persisted.
