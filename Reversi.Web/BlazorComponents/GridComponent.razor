@@ -40,25 +40,22 @@
 
     //hub stuff
 	private HubConnection hubConnection;
-	private List<string> messages = new List<string>();
 
 	protected override async Task OnInitializedAsync()
 	{
 		hubConnection = new HubConnectionBuilder()
-			.WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+			.WithUrl(NavigationManager.ToAbsoluteUri("/gamehub"))
 			.Build();
 
-		hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+		hubConnection.On("ReceiveUpdate", () =>
 		{
-			var encodedMsg = $"{user}: {message}";
-			messages.Add(encodedMsg);
 			InvokeAsync(StateHasChanged);
 		});
 
 		await hubConnection.StartAsync();
 	}
 	async Task Send() =>
-		await hubConnection.SendAsync("SendMessage", "Test Name", "Testing Move");
+		await hubConnection.SendAsync("SendUpdate");
 
 	public bool IsConnected =>
 		hubConnection.State == HubConnectionState.Connected;

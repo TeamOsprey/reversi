@@ -70,6 +70,7 @@ namespace Reversi.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapBlazorHub();
                 endpoints.MapHub<ChatHub>("/chathub");
+                endpoints.MapHub<GameHub>("/gamehub");
             });
         }
     }

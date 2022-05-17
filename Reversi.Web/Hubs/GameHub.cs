@@ -1,6 +1,14 @@
-﻿namespace Reversi.Web.Hubs
+﻿using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
+
+namespace Reversi.Web.Hubs
 {
-    public class GameHub
+    public class GameHub : Hub
     {
+        public async Task SendUpdate()
+        {
+            await Clients.All.SendAsync("ReceiveUpdate");
+            
+        }
     }
 }
