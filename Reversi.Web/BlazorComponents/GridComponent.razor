@@ -33,7 +33,10 @@
         var column = int.Parse(move.Split(',')[1]);
 
         GameService.PlaceCounter(row, column);
-	    await Send();
+	    if (GameService.IsLastMoveValid()) 
+		{
+			await Send();
+		}
     }
 
 

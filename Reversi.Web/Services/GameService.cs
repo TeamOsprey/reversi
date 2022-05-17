@@ -12,11 +12,15 @@ namespace Reversi.Web.Services
         {
             Game = game;
         }
+
+        public bool IsLastMoveValid()
+        {
+            return !Game.State.MoveInvalid;
+        }
+
         public void PlaceCounter(int row, int col)
         {
             Game.PlaceCounter(row, col);
-            if (!Game.State.MoveInvalid)
-            { }
         }
 
         public string[] GetOutput()
