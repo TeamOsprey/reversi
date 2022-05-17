@@ -5,10 +5,10 @@ namespace Reversi.Web.Hubs
 {
     public class GameHub : Hub
     {
-        public async Task SendUpdate(string player)
+        public async Task SendUpdate()
         {
-            await Clients.Client(player).SendAsync("ReceiveUpdate");
-            
+            await Clients.All.SendAsync("ReceiveUpdate");
+            // await Clients.Client(player).SendAsync("ReceiveUpdate"); work was started to recognize the player
         }
     }
 }

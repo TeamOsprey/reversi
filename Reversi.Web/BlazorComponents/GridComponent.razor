@@ -33,41 +33,43 @@
         var column = int.Parse(move.Split(',')[1]);
 
         GameService.PlaceCounter(row, column);
-	    if (GameService.IsLastMoveValid()) 
-		{
-			await Send();
-		}
+        if (GameService.IsLastMoveValid())
+        {
+            await Send();
+        }
     }
 
 
 
     //hub stuff
-	private HubConnection hubConnection;
+    private HubConnection hubConnection;
 
-	protected override async Task OnInitializedAsync()
-	{
-		hubConnection = new HubConnectionBuilder()
-			.WithUrl(NavigationManager.ToAbsoluteUri("/gamehub"))
-			.Build();
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub"))
+            .Build();
 
-		hubConnection.On("ReceiveUpdate", () =>
-		{
-			InvokeAsync(StateHasChanged);
-		});
+        hubConnection.On("ReceiveUpdate", () =>
+        {
+            InvokeAsync(StateHasChanged);
+        });
 
-		await hubConnection.StartAsync();
-	}
-	async Task Send() =>
-		await hubConnection.SendAsync("SendUpdate", "BLACK");
+        await hubConnection.StartAsync();
+    }
+    async Task Send() =>
+        await hubConnection.SendAsync("SendUpdate");
+        // await hubConnection.SendAsync("SendUpdate", "BLACK"); // working on adding player to connection
 
-	public bool IsConnected =>
-		hubConnection.State == HubConnectionState.Connected;
 
-	public async ValueTask DisposeAsync()
-	{
-		if (hubConnection is not null)
-		{
-			await hubConnection.DisposeAsync();
-		}
-	}
+    public bool IsConnected =>
+    hubConnection.State == HubConnectionState.Connected;
+
+    public async ValueTask DisposeAsync()
+    {
+        if (hubConnection is not null)
+        {
+            await hubConnection.DisposeAsync();
+        }
+    }
 }

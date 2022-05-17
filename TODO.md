@@ -211,3 +211,8 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] Add messaging for when it is/is not your turn.
 - [ ] Limit to two players
 - [ ] Possibly add chat to something to be persisted.
+
+## 2022-05-17
+- We started working on this item: "Add rules to restrict player moves to their own color's turn."
+- We can review group in SignalR from the link Stephen shared: https://code-maze.com/how-to-send-client-specific-messages-using-signalr/
+- [ ] We can review StartUp and clean up any unncessary components (e.g. AddRazorPages)
