@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.SignalR.Client
 @using Reversi.Web.Services.Interfaces
 @inject IGameService GameService
+@inject NavigationManager NavigationManager
+@implements IAsyncDisposable
 
 <CascadingValue Value="@GameService">
     <MessageComponent />
@@ -30,6 +33,41 @@
         var column = int.Parse(move.Split(',')[1]);
 
         GameService.PlaceCounter(row, column);
+	    await Send();
     }
 
+
+
+    //hub stuff
+	private HubConnection hubConnection;
+	private List<string> messages = new List<string>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		hubConnection = new HubConnectionBuilder()
+			.WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+			.Build();
+
+		hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+		{
+			var encodedMsg = $"{user}: {message}";
+			messages.Add(encodedMsg);
+			InvokeAsync(StateHasChanged);
+		});
+
+		await hubConnection.StartAsync();
+	}
+	async Task Send() =>
+		await hubConnection.SendAsync("SendMessage", "Test Name", "Testing Move");
+
+	public bool IsConnected =>
+		hubConnection.State == HubConnectionState.Connected;
+
+	public async ValueTask DisposeAsync()
+	{
+		if (hubConnection is not null)
+		{
+			await hubConnection.DisposeAsync();
+		}
+	}
 }
