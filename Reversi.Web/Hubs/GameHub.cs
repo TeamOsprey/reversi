@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Reversi.Web.Hubs
 {
     public class GameHub : Hub
     {
+        public List<Connections> ConnectionList = new List<Connections>();
+
         public async Task SendUpdate()
         {
             await Clients.All.SendAsync("ReceiveUpdate");
@@ -13,9 +16,24 @@ namespace Reversi.Web.Hubs
         public override async Task OnConnectedAsync()
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, "Game1");
+            ConnectionList.Add(new Connections("Game1", Context.ConnectionId, "BLACK"));
             // assign color to user
             // if BLACK's connection ID is null then set to Context.ConnectionId
             await base.OnConnectedAsync();
+        }
+
+        public class Connections
+        {
+            public string Groupname { get; set; }
+            public string ConnectionId { get; set; }
+            public string Color { get; set; }
+
+            public Connections(string groupname, string connectionId, string color)
+            {
+                Groupname = groupname;
+                ConnectionId = connectionId;
+                Color = color;
+            }
         }
     }
 }
