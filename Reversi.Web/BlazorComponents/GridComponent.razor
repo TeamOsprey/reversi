@@ -57,6 +57,7 @@
 
         await hubConnection.StartAsync();
     }
+
     async Task Send() =>
         await hubConnection.SendAsync("SendUpdate");
         // await hubConnection.SendAsync("SendUpdate", "BLACK"); // working on adding player to connection
