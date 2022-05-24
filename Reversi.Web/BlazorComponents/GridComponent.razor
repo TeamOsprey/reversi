@@ -44,7 +44,7 @@
     //hub stuff
     private HubConnection hubConnection;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool test)
     {
         hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub"))
