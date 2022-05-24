@@ -216,3 +216,8 @@ but in Square class, where we can define operator method, we don't have that inf
 - We started working on this item: "Add rules to restrict player moves to their own color's turn."
 - We can review group in SignalR from the link Stephen shared: https://code-maze.com/how-to-send-client-specific-messages-using-signalr/
 - [ ] We can review StartUp and clean up any unncessary components (e.g. AddRazorPages)
+
+## 2022-05-24
+- We started associating connection IDs with player colors within the GameHub class.
+- [ ] Handle disconnected connection IDs. Consider if we can leverage SignalR for this instead of our ConnectionList class.
+- [ ] ConnectionList class is static - consider another approach (maybe SignalR features or examples, e.g., DB).
