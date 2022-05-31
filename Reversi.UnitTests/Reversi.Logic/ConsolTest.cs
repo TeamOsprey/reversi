@@ -735,6 +735,23 @@ namespace Reversi.UnitTests
             Assert.AreEqual(players[1], Constants.WHITE);
         }
 
+        [Test]
+        public void NewGameHasNoPlayers()
+        {
+            var game = new Game();
+            var players = game.GetPlayerList();
+            Assert.IsTrue(players.Count == 0);
+        }
 
+        [Test]
+        public void ThirdPlayerToJoinDoesNotGetAssigned()
+        {
+            var game = new Game();
+            game.AddPlayer();
+            game.AddPlayer();
+            game.AddPlayer();
+            var players = game.GetPlayerList();
+            Assert.IsTrue(players.Count == 2);
+        }
     }
 }

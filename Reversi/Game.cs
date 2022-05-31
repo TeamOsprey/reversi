@@ -19,7 +19,7 @@ namespace Reversi.Logic
                 new int[] { 4,4 },
                 new int[] { 4,3 },
             };
-        public List<char> PlayerList { get; private set; }
+        public List<char> PlayerList = new List<char>();
 
         #endregion
         #region constructors
@@ -83,7 +83,10 @@ namespace Reversi.Logic
 
         public void AddPlayer()
         {
-            PlayerList.Add(Constants.BLACK);
+            if(PlayerList.Count == 0)
+                PlayerList.Add(Constants.BLACK);
+            if (PlayerList.Contains(Constants.BLACK))
+                PlayerList.Add(Constants.WHITE);
         }
 
         #endregion
