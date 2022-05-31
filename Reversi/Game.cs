@@ -228,9 +228,9 @@ namespace Reversi.Logic
             return ReversiBoard.GetNumberOfSquaresByColor(color);
         }
 
-        public static object GetPlayerList()
+        public static char[] GetPlayerList()
         {
-            throw new NotImplementedException();
+            return new char[] { Constants.BLACK, Constants.WHITE };
         }
         #endregion
     }

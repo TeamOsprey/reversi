@@ -717,10 +717,17 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void FirstPlayerConnectedShouldTakeBlackPosition()
+        public void FirstPlayerIsAssignedBlack()
         {
             var players = Game.GetPlayerList();
-            Assert.IsTrue(players[0] = Constants.BLACK);
+            Assert.AreEqual(players[0], Constants.BLACK);
+        }
+
+        [Test]
+        public void SecondPlayerIsAssignedWhite()
+        {
+            var players = Game.GetPlayerList();
+            Assert.AreEqual(players[1], Constants.WHITE);
         }
 
     }
