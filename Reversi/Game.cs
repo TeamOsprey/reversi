@@ -19,6 +19,7 @@ namespace Reversi.Logic
                 new int[] { 4,4 },
                 new int[] { 4,3 },
             };
+        public List<char> PlayerList { get; private set; }
 
         #endregion
         #region constructors
@@ -70,7 +71,20 @@ namespace Reversi.Logic
         {
             return ReversiBoard.GetCurrentState();
         }
+        public int GetNumberOfColor(char color)
+        {
+            return ReversiBoard.GetNumberOfSquaresByColor(color);
+        }
 
+        public List<char> GetPlayerList()
+        {
+            return PlayerList;
+        }
+
+        public void AddPlayer()
+        {
+            PlayerList.Add(Constants.BLACK);
+        }
 
         #endregion
         #region private methods
@@ -223,15 +237,7 @@ namespace Reversi.Logic
             }
             return result;
         }
-        public int GetNumberOfColor(char color)
-        {
-            return ReversiBoard.GetNumberOfSquaresByColor(color);
-        }
 
-        public static char[] GetPlayerList()
-        {
-            return new char[] { Constants.BLACK, Constants.WHITE };
-        }
         #endregion
     }
 }
