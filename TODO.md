@@ -219,7 +219,12 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-05-24
 - We started associating connection IDs with player colors within the GameHub class.
-- [ ] Consider moving back to TDD to work out logic before implementing SignalR; i.e., in GameService / logic layer 
+- [X] Consider moving back to TDD to work out logic before implementing SignalR; i.e., in GameService / logic layer 
 	  e.g., how to assign color to 1st player (black), 2nd player (white), etc.
 - [ ] Handle disconnected connection IDs. Consider if we can leverage SignalR for this instead of our ConnectionList class.
 - [ ] ConnectionList class is static - consider another approach (maybe SignalR features or examples, e.g., DB).
+
+## 2022-05-31
+- We started implementing logic to manage users as they join the game.
+- [ ] Revisit old logic for assigning color (black/white). 
+- [ ] Create a Player class (use class instead of char).
