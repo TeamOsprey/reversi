@@ -227,6 +227,11 @@ namespace Reversi.Logic
         {
             return ReversiBoard.GetNumberOfSquaresByColor(color);
         }
-#endregion
+
+        public static object GetPlayerList()
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

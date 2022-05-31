@@ -716,6 +716,12 @@ namespace Reversi.UnitTests
             Assert.IsTrue(reversi.State.TurnComplete);
         }
 
+        [Test]
+        public void FirstPlayerConnectedShouldTakeBlackPosition()
+        {
+            var players = Game.GetPlayerList();
+            Assert.IsTrue(players[0] = Constants.BLACK);
+        }
 
     }
 }
