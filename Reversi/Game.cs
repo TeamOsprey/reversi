@@ -85,7 +85,7 @@ namespace Reversi.Logic
         {
             if(PlayerList.Count == 0)
                 PlayerList.Add(Constants.BLACK);
-            if (PlayerList.Contains(Constants.BLACK))
+            else if (PlayerList.Contains(Constants.BLACK) && PlayerList.Count == 1)
                 PlayerList.Add(Constants.WHITE);
         }
 
