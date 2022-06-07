@@ -1,9 +1,22 @@
 ﻿using System.Collections.Generic;
 using System;
 using CSharpFunctionalExtensions;
+using System.Linq;
 
 namespace Reversi.Logic
 {
+    public class Player
+    {
+        public Player(char colour, string connectionId)
+        {
+            Colour = colour;
+            ConnectionId = connectionId;
+        }
+
+        public char Colour { get; set; }
+        public string ConnectionId { get; set; }
+    }
+
     public class Game
     {
         #region fields
@@ -19,7 +32,7 @@ namespace Reversi.Logic
                 new int[] { 4,4 },
                 new int[] { 4,3 },
             };
-        public List<char> PlayerList = new List<char>();
+        public List<Player> PlayerList = new List<Player>();
 
         #endregion
         #region constructors
@@ -76,17 +89,17 @@ namespace Reversi.Logic
             return ReversiBoard.GetNumberOfSquaresByColor(color);
         }
 
-        public List<char> GetPlayerList()
+        public List<Player> GetPlayerList()
         {
             return PlayerList;
         }
 
-        public void AddPlayer()
+        public void AddPlayer(string connectionId)
         {
             if(PlayerList.Count == 0)
-                PlayerList.Add(Constants.BLACK);
-            else if (PlayerList.Contains(Constants.BLACK) && PlayerList.Count == 1)
-                PlayerList.Add(Constants.WHITE);
+                PlayerList.Add(new Player(Constants.BLACK, connectionId));
+            else if (PlayerList.Any(x => x.Colour == Constants.BLACK) && PlayerList.Count == 1)
+                PlayerList.Add(new Player(Constants.WHITE, connectionId));
         }
 
         #endregion

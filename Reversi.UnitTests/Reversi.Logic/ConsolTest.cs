@@ -720,19 +720,19 @@ namespace Reversi.UnitTests
         public void FirstPlayerIsAssignedBlack()
         {
             var game = new Game();
-            game.AddPlayer();
+            game.AddPlayer("1");
             var players = game.GetPlayerList();
-            Assert.AreEqual(players[0], Constants.BLACK);
+            Assert.AreEqual(players[0].Colour, Constants.BLACK);
         }
 
         [Test]
         public void SecondPlayerIsAssignedWhite()
         {
             var game = new Game();
-            game.AddPlayer();
-            game.AddPlayer();
+            game.AddPlayer("1");
+            game.AddPlayer("2");
             var players = game.GetPlayerList();
-            Assert.AreEqual(players[1], Constants.WHITE);
+            Assert.AreEqual(players[1].Colour, Constants.WHITE);
         }
 
         [Test]
@@ -747,9 +747,9 @@ namespace Reversi.UnitTests
         public void ThirdPlayerToJoinDoesNotGetAssigned()
         {
             var game = new Game();
-            game.AddPlayer();
-            game.AddPlayer();
-            game.AddPlayer();
+            game.AddPlayer("1");
+            game.AddPlayer("2");
+            game.AddPlayer("3");
             var players = game.GetPlayerList();
             Assert.IsTrue(players.Count == 2);
         }
