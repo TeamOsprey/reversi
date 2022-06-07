@@ -759,5 +759,13 @@ namespace Reversi.UnitTests
             Assert.AreEqual(players[0].Colour, Constants.BLACK);
             Assert.AreEqual(players[1].Colour, Constants.WHITE);
         }
+        [Test]
+        public void TwoPlayersRequiredToMakeAMove()
+        {
+            var game = new Game();
+            game.AddPlayer("1");
+            game.PlaceCounter(4, 4);
+            Assert.IsTrue(game.State.InsufficientPlayers);
+        }
     }
 }

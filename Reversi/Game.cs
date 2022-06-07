@@ -107,6 +107,11 @@ namespace Reversi.Logic
         private bool PlaceCounter(Square selectedSquare)
         {
             State = new State();
+            if (PlayerList.Count < 2)
+            {
+                State.InsufficientPlayers = true;
+                return false;
+            }
             if (!GetLegalSquares(TurnColour).Contains(selectedSquare))
             {
                 State.MoveInvalid = true;

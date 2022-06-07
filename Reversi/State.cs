@@ -13,6 +13,7 @@ namespace Reversi.Logic
         public bool GameOver { get; set; }
         public bool TurnComplete { get; set; }
         public bool InProgress { get; set; }
+        public bool InsufficientPlayers { get; set; }
 
     }
 }
