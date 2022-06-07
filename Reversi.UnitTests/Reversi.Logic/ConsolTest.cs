@@ -722,7 +722,9 @@ namespace Reversi.UnitTests
             var game = new Game();
             game.AddPlayer("1");
             var players = game.GetPlayerList();
+            Assert.IsTrue(players.Count == 1);
             Assert.AreEqual(players[0].Colour, Constants.BLACK);
+            Assert.AreEqual(players[0].ConnectionId, "1"); // TODO: refactor to compare all properties at once
         }
 
         [Test]
@@ -732,6 +734,8 @@ namespace Reversi.UnitTests
             game.AddPlayer("1");
             game.AddPlayer("2");
             var players = game.GetPlayerList();
+            Assert.IsTrue(players.Count == 2);
+            Assert.AreEqual(players[0].Colour, Constants.BLACK);
             Assert.AreEqual(players[1].Colour, Constants.WHITE);
         }
 
@@ -752,6 +756,8 @@ namespace Reversi.UnitTests
             game.AddPlayer("3");
             var players = game.GetPlayerList();
             Assert.IsTrue(players.Count == 2);
+            Assert.AreEqual(players[0].Colour, Constants.BLACK);
+            Assert.AreEqual(players[1].Colour, Constants.WHITE);
         }
     }
 }
