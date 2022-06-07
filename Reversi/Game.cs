@@ -107,16 +107,7 @@ namespace Reversi.Logic
         private bool PlaceCounter(Square selectedSquare)
         {
             State = new State();
-            if (PlayerList.Count < 2)
-            {
-                State.InsufficientPlayers = true;
-                return false;
-            }
-            if (!GetLegalSquares(TurnColour).Contains(selectedSquare))
-            {
-                State.MoveInvalid = true;
-                return false;
-            }
+            if (!ConfirmLegalMove(selectedSquare)) return false;
 
             ReversiBoard.Squares[selectedSquare.Row, selectedSquare.Column].Colour = TurnColour;
             CaptureCounters(selectedSquare);
@@ -125,6 +116,38 @@ namespace Reversi.Logic
 
             return true;
         }
+
+        private bool ConfirmLegalMove(Square selectedSquare)
+        {
+            if (!ConfirmTwoPlayers()) return false;
+
+            if (!ConfirmLegalPosition(selectedSquare)) return false;
+
+            return true;
+        }
+
+        private bool ConfirmLegalPosition(Square selectedSquare)
+        {
+            if (!GetLegalSquares(TurnColour).Contains(selectedSquare))
+            {
+                State.MoveInvalid = true;
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ConfirmTwoPlayers()
+        {
+            if (PlayerList.Count < 2)
+            {
+                State.InsufficientPlayers = true;
+                return false;
+            }
+
+            return true;
+        }
+
         private void RandomizeStartingMoves()
         {
             var visited = new HashSet<int>();
