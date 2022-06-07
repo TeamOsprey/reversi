@@ -209,7 +209,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - [X] Communicate via signalR that the board has changed after a move 
 - [ ] Add rules to restrict player moves to their own color's turn. 
 - [ ] Add messaging for when it is/is not your turn.
-- [ ] Limit to two players
+- [X] Limit to two players
 - [ ] Possibly add chat to something to be persisted.
 
 ## 2022-05-17
@@ -227,4 +227,8 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-05-31
 - We started implementing logic to manage users as they join the game.
 - [ ] Revisit old logic for assigning color (black/white). 
-- [ ] Create a Player class (use class instead of char).
+- [X] Create a Player class (use class instead of char).
+
+## 2022-06-07
+- We added a player class to game
+- [ ] Eventually will need to integrate hub/service to add/remove players from game
