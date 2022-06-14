@@ -232,3 +232,7 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-06-07
 - We added a player class to game
 - [ ] Eventually will need to integrate hub/service to add/remove players from game
+
+## 2022-06-14
+
+- [ ] Need to add connectionId to all place counter methods (currently optional)
