@@ -18,9 +18,9 @@ namespace Reversi.Web.Services
             return !Game.State.MoveInvalid;
         }
 
-        public void PlaceCounter(int row, int col)
+        public void PlaceCounter(int row, int col, string connectionId)
         {
-            Game.PlaceCounter(row, col);
+            Game.PlaceCounter(row, col, connectionId);
         }
 
         public string[] GetOutput()

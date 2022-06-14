@@ -53,7 +53,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4));
+            Assert.IsTrue(reversi.PlaceCounter(4, 4, "1"));
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4));
+            Assert.IsTrue(reversi.PlaceCounter(4, 4, "1"));
 
             var expected = new string[]{
             "........",
@@ -103,7 +103,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.WHITE);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4));
+            Assert.IsTrue(reversi.PlaceCounter(4, 4, "2"));
 
             var expected = new string[]{
             "........",
@@ -133,7 +133,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, Constants.WHITE);
 
-            Assert.IsFalse(reversi.PlaceCounter(1, 1));
+            Assert.IsFalse(reversi.PlaceCounter(1, 1, "2"));
 
             var expected = new string[]{
             "........",
@@ -164,7 +164,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(3, 4));
+            Assert.IsTrue(reversi.PlaceCounter(3, 4, "1"));
 
             var expected = new string[]{
             "........",
@@ -197,7 +197,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(7, 4));
+            Assert.IsTrue(reversi.PlaceCounter(7, 4, "1"));
 
             var expected = new string[]{
             "........",
@@ -228,7 +228,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.WHITE);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4));
+            Assert.IsTrue(reversi.PlaceCounter(4, 4, "2"));
 
             var expected = new string[]{
             "........",
@@ -259,7 +259,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.WHITE);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4));
+            Assert.IsTrue(reversi.PlaceCounter(4, 4, "2"));
 
             var expected = new string[]{
                     "........",
@@ -290,7 +290,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(3, 3));
+            Assert.IsTrue(reversi.PlaceCounter(3, 3, "1"));
 
             var expected = new string[]{
                     "........",
@@ -320,7 +320,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, Constants.BLACK);
 
-            Assert.IsFalse(reversi.PlaceCounter(0, 3));
+            Assert.IsFalse(reversi.PlaceCounter(0, 3, "1"));
         }
 
         [Test]
@@ -339,7 +339,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(3, 4));
+            Assert.IsTrue(reversi.PlaceCounter(3, 4, "1"));
 
             var expected = new string[]{
                     "........",
@@ -370,7 +370,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(3, 4));
+            Assert.IsTrue(reversi.PlaceCounter(3, 4, "1"));
 
             var expected = new string[]{
                     "........",
@@ -401,7 +401,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.WHITE);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4));
+            Assert.IsTrue(reversi.PlaceCounter(4, 4, "2"));
 
             var expected = new string[]{
                     "........",
@@ -432,7 +432,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 3));
+            Assert.IsTrue(reversi.PlaceCounter(4, 3, "1"));
 
             var expected = new string[]{
                     "........",
@@ -462,7 +462,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, Constants.BLACK);
 
-            Assert.IsFalse(reversi.PlaceCounter(5, 4));
+            Assert.IsFalse(reversi.PlaceCounter(5, 4, "1"));
         }
 
         [Test]
@@ -481,7 +481,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(5, 4));
+            Assert.IsTrue(reversi.PlaceCounter(5, 4, "1"));
 
             var expected = new string[]{
                     "........",
@@ -513,7 +513,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            reversi.PlaceCounter(5, 4);
+            reversi.PlaceCounter(5, 4, "1");
 
             Assert.AreEqual(Constants.WHITE, reversi.GetCurrentPlayerColour());
         }
@@ -534,7 +534,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, Constants.BLACK);
 
-            reversi.PlaceCounter(7, 6);
+            reversi.PlaceCounter(7, 6, "1");
 
             Assert.AreEqual(Constants.BLACK, reversi.GetCurrentPlayerColour());
         }
@@ -670,7 +670,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            reversi.PlaceCounter(1, 1);
+            reversi.PlaceCounter(1, 1, "1");
 
             Assert.IsTrue(reversi.State.MoveInvalid);
         }
@@ -691,7 +691,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            reversi.PlaceCounter(7, 6);
+            reversi.PlaceCounter(7, 6, "1");
 
             Assert.IsTrue(reversi.State.PassOccured);
         }
@@ -712,7 +712,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            reversi.PlaceCounter(4, 7);
+            reversi.PlaceCounter(4, 7, "1");
 
             Assert.IsTrue(reversi.State.GameOver);
         }
@@ -733,7 +733,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            reversi.PlaceCounter(7, 6);
+            reversi.PlaceCounter(7, 6, "1");
 
             Assert.IsTrue(reversi.State.TurnComplete);
         }
@@ -786,7 +786,7 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
             game.AddPlayer("1");
-            game.PlaceCounter(4, 4);
+            game.PlaceCounter(4, 4, "1");
             Assert.IsTrue(game.State.InsufficientPlayers);
         }
         [Test]

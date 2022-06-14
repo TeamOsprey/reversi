@@ -235,4 +235,5 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-06-14
 
-- [ ] Need to add connectionId to all place counter methods (currently optional)
+- [X] Need to add connectionId to all place counter methods (currently optional)
+- [ ] Fix the "Invalid Move" bug in UI (maybe we need to call AddPlayer method)

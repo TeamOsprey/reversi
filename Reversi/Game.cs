@@ -57,9 +57,9 @@ namespace Reversi.Logic
         }
         #endregion
         #region public methods
-        public bool PlaceCounter(int row, int col, string connectionId = "")
+        public bool PlaceCounter(int row, int col, string connectionId)
         {
-            if (!string.IsNullOrEmpty(connectionId) && !IsPlayersTurn(connectionId))
+            if (string.IsNullOrEmpty(connectionId) || !IsPlayersTurn(connectionId))
             {
                 State.MoveInvalid = true;
                 return false;
@@ -119,6 +119,11 @@ namespace Reversi.Logic
 
         #endregion
         #region private methods
+        private bool PlaceInitialCounter(int row, int col)
+        {
+            return PlaceCounter(new Square(row, col));
+        }
+
         private bool PlaceCounter(Square selectedSquare)
         {
             State = new State();
@@ -134,7 +139,7 @@ namespace Reversi.Logic
 
         private bool ConfirmLegalMove(Square selectedSquare)
         {
-            if (!ConfirmTwoPlayers()) return false;
+            if (AllInitialTilesPlaced() && !ConfirmTwoPlayers()) return false;
 
             if (!ConfirmLegalPosition(selectedSquare)) return false;
 
@@ -174,7 +179,7 @@ namespace Reversi.Logic
                 if (!visited.Contains(selected))
                 {
                     visited.Add(selected);
-                    PlaceCounter(initialValues[selected][0], initialValues[selected][1]);
+                    PlaceInitialCounter(initialValues[selected][0], initialValues[selected][1]);
                 }
 
             } while (visited.Count < 4);
@@ -248,8 +253,7 @@ namespace Reversi.Logic
         private HashSet<Square> GetLegalSquares(char color)
         {
             HashSet<Square> returnValue = new HashSet<Square>();
-            var blankSquares = ReversiBoard.GetBlankSquares();
-            if (blankSquares.Count > 60)
+            if (!AllInitialTilesPlaced())
             {
                 AddBlankCentreSquares(returnValue, ReversiBoard.GetBlankSquares());
             }
@@ -259,6 +263,13 @@ namespace Reversi.Logic
             }
             return returnValue;
         }
+
+        private bool AllInitialTilesPlaced()
+        {
+            var blankSquares = ReversiBoard.GetBlankSquares();
+            return blankSquares.Count <= 60;
+        }
+
         private void AddLegalSquaresToSet(HashSet<Square> returnValue, char color)
         {
             foreach (var startSquare in ReversiBoard.GetBlankSquares())

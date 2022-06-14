@@ -69,7 +69,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, Constants.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            reversi.PlaceCounter(3, 3);
+            reversi.PlaceCounter(3, 3, "1");
             var output = reversi.GetOutput();
 
             Assert.AreNotEqual('0', output[3][3]);

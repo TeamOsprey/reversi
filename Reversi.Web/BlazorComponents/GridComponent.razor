@@ -32,7 +32,7 @@
         var row = int.Parse(move.Split(',')[0]);
         var column = int.Parse(move.Split(',')[1]);
 
-        GameService.PlaceCounter(row, column);
+        GameService.PlaceCounter(row, column, hubConnection.ConnectionId);
         if (GameService.IsLastMoveValid())
         {
             await Send();

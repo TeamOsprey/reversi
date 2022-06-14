@@ -67,7 +67,7 @@ namespace Reversi.App
         {
             var coords = Console.ReadLine();
             var coordsSplit = coords.Split(',');
-            reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]));
+            reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]), "");
             Console.Clear();
         }
         
