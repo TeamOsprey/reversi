@@ -515,7 +515,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(5, 4);
 
-            Assert.AreEqual(Constants.WHITE, reversi.GetCurrentPlayer());
+            Assert.AreEqual(Constants.WHITE, reversi.GetCurrentPlayerColour());
         }
 
 
@@ -536,14 +536,14 @@ namespace Reversi.UnitTests
 
             reversi.PlaceCounter(7, 6);
 
-            Assert.AreEqual(Constants.BLACK, reversi.GetCurrentPlayer());
+            Assert.AreEqual(Constants.BLACK, reversi.GetCurrentPlayerColour());
         }
 
         [Test]
         public void InitiateGameWithTurnColourBlack()
         {
             var reversi = new Game();
-            Assert.AreEqual(Constants.BLACK, reversi.GetCurrentPlayer());
+            Assert.AreEqual(Constants.BLACK, reversi.GetCurrentPlayerColour());
         }
 
         [Test]
@@ -619,7 +619,7 @@ namespace Reversi.UnitTests
                 "BBBBBBBW"};
 
             var reversi = Game.Load(board, Constants.BLACK);
-            Assert.AreEqual(Constants.WHITE, reversi.GetCurrentPlayer());
+            Assert.AreEqual(Constants.WHITE, reversi.GetCurrentPlayerColour());
         }
         [Test]
         public void WhenStatusIsGameOverDeclareWinner()

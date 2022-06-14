@@ -45,7 +45,7 @@ namespace Reversi.App
         }
         private void DisplayBoard()
         {
-            var currentPlayer = (reversi.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
+            var currentPlayer = (reversi.GetCurrentPlayerColour() == Constants.BLACK) ? "BLACK" : "WHITE";
 
             Console.WriteLine(string.Join('\n', guidedBoard));
             Console.WriteLine();

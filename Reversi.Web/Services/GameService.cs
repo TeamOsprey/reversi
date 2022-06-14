@@ -30,7 +30,7 @@ namespace Reversi.Web.Services
 
         public string GetCurrentPlayer()
         {
-            return (Game.GetCurrentPlayer() == Constants.BLACK) ? "BLACK" : "WHITE";
+            return (Game.GetCurrentPlayerColour() == Constants.BLACK) ? "BLACK" : "WHITE";
         }
 
         public string GetMessage()
