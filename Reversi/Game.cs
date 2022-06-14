@@ -59,15 +59,25 @@ namespace Reversi.Logic
         #region public methods
         public bool PlaceCounter(int row, int col, string connectionId = "")
         {
-            if (!string.IsNullOrEmpty(connectionId) && !IsPlayersTurn(connectionId))
+            if (!IsPlayersTurn(connectionId))
+            {
+                State.MoveInvalid = true;
                 return false;
+            }
 
             return PlaceCounter(new Square(row, col));
         }
 
         private bool IsPlayersTurn(string connectionId)
         {
-            return PlayerList.Single(x => x.ConnectionId == connectionId).Colour == GetCurrentPlayerColour();
+            return ifConnectionIdValid(connectionId) &&
+                   PlayerList.Single(x => x.ConnectionId == connectionId).Colour == GetCurrentPlayerColour();
+        }
+
+        private bool ifConnectionIdValid(string connectionId)
+        {
+            return !string.IsNullOrEmpty(connectionId) &&
+                   PlayerList.Any(x => x.ConnectionId == connectionId);
         }
 
         public char GetCurrentPlayerColour()

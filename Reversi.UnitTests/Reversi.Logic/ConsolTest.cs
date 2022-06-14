@@ -800,13 +800,13 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void CannotPlaceCounterWhenNotPlayersTyurn()
+        public void CannotPlaceCounterWhenNotPlayersTurn()
         {
             var game = new Game();
             game.AddPlayer("1");
             game.AddPlayer("2");
-
-            game.PlaceCounter(4, 4, "1");
+            game.PlaceCounter(4, 4, "2");
+            Assert.IsTrue(game.State.MoveInvalid);
         }
     }
 }
