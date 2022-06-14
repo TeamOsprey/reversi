@@ -57,9 +57,17 @@ namespace Reversi.Logic
         }
         #endregion
         #region public methods
-        public bool PlaceCounter(int row, int col)
+        public bool PlaceCounter(int row, int col, string connectionId)
         {
+            if (!IsPlayersTurn(connectionId))
+                return false;
+
             return PlaceCounter(new Square(row, col));
+        }
+
+        private bool IsPlayersTurn(string connectionId)
+        {
+            return PlayerList.Single(x => x.ConnectionId == connectionId).Colour == GetCurrentPlayer();
         }
 
         public char GetCurrentPlayer()
