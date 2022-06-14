@@ -795,7 +795,7 @@ namespace Reversi.UnitTests
             var game = new Game();
             game.AddPlayer("1");
             game.AddPlayer("2");
-            game.PlaceCounter(4, 4);
+            game.PlaceCounter(4, 4, "1");
             Assert.IsTrue(game.State.TurnComplete);
         }
 
@@ -808,5 +808,6 @@ namespace Reversi.UnitTests
             game.PlaceCounter(4, 4, "2");
             Assert.IsTrue(game.State.MoveInvalid);
         }
+
     }
 }
