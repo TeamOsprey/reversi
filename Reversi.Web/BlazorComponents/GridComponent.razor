@@ -55,16 +55,16 @@
             InvokeAsync(StateHasChanged);
         });
 
+        // todo: this is in the wrong place
+        GameService.AddPlayer(hubConnection.ConnectionId);
+
         await hubConnection.StartAsync();
     }
 
-    async Task Send() =>
-        await hubConnection.SendAsync("SendUpdate");
+    async Task Send() => await hubConnection.SendAsync("SendUpdate");
         // await hubConnection.SendAsync("SendUpdate", "BLACK"); // working on adding player to connection
 
-
-    public bool IsConnected =>
-    hubConnection.State == HubConnectionState.Connected;
+    public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
 
     public async ValueTask DisposeAsync()
     {
