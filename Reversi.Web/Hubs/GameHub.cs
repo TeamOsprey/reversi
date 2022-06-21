@@ -16,6 +16,7 @@ namespace Reversi.Web.Hubs
         public override async Task OnConnectedAsync()
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, "Game1");
+            //await Clients.All.SendAsync("ConnectionId = " + Context.ConnectionId); 
             if (ConnectionList.Count == 0)
             {
                 ConnectionList.Add(new Connections("Game1", Context.ConnectionId, "BLACK"));
