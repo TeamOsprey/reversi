@@ -237,3 +237,17 @@ but in Square class, where we can define operator method, we don't have that inf
 
 - [X] Need to add connectionId to all place counter methods (currently optional)
 - [ ] Fix the "Invalid Move" bug in UI (maybe we need to call AddPlayer method)
+
+## 2022-06-21
+
+- We started working on calling AddPlayer from GridComponent
+- We introduceed AddPlayer method when the hub is initialized in OnInitializedAsync
+- [ ] we need to review what is called in OnInitializedAsync and OnAfterRenderAsync. There are some redunant codes that we were not sure where they belong to.
+- [ ] Why do we get two connection IDs and two times AddPlayer invocation when we have only one client open
+- [ ] Joel: maybe we should comment out ChatHub
+- [ ] Add a logic to prevent adding connection Id for the player that is already added
+- [ ] ConnectionList in GameHub is not used. Maybe we should remove it.
+- [ ] Explore the ways to automate test the hub with or without mocking
+
+
+

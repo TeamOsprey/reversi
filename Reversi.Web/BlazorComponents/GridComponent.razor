@@ -27,6 +27,7 @@
 @code {
     public string[] DisplayedBoard => GameService.GetOutput();
 
+
     protected async Task MoveSelected(string move)
     {
         var row = int.Parse(move.Split(',')[0]);
@@ -44,27 +45,36 @@
     //hub stuff
     private HubConnection hubConnection;
 
-    protected override async Task OnAfterRenderAsync(bool test)
+    protected override async Task OnInitializedAsync()
     {
         hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub"))
             .Build();
+
+        hubConnection.On<string>("AddPlayer", (connectionId) =>
+        {
+            GameService.AddPlayer(hubConnection.ConnectionId);
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool test)
+    {
 
         hubConnection.On("ReceiveUpdate", () =>
         {
             InvokeAsync(StateHasChanged);
         });
 
-        // todo: this is in the wrong place
-        GameService.AddPlayer(hubConnection.ConnectionId);
-
         await hubConnection.StartAsync();
     }
 
     async Task Send() => await hubConnection.SendAsync("SendUpdate");
-        // await hubConnection.SendAsync("SendUpdate", "BLACK"); // working on adding player to connection
+    // await hubConnection.SendAsync("SendUpdate", "BLACK"); // working on adding player to connection
 
     public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
+
 
     public async ValueTask DisposeAsync()
     {
