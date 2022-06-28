@@ -51,11 +51,6 @@
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub"))
             .Build();
 
-        hubConnection.On<string>("AddPlayer", (connectionId) =>
-        {
-            GameService.AddPlayer(hubConnection.ConnectionId);
-        });
-
         await hubConnection.StartAsync();
     }
 
@@ -65,6 +60,11 @@
         hubConnection.On("ReceiveUpdate", () =>
         {
             InvokeAsync(StateHasChanged);
+        });
+
+        hubConnection.On<string>("AddPlayer", (connectionId) =>
+        {
+            GameService.AddPlayer(hubConnection.ConnectionId);
         });
 
         await hubConnection.StartAsync();
