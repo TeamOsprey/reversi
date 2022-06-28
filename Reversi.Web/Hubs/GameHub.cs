@@ -6,8 +6,6 @@ namespace Reversi.Web.Hubs
 {
     public class GameHub : Hub
     {
-        public static List<Connections> ConnectionList = new List<Connections>();
-
         public async Task SendUpdate()
         {
             await Clients.All.SendAsync("ReceiveUpdate");
@@ -16,18 +14,9 @@ namespace Reversi.Web.Hubs
         public override async Task OnConnectedAsync()
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, "Game1");
+            // TODO: consider call to AddPlayer to be conditional to still needing two players
             await Clients.All.SendAsync("AddPlayer", Context.ConnectionId); 
 
-            if (ConnectionList.Count == 0)
-            {
-                ConnectionList.Add(new Connections("Game1", Context.ConnectionId, "BLACK"));
-            }
-            else if (ConnectionList.Count == 1)
-            {
-                ConnectionList.Add(new Connections("Game1", Context.ConnectionId, "WHITE"));
-            }
-            // assign color to user
-            // if BLACK's connection ID is null then set to Context.ConnectionId
             await base.OnConnectedAsync();
         }
 

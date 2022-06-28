@@ -222,7 +222,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - [X] Consider moving back to TDD to work out logic before implementing SignalR; i.e., in GameService / logic layer 
 	  e.g., how to assign color to 1st player (black), 2nd player (white), etc.
 - [ ] Handle disconnected connection IDs. Consider if we can leverage SignalR for this instead of our ConnectionList class.
-- [ ] ConnectionList class is static - consider another approach (maybe SignalR features or examples, e.g., DB).
+- [X] ConnectionList class is static - consider another approach (maybe SignalR features or examples, e.g., DB).
 
 ## 2022-05-31
 - We started implementing logic to manage users as they join the game.
@@ -236,18 +236,23 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-06-14
 
 - [X] Need to add connectionId to all place counter methods (currently optional)
-- [ ] Fix the "Invalid Move" bug in UI (maybe we need to call AddPlayer method)
+- [X] Fix the "Invalid Move" bug in UI (maybe we need to call AddPlayer method)
 
 ## 2022-06-21
 
 - We started working on calling AddPlayer from GridComponent
 - We introduceed AddPlayer method when the hub is initialized in OnInitializedAsync
-- [ ] we need to review what is called in OnInitializedAsync and OnAfterRenderAsync. There are some redunant codes that we were not sure where they belong to.
+- [X] we need to review what is called in OnInitializedAsync and OnAfterRenderAsync. There are some redunant codes that we were not sure where they belong to.
 - [ ] Why do we get two connection IDs and two times AddPlayer invocation when we have only one client open
-- [ ] Joel: maybe we should comment out ChatHub
-- [ ] Add a logic to prevent adding connection Id for the player that is already added
-- [ ] ConnectionList in GameHub is not used. Maybe we should remove it.
+- [X] Joel: maybe we should comment out ChatHub
+- [X] Add a logic to prevent adding connection Id for the player that is already added
+- [X] ConnectionList in GameHub is not used. Maybe we should remove it.
 - [ ] Explore the ways to automate test the hub with or without mocking
 
 
-
+## 2022-06-28
+- We fixed the issue with assigning connection Ids to players as they join the game
+- [ ] Opening the third browser keep the game in a unfinished loop, we need to look into this
+- [ ] Show on browser what color is assigned to the player
+- [ ] Change the default new game constructor to initialize the initial placements (set to True as default)
+- [ ] reconsider this argument name: randomizeStartingMoves
