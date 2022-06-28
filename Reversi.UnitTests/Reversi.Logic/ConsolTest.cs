@@ -784,7 +784,7 @@ namespace Reversi.UnitTests
         [Test]
         public void TwoPlayersRequiredToMakeAMove()
         {
-            var game = new Game();
+            var game = new Game(true);
             game.AddPlayer("1");
             game.PlaceCounter(4, 4, "1");
             Assert.IsTrue(game.State.InsufficientPlayers);
