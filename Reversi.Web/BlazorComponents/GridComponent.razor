@@ -67,7 +67,7 @@
             GameService.AddPlayer(hubConnection.ConnectionId);
         });
 
-        await hubConnection.StartAsync();
+        //await hubConnection.StartAsync();
     }
 
     async Task Send() => await hubConnection.SendAsync("SendUpdate");

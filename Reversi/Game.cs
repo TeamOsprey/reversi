@@ -111,6 +111,8 @@ namespace Reversi.Logic
 
         public void AddPlayer(string connectionId)
         {
+            if (PlayerList.Any(x => x.ConnectionId == connectionId)) return;
+
             if(PlayerList.Count == 0)
                 PlayerList.Add(new Player(Constants.BLACK, connectionId));
             else if (PlayerList.Any(x => x.Colour == Constants.BLACK) && PlayerList.Count == 1)
