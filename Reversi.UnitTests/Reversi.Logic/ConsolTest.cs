@@ -781,6 +781,19 @@ namespace Reversi.UnitTests
             Assert.AreEqual(players[0].Colour, Constants.BLACK);
             Assert.AreEqual(players[1].Colour, Constants.WHITE);
         }
+
+        [Test]
+        public void AfterThirdPlayerJoinsOtherPlayersCanStillMove()
+        {
+            var game = new Game();
+            game.AddPlayer("1");
+            game.AddPlayer("2");
+            game.AddPlayer("3");
+            game.PlaceCounter(4, 4, "1");
+            game.PlaceCounter(3, 4, "2");
+            Assert.IsTrue(game.State.TurnComplete);
+        }
+
         [Test]
         public void TwoPlayersRequiredToMakeAMove()
         {
