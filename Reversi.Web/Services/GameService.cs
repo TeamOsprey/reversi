@@ -38,6 +38,10 @@ namespace Reversi.Web.Services
             return (Game.GetCurrentPlayerColour() == Constants.BLACK) ? "BLACK" : "WHITE";
         }
 
+        public char GetPlayerColour(string connectionId)
+        {
+            return Game.GetPlayerColour(connectionId);
+        }
         public string GetMessage()
         {
             string msg = "";

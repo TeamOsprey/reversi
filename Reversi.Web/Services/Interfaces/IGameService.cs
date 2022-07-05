@@ -7,6 +7,7 @@
         public bool IsLastMoveValid();
         public string[] GetOutput();
         public string GetCurrentPlayer();
+        public char GetPlayerColour();
         public string GetMessage();
         public int GetScoreByColor(char color);
     }

@@ -10,7 +10,7 @@
     <GameInformation />
     <ScoreComponent />
 </CascadingValue>
-
+<label></label>
 <table>
     @for (int row = 0; row < DisplayedBoard.Length; row++)
     {
@@ -25,8 +25,8 @@
     }
 </table>
 @code {
+	public char WhatColourAmI;
     public string[] DisplayedBoard => GameService.GetOutput();
-
 
     protected async Task MoveSelected(string move)
     {

@@ -77,6 +77,11 @@ namespace Reversi.Logic
         {
             return turnColour;
         }
+        public char GetPlayerColour(string connectionId)
+        {
+            var player = PlayerList.SingleOrDefault(x => x.ConnectionId == connectionId);
+            return player?.Colour ?? 'O';
+        }
         public Player GetCurrentPlayer()
         {
             return PlayerList.Single(x => x.Colour == turnColour);
