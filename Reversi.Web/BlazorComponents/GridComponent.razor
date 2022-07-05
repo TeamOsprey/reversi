@@ -10,7 +10,7 @@
     <GameInformation />
     <ScoreComponent />
 </CascadingValue>
-<label></label>
+<label>@WhatColourAmI</label>
 <table>
     @for (int row = 0; row < DisplayedBoard.Length; row++)
     {
@@ -65,6 +65,7 @@
         hubConnection.On<string>("AddPlayer", (connectionId) =>
         {
             GameService.AddPlayer(hubConnection.ConnectionId);
+            WhatColourAmI = GameService.GetPlayerColour(hubConnection.ConnectionId);
         });
     }
 
