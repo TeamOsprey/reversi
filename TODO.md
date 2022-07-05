@@ -247,7 +247,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - [X] Joel: maybe we should comment out ChatHub
 - [X] Add a logic to prevent adding connection Id for the player that is already added
 - [X] ConnectionList in GameHub is not used. Maybe we should remove it.
-- [ ] Explore the ways to automate test the hub with or without mocking
+- [ ] Explore the ways to automate test the hub with or without mocking.
 
 
 ## 2022-06-28
