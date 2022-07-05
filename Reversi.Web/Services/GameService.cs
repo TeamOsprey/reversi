@@ -35,9 +35,17 @@ namespace Reversi.Web.Services
 
         public string GetCurrentPlayer()
         {
-            return (Game.GetCurrentPlayerColour() == Constants.BLACK) ? "BLACK" : "WHITE";
+            return ConvertColourCharToString(Game.GetCurrentPlayerColour());
         }
-
+        private string ConvertColourCharToString(char colour)
+        {
+            return colour switch
+            {
+                Constants.BLACK => "BLACK",
+                Constants.WHITE => "WHITE",
+                _ => "OBSERVER"
+            };
+        }
         public char GetPlayerColour(string connectionId)
         {
             return Game.GetPlayerColour(connectionId);

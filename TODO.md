@@ -256,3 +256,8 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] Show on browser what color is assigned to the player
 - [ ] Change the default new game constructor to initialize the initial placements (set to True as default)
 - [ ] reconsider this argument name: randomizeStartingMoves
+
+## 2022-07-05
+- [ ] ConvertColourCharToString method; use it in grid component to see who the user is for that active browser.
+- [ ] Use a different error message when first player tries to make a move and second player has not joined yet.
+- [ ] Add waiting for second player message when first player joins.
