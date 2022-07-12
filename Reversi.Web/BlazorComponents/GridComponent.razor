@@ -25,7 +25,7 @@
     }
 </table>
 @code {
-    public char WhatColourAmI;
+    public string WhatColourAmI;
     public string[] DisplayedBoard => GameService.GetOutput();
 
     protected async Task MoveSelected(string move)
@@ -57,7 +57,7 @@
         hubConnection.On<string>("AddPlayer", (connectionId) =>
         {
             GameService.AddPlayer(hubConnection.ConnectionId);
-            WhatColourAmI = GameService.GetPlayerColour(hubConnection.ConnectionId);
+            WhatColourAmI = GameService.GetPlayerColourString(hubConnection.ConnectionId);
             InvokeAsync(StateHasChanged);
         });
     }

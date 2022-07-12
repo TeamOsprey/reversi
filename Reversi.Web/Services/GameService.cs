@@ -37,6 +37,7 @@ namespace Reversi.Web.Services
         {
             return ConvertColourCharToString(Game.GetCurrentPlayerColour());
         }
+
         private string ConvertColourCharToString(char colour)
         {
             return colour switch
@@ -46,9 +47,10 @@ namespace Reversi.Web.Services
                 _ => "OBSERVER"
             };
         }
-        public char GetPlayerColour(string connectionId)
+
+        public string GetPlayerColourString(string connectionId)
         {
-            return Game.GetPlayerColour(connectionId);
+            return ConvertColourCharToString(Game.GetPlayerColour(connectionId));
         }
         public string GetMessage()
         {
