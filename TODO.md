@@ -243,7 +243,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - We started working on calling AddPlayer from GridComponent
 - We introduceed AddPlayer method when the hub is initialized in OnInitializedAsync
 - [X] we need to review what is called in OnInitializedAsync and OnAfterRenderAsync. There are some redunant codes that we were not sure where they belong to.
-- [ ] Why do we get two connection IDs and two times AddPlayer invocation when we have only one client open
+- [X] Why do we get two connection IDs and two times AddPlayer invocation when we have only one client open
 - [X] Joel: maybe we should comment out ChatHub
 - [X] Add a logic to prevent adding connection Id for the player that is already added
 - [X] ConnectionList in GameHub is not used. Maybe we should remove it.
@@ -252,8 +252,8 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-06-28
 - We fixed the issue with assigning connection Ids to players as they join the game
-- [ ] Opening the third browser keep the game in a unfinished loop, we need to look into this
-- [ ] Show on browser what color is assigned to the player
+- [X] Opening the third browser keep the game in a unfinished loop, we need to look into this
+- [X] Show on browser what color is assigned to the player
 - [ ] Change the default new game constructor to initialize the initial placements (set to True as default)
 - [ ] reconsider this argument name: randomizeStartingMoves
 
@@ -261,3 +261,9 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] ConvertColourCharToString method; use it in grid component to see who the user is for that active browser.
 - [ ] Use a different error message when first player tries to make a move and second player has not joined yet.
 - [ ] Add waiting for second player message when first player joins.
+
+## 2022-07-12
+- Discovered that OnAfterRenderAsync runs twice, so you need to use the firstRender parameter with a guard to avoid 
+  duplicate behavior
+- We learned that in SignalR our listener was defined as hubConnection.On<string>("AddPlayer",...) and we invoke it 
+  with await hubConnection.SendAsync("AddPlayer");

@@ -25,7 +25,7 @@
     }
 </table>
 @code {
-	public char WhatColourAmI;
+    public char WhatColourAmI;
     public string[] DisplayedBoard => GameService.GetOutput();
 
     protected async Task MoveSelected(string move)
@@ -52,21 +52,27 @@
             .Build();
 
         await hubConnection.StartAsync();
-    }
 
-    protected override async Task OnAfterRenderAsync(bool test)
-    {
-
-        hubConnection.On("ReceiveUpdate", () =>
-        {
-            InvokeAsync(StateHasChanged);
-        });
-
+        // Add listener for future connections
         hubConnection.On<string>("AddPlayer", (connectionId) =>
         {
             GameService.AddPlayer(hubConnection.ConnectionId);
             WhatColourAmI = GameService.GetPlayerColour(hubConnection.ConnectionId);
+            InvokeAsync(StateHasChanged);
         });
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {       
+        if (firstRender)
+        {
+            hubConnection.On("ReceiveUpdate", () =>
+            {
+                InvokeAsync(StateHasChanged);
+            });
+
+            await hubConnection.SendAsync("AddPlayer");
+        }
     }
 
     async Task Send() => await hubConnection.SendAsync("SendUpdate");
