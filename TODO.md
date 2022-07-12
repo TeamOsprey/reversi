@@ -135,7 +135,7 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-02-15
 - We ended in Green state
 - We extracted the logic from Program to a new class, GameBoardUi
- [ ] Handle bad inputs for UI
+ [-] Handle bad inputs for UI
 
 ## 2022-03-01
 - We watched half of a tutorial on Blazor to get an idea of how we can use it in Revesi: https://www.youtube.com/watch?v=MetcuX1OHD0
@@ -207,7 +207,7 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-05-10
 - We implemented chat in the game using signalR. (Note: We had an issue trying to use signalR 6 instead of 5)
 - [X] Communicate via signalR that the board has changed after a move 
-- [ ] Add rules to restrict player moves to their own color's turn. 
+- [X] Add rules to restrict player moves to their own color's turn. 
 	- [ ] Add messaging for when it is/is not your turn.
 - [X] Limit to two players
 - [ ] Possibly add chat to something to be persisted.
@@ -215,7 +215,7 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-05-17
 - We started working on this item: "Add rules to restrict player moves to their own color's turn."
 - We can review group in SignalR from the link Stephen shared: https://code-maze.com/how-to-send-client-specific-messages-using-signalr/
-- [ ] We can review StartUp and clean up any unncessary components (e.g. AddRazorPages)
+- [X] We can review StartUp and clean up any unncessary components (e.g. AddRazorPages)
 
 ## 2022-05-24
 - We started associating connection IDs with player colors within the GameHub class.
@@ -231,7 +231,7 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-06-07
 - We added a player class to game
-- [ ] Eventually will need to integrate hub/service to add/remove players from game
+- [ ] Integrate hub/service to add/remove players from game
 
 ## 2022-06-14
 
@@ -267,3 +267,5 @@ but in Square class, where we can define operator method, we don't have that inf
   duplicate behavior
 - We learned that in SignalR our listener was defined as hubConnection.On<string>("AddPlayer",...) and we invoke it 
   with await hubConnection.SendAsync("AddPlayer");
+- [ ] Visually improve display for whoAmI and whosTurn
+- [ ] Go through old code for cleanup/refactor (ie: class inside other class, naming conventions,)

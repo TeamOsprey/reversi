@@ -25,14 +25,14 @@ namespace Reversi.Logic
         private char OpponentColour { get { return turnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE; } }
         private List<Vector> directions = Direction.GetDirections();
         public State State = new State();
-        private static List<int[]> initialValues = new List<int[]>
-            {
-                new int[] { 3,3 },
-                new int[] { 3,4 },
-                new int[] { 4,4 },
-                new int[] { 4,3 },
-            };
-        public List<Player> PlayerList = new List<Player>();
+        private static List<int[]> initialValues = new()
+        {
+                new[] { 3,3 },
+                new[] { 3,4 },
+                new[] { 4,4 },
+                new[] { 4,3 },
+        };
+        public List<Player> PlayerList = new();
 
         #endregion
         #region constructors

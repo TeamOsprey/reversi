@@ -26,7 +26,6 @@ namespace Reversi.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddRazorPages();
 
             services.AddServerSideBlazor();
             services.AddSingleton<IGameService, GameService>(op =>
