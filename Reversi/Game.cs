@@ -82,10 +82,10 @@ namespace Reversi.Logic
         }
         public char GetWinner()
         {
-            var white = GetNumberOfColor(Constants.WHITE);
+            var white = GetNumberOfColor(Constants.Counters.WHITE);
             var black = GetNumberOfColor(Constants.BLACK);
 
-            return (white > black) ? Constants.WHITE : Constants.BLACK;
+            return (white > black) ? Constants.Counters.WHITE : Constants.BLACK;
         }
 
         public string[] DisplayBoard()
@@ -198,7 +198,7 @@ namespace Reversi.Logic
         }
         private void ChangeTurn()
         {
-            turnColour = turnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE;
+            turnColour = turnColour == Constants.Counters.WHITE ? Constants.BLACK : Constants.Counters.WHITE;
         }
         private void SetStatus()
         {
