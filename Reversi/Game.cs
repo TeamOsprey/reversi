@@ -68,7 +68,7 @@ namespace Reversi.Logic
         public char GetPlayerColour(string connectionId)
         {
             var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
-            return player?.Colour ?? 'O';
+            return player?.Colour ?? Constants.OBSERVER;
         }
         public Player GetCurrentPlayer()
         {
