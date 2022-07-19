@@ -275,4 +275,28 @@ but in Square class, where we can define operator method, we don't have that inf
 - We did several refactoring and cleanups.
 - [ ] Replace in all codes char Roles Constants with string ones and remove them from constant class 
 - [ ] Line-by-line refactoring of classes other than Game and Constants
+- [ ] Consider other ways to organize constants, e.g.:
+		```cs
+		enum Counter { BLACK WHITE NONE }
+		// toChar
+		// toString
+
+		abstract class Role
+
+		class Player : Role // or enum?
+			Counter counter 
+			name string
+  
+		class Observer : Role
+
+		// Browser: player 1, player 2, or observer
+
+
+		====
+
+		public Player Turn
+		```
+
+
+
 
