@@ -255,7 +255,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - [X] Opening the third browser keep the game in a unfinished loop, we need to look into this
 - [X] Show on browser what color is assigned to the player
 - [ ] Change the default new game constructor to initialize the initial placements (set to True as default)
-- [ ] reconsider this argument name: randomizeStartingMoves
+- [X] reconsider this argument name: randomizeStartingMoves
 
 ## 2022-07-05
 - [X] ConvertColourCharToString method; use it in grid component to see who the user is for that active browser.
@@ -268,4 +268,5 @@ but in Square class, where we can define operator method, we don't have that inf
 - We learned that in SignalR our listener was defined as hubConnection.On<string>("AddPlayer",...) and we invoke it 
   with await hubConnection.SendAsync("AddPlayer");
 - [ ] Visually improve display for whoAmI and whosTurn
-- [ ] Go through old code for cleanup/refactor (ie: class inside other class, naming conventions,)
+- [X] Move player class to its own file
+- [ ] Go through old code for cleanup/refactor (ie: naming conventions,)
