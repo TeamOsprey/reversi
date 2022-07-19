@@ -276,7 +276,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] Replace in all codes char Roles Constants with string ones and remove them from constant class 
 - [ ] Line-by-line refactoring of classes other than Game and Constants
 - [ ] Consider other ways to organize constants, e.g.:
-		```cs
+```cs
 		enum Counter { BLACK WHITE NONE }
 		// toChar
 		// toString
@@ -295,7 +295,7 @@ but in Square class, where we can define operator method, we don't have that inf
 		====
 
 		public Player Turn
-		```
+```
 
 
 
