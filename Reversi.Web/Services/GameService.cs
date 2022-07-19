@@ -50,7 +50,7 @@ namespace Reversi.Web.Services
 
         public string GetPlayerColourString(string connectionId)
         {
-            return ConvertColourCharToString(Game.GetPlayerColour(connectionId));
+            return ConvertColourCharToString(Game.GetRole(connectionId));
         }
         public string GetMessage()
         {

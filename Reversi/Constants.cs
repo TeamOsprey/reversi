@@ -10,7 +10,7 @@
         }
         
         public static char OBSERVER = 'O';
-        public static class PlayerRoles
+        public static class Roles
         {
             public const char BLACK = 'B';
             public const char WHITE = 'W';
