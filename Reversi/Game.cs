@@ -1,38 +1,26 @@
 ﻿using System.Collections.Generic;
 using System;
-using CSharpFunctionalExtensions;
 using System.Linq;
 
 namespace Reversi.Logic
 {
-    public class Player
-    {
-        public Player(char colour, string connectionId)
-        {
-            Colour = colour;
-            ConnectionId = connectionId;
-        }
-
-        public char Colour { get; set; }
-        public string ConnectionId { get; set; }
-    }
-
     public class Game
     {
         #region fields
         public Board ReversiBoard { get; set; }
-        private char turnColour { get; set; }
-        private char OpponentColour { get { return turnColour == Constants.WHITE ? Constants.BLACK : Constants.WHITE; } }
-        private List<Vector> directions = Direction.GetDirections();
+        private char turnColour;
+        private char OpponentColour => (turnColour == Constants.WHITE) ? Constants.BLACK : Constants.WHITE;
+        private readonly List<Vector> directions = Direction.GetDirections();
         public State State = new State();
-        private static List<int[]> initialValues = new()
+        private static readonly List<int[]> initialValues = new()
         {
                 new[] { 3,3 },
                 new[] { 3,4 },
                 new[] { 4,4 },
                 new[] { 4,3 },
         };
-        public List<Player> PlayerList = new();
+
+        private List<Player> playerList = new();
 
         #endregion
         #region constructors
@@ -70,7 +58,7 @@ namespace Reversi.Logic
 
         private bool IsPlayersTurn(string connectionId)
         {
-            return PlayerList.Any(x => x.ConnectionId == connectionId && x.Colour == turnColour);
+            return playerList.Any(x => x.ConnectionId == connectionId && x.Colour == turnColour);
         }
 
         public char GetCurrentPlayerColour()
@@ -79,12 +67,12 @@ namespace Reversi.Logic
         }
         public char GetPlayerColour(string connectionId)
         {
-            var player = PlayerList.SingleOrDefault(x => x.ConnectionId == connectionId);
+            var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
             return player?.Colour ?? 'O';
         }
         public Player GetCurrentPlayer()
         {
-            return PlayerList.Single(x => x.Colour == turnColour);
+            return playerList.Single(x => x.Colour == turnColour);
         }
         public string[] GetOutput()
         {
@@ -111,17 +99,17 @@ namespace Reversi.Logic
 
         public List<Player> GetPlayerList()
         {
-            return PlayerList;
+            return playerList;
         }
 
         public void AddPlayer(string connectionId)
         {
-            if (PlayerList.Any(x => x.ConnectionId == connectionId)) return;
+            if (playerList.Any(x => x.ConnectionId == connectionId)) return;
 
-            if(PlayerList.Count == 0)
-                PlayerList.Add(new Player(Constants.BLACK, connectionId));
-            else if (PlayerList.Any(x => x.Colour == Constants.BLACK) && PlayerList.Count == 1)
-                PlayerList.Add(new Player(Constants.WHITE, connectionId));
+            if(playerList.Count == 0)
+                playerList.Add(new Player(Constants.BLACK, connectionId));
+            else if (playerList.Any(x => x.Colour == Constants.BLACK) && playerList.Count == 1)
+                playerList.Add(new Player(Constants.WHITE, connectionId));
         }
 
         #endregion
@@ -166,7 +154,7 @@ namespace Reversi.Logic
 
         private bool ConfirmTwoPlayers()
         {
-            if (PlayerList.Count < 2)
+            if (playerList.Count < 2)
             {
                 State.InsufficientPlayers = true;
                 return false;
