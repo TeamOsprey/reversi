@@ -29,12 +29,12 @@ namespace Reversi.Logic
             ReversiBoard = new Board(board);
             turnColour = turnColor;
         }
-        public Game(bool randomizeStartingMoves = false)
+        public Game(bool placeInitialCounters = false)
         {
             ReversiBoard = new Board();
             turnColour = Constants.BLACK;
             State.InProgress = true;
-            if(randomizeStartingMoves) RandomizeStartingMoves();
+            if (placeInitialCounters) RandomlyPlaceInitialCounters();
         }
         public static Game Load(string[] board, char turnColour)
         {
@@ -163,7 +163,7 @@ namespace Reversi.Logic
             return true;
         }
 
-        private void RandomizeStartingMoves()
+        private void RandomlyPlaceInitialCounters()
         {
             var visited = new HashSet<int>();
 
