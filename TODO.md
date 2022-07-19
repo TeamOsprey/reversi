@@ -269,4 +269,10 @@ but in Square class, where we can define operator method, we don't have that inf
   with await hubConnection.SendAsync("AddPlayer");
 - [ ] Visually improve display for whoAmI and whosTurn
 - [X] Move player class to its own file
-- [ ] Go through old code for cleanup/refactor (ie: naming conventions,)
+- [X] Go through old code for cleanup/refactor (ie: naming conventions,)
+
+## 2022-07-19
+- We did several refactoring and cleanups.
+- [ ] Replace in all codes char Roles Constants with string ones and remove them from constant class 
+- [ ] Line-by-line refactoring of classes other than Game and Constants
+

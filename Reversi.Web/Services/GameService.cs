@@ -35,22 +35,12 @@ namespace Reversi.Web.Services
 
         public string GetCurrentPlayer()
         {
-            return ConvertColourCharToString(Game.GetCurrentPlayerColour());
-        }
-
-        private string ConvertColourCharToString(char colour)
-        {
-            return colour switch
-            {
-                Constants.BLACK => "BLACK",
-                Constants.WHITE => "WHITE",
-                _ => "OBSERVER"
-            };
+            return ConvertRoleCharToString(Game.Turn());
         }
 
         public string GetPlayerColourString(string connectionId)
         {
-            return ConvertColourCharToString(Game.GetRole(connectionId));
+            return ConvertRoleCharToString(Game.GetRole(connectionId));
         }
         public string GetMessage()
         {
@@ -69,6 +59,16 @@ namespace Reversi.Web.Services
         public int GetScoreByColor(char color)
         {
             return Game.GetNumberOfColor(color);
+        }
+
+        private string ConvertRoleCharToString(char colour)
+        {
+            return colour switch
+            {
+                Constants.Roles.BLACK => Constants.Roles.BLACK_STRING,
+                Constants.Roles.WHITE => Constants.Roles.WHITE_STRING,
+                _ => Constants.Roles.OBSERVER_STRING
+            };
         }
     }
 }

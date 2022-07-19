@@ -4,11 +4,11 @@
     {
         public Player(char colour, string connectionId)
         {
-            Colour = colour;
+            Role = colour;
             ConnectionId = connectionId;
         }
 
-        public char Colour { get; set; }
+        public char Role { get; set; }
         public string ConnectionId { get; set; }
     }
 }

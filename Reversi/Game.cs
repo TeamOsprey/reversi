@@ -9,6 +9,9 @@ namespace Reversi.Logic
         #region fields
         public Board ReversiBoard { get; set; }
         private char turn;
+        
+        public char Turn() => turn;
+
         private char opponent => (turn == Constants.Roles.WHITE) 
             ? Constants.Roles.BLACK : Constants.Roles.WHITE;
         private readonly List<Vector> directions = Direction.GetDirections();
@@ -59,21 +62,17 @@ namespace Reversi.Logic
 
         private bool IsPlayersTurn(string connectionId)
         {
-            return playerList.Any(x => x.ConnectionId == connectionId && x.Colour == turn);
+            return playerList.Any(x => x.ConnectionId == connectionId && x.Role == turn);
         }
 
-        public char GetCurrentPlayerColour()
-        {
-            return turn;
-        }
         public char GetRole(string connectionId)
         {
             var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
-            return player?.Colour ?? Constants.Roles.OBSERVER;
+            return player?.Role ?? Constants.Roles.OBSERVER;
         }
         public Player GetCurrentPlayer()
         {
-            return playerList.Single(x => x.Colour == turn);
+            return playerList.Single(x => x.Role == turn);
         }
         public string[] GetOutput()
         {
@@ -109,7 +108,7 @@ namespace Reversi.Logic
             
             if(playerList.Count == 0)
                 playerList.Add(new Player(Constants.Roles.BLACK, connectionId));
-            else if (playerList.Any(x => x.Colour == Constants.Roles.BLACK) && playerList.Count == 1)
+            else if (playerList.Any(x => x.Role == Constants.Roles.BLACK) && playerList.Count == 1)
                 playerList.Add(new Player(Constants.Roles.WHITE, connectionId));
         }
 
