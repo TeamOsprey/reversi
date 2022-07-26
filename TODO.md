@@ -259,7 +259,7 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-07-05
 - [X] ConvertColourCharToString method; use it in grid component to see who the user is for that active browser.
-- [ ] Use a different error message when first player tries to make a move and second player has not joined yet.
+- [X] Use a different error message when first player tries to make a move and second player has not joined yet.
 - [ ] Add waiting for second player message when first player joins.
 
 ## 2022-07-12

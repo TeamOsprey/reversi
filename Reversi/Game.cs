@@ -51,6 +51,7 @@ namespace Reversi.Logic
         #region public methods
         public bool PlaceCounter(int row, int col, string connectionId)
         {
+            State = new State();
             if (string.IsNullOrEmpty(connectionId) || !IsPlayersTurn(connectionId))
             {
                 State.MoveInvalid = true;
@@ -121,7 +122,6 @@ namespace Reversi.Logic
 
         private bool PlaceCounter(Square selectedSquare)
         {
-            State = new State();
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
             ReversiBoard.Squares[selectedSquare.Row, selectedSquare.Column].Colour = turn;
