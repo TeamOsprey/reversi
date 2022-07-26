@@ -559,7 +559,7 @@ namespace Reversi.UnitTests
                 "........",
                 "........"};
 
-            var reversi = new Game();
+            var reversi = new Game(false);
             CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
 
         }
@@ -785,7 +785,7 @@ namespace Reversi.UnitTests
         [Test]
         public void AfterThirdPlayerJoinsOtherPlayersCanStillMove()
         {
-            var game = new Game();
+            var game = new Game(false);
             game.AddPlayer("1");
             game.AddPlayer("2");
             game.AddPlayer("3");
@@ -797,7 +797,7 @@ namespace Reversi.UnitTests
         [Test]
         public void TwoPlayersRequiredToMakeAMove()
         {
-            var game = new Game(true);
+            var game = new Game();
             game.AddPlayer("1");
             game.PlaceCounter(4, 4, "1");
             Assert.IsTrue(game.State.InsufficientPlayers);
@@ -805,7 +805,7 @@ namespace Reversi.UnitTests
         [Test]
         public void WithTwoPlayersAllowPlaceCounter()
         {
-            var game = new Game();
+            var game = new Game(false);
             game.AddPlayer("1");
             game.AddPlayer("2");
             game.PlaceCounter(4, 4, "1");

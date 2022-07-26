@@ -9,16 +9,6 @@ namespace Reversi.UnitTests.Reversi.App
         [Test]
         public void ConsoleAddsGuideToNewBoard()
         {
-            var board = new string[]{
-                     "........",
-                     "........",
-                     "........",
-                     "........",
-                     "........",
-                     "........",
-                     "........",
-                     "........"};
-
             var outputBoard = new string[]{
                      " 01234567",
                      "0........",
@@ -29,7 +19,7 @@ namespace Reversi.UnitTests.Reversi.App
                      "5........",
                      "6........",
                      "7........"};
-            var gameBoardUi = new GameBoardUi();
+            var gameBoardUi = new GameBoardUi(false);
 
             Assert.AreEqual(outputBoard, gameBoardUi.guidedBoard);
         }

@@ -254,7 +254,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - We fixed the issue with assigning connection Ids to players as they join the game
 - [X] Opening the third browser keep the game in a unfinished loop, we need to look into this
 - [X] Show on browser what color is assigned to the player
-- [ ] Change the default new game constructor to initialize the initial placements (set to True as default)
+- [X] Change the default new game constructor to initialize the initial placements (set to True as default)
 - [X] reconsider this argument name: randomizeStartingMoves
 
 ## 2022-07-05

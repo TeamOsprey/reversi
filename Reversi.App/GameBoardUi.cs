@@ -10,9 +10,9 @@ namespace Reversi.App
         public IEnumerable<string> guidedBoard;
         public Game reversi;
 
-        public GameBoardUi()
+        public GameBoardUi(bool placeInitialCounters = true)
         {
-            reversi = new Game();
+            reversi = new Game(placeInitialCounters);
             SetupBoard();
         }
 

@@ -33,7 +33,7 @@ namespace Reversi.Logic
             ReversiBoard = new Board(board);
             turn = turnColor;
         }
-        public Game(bool placeInitialCounters = false)
+        public Game(bool placeInitialCounters = true)
         {
             ReversiBoard = new Board();
             turn = Constants.Roles.BLACK;
