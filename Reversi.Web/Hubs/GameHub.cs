@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,7 +16,11 @@ namespace Reversi.Web.Hubs
         {
             await Clients.All.SendAsync("AddPlayer", Context.ConnectionId);
         }
-        
+        public async Task RemovePlayer()
+        {            
+            await Clients.All.SendAsync("RemovePlayer", Context.ConnectionId);
+        }
+
         public override async Task OnConnectedAsync()
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, "Game1");
@@ -23,6 +28,11 @@ namespace Reversi.Web.Hubs
             //await Clients.All.SendAsync("AddPlayer", Context.ConnectionId); 
 
             await base.OnConnectedAsync();
+        }
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, "Game1");        
+            await base.OnDisconnectedAsync(exception);
         }
 
         public class Connections

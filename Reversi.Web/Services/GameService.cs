@@ -20,6 +20,11 @@ namespace Reversi.Web.Services
             Game.AddPlayer(connectionId);
         }
 
+        public void RemovePlayer(string connectionId)
+        {
+            Game.RemovePlayer(connectionId);
+        }
+
         public bool IsLastMoveValid()
         {
             return !Game.State.MoveInvalid;

@@ -60,6 +60,12 @@
             WhatColourAmI = GameService.GetPlayerColourString(hubConnection.ConnectionId);
             InvokeAsync(StateHasChanged);
         });
+
+        hubConnection.On<string>("RemovePlayer", (connectionId) =>
+        {
+            GameService.RemovePlayer(hubConnection.ConnectionId);
+            InvokeAsync(StateHasChanged);
+        });
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -79,11 +85,11 @@
 
     public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
 
-
     public async ValueTask DisposeAsync()
     {
         if (hubConnection is not null)
-        {
+        {        
+            await hubConnection.SendAsync("RemovePlayer");
             await hubConnection.DisposeAsync();
         }
     }
