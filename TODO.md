@@ -297,6 +297,8 @@ but in Square class, where we can define operator method, we don't have that inf
 		public Player Turn
 ```
 
-
+## 2022-07-26
+- We worked on error messaging, some refactor and tried to handle disconnecting from the game.
+	- We left the disconnection problem in a state where after one person disconnects it appears to disconnect the wrong player.
 
 
