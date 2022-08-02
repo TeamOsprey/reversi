@@ -112,15 +112,24 @@ namespace Reversi.Logic
                 playerList.Add(new Player(role, connectionId));
             };
 
-            if (playerList.Count == 0)
-                addPlayer(Constants.Roles.BLACK);
-            else if (playerList.Count == 1)
+            if (!playerList.Any(x => x.Role == Constants.Roles.BLACK))
             {
-                if (playerList.Any(x => x.Role == Constants.Roles.BLACK))
-                    addPlayer(Constants.Roles.WHITE);
-                else if (playerList.Any(x => x.Role == Constants.Roles.WHITE))
-                    addPlayer(Constants.Roles.WHITE);
+                addPlayer(Constants.Roles.BLACK);
             }
+            else if (!playerList.Any(x => x.Role == Constants.Roles.WHITE))
+            {
+                addPlayer(Constants.Roles.WHITE);
+            }
+
+            //if (playerList.Count == 0)
+            //    addPlayer(Constants.Roles.BLACK);
+            //else if (playerList.Count == 1)
+            //{
+            //    if (playerList.Any(x => x.Role == Constants.Roles.BLACK))
+            //        addPlayer(Constants.Roles.WHITE);
+            //    else if (playerList.Any(x => x.Role == Constants.Roles.WHITE))
+            //        addPlayer(Constants.Roles.WHITE);
+            //}
         }
         public void RemovePlayer(string connectionId)
         {
