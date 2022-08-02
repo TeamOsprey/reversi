@@ -302,3 +302,6 @@ but in Square class, where we can define operator method, we don't have that inf
 	- We left the disconnection problem in a state where after one person disconnects it appears to disconnect the wrong player.
 
 
+## 2022-08-02
+- [ ] When one player disconnects notify the other player and end the game.
+- [ ] Have multiple rooms with one game per room.
