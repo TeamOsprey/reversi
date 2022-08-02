@@ -6,24 +6,29 @@
 @implements IAsyncDisposable
 
 <CascadingValue Value="@GameService">
-    <MessageComponent />
-    <GameInformation />
-    <ScoreComponent />
+    <div class="flex col-md-5">
+		<MessageComponent/>
+		<GameInformation/>
+		<ScoreComponent/>
+		<br />
+		<label><b>Who I am:</b> @WhatColourAmI</label>
+    </div>
 </CascadingValue>
-<label>@WhatColourAmI</label>
-<table>
-    @for (int row = 0; row < DisplayedBoard.Length; row++)
-    {
-        <tr>
-            @for (int col = 0; col < DisplayedBoard[row].Length; col++)
-            {
-                <td>
-                    <TileComponent message="@DisplayedBoard[row][col].ToString()" row="@row" column="@col" OnMoveSelected="MoveSelected"></TileComponent>
-                </td>
-            }
-        </tr>
-    }
-</table>
+<div class="flex">
+	<table>
+		@for (int row = 0; row < DisplayedBoard.Length; row++)
+		{
+			<tr>
+				@for (int col = 0; col < DisplayedBoard[row].Length; col++)
+				{
+					<td>
+						<TileComponent message="@DisplayedBoard[row][col].ToString()" row="@row" column="@col" OnMoveSelected="MoveSelected"></TileComponent>
+					</td>
+				}
+			</tr>
+		}
+	</table>
+</div>
 @code {
     public string WhatColourAmI;
     public string[] DisplayedBoard => GameService.GetOutput();

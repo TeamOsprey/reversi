@@ -1,10 +1,13 @@
 ﻿@using Reversi.Web.Services.Interfaces;
 @using Microsoft.AspNetCore.Components.Web
 
+<br/>
+<label><b>SCORE: [ </b></label>
 <b>Black: </b>
 <label>@NumberOfBlack</label>
 <b>White: </b>
 <label>@NumberOfWhite</label>
+<b>]</b>
 @code {
     [CascadingParameter]
     public IGameService GameService { get; set; }
