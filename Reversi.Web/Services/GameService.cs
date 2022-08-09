@@ -74,9 +74,9 @@ namespace Reversi.Web.Services
         {
             return colour switch
             {
-                Constants.Roles.BLACK => Constants.Roles.BLACK_STRING,
-                Constants.Roles.WHITE => Constants.Roles.WHITE_STRING,
-                _ => Constants.Roles.OBSERVER_STRING
+                Roles.BLACK => Roles.BLACK_STRING,
+                Roles.WHITE => Roles.WHITE_STRING,
+                _ => Roles.OBSERVER_STRING
             };
         }
     }

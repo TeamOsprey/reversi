@@ -21,14 +21,14 @@ namespace Reversi.UnitTests
             "........"};
 
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
             var output = reversi.GetOutput();
 
-            Assert.AreEqual(Constants.Counters.BLACK, output[4][4]);
-            Assert.AreEqual(Constants.Counters.BLACK, output[4][5]);
-            Assert.AreEqual(Constants.Counters.WHITE, output[5][4]);
-            Assert.AreEqual(Constants.Counters.WHITE, output[5][5]);
-            Assert.AreEqual(Constants.Roles.BLACK, reversi.Turn());
+            Assert.AreEqual(Counters.BLACK, output[4][4]);
+            Assert.AreEqual(Counters.BLACK, output[4][5]);
+            Assert.AreEqual(Counters.WHITE, output[5][4]);
+            Assert.AreEqual(Counters.WHITE, output[5][5]);
+            Assert.AreEqual(Roles.BLACK, reversi.Turn());
         }
         [Test]
         public void for_first_move_4_center_squares_valid()
@@ -44,7 +44,7 @@ namespace Reversi.UnitTests
             "........"};
 
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
             var output = reversi.GetOutput();
 
             Assert.AreEqual('0', output[4][4]);
@@ -66,7 +66,7 @@ namespace Reversi.UnitTests
                 "........"};
 
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
             reversi.PlaceCounter(3, 3, "1");
@@ -96,7 +96,7 @@ namespace Reversi.UnitTests
             "....0...",
             "........"};
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
 
@@ -124,7 +124,7 @@ namespace Reversi.UnitTests
             "....0..."};
 
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -152,7 +152,7 @@ namespace Reversi.UnitTests
             "....W...",
             "....B..."};
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -180,7 +180,7 @@ namespace Reversi.UnitTests
             ".....W..",
             "......0."};
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -208,7 +208,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -236,7 +236,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -264,7 +264,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -292,7 +292,7 @@ namespace Reversi.UnitTests
             "..000...",
             "........"};
 
-            var reversi = Game.Load(board, Constants.Roles.BLACK);
+            var reversi = Game.Load(board, Roles.BLACK);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -320,7 +320,7 @@ namespace Reversi.UnitTests
             "........",
             "........"};
 
-            var reversi = Game.Load(board, Constants.Roles.WHITE);
+            var reversi = Game.Load(board, Roles.WHITE);
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }

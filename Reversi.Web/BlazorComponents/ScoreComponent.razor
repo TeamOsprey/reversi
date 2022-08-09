@@ -1,5 +1,6 @@
 ﻿@using Reversi.Web.Services.Interfaces;
 @using Microsoft.AspNetCore.Components.Web
+@using Reversi.Logic;
 
 <br/>
 <label><b>SCORE: [ </b></label>
@@ -11,8 +12,8 @@
 @code {
     [CascadingParameter]
     public IGameService GameService { get; set; }
-    public int NumberOfBlack => GameService.GetScoreByColor('B'); 
-    public int NumberOfWhite => GameService.GetScoreByColor('W');
+    public int NumberOfBlack => GameService.GetScoreByColor(Counters.BLACK); 
+    public int NumberOfWhite => GameService.GetScoreByColor(Counters.WHITE);
     public void Refresh()
     {
         StateHasChanged();

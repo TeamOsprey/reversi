@@ -33,7 +33,7 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    Squares[row, col] = new Square(row, col, Constants.Counters.NONE);
+                    Squares[row, col] = new Square(row, col, Counters.NONE);
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace Reversi.Logic
 
             foreach (Square item in Squares)
             {
-                if (item.Colour == Constants.Counters.NONE)
+                if (item.Colour == Counters.NONE)
                     blankSquares.Add(item);
             }
 
