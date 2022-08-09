@@ -221,17 +221,17 @@ but in Square class, where we can define operator method, we don't have that inf
 - We started associating connection IDs with player colors within the GameHub class.
 - [X] Consider moving back to TDD to work out logic before implementing SignalR; i.e., in GameService / logic layer 
 	  e.g., how to assign color to 1st player (black), 2nd player (white), etc.
-- [ ] Handle disconnected connection IDs. Consider if we can leverage SignalR for this instead of our ConnectionList class.
+- [X] Handle disconnected connection IDs. Consider if we can leverage SignalR for this instead of our ConnectionList class.
 - [X] ConnectionList class is static - consider another approach (maybe SignalR features or examples, e.g., DB).
 
 ## 2022-05-31
 - We started implementing logic to manage users as they join the game.
-- [ ] Revisit old logic for assigning color (black/white). 
+- [X] Revisit old logic for assigning color (black/white). 
 - [X] Create a Player class (use class instead of char).
 
 ## 2022-06-07
 - We added a player class to game
-- [ ] Integrate hub/service to add/remove players from game
+- [X] Integrate hub/service to add/remove players from game
 
 ## 2022-06-14
 
@@ -267,7 +267,7 @@ but in Square class, where we can define operator method, we don't have that inf
   duplicate behavior
 - We learned that in SignalR our listener was defined as hubConnection.On<string>("AddPlayer",...) and we invoke it 
   with await hubConnection.SendAsync("AddPlayer");
-- [ ] Visually improve display for whoAmI and whosTurn
+- [X] Visually improve display for whoAmI and whosTurn
 - [X] Move player class to its own file
 - [X] Go through old code for cleanup/refactor (ie: naming conventions,)
 
