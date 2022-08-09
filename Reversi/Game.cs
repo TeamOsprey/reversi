@@ -149,7 +149,7 @@ namespace Reversi.Logic
         {
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
-            ReversiBoard.Squares[selectedSquare.Row, selectedSquare.Column].Colour = turn;
+            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, turn);
             CaptureCounters(selectedSquare);
 
             EndTurn();

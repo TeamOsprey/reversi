@@ -305,3 +305,6 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-08-02
 - [ ] When one player disconnects notify the other player and end the game.
 - [ ] Have multiple rooms with one game per room.
+
+## 2022-08-09
+- [ ] Change turn to Player class in Game class
