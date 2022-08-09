@@ -2,13 +2,13 @@
 {
     public class Player
     {
-        public Player(char colour, string connectionId)
+        public Player(RoleEnum role, string connectionId)
         {
-            Role = colour;
+            Role = role;
             ConnectionId = connectionId;
         }
-
-        public char Role { get; set; }
+        
+        public RoleEnum Role { get; set; }
         public string ConnectionId { get; set; }
     }
 }

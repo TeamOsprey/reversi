@@ -45,7 +45,7 @@ namespace Reversi.App
         }
         private void DisplayBoard()
         {
-            var currentPlayer = (reversi.Turn() == Roles.BLACK) ? Roles.BLACK_STRING : Roles.WHITE_STRING;
+            var currentPlayer = (reversi.Turn() == RoleEnum.Black) ? RoleEnum.Black.ToString() : RoleEnum.White.ToString();
 
             Console.WriteLine(string.Join('\n', guidedBoard));
             Console.WriteLine();

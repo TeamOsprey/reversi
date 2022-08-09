@@ -74,9 +74,9 @@ namespace Reversi.Web.Services
         {
             return colour switch
             {
-                Roles.BLACK => Roles.BLACK_STRING,
-                Roles.WHITE => Roles.WHITE_STRING,
-                _ => Roles.OBSERVER_STRING
+                RoleEnum.Black => RoleEnum.Black.ToString(),
+                RoleEnum.White => RoleEnum.White.ToString(),
+                _ => RoleEnum.Observer.ToString()
             };
         }
     }

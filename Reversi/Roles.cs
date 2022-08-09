@@ -9,4 +9,11 @@
         public const string WHITE_STRING = "White";
         public const string OBSERVER_STRING = "Observer";
     }
+
+    public enum RoleEnum
+    {
+        Black = 0,
+        White = 1,
+        Observer = 2
+    }
 }
