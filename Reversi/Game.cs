@@ -10,10 +10,9 @@ namespace Reversi.Logic
         public Board ReversiBoard { get; set; }
         private RoleEnum _turn;
         
-        public char Turn() => _turn;
+        public RoleEnum Turn() => _turn;
 
-        private char opponent => (_turn == RoleEnum.White) 
-            ? RoleEnum.Black : RoleEnum.White;
+        private RoleEnum _opponent => _turn == RoleEnum.White ? RoleEnum.Black : RoleEnum.White;
         private readonly List<Vector> directions = Direction.GetDirections();
         public State State = new State();
         private static readonly List<int[]> initialValues = new()
@@ -223,7 +222,7 @@ namespace Reversi.Logic
         }
         private void ChangeTurn()
         {
-            //todo is this opponent turn = opponent
+            //todo is this _opponent turn = _opponent
             _turn = (_turn == RoleEnum.White) ? RoleEnum.Black : RoleEnum.White;
         }
         private void SetStatus()
@@ -241,7 +240,7 @@ namespace Reversi.Logic
         }
         private bool IsGameOver()
         {
-            return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(opponent).Count < 1);
+            return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(_opponent).Count < 1);
         }
         private void CaptureCounters(Square selectedSquare)
         {
@@ -273,6 +272,7 @@ namespace Reversi.Logic
         }
         private HashSet<Square> GetLegalSquares(RoleEnum role)
         {
+            var colour = GetColourOfPlayer(role);
             HashSet<Square> returnValue = new HashSet<Square>();
             if (!AllInitialTilesPlaced())
             {
@@ -280,9 +280,19 @@ namespace Reversi.Logic
             }
             else
             {
-                AddLegalSquaresToSet(returnValue, role);
+                AddLegalSquaresToSet(returnValue, colour);
             }
             return returnValue;
+        }
+
+        private char GetColourOfPlayer(RoleEnum role)
+        {
+            return role switch
+            {
+                RoleEnum.Black => Counters.BLACK,
+                RoleEnum.White => Counters.WHITE,
+                _ => throw new ArgumentOutOfRangeException(nameof(role), role, "This role has no valid counter.")
+            };
         }
 
         private bool AllInitialTilesPlaced()

@@ -307,4 +307,6 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] Have multiple rooms with one game per room.
 
 ## 2022-08-09
-- [ ] Change turn to Player class in Game class
+- Replaced lingering hardcoded characters and strings with related constants.
+- [ ] Worked on changing roles from a constant to an enum but left as WIP with some errors. IN PROGRESS
+- [ ] Change turn to Player class in Game class (review all methods where we are passing RoleEnum and discuss where player object would be more beneficial)
