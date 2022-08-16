@@ -273,7 +273,7 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-07-19
 - We did several refactoring and cleanups.
-- [ ] Replace in all codes char Roles Constants with string ones and remove them from constant class 
+- [X] Replace in all codes char Roles Constants with string ones and remove them from constant class 
 - [ ] Line-by-line refactoring of classes other than Game and Constants
 - [ ] Consider other ways to organize constants, e.g.:
 ```cs
@@ -308,13 +308,15 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-08-09
 - Replaced lingering hardcoded characters and strings with related constants.
-- [ ] Worked on changing roles from a constant to an enum but left as WIP with some errors. IN PROGRESS
-- [ ] Change turn to Player class in Game class (review all methods where we are passing RoleEnum and discuss where player object would be more beneficial)
+- [X] Worked on changing roles from a constant to an enum but left as WIP with some errors. IN PROGRESS
+- [X] Change turn to Player class in Game class (review all methods where we are passing RoleEnum and discuss where player object would be more beneficial)
 	  - Note: We have 1. RoleEnum, 2. Counters (char constants), 3. Player class
 	  - Maybe remove Observer from RoleEnum and rename as PlayerEnum (or equivalent)
 
 ## 2022-08-16
-[ ] Hub listeners have unused parameter 'connectionId' - might be a source of bugs?
+- Investigated the remove player issue, and decided we need to investigate disposeasync of hubconnection.
+- Finished implementing RoleEnum and removed Observer from the class.
 [ ] Review ReSharper code inspection results (esp. warnings)
-
+[ ] Consolidate RoleEnum/Counters/Player Class
+[ ] Review method names and parameters for clarity of meaning?
 	
