@@ -65,7 +65,7 @@ namespace Reversi.Logic
             return playerList.Any(x => x.ConnectionId == connectionId && x.Role == _turn);
         }
 
-        public char GetRole(string connectionId)
+        public RoleEnum GetRole(string connectionId)
         {
             var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
             return player?.Role ?? RoleEnum.Observer;
@@ -80,7 +80,7 @@ namespace Reversi.Logic
 
             return ReversiBoard.GetCurrentState();
         }
-        public char GetWinner()
+        public RoleEnum GetWinner()
         {
             var white = GetNumberOfColor(Counters.WHITE);
             var black = GetNumberOfColor(Counters.BLACK);

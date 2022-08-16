@@ -70,9 +70,9 @@ namespace Reversi.Web.Services
             return Game.GetNumberOfColor(color);
         }
 
-        private string ConvertRoleCharToString(char colour)
+        private string ConvertRoleCharToString(RoleEnum role)
         {
-            return colour switch
+            return role switch
             {
                 RoleEnum.Black => RoleEnum.Black.ToString(),
                 RoleEnum.White => RoleEnum.White.ToString(),
