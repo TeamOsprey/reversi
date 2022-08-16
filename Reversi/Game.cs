@@ -65,10 +65,10 @@ namespace Reversi.Logic
             return playerList.Any(x => x.ConnectionId == connectionId && x.Role == _turn);
         }
 
-        public RoleEnum GetRole(string connectionId)
+        public RoleEnum? GetRole(string connectionId)
         {
             var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
-            return player?.Role ?? RoleEnum.Observer;
+            return player?.Role;
         }
         public Player GetCurrentPlayer()
         {
@@ -148,7 +148,7 @@ namespace Reversi.Logic
         {
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
-            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, _turn);
+            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, GetColourOfPlayer(_turn));
             CaptureCounters(selectedSquare);
 
             EndTurn();
@@ -248,16 +248,17 @@ namespace Reversi.Logic
             {
                 Square currentSquare = ReversiBoard.Add(selectedSquare, direction);
                 List<Square> currentLine = new List<Square>();
-                while (SquareIsOtherColour(currentSquare, _turn))
+                var colourOfTurnPlayer = GetColourOfPlayer(_turn);
+                while (SquareIsOtherColour(currentSquare, colourOfTurnPlayer))
                 {
                     currentLine.Add(currentSquare);
                     currentSquare = ReversiBoard.Add(currentSquare, direction);
                 }
-                if (SquareIsSameColour(currentSquare, _turn))
+                if (SquareIsSameColour(currentSquare, colourOfTurnPlayer))
                 {
                     foreach (var square in currentLine)
                     {
-                        square.Colour = _turn;
+                        square.Colour = colourOfTurnPlayer;
                     }
                 }
             }
