@@ -304,9 +304,17 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-08-02
 - [ ] When one player disconnects notify the other player and end the game.
-- [ ] Have multiple rooms with one game per room.
+- [ ] Have multiple rooms with one game per room. Note: This means we might not have an observer any more; e.g., a third connection will be in a new room.
 
 ## 2022-08-09
 - Replaced lingering hardcoded characters and strings with related constants.
 - [ ] Worked on changing roles from a constant to an enum but left as WIP with some errors. IN PROGRESS
 - [ ] Change turn to Player class in Game class (review all methods where we are passing RoleEnum and discuss where player object would be more beneficial)
+	  - Note: We have 1. RoleEnum, 2. Counters (char constants), 3. Player class
+	  - Maybe remove Observer from RoleEnum and rename as PlayerEnum (or equivalent)
+
+## 2022-08-16
+[ ] Hub listeners have unused parameter 'connectionId' - might be a source of bugs?
+[ ] Review ReSharper code inspection results (esp. warnings)
+
+	
