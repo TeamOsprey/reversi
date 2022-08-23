@@ -269,7 +269,9 @@ namespace Reversi.Logic
             }
             else
             {
-                AddLegalSquaresToSet(returnValue, GetCurrentPlayer().Counter);
+                //TODO: refactor this. Probably change _turn and _opponent to be Player. Then we pass Player instead of PlayerType to this method.
+                var player = playerList.First(x => x.Type == type);
+                AddLegalSquaresToSet(returnValue, player.Counter);
             }
             return returnValue;
         }

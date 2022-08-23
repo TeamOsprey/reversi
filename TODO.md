@@ -299,4 +299,11 @@ but in Square class, where we can define operator method, we don't have that inf
 [ ] Review ReSharper code inspection results (esp. warnings)
 [ ] Consolidate RoleEnum/Counters/Player Class
 [ ] Review method names and parameters for clarity of meaning?
-	
+
+## 2022-08-23
+- We are in RED state after introducing Counter to Player
+- We need to find a new way to initiate the first 4 counters on board:
+	1- Make a new method to place the first 4 counters independent from players OR
+	2- Wait for 2 players to join the game before initiating the board with 4 counters OR
+	3- Create players independent from connection
+- We might want to change the data type of _turn and _opponent fields to Player
