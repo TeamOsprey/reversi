@@ -212,8 +212,7 @@ namespace Reversi.Logic
         }
         private void ChangeTurn()
         {
-            //todo is this _opponent turn = _opponent
-            _turn = (_turn == PlayerType.White) ? PlayerType.Black : PlayerType.White;
+            _turn = _opponent;
         }
         private void SetStatus()
         {
@@ -261,9 +260,9 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.NONE;
         }
-        private HashSet<Square> GetLegalSquares(PlayerType role)
+        private HashSet<Square> GetLegalSquares(PlayerType type)
         {
-            var colour = GetColourOfPlayer(role);
+            var colour = GetColourOfPlayer(type);
             HashSet<Square> returnValue = new HashSet<Square>();
             if (!AllInitialTilesPlaced())
             {
@@ -276,13 +275,13 @@ namespace Reversi.Logic
             return returnValue;
         }
 
-        private char GetColourOfPlayer(PlayerType role)
+        private char GetColourOfPlayer(PlayerType type)
         {
-            return role switch
+            return type switch
             {
                 PlayerType.Black => Counters.BLACK,
                 PlayerType.White => Counters.WHITE,
-                _ => throw new ArgumentOutOfRangeException(nameof(role), role, "This role has no valid counter.")
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, "This player type has no valid counter.")
             };
         }
 
