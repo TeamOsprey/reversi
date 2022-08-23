@@ -47,7 +47,7 @@ namespace Reversi.Web.Services
 
         public string GetPlayerColourString(string connectionId)
         {
-            return ConvertRoleCharToString(Game.GetRole(connectionId));
+            return ConvertRoleCharToString(Game.GetPlayerType(connectionId));
         }
         public string GetMessage()
         {
@@ -70,12 +70,12 @@ namespace Reversi.Web.Services
             return Game.GetNumberOfColor(color);
         }
 
-        private string ConvertRoleCharToString(RoleEnum? role)
+        private string ConvertRoleCharToString(PlayerType? role)
         {
             return role switch
             {
-                RoleEnum.Black => RoleEnum.Black.ToString(),
-                RoleEnum.White => RoleEnum.White.ToString(),
+                PlayerType.Black => PlayerType.Black.ToString(),
+                PlayerType.White => PlayerType.White.ToString(),
                 _ => "Observer"
             };
         }

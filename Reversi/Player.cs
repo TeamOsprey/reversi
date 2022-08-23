@@ -2,13 +2,13 @@
 {
     public class Player
     {
-        public Player(RoleEnum role, string connectionId)
+        public Player(PlayerType type, string connectionId)
         {
-            Role = role;
+            Type = type;
             ConnectionId = connectionId;
         }
         
-        public RoleEnum Role { get; set; }
+        public PlayerType Type { get; set; }
         public string ConnectionId { get; set; }
     }
 }

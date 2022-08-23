@@ -8,11 +8,11 @@ namespace Reversi.Logic
     {
         #region fields
         public Board ReversiBoard { get; set; }
-        private RoleEnum _turn;
+        private PlayerType _turn;
         
-        public RoleEnum Turn() => _turn;
+        public PlayerType Turn() => _turn;
 
-        private RoleEnum _opponent => _turn == RoleEnum.White ? RoleEnum.Black : RoleEnum.White;
+        private PlayerType _opponent => _turn == PlayerType.White ? PlayerType.Black : PlayerType.White;
         private readonly List<Vector> directions = Direction.GetDirections();
         public State State = new State();
         private static readonly List<int[]> initialValues = new()
@@ -27,7 +27,7 @@ namespace Reversi.Logic
 
         #endregion
         #region constructors
-        private Game(string[] board, RoleEnum turn)
+        private Game(string[] board, PlayerType turn)
         {
             ReversiBoard = new Board(board);
             _turn = turn;
@@ -35,11 +35,11 @@ namespace Reversi.Logic
         public Game(bool placeInitialCounters = true)
         {
             ReversiBoard = new Board();
-            _turn = RoleEnum.Black;
+            _turn = PlayerType.Black;
             State.InProgress = true;
             if (placeInitialCounters) RandomlyPlaceInitialCounters();
         }
-        public static Game Load(string[] board, RoleEnum turn)
+        public static Game Load(string[] board, PlayerType turn)
         {
             var game = new Game(board, turn);
             game.SetStatus();
@@ -62,17 +62,17 @@ namespace Reversi.Logic
 
         private bool IsPlayersTurn(string connectionId)
         {
-            return playerList.Any(x => x.ConnectionId == connectionId && x.Role == _turn);
+            return playerList.Any(x => x.ConnectionId == connectionId && x.Type == _turn);
         }
 
-        public RoleEnum? GetRole(string connectionId)
+        public PlayerType? GetPlayerType(string connectionId)
         {
             var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
-            return player?.Role;
+            return player?.Type;
         }
         public Player GetCurrentPlayer()
         {
-            return playerList.Single(x => x.Role == _turn);
+            return playerList.Single(x => x.Type == _turn);
         }
         public string[] GetOutput()
         {
@@ -80,12 +80,12 @@ namespace Reversi.Logic
 
             return ReversiBoard.GetCurrentState();
         }
-        public RoleEnum GetWinner()
+        public PlayerType GetWinner()
         {
             var white = GetNumberOfColor(Counters.WHITE);
             var black = GetNumberOfColor(Counters.BLACK);
 
-            return (white > black) ? RoleEnum.White : RoleEnum.Black;
+            return (white > black) ? PlayerType.White : PlayerType.Black;
         }
 
         public string[] DisplayBoard()
@@ -106,29 +106,19 @@ namespace Reversi.Logic
         {
             if (playerList.Any(x => x.ConnectionId == connectionId)) return;
 
-            Action<RoleEnum> addPlayer = (role) =>
+            Action<PlayerType> addPlayer = (type) =>
             {
-                playerList.Add(new Player(role, connectionId));
+                playerList.Add(new Player(type, connectionId));
             };
 
-            if (!playerList.Any(x => x.Role == RoleEnum.Black))
+            if (!playerList.Any(x => x.Type == PlayerType.Black))
             {
-                addPlayer(RoleEnum.Black);
+                addPlayer(PlayerType.Black);
             }
-            else if (!playerList.Any(x => x.Role == RoleEnum.White))
+            else if (!playerList.Any(x => x.Type == PlayerType.White))
             {
-                addPlayer(RoleEnum.White);
+                addPlayer(PlayerType.White);
             }
-
-            //if (playerList.Count == 0)
-            //    addPlayer(RoleEnum.Black);
-            //else if (playerList.Count == 1)
-            //{
-            //    if (playerList.Any(x => x.Role == RoleEnum.Black))
-            //        addPlayer(RoleEnum.White);
-            //    else if (playerList.Any(x => x.Role == RoleEnum.White))
-            //        addPlayer(RoleEnum.White);
-            //}
         }
         public void RemovePlayer(string connectionId)
         {
@@ -223,7 +213,7 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             //todo is this _opponent turn = _opponent
-            _turn = (_turn == RoleEnum.White) ? RoleEnum.Black : RoleEnum.White;
+            _turn = (_turn == PlayerType.White) ? PlayerType.Black : PlayerType.White;
         }
         private void SetStatus()
         {
@@ -271,7 +261,7 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.NONE;
         }
-        private HashSet<Square> GetLegalSquares(RoleEnum role)
+        private HashSet<Square> GetLegalSquares(PlayerType role)
         {
             var colour = GetColourOfPlayer(role);
             HashSet<Square> returnValue = new HashSet<Square>();
@@ -286,12 +276,12 @@ namespace Reversi.Logic
             return returnValue;
         }
 
-        private char GetColourOfPlayer(RoleEnum role)
+        private char GetColourOfPlayer(PlayerType role)
         {
             return role switch
             {
-                RoleEnum.Black => Counters.BLACK,
-                RoleEnum.White => Counters.WHITE,
+                PlayerType.Black => Counters.BLACK,
+                PlayerType.White => Counters.WHITE,
                 _ => throw new ArgumentOutOfRangeException(nameof(role), role, "This role has no valid counter.")
             };
         }
