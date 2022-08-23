@@ -138,7 +138,7 @@ namespace Reversi.Logic
         {
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
-            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, GetColourOfPlayer(_turn));
+            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, GetCurrentPlayer().Counter);
             CaptureCounters(selectedSquare);
 
             EndTurn();
@@ -237,7 +237,7 @@ namespace Reversi.Logic
             {
                 Square currentSquare = ReversiBoard.Add(selectedSquare, direction);
                 List<Square> currentLine = new List<Square>();
-                var colourOfTurnPlayer = GetColourOfPlayer(_turn);
+                var colourOfTurnPlayer = GetCurrentPlayer().Counter;
                 while (SquareIsOtherColour(currentSquare, colourOfTurnPlayer))
                 {
                     currentLine.Add(currentSquare);
@@ -262,7 +262,6 @@ namespace Reversi.Logic
         }
         private HashSet<Square> GetLegalSquares(PlayerType type)
         {
-            var colour = GetColourOfPlayer(type);
             HashSet<Square> returnValue = new HashSet<Square>();
             if (!AllInitialTilesPlaced())
             {
@@ -270,19 +269,9 @@ namespace Reversi.Logic
             }
             else
             {
-                AddLegalSquaresToSet(returnValue, colour);
+                AddLegalSquaresToSet(returnValue, GetCurrentPlayer().Counter);
             }
             return returnValue;
-        }
-
-        private char GetColourOfPlayer(PlayerType type)
-        {
-            return type switch
-            {
-                PlayerType.Black => Counters.BLACK,
-                PlayerType.White => Counters.WHITE,
-                _ => throw new ArgumentOutOfRangeException(nameof(type), type, "This player type has no valid counter.")
-            };
         }
 
         private bool AllInitialTilesPlaced()

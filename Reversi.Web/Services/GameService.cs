@@ -42,12 +42,12 @@ namespace Reversi.Web.Services
 
         public string GetCurrentPlayer()
         {
-            return ConvertRoleCharToString(Game.Turn());
+            return ConvertPlayerTypeToString(Game.Turn());
         }
 
         public string GetPlayerColourString(string connectionId)
         {
-            return ConvertRoleCharToString(Game.GetPlayerType(connectionId));
+            return ConvertPlayerTypeToString(Game.GetPlayerType(connectionId));
         }
         public string GetMessage()
         {
@@ -70,9 +70,9 @@ namespace Reversi.Web.Services
             return Game.GetNumberOfColor(color);
         }
 
-        private string ConvertRoleCharToString(PlayerType? role)
+        private string ConvertPlayerTypeToString(PlayerType? type)
         {
-            return role switch
+            return type switch
             {
                 PlayerType.Black => PlayerType.Black.ToString(),
                 PlayerType.White => PlayerType.White.ToString(),
