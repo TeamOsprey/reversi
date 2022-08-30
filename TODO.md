@@ -307,3 +307,9 @@ but in Square class, where we can define operator method, we don't have that inf
 	2- Wait for 2 players to join the game before initiating the board with 4 counters OR
 	3- Create players independent from connection
 - We might want to change the data type of _turn and _opponent fields to Player
+
+## 2022-08-30
+- We didn't code at all!
+- We decided to use the visual method of Event Storming to discuss the process. Here is the link of the board we created: https://miro.com/app/board/uXjVPbHT2Ag=/?share_link_id=207523459816
+- We decided to go with method 1, form previous session, to initiate the board
+- We also decided to create an array of all possible combinations of first four moves and choose from it randomly
