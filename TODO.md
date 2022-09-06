@@ -313,3 +313,9 @@ but in Square class, where we can define operator method, we don't have that inf
 - We decided to use the visual method of Event Storming to discuss the process. Here is the link of the board we created: https://miro.com/app/board/uXjVPbHT2Ag=/?share_link_id=207523459816
 - We decided to go with method 1, form previous session, to initiate the board
 - We also decided to create an array of all possible combinations of first four moves and choose from it randomly
+
+## 2022-09-06
+- Ending in RED state
+- discuss changes made on 08-23 which put us in RED state.
+- We changed construction of Board to start with one of 6 initial board states.
+- Examine possible root cause of accessing a Player who does not yet exist. (see todo on line 273 in Game.cs)
