@@ -822,5 +822,15 @@ namespace Reversi.UnitTests
             Assert.IsTrue(game.State.MoveInvalid);
         }
 
+        [Test]
+        public void StartGameWithInitialBoard()
+        {
+            var game = new Game();
+
+            var blackcounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.BLACK);
+            var whitecounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.WHITE);
+
+            Assert.IsTrue((blackcounters == whitecounters && blackcounters == 2));            
+        }
     }
 }

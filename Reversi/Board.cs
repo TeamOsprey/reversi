@@ -10,8 +10,11 @@ namespace Reversi.Logic
         private Square[,] _squares;
         public int Size { get; }
 
+        private List<string[]> initialBoards;
+
         public Board(string[] board)
         {
+            CreateInitialBoards();
             Size = 8;
             _squares = new Square[Size, Size];
 
@@ -26,7 +29,7 @@ namespace Reversi.Logic
 
         public Board()
         {
-
+            CreateInitialBoards();
             Size = 8;
             _squares = new Square[Size, Size];
             for (int row = 0; row < Size; row++)
