@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Reversi.Logic
@@ -14,7 +15,6 @@ namespace Reversi.Logic
 
         public Board(string[] board)
         {
-            CreateInitialBoards();
             Size = 8;
             _squares = new Square[Size, Size];
 
@@ -27,19 +27,15 @@ namespace Reversi.Logic
             }
         }
 
-        public Board()
+
+        public Board InitializeBoard()
         {
             CreateInitialBoards();
-            Size = 8;
-            _squares = new Square[Size, Size];
-            for (int row = 0; row < Size; row++)
-            {
-                for (int col = 0; col < Size; col++)
-                {
-                    _squares[row, col] = new Square(row, col, Counters.NONE);
-                }
-            }
+            
+            return new Board(ChooseInitialLayout());
         }
+
+
 
         public Square Add(Square originalSquare, Vector direction)
         {
@@ -116,6 +112,73 @@ namespace Reversi.Logic
         public void ChangeSquareColour(int selectedSquareRow, int selectedSquareColumn, char turn)
         {
             _squares[selectedSquareRow, selectedSquareColumn].Colour = turn;
+        }
+
+        private void CreateInitialBoards()
+        {
+            initialBoards.Add(new string[]{
+                "........",
+                "........",
+                "........",
+                "...WW...",
+                "...BB...",
+                "........",
+                "........",
+                "........"});
+
+            initialBoards.Add(new string[]{
+                "........",
+                "........",
+                "........",
+                "...WB...",
+                "...WB...",
+                "........",
+                "........",
+                "........"});
+            initialBoards.Add(new string[]{
+                "........",
+                "........",
+                "........",
+                "...WB...",
+                "...BW...",
+                "........",
+                "........",
+                "........"});
+            initialBoards.Add(new string[]{
+                "........",
+                "........",
+                "........",
+                "...BW...",
+                "...WB...",
+                "........",
+                "........",
+                "........"});
+            initialBoards.Add(new string[]{
+                "........",
+                "........",
+                "........",
+                "...BB...",
+                "...WW...",
+                "........",
+                "........",
+                "........"});
+
+            initialBoards.Add(new string[]{
+                "........",
+                "........",
+                "........",
+                "...BW...",
+                "...BW...",
+                "........",
+                "........",
+                "........"});
+        }
+
+        private string[] ChooseInitialLayout()
+        {
+            var random = new Random();
+            var selected = random.Next(0, 6);
+            return initialBoards[selected];
         }
     }
 }
