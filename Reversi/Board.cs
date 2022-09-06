@@ -11,8 +11,6 @@ namespace Reversi.Logic
         private Square[,] _squares;
         public int Size { get; }
 
-        private List<string[]> initialBoards;
-
         public Board(string[] board)
         {
             Size = 8;
@@ -28,11 +26,9 @@ namespace Reversi.Logic
         }
 
 
-        public Board InitializeBoard()
+        public static Board InitializeBoard()
         {
-            CreateInitialBoards();
-            
-            return new Board(ChooseInitialLayout());
+            return new Board(CreateInitialBoard());
         }
 
 
@@ -114,8 +110,9 @@ namespace Reversi.Logic
             _squares[selectedSquareRow, selectedSquareColumn].Colour = turn;
         }
 
-        private void CreateInitialBoards()
+        private static string[] CreateInitialBoard()
         {
+            var initialBoards = new List<string[]>();
             initialBoards.Add(new string[]{
                 "........",
                 "........",
@@ -172,9 +169,11 @@ namespace Reversi.Logic
                 "........",
                 "........",
                 "........"});
+            
+            return ChooseInitialLayout(initialBoards);
         }
 
-        private string[] ChooseInitialLayout()
+        private static string[] ChooseInitialLayout(List<string[]> initialBoards)
         {
             var random = new Random();
             var selected = random.Next(0, 6);

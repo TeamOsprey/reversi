@@ -34,7 +34,7 @@ namespace Reversi.Logic
         }
         public Game(bool placeInitialCounters = true)
         {
-            ReversiBoard = new Board();
+            ReversiBoard = Board.InitializeBoard();
             _turn = PlayerType.Black;
             State.InProgress = true;
             if (placeInitialCounters) RandomlyPlaceInitialCounters();
