@@ -547,24 +547,6 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void InitiateGameWithCorrectBoard()
-        {
-            var expected = new string[]{
-                "........",
-                "........",
-                "........",
-                "........",
-                "........",
-                "........",
-                "........",
-                "........"};
-
-            var reversi = new Game(false);
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-
-        }
-
-        [Test]
         public void InitiateGameWithStatusInProgress()
         {
             var reversi = new Game();
@@ -585,6 +567,8 @@ namespace Reversi.UnitTests
                 "WWWWWWWW"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
             Assert.IsTrue(reversi.State.GameOver);
         }
 
@@ -602,6 +586,8 @@ namespace Reversi.UnitTests
                 "BBBBBBBW"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
             Assert.IsTrue(reversi.State.GameOver);
         }
 
@@ -619,6 +605,8 @@ namespace Reversi.UnitTests
                 "BBBBBBBW"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
             Assert.AreEqual(PlayerType.White, reversi.Turn());
         }
         [Test]
@@ -785,12 +773,22 @@ namespace Reversi.UnitTests
         [Test]
         public void AfterThirdPlayerJoinsOtherPlayersCanStillMove()
         {
-            var game = new Game(false);
+            var board = new string[]{
+                "........",
+                "........",
+                "........",
+                "...WW...",
+                "...BB...",
+                "........",
+                "........",
+                "........"};
+
+            var game = Game.Load(board, PlayerType.Black);
             game.AddPlayer("1");
             game.AddPlayer("2");
             game.AddPlayer("3");
-            game.PlaceCounter(4, 4, "1");
-            game.PlaceCounter(3, 4, "2");
+            game.PlaceCounter(2, 5, "1");
+            game.PlaceCounter(5, 5, "2");
             Assert.IsTrue(game.State.TurnComplete);
         }
 
@@ -805,10 +803,20 @@ namespace Reversi.UnitTests
         [Test]
         public void WithTwoPlayersAllowPlaceCounter()
         {
-            var game = new Game(false);
+            var board = new string[]{
+                "........",
+                "........",
+                "........",
+                "...WW...",
+                "...BB...",
+                "........",
+                "........",
+                "........"};
+
+            var game = Game.Load(board, PlayerType.Black);
             game.AddPlayer("1");
             game.AddPlayer("2");
-            game.PlaceCounter(4, 4, "1");
+            game.PlaceCounter(2, 5, "1");
             Assert.IsTrue(game.State.TurnComplete);
         }
 

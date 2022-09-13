@@ -32,18 +32,15 @@ namespace Reversi.Logic
             ReversiBoard = new Board(board);
             _turn = turn;
         }
-        public Game(bool placeInitialCounters = true)
+        public Game()
         {
             ReversiBoard = Board.InitializeBoard();
             _turn = PlayerType.Black;
             State.InProgress = true;
-            //if (placeInitialCounters) RandomlyPlaceInitialCounters();
         }
         public static Game Load(string[] board, PlayerType turn)
         {
             var game = new Game(board, turn);
-            game.SetStatus();
-            game.ActOnStatus();
             return game;
         }
         #endregion
@@ -76,7 +73,8 @@ namespace Reversi.Logic
         }
         public string[] GetOutput()
         {
-            ReversiBoard.SetLegalSquares(GetLegalSquares(_turn));
+            if(playerList.Count == 2)
+                ReversiBoard.SetLegalSquares(GetLegalSquares(_turn));
 
             return ReversiBoard.GetCurrentState();
         }
@@ -104,6 +102,9 @@ namespace Reversi.Logic
 
         public void AddPlayer(string connectionId)
         {
+            if (playerList.Count == 2)
+                return;
+
             if (playerList.Any(x => x.ConnectionId == connectionId)) return;
 
             Action<PlayerType> addPlayer = (type) =>
@@ -119,6 +120,13 @@ namespace Reversi.Logic
             {
                 addPlayer(PlayerType.White);
             }
+
+            if (playerList.Count == 2)
+            {
+                SetStatus();
+                ActOnStatus();
+            }
+
         }
         public void RemovePlayer(string connectionId)
         {

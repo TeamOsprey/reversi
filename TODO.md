@@ -319,3 +319,12 @@ but in Square class, where we can define operator method, we don't have that inf
 - discuss changes made on 08-23 which put us in RED state.
 - We changed construction of Board to start with one of 6 initial board states.
 - Examine possible root cause of accessing a Player who does not yet exist. (see todo on line 273 in Game.cs)
+
+## 2022-09-13
+- We are back to GREEN
+- However, we encountered a new issue when tried to run the game with two players. When the second player connects we get this error: "Collection was modified; enumeration operation may not execute."
+- The error happened on line 119 of Game.cs
+- Mark's suggestion is to remove the second Any
+- Joel's suggestion is to revisit the gate keeper we added to line 76
+- Also add an additional condition at line 124 to avoid setting status if it is already initiated
+- Add a helper method to Unit Tests to avoid duplication codes for adding two players.

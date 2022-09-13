@@ -22,6 +22,9 @@ namespace Reversi.UnitTests
 
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
+
             var output = reversi.GetOutput();
 
             Assert.AreEqual(Counters.BLACK, output[4][4]);
@@ -97,6 +100,8 @@ namespace Reversi.UnitTests
             "........"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
 
@@ -125,6 +130,8 @@ namespace Reversi.UnitTests
 
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -153,6 +160,8 @@ namespace Reversi.UnitTests
             "....B..."};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -181,6 +190,8 @@ namespace Reversi.UnitTests
             "......0."};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -209,6 +220,8 @@ namespace Reversi.UnitTests
             "........"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -237,6 +250,8 @@ namespace Reversi.UnitTests
             "........"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -265,6 +280,8 @@ namespace Reversi.UnitTests
             "........"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -293,6 +310,8 @@ namespace Reversi.UnitTests
             "........"};
 
             var reversi = Game.Load(board, PlayerType.Black);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
@@ -321,6 +340,8 @@ namespace Reversi.UnitTests
             "........"};
 
             var reversi = Game.Load(board, PlayerType.White);
+            reversi.AddPlayer("1");
+            reversi.AddPlayer("2");
 
             CollectionAssert.AreEqual(expected, reversi.GetOutput());
         }
