@@ -75,7 +75,7 @@ namespace Reversi.Logic
         }
         public string[] GetOutput()
         {
-            if(playerList.Count == 2)
+            if(playerList.IsGameFull)
                 ReversiBoard.SetLegalSquares(GetLegalSquares(_turn));
 
             return ReversiBoard.GetCurrentState();
@@ -99,7 +99,7 @@ namespace Reversi.Logic
 
         public List<Player> GetPlayerList()
         {
-            return playerList;
+            return playerList.Players;
         }
 
         public void AddPlayer(string connectionId)
@@ -181,7 +181,7 @@ namespace Reversi.Logic
 
         private bool ConfirmTwoPlayers()
         {
-            if (playerList.Count < 2)
+            if (!playerList.IsGameFull)
             {
                 State.InsufficientPlayers = true;
                 return false;
