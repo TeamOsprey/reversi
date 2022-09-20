@@ -23,7 +23,8 @@ namespace Reversi.Logic
                 new[] { 4,3 },
         };
 
-        private List<Player> playerList = new();
+        //private List<Player> playerList = new();
+        private PlayerList playerList = new();
         private bool _setInitialStatus;
 
         #endregion
@@ -105,14 +106,14 @@ namespace Reversi.Logic
         {
             lock (playerList)
             {
-                if (playerList.Count == 2)
+                if (playerList.IsGameFull)
                     return;
 
-                if (playerList.Any(x => x.ConnectionId == connectionId)) return;
+                if (playerList.DoesConnectionExist(connectionId)) return;
 
                 Action<PlayerType> addPlayer = (type) =>
                 {
-                    playerList.Add(new Player(type, connectionId));
+                    playerList.AddPlayer(type, connectionId);
                 };
 
                 if (!playerList.Any(x => x.Type == PlayerType.Black))
@@ -124,7 +125,7 @@ namespace Reversi.Logic
                     addPlayer(PlayerType.White);
                 }
 
-                if (!_setInitialStatus && playerList.Count == 2)
+                if (!_setInitialStatus && playerList.IsGameFull)
                 {
                     SetStatus();
                     ActOnStatus();
