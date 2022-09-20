@@ -330,6 +330,10 @@ but in Square class, where we can define operator method, we don't have that inf
 - Add a helper method to Unit Tests to avoid duplication codes for adding two players.
 
 ## 2022-09-20
--[ ] "Who am I" is showing White for both
+- We fixed a race condition in the AddPlayer method, in which the playerList collection was being accessed and 
+  modified at the same time. We resolved this with a lock statement.
+- We encapsulated the PlayerList into a reusable collection object.
+-[ ] IMPORTANT!!! : "Who am I" is showing White for both <=====*************** !!!!!!!!!
 -[ ] Revisit the Lock we added to AddPlayer method. We might want to change its scope.
--[ ] Encapsulate PlayerList to its reusable collection object.
+-[X] Encapsulate PlayerList to its reusable collection object.
+-[ ] Refactor PlayerList class if needed.
