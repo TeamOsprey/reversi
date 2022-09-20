@@ -33,28 +33,7 @@ namespace Reversi.UnitTests
             Assert.AreEqual(Counters.WHITE, output[5][5]);
             Assert.AreEqual(PlayerType.Black, reversi.Turn());
         }
-        [Test]
-        public void for_first_move_4_center_squares_valid()
-        {
-            var board = new string[]{
-            "........",
-            "........",
-            "........",
-            "........",
-            "........",
-            "........",
-            "........",
-            "........"};
 
-
-            var reversi = Game.Load(board, PlayerType.Black);
-            var output = reversi.GetOutput();
-
-            Assert.AreEqual('0', output[4][4]);
-            Assert.AreEqual('0', output[3][3]);
-            Assert.AreEqual('0', output[4][3]);
-            Assert.AreEqual('0', output[3][4]);
-        }
         [Test]
         public void after_first_move_that_square_is_not_valid()
         {

@@ -24,6 +24,7 @@ namespace Reversi.Logic
         };
 
         private List<Player> playerList = new();
+        private bool _setInitialStatus;
 
         #endregion
         #region constructors
@@ -102,31 +103,34 @@ namespace Reversi.Logic
 
         public void AddPlayer(string connectionId)
         {
-            if (playerList.Count == 2)
-                return;
-
-            if (playerList.Any(x => x.ConnectionId == connectionId)) return;
-
-            Action<PlayerType> addPlayer = (type) =>
+            lock (playerList)
             {
-                playerList.Add(new Player(type, connectionId));
-            };
+                if (playerList.Count == 2)
+                    return;
 
-            if (!playerList.Any(x => x.Type == PlayerType.Black))
-            {
-                addPlayer(PlayerType.Black);
+                if (playerList.Any(x => x.ConnectionId == connectionId)) return;
+
+                Action<PlayerType> addPlayer = (type) =>
+                {
+                    playerList.Add(new Player(type, connectionId));
+                };
+
+                if (!playerList.Any(x => x.Type == PlayerType.Black))
+                {
+                    addPlayer(PlayerType.Black);
+                }
+                else if (!playerList.Any(x => x.Type == PlayerType.White))
+                {
+                    addPlayer(PlayerType.White);
+                }
+
+                if (!_setInitialStatus && playerList.Count == 2)
+                {
+                    SetStatus();
+                    ActOnStatus();
+                    _setInitialStatus = true;
+                }
             }
-            else if (!playerList.Any(x => x.Type == PlayerType.White))
-            {
-                addPlayer(PlayerType.White);
-            }
-
-            if (playerList.Count == 2)
-            {
-                SetStatus();
-                ActOnStatus();
-            }
-
         }
         public void RemovePlayer(string connectionId)
         {

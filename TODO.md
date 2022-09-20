@@ -328,3 +328,8 @@ but in Square class, where we can define operator method, we don't have that inf
 - Joel's suggestion is to revisit the gate keeper we added to line 76
 - Also add an additional condition at line 124 to avoid setting status if it is already initiated
 - Add a helper method to Unit Tests to avoid duplication codes for adding two players.
+
+## 2022-09-20
+-[ ] "Who am I" is showing White for both
+-[ ] Revisit the Lock we added to AddPlayer method. We might want to change its scope.
+-[ ] Encapsulate PlayerList to its reusable collection object.
