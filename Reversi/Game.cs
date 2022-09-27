@@ -23,7 +23,6 @@ namespace Reversi.Logic
                 new[] { 4,3 },
         };
 
-        //private List<Player> playerList = new();
         private PlayerList playerList = new();
         private bool _setInitialStatus;
 
@@ -61,7 +60,7 @@ namespace Reversi.Logic
 
         private bool IsPlayersTurn(string connectionId)
         {
-            return playerList.Any(x => x.ConnectionId == connectionId && x.Type == _turn);
+            return playerList.PlayerIsCurrentPlayer(connectionId, _turn);
         }
 
         public PlayerType? GetPlayerType(string connectionId)
@@ -111,18 +110,13 @@ namespace Reversi.Logic
 
                 if (playerList.DoesConnectionExist(connectionId)) return;
 
-                Action<PlayerType> addPlayer = (type) =>
+                if (!playerList.HavePlayer(PlayerType.Black))
                 {
-                    playerList.AddPlayer(type, connectionId);
-                };
-
-                if (!playerList.Any(x => x.Type == PlayerType.Black))
-                {
-                    addPlayer(PlayerType.Black);
+                    playerList.AddPlayer(PlayerType.Black, connectionId);
                 }
-                else if (!playerList.Any(x => x.Type == PlayerType.White))
+                else if (!playerList.HavePlayer(PlayerType.White))
                 {
-                    addPlayer(PlayerType.White);
+                    playerList.AddPlayer(PlayerType.White, connectionId);
                 }
 
                 if (!_setInitialStatus && playerList.IsGameFull)
@@ -133,6 +127,7 @@ namespace Reversi.Logic
                 }
             }
         }
+
         public void RemovePlayer(string connectionId)
         {
             var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);

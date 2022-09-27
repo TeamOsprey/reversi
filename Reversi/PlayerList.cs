@@ -22,6 +22,10 @@ namespace Reversi.Logic
         {
             Players.Add(new Player(type, connectionId));
         }
+        public void Remove(Player player)
+        {
+            Players.Remove(player);
+        }
 
         public IEnumerator<Player> GetEnumerator()
         {
@@ -33,9 +37,14 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        public void Remove(Player player)
+        public bool PlayerIsCurrentPlayer(string connectionId, PlayerType turn)
         {
-            Players.Remove(player);
+            return Players.Any(x => x.ConnectionId == connectionId && x.Type == turn);
+        }
+
+        public bool HavePlayer(PlayerType playerType)
+        {
+            return Players.Any(x => x.Type == playerType);
         }
     }
 }

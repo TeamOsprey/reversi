@@ -339,5 +339,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] Refactor PlayerList class if needed.
 
 ## 2022-09-27
-- WIP: Reviewing and fixing ReSharper errors/warnings
+- WIP: Reviewing and fixing some ReSharper errors/warnings
+- Refactored some methods into PlayerList class
 - [ ] Consider adding EN-CA dictionary to ReSharper (see https://github.com/wooorm/dictionaries/tree/main/dictionaries/en-CA)
+- [ ] Refactor Linq statements from Game to PlayerList class(approx 4 left.)
