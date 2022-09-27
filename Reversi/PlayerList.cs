@@ -18,7 +18,7 @@ namespace Reversi.Logic
             return Players.Any(x => x.ConnectionId == connectionId);
         }
 
-        public void AddPlayer(PlayerType type, string connectionId) 
+        public void AddPlayer(PlayerType type, string connectionId)
         {
             Players.Add(new Player(type, connectionId));
         }

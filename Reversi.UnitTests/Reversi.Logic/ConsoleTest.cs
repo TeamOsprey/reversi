@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 namespace Reversi.UnitTests
 {
     [TestFixture]
-    public class ConsolTest
+    public class ConsoleTest
     {
-        //public void After_Consol_File_Saved_To_AppData_Game_State()
+        //public void After_Console_File_Saved_To_AppData_Game_State()
         //{
         //    string path = @"c:\temp\test.txt";
         //    Console.WriteLine(File.Exists(path));
@@ -119,7 +119,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void IfWhiteUserMoveIllegalDontPlaceCounter()
+        public void IfWhiteUserMoveIllegalDoNotPlaceCounter()
         {
             var board = new string[]{
             "........",
@@ -681,7 +681,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(7, 6, "1");
 
-            Assert.IsTrue(reversi.State.PassOccured);
+            Assert.IsTrue(reversi.State.PassOccurred);
         }
 
         [Test]
@@ -835,10 +835,10 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
 
-            var blackcounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.BLACK);
-            var whitecounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.WHITE);
+            var blackCounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.BLACK);
+            var whiteCounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.WHITE);
 
-            Assert.IsTrue((blackcounters == whitecounters && blackcounters == 2));            
+            Assert.IsTrue((blackCounters == whiteCounters && blackCounters == 2));            
         }
     }
 }

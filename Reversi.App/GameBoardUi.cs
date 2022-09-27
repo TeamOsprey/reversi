@@ -54,7 +54,7 @@ namespace Reversi.App
 
             if (reversi.State.MoveInvalid)
                 WriteErrorMessage("Invalid Move!");
-            if (reversi.State.PassOccured)
+            if (reversi.State.PassOccurred)
                 WriteErrorMessage("User had no possible moves. Turn passed!");
             if (reversi.State.GameOver)
                 WriteErrorMessage("Game Over!");

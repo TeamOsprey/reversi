@@ -37,13 +37,13 @@ namespace Reversi.Web.Hubs
 
         public class Connections
         {
-            public string Groupname { get; set; }
+            public string GroupName { get; set; }
             public string ConnectionId { get; set; }
             public string Color { get; set; }
 
-            public Connections(string groupname, string connectionId, string color)
+            public Connections(string groupName, string connectionId, string color)
             {
-                Groupname = groupname;
+                GroupName = groupName;
                 ConnectionId = connectionId;
                 Color = color;
             }

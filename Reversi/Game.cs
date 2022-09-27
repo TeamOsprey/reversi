@@ -14,7 +14,7 @@ namespace Reversi.Logic
 
         private PlayerType _opponent => _turn == PlayerType.White ? PlayerType.Black : PlayerType.White;
         private readonly List<Vector> directions = Direction.GetDirections();
-        public State State = new State();
+        public State State = new();
         private static readonly List<int[]> initialValues = new()
         {
                 new[] { 3,3 },
@@ -216,7 +216,7 @@ namespace Reversi.Logic
 
         private void ActOnStatus()
         {
-            if (State.PassOccured)
+            if (State.PassOccurred)
             {
                 ChangeTurn();
                 SetStatus();
@@ -232,7 +232,7 @@ namespace Reversi.Logic
             if (IsGameOver())
                 State.GameOver = true;
             else if (IsPass())
-                State.PassOccured = true;
+                State.PassOccurred = true;
             else
                 State.InProgress = true;
         }

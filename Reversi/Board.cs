@@ -8,7 +8,7 @@ namespace Reversi.Logic
     {
         private HashSet<Square> _legalSquares;
 
-        private Square[,] _squares;
+        private readonly Square[,] _squares;
         public int Size { get; }
 
         public Board(string[] board)

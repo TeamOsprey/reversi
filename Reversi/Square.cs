@@ -4,8 +4,8 @@ namespace Reversi.Logic
 { 
     public class Square : IEquatable<Square>
     {
-        public int Row { get; private set; }
-        public int Column { get; private set; }
+        public int Row { get; }
+        public int Column { get; }
         public char Colour { get; set; }
 
         public Square(int row, int col, char colour = Counters.NONE)

@@ -4,8 +4,8 @@ namespace Reversi.Logic
 { 
     public class Vector : IEquatable<Vector>
     {
-        public int Horizontal { get; private set; }
-        public int Vertical { get; private set; }
+        public int Horizontal { get; }
+        public int Vertical { get; }
 
         public Vector(int horizontal, int vertical)
         {

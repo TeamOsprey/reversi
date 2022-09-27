@@ -161,7 +161,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - Possible solutions to look at next week are:
 	- Update a hidden parameter in a form to be passed to a controller in some way (through json?).
 	- Injecting a service to perform these actions
--[X] Need to revisit blazor Weather video https://www.youtube.com/watch?v=MetcuX1OHD0 to get better understanding of his service calls
+- [X] Need to revisit blazor Weather video https://www.youtube.com/watch?v=MetcuX1OHD0 to get better understanding of his service calls
 
 ## 2022-03-29
 - We found the way to inject services to Razor components
@@ -174,8 +174,8 @@ but in Square class, where we can define operator method, we don't have that inf
 - We used the service to track and update the game for the blazor components. 
 - We also passed coordinates from child to parent component by using invoke event from https://www.pragimtech.com/blog/blazor/pass-data-from-child-to-parent-component-in-blazor/.
 - We realized we did not need to bind manually, any time the component was updated the view updates on its own.
--[-] Need to find a way to initiate game inside controller instead of inside the service.
--[X] Set up more UI components (turn indicator, messaging)
+- [-] Need to find a way to initiate game inside controller instead of inside the service.
+- [X] Set up more UI components (turn indicator, messaging)
 
 ## 2022-04-12
 - We added two new components: Message and Game Information components
@@ -333,7 +333,11 @@ but in Square class, where we can define operator method, we don't have that inf
 - We fixed a race condition in the AddPlayer method, in which the playerList collection was being accessed and 
   modified at the same time. We resolved this with a lock statement.
 - We encapsulated the PlayerList into a reusable collection object.
--[ ] IMPORTANT!!! : "Who am I" is showing White for both <=====*************** !!!!!!!!!
--[ ] Revisit the Lock we added to AddPlayer method. We might want to change its scope.
--[X] Encapsulate PlayerList to its reusable collection object.
--[ ] Refactor PlayerList class if needed.
+- [ ] IMPORTANT!!! : "Who am I" is showing White for both <=====*************** !!!!!!!!!
+- [ ] Revisit the Lock we added to AddPlayer method. We might want to change its scope.
+- [X] Encapsulate PlayerList to its reusable collection object.
+- [ ] Refactor PlayerList class if needed.
+
+## 2022-09-27
+- WIP: Reviewing and fixing ReSharper errors/warnings
+- [ ] Consider adding EN-CA dictionary to ReSharper (see https://github.com/wooorm/dictionaries/tree/main/dictionaries/en-CA)

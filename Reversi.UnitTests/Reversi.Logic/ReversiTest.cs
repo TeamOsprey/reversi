@@ -63,7 +63,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void return_the_only_legal_postition_for_two_trapped_counters_Below()
+        public void return_the_only_legal_position_for_two_trapped_counters_Below()
         {
             var board = new string[]{
             "........",
