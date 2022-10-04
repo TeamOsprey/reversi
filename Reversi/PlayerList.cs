@@ -37,12 +37,12 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        public bool PlayerIsCurrentPlayer(string connectionId, PlayerType turn)
+        public bool IsCurrentPlayer(string connectionId, PlayerType turn)
         {
             return Players.Any(x => x.ConnectionId == connectionId && x.Type == turn);
         }
 
-        public bool HavePlayer(PlayerType playerType)
+        public bool HasPlayer(PlayerType playerType)
         {
             return Players.Any(x => x.Type == playerType);
         }

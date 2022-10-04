@@ -60,7 +60,7 @@ namespace Reversi.Logic
 
         private bool IsPlayersTurn(string connectionId)
         {
-            return playerList.PlayerIsCurrentPlayer(connectionId, _turn);
+            return playerList.IsCurrentPlayer(connectionId, _turn);
         }
 
         public PlayerType? GetPlayerType(string connectionId)
@@ -110,11 +110,11 @@ namespace Reversi.Logic
 
                 if (playerList.DoesConnectionExist(connectionId)) return;
 
-                if (!playerList.HavePlayer(PlayerType.Black))
+                if (!playerList.HasPlayer(PlayerType.Black))
                 {
                     playerList.AddPlayer(PlayerType.Black, connectionId);
                 }
-                else if (!playerList.HavePlayer(PlayerType.White))
+                else if (!playerList.HasPlayer(PlayerType.White))
                 {
                     playerList.AddPlayer(PlayerType.White, connectionId);
                 }
