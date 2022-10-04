@@ -732,9 +732,13 @@ namespace Reversi.UnitTests
             var game = new Game();
             game.AddPlayer("1");
             var players = game.GetPlayerList();
-            Assert.IsTrue(players.Count == 1);
-            Assert.AreEqual(players[0].Type, PlayerType.Black);
-            Assert.AreEqual(players[0].ConnectionId, "1"); // TODO: refactor to compare all properties at once
+            Assert.Multiple(()=>
+            {
+                Assert.AreEqual(players[0].Type, PlayerType.Black);
+                Assert.AreEqual(players[0].ConnectionId, "1"); 
+                Assert.AreEqual(players[1].ConnectionId, null);
+            });
+
         }
 
         [Test]
@@ -744,9 +748,12 @@ namespace Reversi.UnitTests
             game.AddPlayer("1");
             game.AddPlayer("2");
             var players = game.GetPlayerList();
-            Assert.IsTrue(players.Count == 2);
-            Assert.AreEqual(players[0].Type, PlayerType.Black);
-            Assert.AreEqual(players[1].Type, PlayerType.White);
+            Assert.Multiple(() =>
+            {
+                Assert.IsTrue(players.Count == 2);
+                Assert.AreEqual(players[0].Type, PlayerType.Black);
+                Assert.AreEqual(players[1].Type, PlayerType.White);
+            });
         }
 
         [Test]
@@ -754,7 +761,7 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
             var players = game.GetPlayerList();
-            Assert.IsTrue(players.Count == 0);
+            Assert.IsTrue(players.All(x=>x.ConnectionId == null));
         }
 
         [Test]

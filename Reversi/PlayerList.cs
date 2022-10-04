@@ -16,7 +16,7 @@ namespace Reversi.Logic
         };
 
 
-        public bool IsGameFull => Players.Count == 2;
+        public bool IsGameFull => Players.All(x=>x.ConnectionId != null);
 
         public bool DoesConnectionExist(string connectionId)
         {
@@ -50,7 +50,7 @@ namespace Reversi.Logic
 
         public bool HasPlayer(PlayerType playerType)
         {
-            return Players.Any(x => x.Type == playerType);
+            return Players.Any(x => x.Type == playerType && x.ConnectionId != null);
         }
     }
 }
