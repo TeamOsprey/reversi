@@ -9,8 +9,13 @@ namespace Reversi.Logic
 {
     public class PlayerList : IEnumerable<Player>
     {
-        public List<Player> Players { get; set; } = new();
-        
+        public List<Player> Players { get; set; } = new()
+        {
+            new Player(PlayerType.Black, null),
+            new Player(PlayerType.White, null) 
+        };
+
+
         public bool IsGameFull => Players.Count == 2;
 
         public bool DoesConnectionExist(string connectionId)
@@ -20,11 +25,12 @@ namespace Reversi.Logic
 
         public void AddPlayer(PlayerType type, string connectionId)
         {
-            Players.Add(new Player(type, connectionId));
+            Players.Find(x => x.Type == type).ConnectionId = connectionId;
         }
+
         public void Remove(Player player)
         {
-            Players.Remove(player);
+            player.ConnectionId = null;
         }
 
         public IEnumerator<Player> GetEnumerator()
