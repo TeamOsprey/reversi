@@ -339,7 +339,11 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] Refactor PlayerList class if needed.
 
 ## 2022-09-27
-- WIP: Reviewing and fixing some ReSharper errors/warnings
-- Refactored some methods into PlayerList class
+- [ ] WIP: Reviewing and fixing some ReSharper errors/warnings
+- [ ] WIP: Refactored some methods into PlayerList class
 - [ ] Consider adding EN-CA dictionary to ReSharper (see https://github.com/wooorm/dictionaries/tree/main/dictionaries/en-CA)
 - [ ] Refactor Linq statements from Game to PlayerList class(approx 4 left.)
+
+## 2022-10-04
+- Investigated Who am I issue when duplicating tabs. Did not solve. Seems to have to do with a possible race condition on checking the colour. 3rd connectionId also shows up.
+- [ ] WIP: Need to review game after changes made to playerList object/logic to start with 2 players and only change the connectionId from null.
