@@ -350,7 +350,16 @@ but in Square class, where we can define operator method, we don't have that inf
 
 ## 2022-10-11
 - We are going to try the following possible solutions for 3rd connectionId issue:
+	- Go back to earlier branch to see code when it was working
 	- A new blazor project with focus on connectionId, a simple tracking of connectionId (singlton counter to show the number on browser: 1, 2, 3, ...)
 	- Reading more documents or stackoverflow posts to find possible other people with similar problem
-	- Add an automated test to check blazor behaviour for this and other situations
-	- Go back to earlier branch to see code when it was working
+	- Add an automated test to check blazor behaviour for this and other situations	
+- We fixed the Who Am I white/black issue by reverting GridComponent.razor to the previous version, which used hubConnection.ConnectionId in OnInitializedAsync() instead of the connectionId 
+  parameter in the hubConnection.On blocks, but there are still some issues, such as:
+  - [ ] When you refresh one of the browsers, the Who Am I switches (i.e., the white and black players swap browsers). This is true even when one player is in incognito Chrome 
+	    and the other in regular Firefox. Try looking at file history of GridComponent.razor. Maybe an older version didn't have this problem.
+- [ ] Only show "Invalid Move" on the browser of the player who made the invalid move. Currently, this is a problem only after manually refreshing a browser.
+      Something like a state variable might solve the problem. (Look into session/global vs. user/connection variables)
+- [ ] Investigate the difference between hubConnection.ConnectionId vs the connectionId parameter in the hubConnection.On blocks.
+- We found a good shortcut: To Find in Files, use Ctrl-Shift-F
+	
