@@ -347,3 +347,9 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-10-04
 - Investigated Who am I issue when duplicating tabs. Did not solve. Seems to have to do with a possible race condition on checking the colour. 3rd connectionId also shows up.
 - [ ] WIP: Need to review game after changes made to playerList object/logic to start with 2 players and only change the connectionId from null.
+
+## 2022-10-11
+- We are going to try the following possible solutions for 3rd connectionId issue:
+	- A new blazor project with focus on connectionId, a simple tracking of connectionId (singlton counter to show the number on browser: 1, 2, 3, ...)
+	- Reading more documents or stackoverflow posts to find possible other people with similar problem
+	- Add an automated test to check blazor behaviour for this and other situations
