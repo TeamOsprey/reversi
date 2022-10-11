@@ -353,3 +353,4 @@ but in Square class, where we can define operator method, we don't have that inf
 	- A new blazor project with focus on connectionId, a simple tracking of connectionId (singlton counter to show the number on browser: 1, 2, 3, ...)
 	- Reading more documents or stackoverflow posts to find possible other people with similar problem
 	- Add an automated test to check blazor behaviour for this and other situations
+	- Go back to earlier branch to see code when it was working
