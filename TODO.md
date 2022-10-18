@@ -363,3 +363,14 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] Investigate the difference between hubConnection.ConnectionId vs the connectionId parameter in the hubConnection.On blocks.
 - We found a good shortcut: To Find in Files, use Ctrl-Shift-F
 	
+## 2022-10-18
+- We tried adding the following lines to appsettings to better trace the SignalR connections:
+   - "Microsoft.AspNetCore.SignalR": "Debug",
+   - "Microsoft.AspNetCore.Http.Connections": "Debug"
+   - One of the unexpected observations we had that for one open browser 3 connection Ids were generated and when refreshed the browser, 3 new ones generated but the ID of the ones removed were different from the original connection Ids
+- [ ] Mark found this article that suggests not to use connection id to track users: https://consultwithgriff.com/signalr-connection-ids/
+	- We need to dig into two options to figure out which one is more suitable for us: using Groups or Users
+	- For User (HubConnectionContext.User) we might run into an issue for testing multiple users by opening a new tab. This might not work as expected.
+	- We can read more about the above options here: https://learn.microsoft.com/en-us/aspnet/core/signalr/groups?view=aspnetcore-6.0
+	- We might want to look for a sample project where connection Id was not used to track users.
+	- What's the possible use case for connection Ids under HubConnectionContext?
