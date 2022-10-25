@@ -4,14 +4,14 @@ namespace Reversi.Logic
 {
     public class Player
     {
-        public Player(PlayerType type, string connectionId)
+        public Player(PlayerType type, string userId)
         {
             Type = type;
-            ConnectionId = connectionId;
+            UserId = userId;
         }
         
         public PlayerType Type { get; set; }
-        public string ConnectionId { get; set; }
+        public string UserId { get; set; }
 
         public char Counter => GetColourOfPlayer();
 

@@ -735,8 +735,8 @@ namespace Reversi.UnitTests
             Assert.Multiple(()=>
             {
                 Assert.AreEqual(players[0].Type, PlayerType.Black);
-                Assert.AreEqual(players[0].ConnectionId, "1"); 
-                Assert.AreEqual(players[1].ConnectionId, null);
+                Assert.AreEqual(players[0].UserId, "1"); 
+                Assert.AreEqual(players[1].UserId, null);
             });
 
         }
@@ -761,7 +761,7 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
             var players = game.GetPlayerList();
-            Assert.IsTrue(players.All(x=>x.ConnectionId == null));
+            Assert.IsTrue(players.All(x=>x.UserId == null));
         }
 
         [Test]

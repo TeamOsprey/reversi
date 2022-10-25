@@ -15,14 +15,14 @@ namespace Reversi.Web.Services
             Game = game;
         }
 
-        public void AddPlayer(string connectionId)
+        public void AddPlayer(string userId)
         {
-            Game.AddPlayer(connectionId);
+            Game.AddPlayer(userId);
         }
 
-        public void RemovePlayer(string connectionId)
+        public void RemovePlayer(string userId)
         {
-            Game.RemovePlayer(connectionId);
+            Game.RemovePlayer(userId);
         }
 
         public bool IsLastMoveValid()
@@ -30,9 +30,9 @@ namespace Reversi.Web.Services
             return !Game.State.MoveInvalid;
         }
 
-        public void PlaceCounter(int row, int col, string connectionId)
+        public void PlaceCounter(int row, int col, string userId)
         {
-            Game.PlaceCounter(row, col, connectionId);
+            Game.PlaceCounter(row, col, userId);
         }
 
         public string[] GetOutput()
@@ -45,9 +45,9 @@ namespace Reversi.Web.Services
             return ConvertPlayerTypeToString(Game.Turn());
         }
 
-        public string GetPlayerColourString(string connectionId)
+        public string GetPlayerColourString(string userId)
         {
-            return ConvertPlayerTypeToString(Game.GetPlayerType(connectionId));
+            return ConvertPlayerTypeToString(Game.GetPlayerType(userId));
         }
         public string GetMessage()
         {

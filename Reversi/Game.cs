@@ -58,14 +58,14 @@ namespace Reversi.Logic
             return PlaceCounter(new Square(row, col));
         }
 
-        private bool IsPlayersTurn(string connectionId)
+        private bool IsPlayersTurn(string userId)
         {
-            return playerList.IsCurrentPlayer(connectionId, _turn);
+            return playerList.IsCurrentPlayer(userId, _turn);
         }
 
-        public PlayerType? GetPlayerType(string connectionId)
+        public PlayerType? GetPlayerType(string userId)
         {
-            var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
+            var player = playerList.SingleOrDefault(x => x.UserId == userId);
             return player?.Type;
         }
         public Player GetCurrentPlayer()
@@ -128,9 +128,9 @@ namespace Reversi.Logic
             }
         }
 
-        public void RemovePlayer(string connectionId)
+        public void RemovePlayer(string userId)
         {
-            var player = playerList.SingleOrDefault(x => x.ConnectionId == connectionId);
+            var player = playerList.SingleOrDefault(x => x.UserId == userId);
             if (player != null) 
                 playerList.Remove(player);
         }

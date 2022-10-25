@@ -16,21 +16,21 @@ namespace Reversi.Logic
         };
 
 
-        public bool IsGameFull => Players.All(x=>x.ConnectionId != null);
+        public bool IsGameFull => Players.All(x=>x.UserId != null);
 
-        public bool DoesConnectionExist(string connectionId)
+        public bool DoesConnectionExist(string userId)
         {
-            return Players.Any(x => x.ConnectionId == connectionId);
+            return Players.Any(x => x.UserId == userId);
         }
 
-        public void AddPlayer(PlayerType type, string connectionId)
+        public void AddPlayer(PlayerType type, string userId)
         {
-            Players.Find(x => x.Type == type).ConnectionId = connectionId;
+            Players.Find(x => x.Type == type).UserId = userId;
         }
 
         public void Remove(Player player)
         {
-            player.ConnectionId = null;
+            player.UserId = null;
         }
 
         public IEnumerator<Player> GetEnumerator()
@@ -43,14 +43,14 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        public bool IsCurrentPlayer(string connectionId, PlayerType turn)
+        public bool IsCurrentPlayer(string userId, PlayerType turn)
         {
-            return Players.Any(x => x.ConnectionId == connectionId && x.Type == turn);
+            return Players.Any(x => x.UserId == userId && x.Type == turn);
         }
 
         public bool HasPlayer(PlayerType playerType)
         {
-            return Players.Any(x => x.Type == playerType && x.ConnectionId != null);
+            return Players.Any(x => x.Type == playerType && x.UserId != null);
         }
     }
 }

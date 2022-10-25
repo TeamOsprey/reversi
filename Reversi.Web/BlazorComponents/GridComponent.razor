@@ -53,28 +53,35 @@
     protected override async Task OnInitializedAsync()
     {
         hubConnection = new HubConnectionBuilder()
-            .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub"))
-            .Build();
+            .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub") , options =>
+            {
+                //options.AccessTokenProvider = async () =>
+                //{
+                //    var accessTokenResult = await AccessTokenProvider.RequestAccessToken();
+                //    accessTokenResult.TryGetToken(out var accessToken);
+                //    return accessToken.Value;
+                //};
+            }).Build();
 
         await hubConnection.StartAsync();
 
         // Add listener for future connections
-        hubConnection.On<string>("AddPlayer", (connectionId) =>
+        hubConnection.On<string>("AddPlayer", (userId) =>
         {
-            GameService.AddPlayer(hubConnection.ConnectionId);
-            WhatColourAmI = GameService.GetPlayerColourString(hubConnection.ConnectionId);
+            GameService.AddPlayer(userId);
+            WhatColourAmI = GameService.GetPlayerColourString(userId);
             InvokeAsync(StateHasChanged);
         });
 
-        hubConnection.On<string>("RemovePlayer", (connectionId) =>
+        hubConnection.On<string>("RemovePlayer", (userId) =>
         {
-            GameService.RemovePlayer(hubConnection.ConnectionId);
+            GameService.RemovePlayer(userId);
             InvokeAsync(StateHasChanged);
         });
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
-    {       
+    {
         if (firstRender)
         {
             hubConnection.On("ReceiveUpdate", () =>
@@ -93,7 +100,7 @@
     public async ValueTask DisposeAsync()
     {
         if (hubConnection is not null)
-        {        
+        {
             await hubConnection.SendAsync("RemovePlayer");
             await hubConnection.DisposeAsync();
         }
