@@ -82,7 +82,7 @@
                 InvokeAsync(StateHasChanged);
             });
 
-            await hubConnection.SendAsync("AddPlayer");
+            await hubConnection.SendAsync("AddPlayer"); // todo: consider unhardcoding the string, maybe using nameof keyword?
         }
     }
 

@@ -34,19 +34,5 @@ namespace Reversi.Web.Hubs
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, "Game1");        
             await base.OnDisconnectedAsync(exception);
         }
-
-        public class Connections
-        {
-            public string GroupName { get; set; }
-            public string ConnectionId { get; set; }
-            public string Color { get; set; }
-
-            public Connections(string groupName, string connectionId, string color)
-            {
-                GroupName = groupName;
-                ConnectionId = connectionId;
-                Color = color;
-            }
-        }
     }
 }
