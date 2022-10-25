@@ -7,6 +7,8 @@ namespace Reversi.Web.Hubs
 {
     public class GameHub : Hub
     {
+        public string UserId => Context.UserIdentifier;
+
         public async Task SendUpdate()
         {
             await Clients.All.SendAsync("ReceiveUpdate");
@@ -14,24 +16,24 @@ namespace Reversi.Web.Hubs
         }
         public async Task AddPlayer()
         {
-            await Clients.All.SendAsync("AddPlayer", Context.ConnectionId);
+            await Clients.All.SendAsync("AddPlayer", UserId);
         }
         public async Task RemovePlayer()
         {            
-            await Clients.All.SendAsync("RemovePlayer", Context.ConnectionId);
+            await Clients.All.SendAsync("RemovePlayer", UserId);
         }
 
         public override async Task OnConnectedAsync()
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, "Game1");
+            await Groups.AddToGroupAsync(UserId, "Game1");
             // TODO: consider call to AddPlayer to be conditional to still needing two players
-            //await Clients.All.SendAsync("AddPlayer", Context.ConnectionId); 
+            //await Clients.All.SendAsync("AddPlayer", UserId); 
 
             await base.OnConnectedAsync();
         }
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            await Groups.RemoveFromGroupAsync(Context.ConnectionId, "Game1");        
+            await Groups.RemoveFromGroupAsync(UserId, "Game1");        
             await base.OnDisconnectedAsync(exception);
         }
     }

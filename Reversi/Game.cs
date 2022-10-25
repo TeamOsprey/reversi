@@ -46,10 +46,10 @@ namespace Reversi.Logic
         }
         #endregion
         #region public methods
-        public bool PlaceCounter(int row, int col, string connectionId)
+        public bool PlaceCounter(int row, int col, string userId)
         {
             State = new State();
-            if (string.IsNullOrEmpty(connectionId) || !IsPlayersTurn(connectionId))
+            if (string.IsNullOrEmpty(userId) || !IsPlayersTurn(userId))
             {
                 State.MoveInvalid = true;
                 return false;
@@ -101,22 +101,22 @@ namespace Reversi.Logic
             return playerList.Players;
         }
 
-        public void AddPlayer(string connectionId)
+        public void AddPlayer(string userId)
         {
             lock (playerList)
             {
                 if (playerList.IsGameFull)
                     return;
 
-                if (playerList.DoesConnectionExist(connectionId)) return;
+                if (playerList.DoesConnectionExist(userId)) return;
 
                 if (!playerList.HasPlayer(PlayerType.Black))
                 {
-                    playerList.AddPlayer(PlayerType.Black, connectionId);
+                    playerList.AddPlayer(PlayerType.Black, userId);
                 }
                 else if (!playerList.HasPlayer(PlayerType.White))
                 {
-                    playerList.AddPlayer(PlayerType.White, connectionId);
+                    playerList.AddPlayer(PlayerType.White, userId);
                 }
 
                 if (!_setInitialStatus && playerList.IsGameFull)
