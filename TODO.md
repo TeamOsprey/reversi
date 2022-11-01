@@ -379,4 +379,4 @@ but in Square class, where we can define operator method, we don't have that inf
 
 - We worked on switcing from connectionId to userId. In GameHub we were able to access userId but we couldn't find out how to access it in GridComponent.
 - We tried changing how HubConnection is created in GridComponent, but we got stuck on how to define AccessTokenProvider to the program.
-- We replaced all connectionIds in GridComponent, we will nee to debug it next session to see what is the value of userId when AddPlayer listener is called.
+- We replaced all connectionIds in GridComponent, we will need to debug it next session to see what is the value of userId when AddPlayer listener is called.

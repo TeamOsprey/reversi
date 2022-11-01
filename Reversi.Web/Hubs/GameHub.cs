@@ -7,7 +7,8 @@ namespace Reversi.Web.Hubs
 {
     public class GameHub : Hub
     {
-        public string UserId => Context.UserIdentifier;
+        //        public string UserId => Context.UserIdentifier;
+        public string UserId => "player" + DateTime.Now.ToString();
 
         public async Task SendUpdate()
         {
