@@ -380,3 +380,15 @@ but in Square class, where we can define operator method, we don't have that inf
 - We worked on switcing from connectionId to userId. In GameHub we were able to access userId but we couldn't find out how to access it in GridComponent.
 - We tried changing how HubConnection is created in GridComponent, but we got stuck on how to define AccessTokenProvider to the program.
 - We replaced all connectionIds in GridComponent, we will need to debug it next session to see what is the value of userId when AddPlayer listener is called.
+
+## 2022-11-01
+
+- Worked on tracking Userids of players.
+- Using Cookies to track the userId of each player.
+- see: https://stackoverflow.com/questions/69171418/append-cookie-signalr-core
+- Currently when updating cookie for new player, we get an error about changing the respose after it has been created.
+- [ ] Create middleware to add key to cookie for player if it does not already exist.
+- [ ] UserId property getter requires much refactoring to remove hardcoding.
+- [ ] Look into TryGetValue for cookie to lower number of accesses to it.
+- [ ] Look through tasks and parameters in Gamehub to find and remove obsolete code.
+- [ ] see issues associated with line 357.
