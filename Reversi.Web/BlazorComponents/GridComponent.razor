@@ -1,10 +1,11 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.SignalR.Client
 @using Reversi.Web.Services.Interfaces
 @inject IGameService GameService
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
-
+@inject IHttpContextAccessor HttpContextAccessor
 <CascadingValue Value="@GameService">
     <div class="flex col-md-5">
 		<MessageComponent/>
@@ -32,7 +33,7 @@
 @code {
     public string WhatColourAmI;
     public string[] DisplayedBoard => GameService.GetOutput();
-
+	public string UserId;
     protected async Task MoveSelected(string move)
     {
         var row = int.Parse(move.Split(',')[0]);
@@ -52,6 +53,17 @@
 
     protected override async Task OnInitializedAsync()
     {
+	    if(!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey("ReversiPlayerCookie"))
+	    {
+		    var userId = DateTime.Now.TimeOfDay.ToString();
+            HttpContextAccessor.HttpContext.Response.Cookies.Append("ReversiPlayerCookie", userId);
+		    UserId = userId;
+	    }
+	    else
+	    {
+		    UserId = HttpContextAccessor.HttpContext.Request.Cookies["ReversiPlayerCookie"];
+	    }
+
         hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub") , options =>
             {

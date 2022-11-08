@@ -17,14 +17,15 @@ namespace Reversi.Web.Hubs
         {
             get
             {
-               if(!Context.GetHttpContext().Request.Cookies.ContainsKey("ReversiPlayerCookie"))
-                {
-                    var userId = DateTime.Now.TimeOfDay.ToString();
-                    Context.GetHttpContext().Response.Cookies.Append("ReversiPlayerCookie", userId);
-                    return userId;
-                }
-                var userId3 = Context.GetHttpContext().Request.Cookies["ReversiPlayerCookie"];
-                return userId3;
+                return "TEST";
+                //if(!Context.GetHttpContext().Request.Cookies.ContainsKey("ReversiPlayerCookie"))
+                // {
+                //     var userId = DateTime.Now.TimeOfDay.ToString();
+                //     Context.GetHttpContext().Response.Cookies.Append("ReversiPlayerCookie", userId);
+                //     return userId;
+                // }
+                // var userId3 = Context.GetHttpContext().Request.Cookies["ReversiPlayerCookie"];
+                // return userId3;
             }
         }
         //public string UserId => "player1";
