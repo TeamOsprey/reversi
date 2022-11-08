@@ -13,16 +13,16 @@ namespace Reversi.Web.Hubs
     {
         public async Task SendUpdate()
         {
-            await Clients.All.SendAsync("ReceiveUpdate");
+            await Clients.All.SendAsync("ReceiveUpdate", "test string");
             // await Clients.Client(player).SendAsync("ReceiveUpdate"); work was started to recognize the player
         }
         public async Task AddPlayer()
         {
-            await Clients.All.SendAsync("AddPlayer");
+            await Clients.All.SendAsync("AddPlayer", "test string");
         }
         public async Task RemovePlayer()
         {            
-            await Clients.All.SendAsync("RemovePlayer");
+            await Clients.All.SendAsync("RemovePlayer", "test string");
         }
 
         public override async Task OnConnectedAsync()
