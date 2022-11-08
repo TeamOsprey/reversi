@@ -78,16 +78,16 @@
         await hubConnection.StartAsync();
 
         // Add listener for future connections
-        hubConnection.On<string>("AddPlayer", (userId) =>
+        hubConnection.On<string>("AddPlayer", _ =>
         {
-            GameService.AddPlayer(userId);
-            WhatColourAmI = GameService.GetPlayerColourString(userId);
+            GameService.AddPlayer(UserId);
+            WhatColourAmI = GameService.GetPlayerColourString(UserId);
             InvokeAsync(StateHasChanged);
         });
-
-        hubConnection.On<string>("RemovePlayer", (userId) =>
+        
+        hubConnection.On<string>("RemovePlayer", _ =>
         {
-            GameService.RemovePlayer(userId);
+            GameService.RemovePlayer(UserId);
             InvokeAsync(StateHasChanged);
         });
     }

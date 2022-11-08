@@ -11,44 +11,6 @@ namespace Reversi.Web.Hubs
 {
     public class GameHub : Hub
     {
-        //        public string UserId => Context.UserIdentifier;
-
-        public string UserId
-        {
-            get
-            {
-                return "TEST";
-                //if(!Context.GetHttpContext().Request.Cookies.ContainsKey("ReversiPlayerCookie"))
-                // {
-                //     var userId = DateTime.Now.TimeOfDay.ToString();
-                //     Context.GetHttpContext().Response.Cookies.Append("ReversiPlayerCookie", userId);
-                //     return userId;
-                // }
-                // var userId3 = Context.GetHttpContext().Request.Cookies["ReversiPlayerCookie"];
-                // return userId3;
-            }
-        }
-        //public string UserId => "player1";
-        //{
-        //    get
-        //    {
-        //        if (Context.User == null)
-        //        {
-        //            HttpContext.User = new GenericPrincipal(new FormsIdentity(ticket), roles);
-        //            HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(
-        //                new System.Security.Principal.GenericIdentity(person.LoginName),
-        //                new string[] { /* fill roles if any */ });
-        //        }
-        //        //HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(
-        //        //    new System.Security.Principal.GenericIdentity(person.LoginName),
-        //        //    new string[] { /* fill roles if any */ });
-        //    }
-        //    set
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
-
         public async Task SendUpdate()
         {
             await Clients.All.SendAsync("ReceiveUpdate");
@@ -56,25 +18,25 @@ namespace Reversi.Web.Hubs
         }
         public async Task AddPlayer()
         {
-            await Clients.All.SendAsync("AddPlayer", UserId);
+            await Clients.All.SendAsync("AddPlayer");
         }
         public async Task RemovePlayer()
         {            
-            await Clients.All.SendAsync("RemovePlayer", UserId);
+            await Clients.All.SendAsync("RemovePlayer");
         }
 
-        public override async Task OnConnectedAsync()
-        {
-            await Groups.AddToGroupAsync(UserId, "Game1");
-            // TODO: consider call to AddPlayer to be conditional to still needing two players
-            //await Clients.All.SendAsync("AddPlayer", UserId); 
+        //public override async Task OnConnectedAsync()
+        //{
+        //    await Groups.AddToGroupAsync(UserId, "Game1");
+        //    // TODO: consider call to AddPlayer to be conditional to still needing two players
+        //    //await Clients.All.SendAsync("AddPlayer", UserId); 
 
-            await base.OnConnectedAsync();
-        }
-        public override async Task OnDisconnectedAsync(Exception? exception)
-        {
-            await Groups.RemoveFromGroupAsync(UserId, "Game1");        
-            await base.OnDisconnectedAsync(exception);
-        }
+        //    await base.OnConnectedAsync();
+        //}
+        //public override async Task OnDisconnectedAsync(Exception? exception)
+        //{
+        //    await Groups.RemoveFromGroupAsync(UserId, "Game1");        
+        //    await base.OnDisconnectedAsync(exception);
+        //}
     }
 }
