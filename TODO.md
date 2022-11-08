@@ -388,7 +388,14 @@ but in Square class, where we can define operator method, we don't have that inf
 - see: https://stackoverflow.com/questions/69171418/append-cookie-signalr-core
 - Currently when updating cookie for new player, we get an error about changing the respose after it has been created.
 - [ ] Create middleware to add key to cookie for player if it does not already exist.
-- [ ] UserId property getter requires much refactoring to remove hardcoding.
+- [X] UserId property getter requires much refactoring to remove hardcoding.
 - [ ] Look into TryGetValue for cookie to lower number of accesses to it.
 - [ ] Look through tasks and parameters in Gamehub to find and remove obsolete code.
 - [ ] see issues associated with line 357.
+
+## 2022-11-08
+- We managet to get Who I am working again
+- We moved cookie setting from GameHub to GridComponent (since it is called first) by injecting HttpContextAccessor (@inject IHttpContextAccessor HttpContextAccessor).
+- We realized that the listener was expecting a string input argument. We made it work by adding a test string to the 
+tasks but we need to look into a way to make it work without any input argument.
+	- Perhaps by checking the overload of hubConnection.On.
