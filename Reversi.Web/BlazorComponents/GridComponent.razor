@@ -33,7 +33,6 @@
 @code {
     public string WhatColourAmI;
     public string[] DisplayedBoard => GameService.GetOutput();
-	public string UserId;
     protected async Task MoveSelected(string move)
     {
         var row = int.Parse(move.Split(',')[0]);
@@ -53,18 +52,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-	    if(!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey("ReversiPlayerCookie"))
-	    {
-		    var userId = DateTime.Now.TimeOfDay.ToString();
-            HttpContextAccessor.HttpContext.Response.Cookies.Append("ReversiPlayerCookie", userId);
-		    UserId = userId;
-	    }
-	    else
-	    {
-		    UserId = HttpContextAccessor.HttpContext.Request.Cookies["ReversiPlayerCookie"];
-	    }
+	    var userId = GetUserId();
 
-        hubConnection = new HubConnectionBuilder()
+	    hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub") , options =>
             {
                 //options.AccessTokenProvider = async () =>
@@ -80,19 +70,34 @@
         // Add listener for future connections
         hubConnection.On<string>("AddPlayer", _ =>
         {
-            GameService.AddPlayer(UserId);
-            WhatColourAmI = GameService.GetPlayerColourString(UserId);
+            GameService.AddPlayer(userId);
+            WhatColourAmI = GameService.GetPlayerColourString(userId);
             InvokeAsync(StateHasChanged);
         });
         
         hubConnection.On<string>("RemovePlayer", _ =>
         {
-            GameService.RemovePlayer(UserId);
+            GameService.RemovePlayer(userId);
             InvokeAsync(StateHasChanged);
         });
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+	private string GetUserId()
+	{
+		var key = "ReversiPlayerCookie";
+		if (!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey(key))
+		{
+			var userId = DateTime.Now.TimeOfDay.ToString();
+			HttpContextAccessor.HttpContext.Response.Cookies.Append(key, userId);
+			return userId;
+		}
+		else
+		{
+			return HttpContextAccessor.HttpContext.Request.Cookies[key];
+		}
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {

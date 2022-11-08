@@ -25,18 +25,18 @@ namespace Reversi.Web.Hubs
             await Clients.All.SendAsync("RemovePlayer");
         }
 
-        //public override async Task OnConnectedAsync()
-        //{
-        //    await Groups.AddToGroupAsync(UserId, "Game1");
-        //    // TODO: consider call to AddPlayer to be conditional to still needing two players
-        //    //await Clients.All.SendAsync("AddPlayer", UserId); 
+        public override async Task OnConnectedAsync()
+        {
+            //await Groups.AddToGroupAsync(UserId, "Game1");
+            // TODO: consider call to AddPlayer to be conditional to still needing two players
+            await Clients.All.SendAsync("AddPlayer"); 
 
-        //    await base.OnConnectedAsync();
-        //}
-        //public override async Task OnDisconnectedAsync(Exception? exception)
-        //{
-        //    await Groups.RemoveFromGroupAsync(UserId, "Game1");        
-        //    await base.OnDisconnectedAsync(exception);
-        //}
+            await base.OnConnectedAsync();
+        }
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            //await Groups.RemoveFromGroupAsync(UserId, "Game1");
+            await base.OnDisconnectedAsync(exception);
+        }
     }
 }
