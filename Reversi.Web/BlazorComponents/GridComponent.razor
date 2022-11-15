@@ -38,7 +38,7 @@
         var row = int.Parse(move.Split(',')[0]);
         var column = int.Parse(move.Split(',')[1]);
 
-        GameService.PlaceCounter(row, column, hubConnection.ConnectionId);
+        GameService.PlaceCounter(row, column, GetUserId());
         if (GameService.IsLastMoveValid())
         {
             await Send();
@@ -118,7 +118,7 @@
     {
         if (hubConnection is not null)
         {
-            await hubConnection.SendAsync("RemovePlayer");
+//            await hubConnection.SendAsync("RemovePlayer");
             await hubConnection.DisposeAsync();
         }
     }
