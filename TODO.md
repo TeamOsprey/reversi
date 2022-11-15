@@ -399,3 +399,6 @@ but in Square class, where we can define operator method, we don't have that inf
 - We realized that the listener was expecting a string input argument. We made it work by adding a test string to the 
 tasks but we need to look into a way to make it work without any input argument.
 	- Perhaps by checking the overload of hubConnection.On.
+
+## 2022-11-15
+- [ ] See if we can remove this unused string parameter (hack): private const string UnusedParameterToGetAroundRuntimeErrorMystery = "foo";
