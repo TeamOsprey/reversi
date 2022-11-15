@@ -68,7 +68,7 @@
         await hubConnection.StartAsync();
 
         // Add listener for future connections
-        hubConnection.On<string>("AddPlayer", _ =>
+        hubConnection.On<string>("AddPlayer", _ =>  //todo if changed to () instead of _, page errors on first load
         {
             GameService.AddPlayer(userId);
             WhatColourAmI = GameService.GetPlayerColourString(userId);

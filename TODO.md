@@ -402,3 +402,5 @@ tasks but we need to look into a way to make it work without any input argument.
 
 ## 2022-11-15
 - [ ] See if we can remove this unused string parameter (hack): private const string UnusedParameterToGetAroundRuntimeErrorMystery = "foo";
+	- We can use ReceiveUpdate as a template for fixing this but when tried something unexpected happened and we had no time left to fix so we reverted the attempt.
+- [ ] Currently first refresh does not work. Need to fix this. This should refresh 1st players screen after 2nd player is added.
