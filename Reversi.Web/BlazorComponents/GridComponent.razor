@@ -101,16 +101,16 @@
     {
         if (firstRender)
         {
-            hubConnection.On("ReceiveUpdate", () =>
+            hubConnection.On<string>("ReceiveUpdate", _ =>
             {
                 InvokeAsync(StateHasChanged);
             });
 
-            await hubConnection.SendAsync("AddPlayer"); // todo: consider unhardcoding the string, maybe using nameof keyword?
+            await hubConnection.SendAsync("AddPlayerTask"); // todo: consider unhardcoding the string, maybe using nameof keyword?
         }
     }
 
-    async Task Send() => await hubConnection.SendAsync("SendUpdate");
+    async Task Send() => await hubConnection.SendAsync("ReceiveUpdateTask");
 
     public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
 
@@ -118,7 +118,7 @@
     {
         if (hubConnection is not null)
         {
-//            await hubConnection.SendAsync("RemovePlayer");
+//            await hubConnection.SendAsync("RemovePlayerTask");
             await hubConnection.DisposeAsync();
         }
     }

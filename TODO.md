@@ -394,7 +394,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - [ ] see issues associated with line 357.
 
 ## 2022-11-08
-- We managet to get Who I am working again
+- We managed to get Who I am working again
 - We moved cookie setting from GameHub to GridComponent (since it is called first) by injecting HttpContextAccessor (@inject IHttpContextAccessor HttpContextAccessor).
 - We realized that the listener was expecting a string input argument. We made it work by adding a test string to the 
 tasks but we need to look into a way to make it work without any input argument.
@@ -404,3 +404,7 @@ tasks but we need to look into a way to make it work without any input argument.
 - [ ] See if we can remove this unused string parameter (hack): private const string UnusedParameterToGetAroundRuntimeErrorMystery = "foo";
 	- We can use ReceiveUpdate as a template for fixing this but when tried something unexpected happened and we had no time left to fix so we reverted the attempt.
 - [ ] Currently first refresh does not work. Need to fix this. This should refresh 1st players screen after 2nd player is added.
+
+## 2022-11-22
+- [ ] Find an alternative method to assign an id to users. Maybe a GUID or a sequential number or a combination of it with date-time.
+- We noticed unlike AddPlayer and RemovePlayer tasks, the name of task to invoke ReceiveUpdate is different: SendUpdate
