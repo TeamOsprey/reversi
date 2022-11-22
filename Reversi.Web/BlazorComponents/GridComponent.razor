@@ -41,7 +41,7 @@
         GameService.PlaceCounter(row, column, GetUserId());
         if (GameService.IsLastMoveValid())
         {
-            await Send();
+            await RefreshUI();
         }
     }
 
@@ -52,9 +52,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-	    var userId = GetUserId();
+        var userId = GetUserId();
 
-	    hubConnection = new HubConnectionBuilder()
+        hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub") , options =>
             {
                 //options.AccessTokenProvider = async () =>
@@ -74,7 +74,7 @@
             WhatColourAmI = GameService.GetPlayerColourString(userId);
             InvokeAsync(StateHasChanged);
         });
-        
+
         hubConnection.On<string>("RemovePlayer", _ =>
         {
             GameService.RemovePlayer(userId);
@@ -82,26 +82,26 @@
         });
     }
 
-	private string GetUserId()
-	{
-		var key = "ReversiPlayerCookie";
-		if (!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey(key))
-		{
-			var userId = DateTime.Now.TimeOfDay.ToString();
-			HttpContextAccessor.HttpContext.Response.Cookies.Append(key, userId);
-			return userId;
-		}
-		else
-		{
-			return HttpContextAccessor.HttpContext.Request.Cookies[key];
-		}
-	}
+    private string GetUserId()
+    {
+        var key = "ReversiPlayerCookie";
+        if (!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey(key))
+        {
+            var userId = DateTime.Now.TimeOfDay.ToString();
+            HttpContextAccessor.HttpContext.Response.Cookies.Append(key, userId);
+            return userId;
+        }
+        else
+        {
+            return HttpContextAccessor.HttpContext.Request.Cookies[key];
+        }
+    }
 
-	protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            hubConnection.On<string>("ReceiveUpdate", _ =>
+            hubConnection.On<string>("RefreshUI", _ =>
             {
                 InvokeAsync(StateHasChanged);
             });
@@ -110,7 +110,7 @@
         }
     }
 
-    async Task Send() => await hubConnection.SendAsync("ReceiveUpdateTask");
+    async Task RefreshUI() => await hubConnection.SendAsync("RefreshUITask");
 
     public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
 
@@ -118,7 +118,7 @@
     {
         if (hubConnection is not null)
         {
-//            await hubConnection.SendAsync("RemovePlayerTask");
+            //            await hubConnection.SendAsync("RemovePlayerTask");
             await hubConnection.DisposeAsync();
         }
     }

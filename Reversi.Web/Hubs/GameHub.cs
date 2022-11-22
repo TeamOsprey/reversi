@@ -14,9 +14,9 @@ namespace Reversi.Web.Hubs
         // todo: See if can remove unused string parameter (hack)
         private const string UnusedParameterToGetAroundRuntimeErrorMystery = "foo";
 
-        public async Task ReceiveUpdateTask()
+        public async Task RefreshUITask()
         {
-            await Clients.All.SendAsync("ReceiveUpdate", UnusedParameterToGetAroundRuntimeErrorMystery);
+            await Clients.All.SendAsync("RefreshUI", UnusedParameterToGetAroundRuntimeErrorMystery);
             // await Clients.Client(player).SendAsync("ReceiveUpdate"); work was started to recognize the player
         }
         public async Task AddPlayerTask()
