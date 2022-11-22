@@ -80,6 +80,8 @@
             GameService.RemovePlayer(userId);
             InvokeAsync(StateHasChanged);
         });
+
+        await RefreshUI();
     }
 
     private string GetUserId()
@@ -101,7 +103,7 @@
     {
         if (firstRender)
         {
-            hubConnection.On<string>("RefreshUI", _ =>
+            hubConnection.On("RefreshUI", () =>
             {
                 InvokeAsync(StateHasChanged);
             });

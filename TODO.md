@@ -403,8 +403,10 @@ tasks but we need to look into a way to make it work without any input argument.
 ## 2022-11-15
 - [ ] See if we can remove this unused string parameter (hack): private const string UnusedParameterToGetAroundRuntimeErrorMystery = "foo";
 	- We can use ReceiveUpdate as a template for fixing this but when tried something unexpected happened and we had no time left to fix so we reverted the attempt.
-- [ ] Currently first refresh does not work. Need to fix this. This should refresh 1st players screen after 2nd player is added.
+- [X] Currently first refresh does not work. Need to fix this. This should refresh 1st players screen after 2nd player is added.
 
 ## 2022-11-22
 - [ ] Find an alternative method to assign an id to users. Maybe a GUID or a sequential number or a combination of it with date-time.
 - We noticed unlike AddPlayer and RemovePlayer tasks, the name of task to invoke ReceiveUpdate is different: SendUpdate
+- ReceiveUpdate is now called RefreshUI.
+- Shall we replace the strings for listeners and tasks (in GameHub or GridComponent,...) with constants or nameof/reflection 
