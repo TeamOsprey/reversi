@@ -55,27 +55,18 @@
         var userId = GetUserId();
 
         hubConnection = new HubConnectionBuilder()
-            .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub") , options =>
-            {
-                //options.AccessTokenProvider = async () =>
-                //{
-                //    var accessTokenResult = await AccessTokenProvider.RequestAccessToken();
-                //    accessTokenResult.TryGetToken(out var accessToken);
-                //    return accessToken.Value;
-                //};
-            }).Build();
+            .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub")).Build();
 
         await hubConnection.StartAsync();
 
         // Add listener for future connections
-        hubConnection.On("AddPlayer", //todo if changed to () instead of _, page errors on first load
+        hubConnection.On("AddPlayer", 
             () =>
             {
                 GameService.AddPlayer(userId);
                 WhatColourAmI = GameService.GetPlayerColourString(userId);
                 return InvokeAsync(StateHasChanged);
             }
-    //TestFunc()
         );
 
         hubConnection.On<string>("RemovePlayer", _ =>
@@ -86,16 +77,6 @@
 
         await RefreshUI();
     }
-
-    //private Action<string> TestFunc()
-    //{
-    //    var userId = GetUserId();
-    //    GameService.AddPlayer(userId);
-    //    WhatColourAmI = GameService.GetPlayerColourString(userId);
-    //    InvokeAsync(StateHasChanged);
-
-    //    return null;
-    //}
 
     private string GetUserId()
     {
@@ -133,7 +114,7 @@
     {
         if (hubConnection is not null)
         {
-            //            await hubConnection.SendAsync("RemovePlayerTask");
+            // await hubConnection.SendAsync("RemovePlayerTask");
             await hubConnection.DisposeAsync();
         }
     }

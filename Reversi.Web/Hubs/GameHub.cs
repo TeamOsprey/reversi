@@ -17,11 +17,10 @@ namespace Reversi.Web.Hubs
         public async Task RefreshUITask()
         {
             await Clients.All.SendAsync("RefreshUI");
-            // await Clients.Client(player).SendAsync("ReceiveUpdate"); work was started to recognize the player
         }
         public async Task AddPlayerTask()
         {
-            await Clients.All.SendAsync("AddPlayer"); // , UnusedParameterToGetAroundRuntimeErrorMystery
+            await Clients.All.SendAsync("AddPlayer");
         }
         public async Task RemovePlayerTask()
         {            
