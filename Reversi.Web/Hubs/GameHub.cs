@@ -21,7 +21,7 @@ namespace Reversi.Web.Hubs
         }
         public async Task AddPlayerTask()
         {
-            await Clients.All.SendAsync("AddPlayer", UnusedParameterToGetAroundRuntimeErrorMystery);
+            await Clients.All.SendAsync("AddPlayer"); // , UnusedParameterToGetAroundRuntimeErrorMystery
         }
         public async Task RemovePlayerTask()
         {            
