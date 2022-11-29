@@ -68,12 +68,10 @@
         await hubConnection.StartAsync();
 
         // Add listener for future connections
-        hubConnection.On<string>("AddPlayer", _ =>  //todo if changed to () instead of _, page errors on first load
-        {
-            GameService.AddPlayer(userId);
-            WhatColourAmI = GameService.GetPlayerColourString(userId);
-            InvokeAsync(StateHasChanged);
-        });
+        hubConnection.On<string>("AddPlayer", //todo if changed to () instead of _, page errors on first load
+        
+            TestFunc()
+        );
 
         hubConnection.On<string>("RemovePlayer", _ =>
         {
@@ -82,6 +80,16 @@
         });
 
         await RefreshUI();
+    }
+
+    private Action<string> TestFunc()
+    {
+        var userId = GetUserId();
+        GameService.AddPlayer(userId);
+        WhatColourAmI = GameService.GetPlayerColourString(userId);
+        InvokeAsync(StateHasChanged);
+
+        return null;
     }
 
     private string GetUserId()
