@@ -402,6 +402,8 @@ tasks but we need to look into a way to make it work without any input argument.
 
 ## 2022-11-15
 - [ ] See if we can remove this unused string parameter (hack): private const string UnusedParameterToGetAroundRuntimeErrorMystery = "foo";
+   - [X] remove from AddPlayer
+   - [ ] remove from RemovePlayer (this method is not used in GameHub and GridComponnent and should be deleted)
 	- We can use ReceiveUpdate as a template for fixing this but when tried something unexpected happened and we had no time left to fix so we reverted the attempt.
 - [X] Currently first refresh does not work. Need to fix this. This should refresh 1st players screen after 2nd player is added.
 
@@ -410,3 +412,10 @@ tasks but we need to look into a way to make it work without any input argument.
 - We noticed unlike AddPlayer and RemovePlayer tasks, the name of task to invoke ReceiveUpdate is different: SendUpdate
 - ReceiveUpdate is now called RefreshUI.
 - Shall we replace the strings for listeners and tasks (in GameHub or GridComponent,...) with constants or nameof/reflection 
+
+## 2022-11-29
+- [ ] We need to find out why refresh is intemittent. When the white player joins the black player's board doesn't refresh always.
+- [ ] During our test we noticed one the player was set to Observer in one of the new browsers (maybe after the second browser was closed and opened a new one). 
+Why we are still able to see a player as an Observer?
+- [ ] Our first attempt to remove RemovePlayer from GameHub and GridComponnent seemed to made refresh problem more frequent. We reverted it but we need to give it a try again.
+- [ ] We could replace line 34 of GmaeHub (await Clients.All.SendAsync("AddPlayer"); ) with the direct call to AddPlayerTask.
