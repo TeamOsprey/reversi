@@ -31,62 +31,62 @@
 	</table>
 </div>
 @code {
-    public string WhatColourAmI;
-    public string[] DisplayedBoard => GameService.GetOutput();
-    protected async Task MoveSelected(string move)
-    {
-        var row = int.Parse(move.Split(',')[0]);
-        var column = int.Parse(move.Split(',')[1]);
-
-        GameService.PlaceCounter(row, column, GetUserId());
-        if (GameService.IsLastMoveValid())
-        {
-            await RefreshUI();
-        }
-    }
-
-
-
-    //hub stuff
-    private HubConnection hubConnection;
-
-    protected override async Task OnInitializedAsync()
-    {
-        var userId = GetUserId();
-
-        hubConnection = new HubConnectionBuilder()
-            .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub")).Build();
-
-        await hubConnection.StartAsync();
-
-        // Add listener for future connections
-        hubConnection.On<string>("AddPlayer", 
-            async (newUserId) =>
+            public string WhatColourAmI;
+            public string[] DisplayedBoard => GameService.GetOutput();
+            protected async Task MoveSelected(string move)
             {
-                GameService.AddPlayer(newUserId);
-                WhatColourAmI = GameService.GetPlayerColourString(userId);
-                await InvokeAsync(StateHasChanged);
+                var row = int.Parse(move.Split(',')[0]);
+                var column = int.Parse(move.Split(',')[1]);
+
+                GameService.PlaceCounter(row, column, GetUserId());
+                if (GameService.IsLastMoveValid())
+                {
+                    await RefreshUI();
+                }
             }
-        );
 
-        hubConnection.On<string>("RemovePlayer", _ =>
-        {
-            GameService.RemovePlayer(userId);
-            InvokeAsync(StateHasChanged);
-        });
 
-        await RefreshUI();
-    }
 
-    private string GetUserId()
-    {
-        var key = "ReversiPlayerCookie";
-        if (!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey(key))
-        {
-            var userId = DateTime.Now.TimeOfDay.ToString();
-            HttpContextAccessor.HttpContext.Response.Cookies.Append(key, userId);
-            return userId;
-        }
+            //hub stuff
+            private HubConnection hubConnection;
+
+            protected override async Task OnInitializedAsync()
+            {
+                var userId = GetUserId();
+
+                hubConnection = new HubConnectionBuilder()
+                    .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub")).Build();
+
+                await hubConnection.StartAsync();
+
+                // Add listener for future connections
+                hubConnection.On<string>("AddPlayer",
+                    async (newUserId) =>
+                    {
+                        GameService.AddPlayer(newUserId);
+                        WhatColourAmI = GameService.GetPlayerColourString(userId);
+                        await InvokeAsync(StateHasChanged);
+                    }
+                );
+
+                hubConnection.On<string>("RemovePlayer", _ =>
+                {
+                    GameService.RemovePlayer(userId);
+                    InvokeAsync(StateHasChanged);
+                });
+
+                await RefreshUI();
+            }
+
+            private string GetUserId()
+            {
+                var key = "ReversiPlayerCookie";
+                if (!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey(key))
+                {
+                    var userId = DateTime.Now.TimeOfDay.ToString();
+                    HttpContextAccessor.HttpContext.Response.Cookies.Append(key, userId, new CookieOptions { Expires = DateTimeOffset.Now.AddDays(1) });
+                return userId;
+            }
         else
         {
             return HttpContextAccessor.HttpContext.Request.Cookies[key];
