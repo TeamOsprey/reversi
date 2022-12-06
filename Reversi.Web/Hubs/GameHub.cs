@@ -18,9 +18,9 @@ namespace Reversi.Web.Hubs
         {
             await Clients.All.SendAsync("RefreshUI");
         }
-        public async Task AddPlayerTask()
+        public async Task AddPlayerTask(string newUserId)
         {
-            await Clients.All.SendAsync("AddPlayer");
+            await Clients.All.SendAsync("AddPlayer", newUserId);
         }
         public async Task RemovePlayerTask()
         {            
