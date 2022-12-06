@@ -415,7 +415,7 @@ tasks but we need to look into a way to make it work without any input argument.
 
 ## 2022-11-29
 - [ ] We need to find out why refresh is intemittent. When the white player joins the black player's board doesn't refresh always.
-- [ ] During our test we noticed one the player was set to Observer in one of the new browsers (maybe after the second browser was closed and opened a new one). 
+- [ ] During our test we noticed once the player was set to Observer in one of the new browsers (maybe after the second browser was closed and opened a new one). 
 Why we are still able to see a player as an Observer?
 - [ ] Our first attempt to remove RemovePlayer from GameHub and GridComponnent seemed to made refresh problem more frequent. We reverted it but we need to give it a try again.
 - [ ] We could replace line 34 of GmaeHub (await Clients.All.SendAsync("AddPlayer"); ) with the direct call to AddPlayerTask.

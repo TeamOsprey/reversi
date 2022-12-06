@@ -61,11 +61,11 @@
 
         // Add listener for future connections
         hubConnection.On("AddPlayer", 
-            () =>
+            async () =>
             {
                 GameService.AddPlayer(userId);
                 WhatColourAmI = GameService.GetPlayerColourString(userId);
-                return InvokeAsync(StateHasChanged);
+                await InvokeAsync(StateHasChanged);
             }
         );
 
@@ -97,9 +97,9 @@
     {
         if (firstRender)
         {
-            hubConnection.On("RefreshUI", () =>
+            hubConnection.On("RefreshUI", async () =>
             {
-                InvokeAsync(StateHasChanged);
+                await InvokeAsync(StateHasChanged);
             });
 
             await hubConnection.SendAsync("AddPlayerTask"); // todo: consider unhardcoding the string, maybe using nameof keyword?
