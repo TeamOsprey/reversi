@@ -414,8 +414,15 @@ tasks but we need to look into a way to make it work without any input argument.
 - Shall we replace the strings for listeners and tasks (in GameHub or GridComponent,...) with constants or nameof/reflection 
 
 ## 2022-11-29
-- [ ] We need to find out why refresh is intemittent. When the white player joins the black player's board doesn't refresh always.
-- [ ] During our test we noticed once the player was set to Observer in one of the new browsers (maybe after the second browser was closed and opened a new one). 
+- [X] We need to find out why refresh is intemittent. When the white player joins the black player's board doesn't refresh always.
+- [X] During our test we noticed once the player was set to Observer in one of the new browsers (maybe after the second browser was closed and opened a new one). 
 Why we are still able to see a player as an Observer?
-- [ ] Our first attempt to remove RemovePlayer from GameHub and GridComponnent seemed to made refresh problem more frequent. We reverted it but we need to give it a try again.
-- [ ] We could replace line 34 of GmaeHub (await Clients.All.SendAsync("AddPlayer"); ) with the direct call to AddPlayerTask.
+- [ ] Our first attempt to remove RemovePlayer from GameHub and GridComponent seemed to made refresh problem more frequent. We reverted it but we need to give it a try again.
+- [ ] We could replace line 34 of GameHub (await Clients.All.SendAsync("AddPlayer"); ) with the direct call to AddPlayerTask.
+
+## 2022-12-06
+- We fixed intermittend refresh issue
+- We fixed issue with Observer
+- We agreed to look into hosting the game on a cloud server (perhaps Azure)
+- [ ] Revisit the name of tasks to communicate they are notifying all clients instead of adding a player for instance
+	- Or shall we inject the service to the hub?
