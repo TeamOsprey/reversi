@@ -426,3 +426,12 @@ Why we are still able to see a player as an Observer?
 - We agreed to look into hosting the game on a cloud server (perhaps Azure)
 - [ ] Revisit the name of tasks to communicate they are notifying all clients instead of adding a player for instance
 	- Or shall we inject the service to the hub?
+
+## 2022-12-13
+- Published Reversi to Azure Web Services.
+- Now getting Null exception when attempting to access cookies.
+- There may be issues with accessing HTTPContext within Blazor pages.
+	- https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-context?view=aspnetcore-6.0
+	- https://learn.microsoft.com/en-us/aspnet/core/signalr/authn-and-authz?view=aspnetcore-7.0
+- considering reading the cookie on page load, and passing the cookie value to the Blazor components through a variable, or a session variable.
+- Stephen will continue sharing access to the Reversi app within Azure.
