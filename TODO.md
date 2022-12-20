@@ -435,3 +435,12 @@ Why we are still able to see a player as an Observer?
 	- https://learn.microsoft.com/en-us/aspnet/core/signalr/authn-and-authz?view=aspnetcore-7.0
 - considering reading the cookie on page load, and passing the cookie value to the Blazor components through a variable, or a session variable.
 - Stephen will continue sharing access to the Reversi app within Azure.
+
+## 2022-12-20
+- Successfully got reversi working on reversi.Azurewebsites.net
+- Moved cookie access from blazor component to MVC index page
+- [ ] Look at refactor of grid component and other UserId uses(UserId cleanup, formatting)
+- [ ] Only show green tiles to user whose turn it is, see also Todo item about invalid move messages.
+- [ ] Add end of game UI 
+- [ ] Revisit old todo.
+
