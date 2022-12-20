@@ -5,11 +5,28 @@
 @inject IGameService GameService
 @{
     ViewData["Title"] = "Home Page";
+    var UserId = GetUserId();
+    string GetUserId()
+    {
+        var key = "ReversiPlayerCookie";
+        if (!Context.Request.Cookies.ContainsKey(key))
+        {
+            var userId = DateTime.Now.TimeOfDay.ToString();
+            Context.Response.Cookies.Append(key, userId, new CookieOptions { Expires = DateTimeOffset.Now.AddDays(1) });
+            return userId;
+        }
+        else
+        {
+            return Context.Request.Cookies[key];
+        }
+    }
+
+     
 }
 
 <div class="text-center">
     <h1 class="display-4">Reversi Game</h1>
 </div>
 
-<center>@(await Html.RenderComponentAsync<GridComponent>(RenderMode.ServerPrerendered, Context))</center>
+<center>@(await Html.RenderComponentAsync<GridComponent>(RenderMode.ServerPrerendered, new { UserId = UserId }))</center>
 <center>@(await Html.RenderComponentAsync<Chat>(RenderMode.ServerPrerendered))</center>

@@ -33,69 +33,54 @@
 @code {
     
     [Parameter]
-    public HttpContext Context { get; set; }
+    public string UserId { get; set; }
     
-            public string WhatColourAmI;
-            public string[] DisplayedBoard => GameService.GetOutput();
-            protected async Task MoveSelected(string move)
-            {
-                var row = int.Parse(move.Split(',')[0]);
-                var column = int.Parse(move.Split(',')[1]);
+    public string WhatColourAmI;
+    public string[] DisplayedBoard => GameService.GetOutput();
+    protected async Task MoveSelected(string move)
+    {
+        var row = int.Parse(move.Split(',')[0]);
+        var column = int.Parse(move.Split(',')[1]);
 
-                GameService.PlaceCounter(row, column, GetUserId());
-                if (GameService.IsLastMoveValid())
-                {
-                    await RefreshUI();
-                }
-            }
-
-
-
-            //hub stuff
-            private HubConnection hubConnection;
-
-            protected override async Task OnInitializedAsync()
-            {
-                var userId = GetUserId();
-
-                hubConnection = new HubConnectionBuilder()
-                    .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub")).Build();
-
-                await hubConnection.StartAsync();
-
-                // Add listener for future connections
-                hubConnection.On<string>("AddPlayer",
-                    async (newUserId) =>
-                    {
-                        GameService.AddPlayer(newUserId);
-                        WhatColourAmI = GameService.GetPlayerColourString(userId);
-                        await InvokeAsync(StateHasChanged);
-                    }
-                );
-
-                hubConnection.On<string>("RemovePlayer", _ =>
-                {
-                    GameService.RemovePlayer(userId);
-                    InvokeAsync(StateHasChanged);
-                });
-
-                await RefreshUI();
-            }
-
-            private string GetUserId()
-            {
-                var key = "ReversiPlayerCookie";
-                if (!Context.Request.Cookies.ContainsKey(key))
-                {
-                    var userId = DateTime.Now.TimeOfDay.ToString();
-                    Context.Response.Cookies.Append(key, userId, new CookieOptions { Expires = DateTimeOffset.Now.AddDays(1) });
-                return userId;
-            }
-        else
+        GameService.PlaceCounter(row, column, UserId);
+        if (GameService.IsLastMoveValid())
         {
-            return Context.Request.Cookies[key];
+            await RefreshUI();
         }
     }
+
+    //hub stuff
+    private HubConnection hubConnection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var userId = UserId;
+
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub")).Build();
+
+        await hubConnection.StartAsync();
+
+        // Add listener for future connections
+        hubConnection.On<string>("AddPlayer",
+            async (newUserId) =>
+            {
+                GameService.AddPlayer(newUserId);
+                WhatColourAmI = GameService.GetPlayerColourString(userId);
+                await InvokeAsync(StateHasChanged);
+            }
+        );
+
+        hubConnection.On<string>("RemovePlayer", _ =>
+        {
+            GameService.RemovePlayer(userId);
+            InvokeAsync(StateHasChanged);
+        });
+
+        await RefreshUI();
+    }
+
+
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -106,7 +91,7 @@
                 await InvokeAsync(StateHasChanged);
             });
 
-            await hubConnection.SendAsync("AddPlayerTask", GetUserId()); // todo: consider unhardcoding the string, maybe using nameof keyword?
+            await hubConnection.SendAsync("AddPlayerTask", UserId); // todo: consider unhardcoding the string, maybe using nameof keyword?
         }
     }
 
