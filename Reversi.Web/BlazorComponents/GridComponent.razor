@@ -31,6 +31,10 @@
 	</table>
 </div>
 @code {
+    
+    [Parameter]
+    public HttpContext Context { get; set; }
+    
             public string WhatColourAmI;
             public string[] DisplayedBoard => GameService.GetOutput();
             protected async Task MoveSelected(string move)
@@ -81,15 +85,15 @@
             private string GetUserId()
             {
                 var key = "ReversiPlayerCookie";
-                if (!HttpContextAccessor.HttpContext.Request.Cookies.ContainsKey(key))
+                if (!Context.Request.Cookies.ContainsKey(key))
                 {
                     var userId = DateTime.Now.TimeOfDay.ToString();
-                    HttpContextAccessor.HttpContext.Response.Cookies.Append(key, userId, new CookieOptions { Expires = DateTimeOffset.Now.AddDays(1) });
+                    Context.Response.Cookies.Append(key, userId, new CookieOptions { Expires = DateTimeOffset.Now.AddDays(1) });
                 return userId;
             }
         else
         {
-            return HttpContextAccessor.HttpContext.Request.Cookies[key];
+            return Context.Request.Cookies[key];
         }
     }
 

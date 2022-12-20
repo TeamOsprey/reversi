@@ -26,7 +26,7 @@ namespace Reversi.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            
             services.AddServerSideBlazor();
             services.AddSingleton<IGameService, GameService>(op =>
             {
@@ -44,6 +44,8 @@ namespace Reversi.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSession();
+
             app.UseResponseCompression();
 
             if (env.IsDevelopment())
