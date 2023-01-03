@@ -444,3 +444,5 @@ Why we are still able to see a player as an Observer?
 - [ ] Add end of game UI 
 - [ ] Revisit old todo.
 
+## 2023-01-03
+- [ ] Shall we move listeners' logic from GridComponent to GameHub? We can ask from Stephen if that was what he meant.
