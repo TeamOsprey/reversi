@@ -439,7 +439,7 @@ Why we are still able to see a player as an Observer?
 ## 2022-12-20
 - Successfully got reversi working on reversi.Azurewebsites.net
 - Moved cookie access from blazor component to MVC index page
-- [ ] Look at refactor of grid component and other UserId uses(UserId cleanup, formatting)
+- [X] Look at refactor of grid component and other UserId uses(UserId cleanup, formatting)
 - [ ] Only show green tiles to user whose turn it is, see also Todo item about invalid move messages.
 - [ ] Add end of game UI 
 - [ ] Revisit old todo.
