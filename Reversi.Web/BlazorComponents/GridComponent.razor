@@ -54,8 +54,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var userId = UserId;
-
         hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub")).Build();
 
@@ -66,14 +64,14 @@
             async (newUserId) =>
             {
                 GameService.AddPlayer(newUserId);
-                WhatColourAmI = GameService.GetPlayerColourString(userId);
+                WhatColourAmI = GameService.GetPlayerColourString(UserId);
                 await InvokeAsync(StateHasChanged);
             }
         );
 
         hubConnection.On<string>("RemovePlayer", _ =>
         {
-            GameService.RemovePlayer(userId);
+            GameService.RemovePlayer(UserId);
             InvokeAsync(StateHasChanged);
         });
 
