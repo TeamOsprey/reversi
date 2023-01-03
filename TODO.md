@@ -446,3 +446,5 @@ Why we are still able to see a player as an Observer?
 
 ## 2023-01-03
 - [ ] Shall we move listeners' logic from GridComponent to GameHub? We can ask from Stephen if that was what he meant.
+- We have started making changes in Game.cs around line82 GetCurrentState() to remove green squares from display of inactive player (see line 443 ToDo).
+		- Considering redesign of Game to support multiple clients instead of only stand alone application.
