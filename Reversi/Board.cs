@@ -84,24 +84,41 @@ namespace Reversi.Logic
             _legalSquares = legalSquares;
         }
 
-        public string[] GetCurrentState()
+        public string[] GetCurrentState(bool currentPlayer)
         {
             string[] output = new string[8];
             char[] rowString = new char[8];
 
-            for (int row = 0; row < 8; row++)
+            if (currentPlayer)
             {
-                for (int col = 0; col < 8; col++)
+                for (int row = 0; row < 8; row++)
                 {
-                    rowString[col] = _squares[row, col].Colour;
-                    if (_legalSquares != null && _legalSquares.Contains(new Square(row, col)))
+                    for (int col = 0; col < 8; col++)
                     {
-                        rowString[col] = '0';
+                        rowString[col] = _squares[row, col].Colour;
+                        if (_legalSquares != null && _legalSquares.Contains(new Square(row, col)))
+                        {
+                            rowString[col] = '0';
+                        }
                     }
+                    output[row] = new string(rowString);
                 }
-                output[row] = new string(rowString);
             }
-
+            else
+            {
+                for (int row = 0; row < 8; row++)
+                {
+                    for (int col = 0; col < 8; col++)
+                    {
+                        rowString[col] = _squares[row, col].Colour;
+                        if (_legalSquares != null && _legalSquares.Contains(new Square(row, col)))
+                        {
+                            rowString[col] = '0';
+                        }
+                    }
+                    output[row] = new string(rowString);
+                }
+            }
             return output;
         }
 
