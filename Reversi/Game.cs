@@ -75,9 +75,10 @@ namespace Reversi.Logic
         public string[] GetOutput()
         {
             if(playerList.IsGameFull)
-                ReversiBoard.SetLegalSquares(GetLegalSquares(_turn));
+                ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming
 
-            return ReversiBoard.GetCurrentState();
+            var showLegalMoves = true; // maybe use this.IsPlayersTurn(userId)
+            return ReversiBoard.GetCurrentState(showLegalMoves);
         }
         public PlayerType GetWinner()
         {
