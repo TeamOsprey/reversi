@@ -10,6 +10,7 @@
         public string GetCurrentPlayer();
         public string GetPlayerColourString(string userId);
         public string GetMessage();
+        public string GetPersonalMessage();
         public int GetScoreByColor(char color);
     }
 }

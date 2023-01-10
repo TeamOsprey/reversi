@@ -1,13 +1,20 @@
 ﻿@using Reversi.Web.Services.Interfaces;
 @using Microsoft.AspNetCore.Components.Web
 
+@if (IsUsersTurn)
+{
+    <label style="color:red">@PersonalMessage</label>
+}
 <label style="color:red">@Message</label>
 <br />
 
 @code {
     [CascadingParameter]
     public IGameService GameService { get; set; }
+    [Parameter]
+    public bool IsUsersTurn { get; set; }
     public string Message => GameService.GetMessage();
+    public string PersonalMessage => GameService.GetPersonalMessage();
     //public void Refresh()
     //{
     //    StateHasChanged();

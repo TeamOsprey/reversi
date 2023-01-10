@@ -440,7 +440,7 @@ Why we are still able to see a player as an Observer?
 - Successfully got reversi working on reversi.Azurewebsites.net
 - Moved cookie access from blazor component to MVC index page
 - [X] Look at refactor of grid component and other UserId uses(UserId cleanup, formatting)
-- [ ] Only show green tiles to user whose turn it is, see also Todo item about invalid move messages.
+- [X] Only show green tiles to user whose turn it is, see also Todo item about invalid move messages.
 - [ ] Add end of game UI 
 - [ ] Revisit old todo.
 
@@ -448,5 +448,6 @@ Why we are still able to see a player as an Observer?
 - [ ] Shall we move listeners' logic from GridComponent to GameHub? We can ask from Stephen if that was what he meant.
 - We have started making changes in Game.cs around line82 GetCurrentState() to remove green squares from display of inactive player (see line 443 ToDo).
 		- Considering redesign of Game to support multiple clients instead of only stand alone application.
+		- We decided to leave this as is and handle the display in the UI layer (hide legal moves from inactive user)
 - [ ] refactor Game.cs within GetOutput method confusing naming of methods. Noted with a ToDo within file.
 		-"ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming"
