@@ -453,4 +453,7 @@ Why we are still able to see a player as an Observer?
 		-"ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming"
 
 ## 2023-01-10
+- We now show the InvalidMove message and legal squares (in green) to the current player
+- We used ChatGPT to see if it could take turns using TDD (using one test case for fizzbuzz as an example) - and it worked (at least with a short test)
 - [x] Don't show InsufficientPlayers message after we have both players
+- [ ] Review how we handle messages and refactor, e.g., GetMessage and GetPersonalMessage are very similar (redundancies)
