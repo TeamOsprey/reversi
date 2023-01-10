@@ -13,6 +13,8 @@
     public int column { get; set; }
     [Parameter]
     public EventCallback<string> OnMoveSelected { get; set; }
+    [Parameter]
+    public bool ShowLegalSquares { get; set; }
 
     public string color => GetColorFromMessage();
 
@@ -22,7 +24,7 @@
         {
             "B" => "Black",
             "W" => "White",
-            "0" => "Green",
+            "0" => ShowLegalSquares ? "Green" : "Gray",
             _ => "Gray"
         };
     }
