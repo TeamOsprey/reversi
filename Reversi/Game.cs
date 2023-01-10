@@ -225,6 +225,8 @@ namespace Reversi.Logic
         }
         private void SetStatus()
         {
+            State = new State();
+            
             if (IsGameOver())
                 State.GameOver = true;
             else if (IsPass())

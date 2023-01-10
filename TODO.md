@@ -451,3 +451,6 @@ Why we are still able to see a player as an Observer?
 		- We decided to leave this as is and handle the display in the UI layer (hide legal moves from inactive user)
 - [ ] refactor Game.cs within GetOutput method confusing naming of methods. Noted with a ToDo within file.
 		-"ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming"
+
+## 2023-01-10
+- [x] Don't show InsufficientPlayers message after we have both players
