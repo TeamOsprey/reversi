@@ -460,3 +460,5 @@ Why we are still able to see a player as an Observer?
 
 ## 2023-01-17
 - [ ] Fix failing test: IfPlayersMoveIsOverNextPlayerTurnsPassAndFlagDeclarePass
+- [ ] We commented out a "new State()" in Game.SetStatus to fix a failing unit test. Now we need to check its impact on UI (valid moves and messages).
+- Joel has an idea on how to refactor the item from TODO line 459. Creating a new private method that has a boolean parameter called 'isPersonal' ...
