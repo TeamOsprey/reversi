@@ -456,9 +456,9 @@ Why we are still able to see a player as an Observer?
 - We now show the InvalidMove message and legal squares (in green) to the current player
 - We used ChatGPT to see if it could take turns using TDD (using one test case for fizzbuzz as an example) - and it worked (at least with a short test)
 - [x] Don't show InsufficientPlayers message after we have both players
-- [ ] Review how we handle messages and refactor, e.g., GetMessage and GetPersonalMessage are very similar (redundancies)
+- [x] Refactor GetMessage and GetPersonalMessage to remove redundant code
 
 ## 2023-01-17
-- [ ] Fix failing test: IfPlayersMoveIsOverNextPlayerTurnsPassAndFlagDeclarePass
+- [x] Fix failing test: IfPlayersMoveIsOverNextPlayerTurnsPassAndFlagDeclarePass
 - [ ] We commented out a "new State()" in Game.SetStatus to fix a failing unit test. Now we need to check its impact on UI (valid moves and messages).
-- Joel has an idea on how to refactor the item from TODO line 459. Creating a new private method that has a boolean parameter called 'isPersonal' ...
+- [ ] Consider if further refactoring for GetMessage and GetPersonalMessage 
