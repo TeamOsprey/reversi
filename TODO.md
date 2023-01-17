@@ -457,3 +457,6 @@ Why we are still able to see a player as an Observer?
 - We used ChatGPT to see if it could take turns using TDD (using one test case for fizzbuzz as an example) - and it worked (at least with a short test)
 - [x] Don't show InsufficientPlayers message after we have both players
 - [ ] Review how we handle messages and refactor, e.g., GetMessage and GetPersonalMessage are very similar (redundancies)
+
+## 2023-01-17
+- [ ] Fix failing test: IfPlayersMoveIsOverNextPlayerTurnsPassAndFlagDeclarePass
