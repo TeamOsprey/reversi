@@ -51,11 +51,9 @@ namespace Reversi.Web.Services
         }
         public string GetMessage()
         {
-            var msg = new StringBuilder();
-            Action<bool, string> appendLineIf = (state,message) =>
-            {
-                if (state) msg.AppendLine(message);
-            };
+            StringBuilder msg;
+            Action<bool, string> appendLineIf;
+            InitializeMessage(out msg, out appendLineIf);
 
             //appendLineIf(Game.State.MoveInvalid, "Invalid Move!");
             appendLineIf(Game.State.PassOccurred, "User had no possible moves. Turn passed!");
@@ -66,16 +64,23 @@ namespace Reversi.Web.Services
 
         public string GetPersonalMessage()
         {
-            var msg = new StringBuilder();
-            Action<bool, string> appendLineIf = (state,message) =>
-            {
-                if (state) msg.AppendLine(message);
-            };
+            StringBuilder msg;
+            Action<bool, string> appendLineIf;
+            InitializeMessage(out msg, out appendLineIf);
 
             appendLineIf(Game.State.MoveInvalid, "Invalid Move!");
             appendLineIf(Game.State.InsufficientPlayers, "May not move until second player has joined the game!");
 
             return msg.ToString();
+        }
+
+        private static void InitializeMessage(out StringBuilder msg, out Action<bool, string> appendLineIf)
+        {
+            msg = new StringBuilder();
+            appendLineIf = (state, message) =>
+            {
+                if (state) msg.AppendLine(message);
+            };
         }
 
         public int GetScoreByColor(char color)
