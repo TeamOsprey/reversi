@@ -182,6 +182,10 @@ namespace Reversi.Logic
                 State.InsufficientPlayers = true;
                 return false;
             }
+            else
+            {
+                State.InsufficientPlayers = false;
+            }
 
             return true;
         }
