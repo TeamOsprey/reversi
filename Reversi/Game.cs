@@ -182,10 +182,8 @@ namespace Reversi.Logic
                 State.InsufficientPlayers = true;
                 return false;
             }
-            else
-            {
-                State.InsufficientPlayers = false;
-            }
+
+            State.InsufficientPlayers = false;
 
             return true;
         }
@@ -229,8 +227,8 @@ namespace Reversi.Logic
         }
         private void SetStatus()
         {
-            //State = new State();
-            State.InsufficientPlayers = false; //reset 
+            ConfirmTwoPlayers();
+
             if (IsGameOver())
                 State.GameOver = true;
             else if (IsPass())
