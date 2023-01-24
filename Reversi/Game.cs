@@ -230,7 +230,7 @@ namespace Reversi.Logic
         private void SetStatus()
         {
             //State = new State();
-            
+            State.InsufficientPlayers = false; //reset 
             if (IsGameOver())
                 State.GameOver = true;
             else if (IsPass())
