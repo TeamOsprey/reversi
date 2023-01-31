@@ -480,6 +480,8 @@ The method also sets state which doesn't seem to be the right responsibility of 
 	  - See commented out code that we started in State.cs. 
 	  - When creating the State objects, use a factory.
 	  - Note: After the meeting Joel was wondering if it would be easier to convert the State to an enum first,
-	  and then use the enum in the factory to create the correct State object. (Just one idea)
+	  and then use the enum in the factory to create the correct State object. Also, Game.cs doesn't use the
+	  IsPersonal or ErrorMessage attributes of the state, so it doesn't need to know about them, only about the enum; 
+	  So maybe the factory could/should be in the UI (or possibly in the GameService).
 
 
