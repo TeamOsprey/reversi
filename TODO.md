@@ -471,4 +471,7 @@ The method also sets state which doesn't seem to be the right responsibility of 
 
 ## 2023-01-31
 - Removed unused State flags, TurnComplete and InProgress. Removed Tests associated with these flags.
+- [ ] Refactor State class to be an abstract class, and derive 4 classes for the 4 different states. 
+	  See commented out code that we started in State.cs
+		
 
