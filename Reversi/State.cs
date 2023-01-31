@@ -13,5 +13,8 @@ namespace Reversi.Logic
         public bool GameOver { get; set; }
         public bool InsufficientPlayers { get; set; }
 
+        //public string ErrorMessage { get; set; }
+        //public bool IsPersonal { get; set; }
+
     }
 }
