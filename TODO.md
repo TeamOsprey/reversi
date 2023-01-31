@@ -475,6 +475,11 @@ The method also sets state which doesn't seem to be the right responsibility of 
   so the branching would be inside the factory instead of all over the code. We identified the State class as a 
   good candidate for this refactoring, and started working on it.
 - [x] Remove unused State flags, TurnComplete and InProgress. And remove tests associated with these flags.
-- [ ] Refactor State class to be an abstract class, and derive 4 classes for the 4 different states. 
-	  See commented out code that we started in State.cs. 		
+	  (Note: The 4 remaining states are mutually exclusive.)
+- [ ] WIP: Refactor State class to be an abstract class, and derive 4 classes for the 4 different states. 
+	  - See commented out code that we started in State.cs. 
+	  - When creating the State objects, use a factory.
+	  - Note: After the meeting Joel was wondering if it would be easier to convert the State to an enum first,
+	  and then use the enum in the factory to create the correct State object. (Just one idea)
+
 
