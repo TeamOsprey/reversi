@@ -470,8 +470,11 @@ The method also sets state which doesn't seem to be the right responsibility of 
 - [ ] We can watch this video next week and try to apply its practice to our code: https://www.youtube.com/watch?v=YtROlyWWhV0
 
 ## 2023-01-31
-- Removed unused State flags, TurnComplete and InProgress. Removed Tests associated with these flags.
+- We watched the first 15 minutes of the video mentioned last week (https://www.youtube.com/watch?v=YtROlyWWhV0),
+  which suggested refactoring code with a lot of branching (e.g., if-thens) by using an object model with factories,
+  so the branching would be inside the factory instead of all over the code. We identified the State class as a 
+  good candidate for this refactoring, and started working on it.
+- [x] Remove unused State flags, TurnComplete and InProgress. And remove tests associated with these flags.
 - [ ] Refactor State class to be an abstract class, and derive 4 classes for the 4 different states. 
-	  See commented out code that we started in State.cs
-		
+	  See commented out code that we started in State.cs. 		
 
