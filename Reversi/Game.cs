@@ -37,7 +37,6 @@ namespace Reversi.Logic
         {
             ReversiBoard = Board.InitializeBoard();
             _turn = PlayerType.Black;
-            State.InProgress = true;
         }
         public static Game Load(string[] board, PlayerType turn)
         {
@@ -209,7 +208,6 @@ namespace Reversi.Logic
             ChangeTurn();
             SetStatus();
             ActOnStatus();
-            State.TurnComplete = true;
         }
 
         private void ActOnStatus()
@@ -233,8 +231,6 @@ namespace Reversi.Logic
                 State.GameOver = true;
             else if (IsPass())
                 State.PassOccurred = true;
-            else
-                State.InProgress = true;
         }
         private bool IsPass()
         {

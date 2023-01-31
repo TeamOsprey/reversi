@@ -547,13 +547,6 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void InitiateGameWithStatusInProgress()
-        {
-            var reversi = new Game();
-            Assert.IsTrue(reversi.State.InProgress);
-        }
-
-        [Test]
         public void GameOverTestWhenNoLegalMovesForBothPlayers()
         {
             var board = new string[]{
@@ -706,7 +699,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void IfPlayersMoveWorksProperlyFlagDeclareTurnOver()
+        public void IfPlayersMoveWorksProperlyStateIsNotInvalid()
         {
             var board = new string[]{
                  "BWWWWWWW",
@@ -723,7 +716,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(7, 6, "1");
 
-            Assert.IsTrue(reversi.State.TurnComplete);
+            Assert.IsFalse(reversi.State.MoveInvalid);
         }
 
         [Test]
@@ -796,7 +789,7 @@ namespace Reversi.UnitTests
             game.AddPlayer("3");
             game.PlaceCounter(2, 5, "1");
             game.PlaceCounter(5, 5, "2");
-            Assert.IsTrue(game.State.TurnComplete);
+            Assert.IsFalse(game.State.InsufficientPlayers);
         }
 
         [Test]
@@ -824,7 +817,7 @@ namespace Reversi.UnitTests
             game.AddPlayer("1");
             game.AddPlayer("2");
             game.PlaceCounter(2, 5, "1");
-            Assert.IsTrue(game.State.TurnComplete);
+            Assert.IsFalse(game.State.InsufficientPlayers);
         }
 
         [Test]

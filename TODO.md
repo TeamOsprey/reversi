@@ -468,3 +468,7 @@ Why we are still able to see a player as an Observer?
 The method also sets state which doesn't seem to be the right responsibility of this method.
 - [ ] Consider refactoring State class.
 - [ ] We can watch this video next week and try to apply its practice to our code: https://www.youtube.com/watch?v=YtROlyWWhV0
+
+## 2023-01-31
+- Removed unused State flags, TurnComplete and InProgress. Removed Tests associated with these flags.
+
