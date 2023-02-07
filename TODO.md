@@ -476,7 +476,7 @@ The method also sets state which doesn't seem to be the right responsibility of 
   good candidate for this refactoring, and started working on it.
 - [x] Remove unused State flags, TurnComplete and InProgress. And remove tests associated with these flags.
 	  (Note: The 4 remaining states are mutually exclusive.)
-- [ ] WIP: Refactor State class to be an abstract class, and derive 4 classes for the 4 different states. 
+- [x] Refactor State class to be an abstract class, and derive 4 classes for the 4 different states. 
 	  - See commented out code that we started in State.cs. 
 	  - When creating the State objects, use a factory.
 	  - Note: After the meeting Joel was wondering if it would be easier to convert the State to an enum first,
@@ -485,4 +485,5 @@ The method also sets state which doesn't seem to be the right responsibility of 
 	  So maybe the factory could/should be in the UI (or possibly in the GameService).
 
 ## 2023-02-07
+- Refactored State into subclasses
 - [ ] Do we want to get rid of the old text-based UI (GameBoardUi class)?
