@@ -208,7 +208,7 @@ but in Square class, where we can define operator method, we don't have that inf
 - We implemented chat in the game using signalR. (Note: We had an issue trying to use signalR 6 instead of 5)
 - [X] Communicate via signalR that the board has changed after a move 
 - [X] Add rules to restrict player moves to their own color's turn. 
-	- [ ] Add messaging for when it is/is not your turn.
+	- [x] Add messaging for when it is/is not your turn.
 - [X] Limit to two players
 - [ ] Possibly add chat to something to be persisted.
 
@@ -487,4 +487,5 @@ The method also sets state which doesn't seem to be the right responsibility of 
 ## 2023-02-07
 - Refactored State into subclasses
 - [ ] Do we want to get rid of the old text-based UI (GameBoardUi class)?
-- [ ] see line 211 in this file (todo.md re. message improvements)
+- [x] Let players know if it's their turn or their opponent's turn. (see line 211 in this file (todo.md))
+- [ ] Improve alignment of messages in UI (including word-wrapping consistency)

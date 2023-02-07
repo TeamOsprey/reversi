@@ -1,8 +1,15 @@
 ﻿@using Reversi.Web.Services.Interfaces;
 @using Microsoft.AspNetCore.Components.Web
 
-<b>Player's Turn: </b>
-<label>@CurrentPlayer</label>
+@if (IsMyTurn)
+{
+    <label>It is your turn!</label>
+}
+else
+{
+    <label>It is your opponent's turn.</label>
+}
+
 
 @code {
     [Parameter]
@@ -12,7 +19,7 @@
     public IGameService GameService { get; set; }
     
     public string CurrentPlayer => GameService.GetCurrentPlayer();
-    private bool IsMyTurn => CurrentPlayer == GameService.GetPlayerColourString(UserId);
+    private bool IsMyTurn => (CurrentPlayer == GameService.GetPlayerColourString(UserId));
 
     public void Refresh()
     {
