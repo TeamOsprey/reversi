@@ -1,25 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Reversi.Logic
+﻿namespace Reversi.Logic
 {
-    public class State // todo: make abstract
+    public abstract class State 
     {
-        public bool MoveInvalid { get; set; }
-        public bool PassOccurred { get; set; }
-        public bool GameOver { get; set; }
-        public bool InsufficientPlayers { get; set; }
-
-        //public abstract string ErrorMessage { get; set; }
-        //public abstract bool IsPersonal { get; set; }
+        public abstract string ErrorMessage { get; }
+        public abstract bool IsPersonal { get; }
     }
 
-    //public class InvalidMoveState: State
-    //{
-    //    public override string ErrorMessage { get; set; }
-    //    public override bool IsPersonal { get; set; }
-    //}
+    public class MoveInvalid : State
+    {
+        public override string ErrorMessage => "Invalid Move!";
+        public override bool IsPersonal => true;
+    }
+    public class PassOccurred : State
+    {
+        public override string ErrorMessage => "User had no possible moves. Turn passed!";
+        public override bool IsPersonal => false;
+    }
+    public class GameOver : State
+    {
+        public override string ErrorMessage => "Game Over!";
+        public override bool IsPersonal => false;
+    }
+    public class InsufficientPlayers: State
+    {
+        public override string ErrorMessage => "May not move until second player has joined the game!";
+        public override bool IsPersonal => true;
+    }
+    
 }

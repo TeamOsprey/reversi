@@ -484,4 +484,5 @@ The method also sets state which doesn't seem to be the right responsibility of 
 	  IsPersonal or ErrorMessage attributes of the state, so it doesn't need to know about them, only about the enum; 
 	  So maybe the factory could/should be in the UI (or possibly in the GameService).
 
-
+## 2023-02-07
+- [ ] Do we want to get rid of the old text-based UI (GameBoardUi class)?

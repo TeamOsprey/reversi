@@ -14,7 +14,7 @@ namespace Reversi.Logic
 
         private PlayerType _opponent => _turn == PlayerType.White ? PlayerType.Black : PlayerType.White;
         private readonly List<Vector> directions = Direction.GetDirections();
-        public State State = new();
+        public State State;
         private static readonly List<int[]> initialValues = new()
         {
                 new[] { 3,3 },
@@ -47,10 +47,10 @@ namespace Reversi.Logic
         #region public methods
         public bool PlaceCounter(int row, int col, string userId)
         {
-            State = new State();
+            State = null;
             if (string.IsNullOrEmpty(userId) || !IsPlayersTurn(userId))
             {
-                State.MoveInvalid = true;
+                State = new MoveInvalid();
                 return false;
             }
 
@@ -167,7 +167,7 @@ namespace Reversi.Logic
         {
             if (!GetLegalSquares(_turn).Contains(selectedSquare))
             {
-                State.MoveInvalid = true;
+                State = new MoveInvalid();
                 return false;
             }
 
@@ -178,11 +178,9 @@ namespace Reversi.Logic
         {
             if (!playerList.IsGameFull)
             {
-                State.InsufficientPlayers = true;
+                State = new InsufficientPlayers();
                 return false;
             }
-
-            State.InsufficientPlayers = false;
 
             return true;
         }
@@ -212,7 +210,7 @@ namespace Reversi.Logic
 
         private void ActOnStatus()
         {
-            if (State.PassOccurred)
+            if (State is PassOccurred)
             {
                 ChangeTurn();
                 SetStatus();
@@ -228,9 +226,9 @@ namespace Reversi.Logic
             ConfirmTwoPlayers();
 
             if (IsGameOver())
-                State.GameOver = true;
+                State = new GameOver();
             else if (IsPass())
-                State.PassOccurred = true;
+                State = new PassOccurred();
         }
         private bool IsPass()
         {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-using Microsoft.VisualBasic;
-using Reversi.Logic;
+﻿using Reversi.Logic;
 using Reversi.Web.Services.Interfaces;
 
 
@@ -28,7 +25,7 @@ namespace Reversi.Web.Services
 
         public bool IsLastMoveValid()
         {
-            return !Game.State.MoveInvalid;
+            return !(Game.State is MoveInvalid);
         }
 
         public void PlaceCounter(int row, int col, string userId)
@@ -50,36 +47,15 @@ namespace Reversi.Web.Services
         {
             return ConvertPlayerTypeToString(Game.GetPlayerType(userId));
         }
-        private string CreateMessage(bool isPersonal)
-        {
-            var msg = new StringBuilder();
-            Action<bool, string> appendLineIf = (state, message) =>
-            {
-                if (state) msg.AppendLine(message);
-            };
 
-            if (isPersonal)
-            {
-                appendLineIf(Game.State.MoveInvalid, "Invalid Move!");
-                appendLineIf(Game.State.InsufficientPlayers, "May not move until second player has joined the game!");
-            }
-            else
-            {
-                appendLineIf(Game.State.PassOccurred, "User had no possible moves. Turn passed!");
-                appendLineIf(Game.State.GameOver, "Game Over!");
-            }
-
-            return msg.ToString();
-        }
-        
         public string GetMessage()
         {
-            return CreateMessage(false);
+            return Game.State is { IsPersonal: false } ? Game.State.ErrorMessage : "";
         }
 
         public string GetPersonalMessage()
         {
-            return CreateMessage(true);
+            return Game.State is { IsPersonal: true } ? Game.State.ErrorMessage : "";
         }
 
         public int GetScoreByColor(char color)

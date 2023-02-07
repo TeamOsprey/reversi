@@ -562,7 +562,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, PlayerType.Black);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.State.GameOver);
+            Assert.IsTrue(reversi.State is GameOver);
         }
 
         [Test]
@@ -581,7 +581,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, PlayerType.Black);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.State.GameOver);
+            Assert.IsTrue(reversi.State is GameOver);
         }
 
         [Test]
@@ -653,7 +653,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(1, 1, "1");
 
-            Assert.IsTrue(reversi.State.MoveInvalid);
+            Assert.IsTrue(reversi.State is MoveInvalid);
         }
 
         [Test]
@@ -674,7 +674,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(7, 6, "1");
 
-            Assert.IsTrue(reversi.State.PassOccurred);
+            Assert.IsTrue(reversi.State is PassOccurred);
         }
 
         [Test]
@@ -695,7 +695,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(4, 7, "1");
 
-            Assert.IsTrue(reversi.State.GameOver);
+            Assert.IsTrue(reversi.State is GameOver);
         }
 
         [Test]
@@ -716,7 +716,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(7, 6, "1");
 
-            Assert.IsFalse(reversi.State.MoveInvalid);
+            Assert.IsFalse(reversi.State is MoveInvalid);
         }
 
         [Test]
@@ -789,7 +789,7 @@ namespace Reversi.UnitTests
             game.AddPlayer("3");
             game.PlaceCounter(2, 5, "1");
             game.PlaceCounter(5, 5, "2");
-            Assert.IsFalse(game.State.InsufficientPlayers);
+            Assert.IsFalse(game.State is InsufficientPlayers);
         }
 
         [Test]
@@ -798,7 +798,7 @@ namespace Reversi.UnitTests
             var game = new Game();
             game.AddPlayer("1");
             game.PlaceCounter(4, 4, "1");
-            Assert.IsTrue(game.State.InsufficientPlayers);
+            Assert.IsTrue(game.State is InsufficientPlayers);
         }
         [Test]
         public void WithTwoPlayersAllowPlaceCounter()
@@ -817,7 +817,7 @@ namespace Reversi.UnitTests
             game.AddPlayer("1");
             game.AddPlayer("2");
             game.PlaceCounter(2, 5, "1");
-            Assert.IsFalse(game.State.InsufficientPlayers);
+            Assert.IsFalse(game.State is InsufficientPlayers);
         }
 
         [Test]
@@ -827,7 +827,7 @@ namespace Reversi.UnitTests
             game.AddPlayer("1");
             game.AddPlayer("2");
             game.PlaceCounter(4, 4, "2");
-            Assert.IsTrue(game.State.MoveInvalid);
+            Assert.IsTrue(game.State is MoveInvalid);
         }
 
         [Test]

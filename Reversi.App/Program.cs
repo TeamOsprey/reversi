@@ -1,4 +1,6 @@
-﻿namespace Reversi.App
+﻿using Reversi.Logic;
+
+namespace Reversi.App
 {
     public class Program
     {
@@ -9,7 +11,7 @@
             do
             {
                 gameBoardUi.TakeTurn();
-            } while (!gameBoardUi.reversi.State.GameOver);
+            } while (!(gameBoardUi.reversi.State is GameOver));
         }
     }
 }

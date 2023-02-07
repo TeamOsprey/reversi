@@ -52,11 +52,11 @@ namespace Reversi.App
             Console.WriteLine();
 
 
-            if (reversi.State.MoveInvalid)
+            if (reversi.State is MoveInvalid)
                 WriteErrorMessage("Invalid Move!");
-            if (reversi.State.PassOccurred)
+            if (reversi.State is PassOccurred)
                 WriteErrorMessage("User had no possible moves. Turn passed!");
-            if (reversi.State.GameOver)
+            if (reversi.State is GameOver)
                 WriteErrorMessage("Game Over!");
 
             Console.WriteLine("Current turn: " + currentPlayer);
