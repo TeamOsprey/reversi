@@ -5,9 +5,14 @@
 <label>@CurrentPlayer</label>
 
 @code {
+    [Parameter]
+    public string UserId { get; set; }
+
     [CascadingParameter]
     public IGameService GameService { get; set; }
+    
     public string CurrentPlayer => GameService.GetCurrentPlayer();
+    private bool IsMyTurn => CurrentPlayer == GameService.GetPlayerColourString(UserId);
 
     public void Refresh()
     {

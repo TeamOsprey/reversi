@@ -466,7 +466,7 @@ Why we are still able to see a player as an Observer?
 ## 2023-01-24
 - [ ] We need to refactor ConfirmTwoPlayers method. We are getting the same information from different places. 
 The method also sets state which doesn't seem to be the right responsibility of this method.
-- [ ] Consider refactoring State class.
+- [x] Consider refactoring State class.
 - [ ] We can watch this video next week and try to apply its practice to our code: https://www.youtube.com/watch?v=YtROlyWWhV0
 
 ## 2023-01-31
@@ -487,3 +487,4 @@ The method also sets state which doesn't seem to be the right responsibility of 
 ## 2023-02-07
 - Refactored State into subclasses
 - [ ] Do we want to get rid of the old text-based UI (GameBoardUi class)?
+- [ ] see line 211 in this file (todo.md re. message improvements)

@@ -8,11 +8,11 @@
 @inject IHttpContextAccessor HttpContextAccessor
 <CascadingValue Value="@GameService">
     <div class="flex col-md-5">
+        <label><b>Who I am:</b> @WhatColourAmI</label>
 		<MessageComponent IsUsersTurn="@IsUsersTurn"/>
-		<GameInformation/>
 		<ScoreComponent/>
-		<br />
-		<label><b>Who I am:</b> @WhatColourAmI</label>
+        <br />
+        <GameInformation UserId="UserId"/>
     </div>
 </CascadingValue>
 <div class="flex">
