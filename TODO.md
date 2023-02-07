@@ -488,4 +488,6 @@ The method also sets state which doesn't seem to be the right responsibility of 
 - Refactored State into subclasses
 - [ ] Do we want to get rid of the old text-based UI (GameBoardUi class)?
 - [x] Let players know if it's their turn or their opponent's turn. (see line 211 in this file (todo.md))
-- [ ] Improve alignment of messages in UI (including word-wrapping consistency)
+- [ ] Improve text at top of UI: 
+	- Move score below game board and format better (e.g., bigger text, etc.)
+- [ ] Consider moving game board into its own component (razor file)
