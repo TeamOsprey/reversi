@@ -11,8 +11,8 @@ namespace Reversi.Logic
     {
         public List<Player> Players { get; set; } = new()
         {
-            new Player(PlayerType.Black, null),
-            new Player(PlayerType.White, null) 
+            new Player(Player.Black, null),
+            new Player(Player.White, null) 
         };
 
 
@@ -23,7 +23,7 @@ namespace Reversi.Logic
             return Players.Any(x => x.UserId == userId);
         }
 
-        public void AddPlayer(PlayerType type, string userId)
+        public void AddPlayer(Player type, string userId)
         {
             Players.Find(x => x.Type == type).UserId = userId;
         }
@@ -43,12 +43,12 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        public bool IsCurrentPlayer(string userId, PlayerType turn)
+        public bool IsCurrentPlayer(string userId, Player turn)
         {
             return Players.Any(x => x.UserId == userId && x.Type == turn);
         }
 
-        public bool HasPlayer(PlayerType playerType)
+        public bool HasPlayer(Player playerType)
         {
             return Players.Any(x => x.Type == playerType && x.UserId != null);
         }

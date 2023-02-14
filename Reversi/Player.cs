@@ -10,6 +10,7 @@
 
         public string UserId { get; set; }
 
+        //Counter represents a game piece, not a score counter.
         public abstract char Counter { get; }
     }
 

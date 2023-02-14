@@ -8,11 +8,11 @@ namespace Reversi.Logic
     {
         #region fields
         public Board ReversiBoard { get; set; }
-        private PlayerType _turn;
+        private Player _turn;
         
-        public PlayerType Turn() => _turn;
+        public Player Turn() => _turn;
 
-        private PlayerType _opponent => _turn == PlayerType.White ? PlayerType.Black : PlayerType.White;
+        private Player _opponent => _turn is WhitePlayer ? Player.Black : Player.White;
         private readonly List<Vector> directions = Direction.GetDirections();
         public State State;
         private static readonly List<int[]> initialValues = new()
@@ -28,7 +28,7 @@ namespace Reversi.Logic
 
         #endregion
         #region constructors
-        private Game(string[] board, PlayerType turn)
+        private Game(string[] board, Player turn)
         {
             ReversiBoard = new Board(board);
             _turn = turn;
@@ -36,9 +36,9 @@ namespace Reversi.Logic
         public Game()
         {
             ReversiBoard = Board.InitializeBoard();
-            _turn = PlayerType.Black;
+            _turn = Player.Black;
         }
-        public static Game Load(string[] board, PlayerType turn)
+        public static Game Load(string[] board, Player turn)
         {
             var game = new Game(board, turn);
             return game;
@@ -79,12 +79,12 @@ namespace Reversi.Logic
             var showLegalMoves = true; // maybe use this.IsPlayersTurn(userId)
             return ReversiBoard.GetCurrentState(showLegalMoves);
         }
-        public PlayerType GetWinner()
+        public Player GetWinner()
         {
             var white = GetNumberOfColor(Counters.WHITE);
             var black = GetNumberOfColor(Counters.BLACK);
 
-            return (white > black) ? PlayerType.White : PlayerType.Black;
+            return (white > black) ? Player.White : Player.Black;
         }
 
         public string[] DisplayBoard()
@@ -110,13 +110,13 @@ namespace Reversi.Logic
 
                 if (playerList.DoesConnectionExist(userId)) return;
 
-                if (!playerList.HasPlayer(PlayerType.Black))
+                if (!playerList.HasPlayer(Player.Black))
                 {
-                    playerList.AddPlayer(PlayerType.Black, userId);
+                    playerList.AddPlayer(Player.Black, userId);
                 }
-                else if (!playerList.HasPlayer(PlayerType.White))
+                else if (!playerList.HasPlayer(Player.White))
                 {
-                    playerList.AddPlayer(PlayerType.White, userId);
+                    playerList.AddPlayer(Player.White, userId);
                 }
 
                 if (!_setInitialStatus && playerList.IsGameFull)
@@ -267,7 +267,7 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.NONE;
         }
-        private HashSet<Square> GetLegalSquares(PlayerType type)
+        private HashSet<Square> GetLegalSquares(Player type)
         {
             HashSet<Square> returnValue = new HashSet<Square>();
             if (!AllInitialTilesPlaced())

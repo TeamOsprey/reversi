@@ -493,4 +493,6 @@ The method also sets state which doesn't seem to be the right responsibility of 
 - [ ] Consider moving game board into its own component (razor file)
 
 ## 2023-02-14
+Refactoring changes to Player class.
 - [ ] Replace PlayerType enum with subclassing
+- [ ] look at removing PlayerType Enum (Roles.cs file)

@@ -1,8 +1,8 @@
 ﻿namespace Reversi.Logic
 {
-    public enum PlayerType
-    {
-        Black = 0,
-        White = 1,
-    }
+    //public enum Player
+    //{
+    //    Black = 0,
+    //    White = 1,
+    //}
 }
