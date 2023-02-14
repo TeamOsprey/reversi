@@ -491,3 +491,6 @@ The method also sets state which doesn't seem to be the right responsibility of 
 - [ ] Improve text at top of UI: 
 	- Move score below game board and format better (e.g., bigger text, etc.)
 - [ ] Consider moving game board into its own component (razor file)
+
+## 2023-02-14
+- [ ] Maybe: Replace PlayerType enum with subclassing

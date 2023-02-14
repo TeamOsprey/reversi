@@ -1,29 +1,40 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Reversi.Logic
 {
-    public class Player
+    public abstract class Player
     {
-        public Player(PlayerType type, string userId)
+        private char counter;
+        
+        public Player(string userId)
         {
-            Type = type;
             UserId = userId;
         }
         
-        public PlayerType Type { get; set; }
         public string UserId { get; set; }
 
-        public char Counter => GetColourOfPlayer();
+        //public char Counter => GetColourOfPlayer();
 
-        private char GetColourOfPlayer()
+        protected char GetColourOfPlayer()
         {
-            return Type switch
-            {
-                PlayerType.Black => Counters.BLACK,
-                PlayerType.White => Counters.WHITE,
-                _ => throw new InvalidOperationException("This player Type has no valid counter.")
-            };
+            return counter;
         }
+    }
 
+    public class BlackPlayer : Player
+    {
+        char counter = Counters.BLACK;
+        public BlackPlayer(string userId) : base(userId)
+        {
+        }
+    }
+
+    public class WhitePlayer : Player
+    {
+        char counter = Counters.WHITE;
+        public WhitePlayer(string userId) : base(userId)
+        {
+        }
     }
 }
