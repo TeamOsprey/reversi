@@ -1,40 +1,40 @@
-﻿using System;
-using System.Reflection;
-
-namespace Reversi.Logic
+﻿namespace Reversi.Logic
 {
     public abstract class Player
     {
-        private char counter;
-        
-        public Player(string userId)
+
+        protected Player(string userId)
         {
             UserId = userId;
         }
-        
+
         public string UserId { get; set; }
 
-        //public char Counter => GetColourOfPlayer();
-
-        protected char GetColourOfPlayer()
-        {
-            return counter;
-        }
+        public abstract char Counter { get; }
     }
 
     public class BlackPlayer : Player
     {
-        char counter = Counters.BLACK;
         public BlackPlayer(string userId) : base(userId)
         {
+        }
+        
+        public override char Counter => Counters.BLACK;
+        public override string ToString()
+        {
+            return "Black";
         }
     }
 
     public class WhitePlayer : Player
     {
-        char counter = Counters.WHITE;
         public WhitePlayer(string userId) : base(userId)
         {
+        }
+        public override char Counter => Counters.WHITE;
+        public override string ToString()
+        {
+            return "White";
         }
     }
 }
