@@ -29,19 +29,19 @@ namespace Reversi.Logic
 
         #endregion
         #region constructors
-        private Game(string[] board, Player turn)
+        private Game(string[] board, bool isTurnBlack)
         {
             ReversiBoard = new Board(board);
-            _turn = turn;
+            _turn = isTurnBlack ? playerList.BlackPlayer : playerList.WhitePlayer;
         }
         public Game()
         {
             ReversiBoard = Board.InitializeBoard();
             _turn = playerList.BlackPlayer;
         }
-        public static Game Load(string[] board, Player turn)
+        public static Game Load(string[] board, bool isTurnBlack)
         {
-            var game = new Game(board, turn);
+            var game = new Game(board, isTurnBlack);
             return game;
         }
         #endregion
