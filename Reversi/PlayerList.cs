@@ -26,9 +26,14 @@ namespace Reversi.Logic
             return Players.Any(x => x.UserId == userId);
         }
 
-        public void AddPlayer(Player type, string userId)
+        public void AddBlackPlayer(string userId)
         {
-            Players.Find(x => x.Type == type).UserId = userId;
+            BlackPlayer.UserId = userId;
+        }
+
+        public void AddWhitePlayer(string userId)
+        {
+            WhitePlayer.UserId = userId;
         }
 
         public void Remove(Player player)

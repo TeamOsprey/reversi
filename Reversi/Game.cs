@@ -113,11 +113,11 @@ namespace Reversi.Logic
 
                 if (!playerList.HasBlackPlayer())
                 {
-                    playerList.AddPlayer(Player.Black, userId);
+                    playerList.AddBlackPlayer(userId);
                 }
                 else if (!playerList.HasWhitePlayer())
                 {
-                    playerList.AddPlayer(Player.White, userId);
+                    playerList.AddWhitePlayer(userId);
                 }
 
                 if (!_setInitialStatus && playerList.IsGameFull)
@@ -268,7 +268,7 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.NONE;
         }
-        private HashSet<Square> GetLegalSquares(Player type)
+        private HashSet<Square> GetLegalSquares(Player player)
         {
             HashSet<Square> returnValue = new HashSet<Square>();
             if (!AllInitialTilesPlaced())
@@ -277,8 +277,6 @@ namespace Reversi.Logic
             }
             else
             {
-                //TODO: refactor this. Probably change _turn and _opponent to be Player. Then we pass Player instead of PlayerType to this method.
-                var player = playerList.First(x => x.Type == type);
                 AddLegalSquaresToSet(returnValue, player.Counter);
             }
             return returnValue;
