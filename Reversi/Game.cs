@@ -60,7 +60,7 @@ namespace Reversi.Logic
 
         private bool IsPlayersTurn(string userId)
         {
-            return playerList.IsCurrentPlayer(userId, _turn);
+            return _turn.UserId == userId;
         }
 
         public string GetPlayerType(string userId)

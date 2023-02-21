@@ -51,11 +51,6 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        public bool IsCurrentPlayer(string userId, Player turn)
-        {
-            return Players.Any(x => x.UserId == userId && x.Type == turn);
-        }
-
         public bool HasBlackPlayer()
         {
             return BlackPlayer.UserId != null;

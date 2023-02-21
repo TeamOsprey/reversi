@@ -45,8 +45,6 @@ namespace Reversi.App
         }
         private void DisplayBoard()
         {
-            var currentPlayer = (reversi.Turn() == Player.Black) ? Player.Black.ToString() : Player.White.ToString();
-
             Console.WriteLine(string.Join('\n', guidedBoard));
             Console.WriteLine();
             Console.WriteLine();
@@ -59,7 +57,7 @@ namespace Reversi.App
             if (reversi.State is GameOver)
                 WriteErrorMessage("Game Over!");
 
-            Console.WriteLine("Current turn: " + currentPlayer);
+            Console.WriteLine("Current turn: " + reversi.Turn());
             Console.Write("Enter coordinates (row,col): ");
         }
  

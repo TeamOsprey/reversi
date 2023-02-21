@@ -63,14 +63,10 @@ namespace Reversi.Web.Services
             return Game.GetNumberOfColor(color);
         }
 
-        private string ConvertPlayerTypeToString(Player? type)
+        private string ConvertPlayerTypeToString(Player player)
         {
-            return type switch
-            {
-                Player.Black => Player.Black.ToString(),
-                Player.White => Player.White.ToString(),
-                _ => "Observer"
-            };
+            return player != null ? player.ToString() : "Observer";
+
         }
     }
 }
