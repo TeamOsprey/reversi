@@ -63,10 +63,9 @@ namespace Reversi.Logic
             return _turn.UserId == userId;
         }
 
-        public string GetPlayerType(string userId)
+        public Player GetPlayer(string userId)
         {
-            var player = playerList.SingleOrDefault(x => x.UserId == userId);
-            return player?.ToString();
+            return playerList.SingleOrDefault(x => x.UserId == userId);
         }
         public Player GetCurrentPlayer()
         {

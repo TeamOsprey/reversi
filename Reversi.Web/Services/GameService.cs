@@ -45,7 +45,7 @@ namespace Reversi.Web.Services
 
         public string GetPlayerColourString(string userId)
         {
-            return ConvertPlayerTypeToString(Game.GetPlayerType(userId));
+            return ConvertPlayerTypeToString(Game.GetPlayer(userId));
         }
 
         public string GetMessage()
