@@ -11,9 +11,12 @@ namespace Reversi.Logic
     {
         public List<Player> Players { get; set; } = new()
         {
-            new Player(Player.Black, null),
-            new Player(Player.White, null) 
+            new BlackPlayer(null),
+            new WhitePlayer(null) 
         };
+
+        public BlackPlayer BlackPlayer => Players[0] as BlackPlayer;
+        public WhitePlayer WhitePlayer => Players[1] as WhitePlayer;
 
 
         public bool IsGameFull => Players.All(x=>x.UserId != null);
@@ -48,9 +51,14 @@ namespace Reversi.Logic
             return Players.Any(x => x.UserId == userId && x.Type == turn);
         }
 
-        public bool HasPlayer(Player playerType)
+        public bool HasBlackPlayer()
         {
-            return Players.Any(x => x.Type == playerType && x.UserId != null);
+            return BlackPlayer.UserId != null;
+        }
+
+        public bool HasWhitePlayer()
+        {
+            return WhitePlayer.UserId != null;
         }
     }
 }

@@ -12,7 +12,8 @@ namespace Reversi.Logic
         
         public Player Turn() => _turn;
 
-        private Player _opponent => _turn is WhitePlayer ? Player.Black : Player.White;
+        private Player _opponent => _turn is WhitePlayer ? playerList.BlackPlayer : playerList.WhitePlayer;
+        
         private readonly List<Vector> directions = Direction.GetDirections();
         public State State;
         private static readonly List<int[]> initialValues = new()
@@ -36,7 +37,7 @@ namespace Reversi.Logic
         public Game()
         {
             ReversiBoard = Board.InitializeBoard();
-            _turn = Player.Black;
+            _turn = playerList.BlackPlayer;
         }
         public static Game Load(string[] board, Player turn)
         {
@@ -69,7 +70,7 @@ namespace Reversi.Logic
         }
         public Player GetCurrentPlayer()
         {
-            return playerList.Single(x => x.Type == _turn);
+            return _turn;
         }
         public string[] GetOutput()
         {
@@ -84,7 +85,7 @@ namespace Reversi.Logic
             var white = GetNumberOfColor(Counters.WHITE);
             var black = GetNumberOfColor(Counters.BLACK);
 
-            return (white > black) ? Player.White : Player.Black;
+            return (white > black) ? playerList.WhitePlayer : playerList.BlackPlayer;
         }
 
         public string[] DisplayBoard()
@@ -110,11 +111,11 @@ namespace Reversi.Logic
 
                 if (playerList.DoesConnectionExist(userId)) return;
 
-                if (!playerList.HasPlayer(Player.Black))
+                if (!playerList.HasBlackPlayer())
                 {
                     playerList.AddPlayer(Player.Black, userId);
                 }
-                else if (!playerList.HasPlayer(Player.White))
+                else if (!playerList.HasWhitePlayer())
                 {
                     playerList.AddPlayer(Player.White, userId);
                 }
