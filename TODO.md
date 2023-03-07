@@ -503,12 +503,14 @@ We finished replacing PlayerType enum with subclassing, but still need some clea
 
 ## 2023-03-07
 Refactored Game.cs and PlayerList.cs:
-- Renamed PlayerList class and instance to PlayerCollection and _players - .NET Guidelines for collections: 
-	- "DO use the "Collection" suffix in names of types implementing IEnumerable (or any of its descendants) and representing a list of items."
+- Renamed PlayerList class and instance to PlayerCollection and _players. See .NET Guidelines for collections: 
+	- "Use the "Collection" suffix in names of types implementing IEnumerable (or any of its descendants) and representing a list of items."
 	- Source: https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/guidelines-for-collections
 - Renamed PlayerList.IsGameFull to .HasAllPlayers
 - Add and Remove player are now more encapsulated in PlayerList
 - [ ] Fix this in PlayerCollection class: "DO NOT use ArrayList or List<T> in public APIs." (from .NET Guidelines for collections)
 	- don't expose the list of players property that is inside the PlayerCollection
-- Tip: Install PowerTools and use Win+Shift+T to get OCR on rectangle of screen (we used this to get all the checkin comments and paste into
-  this todo document)
+- Tip: Install Microsoft Power Toys and use Win+Shift+T to get OCR on rectangle of screen. (We used this to get all the checkin comments 
+  and paste into this todo document.) Links: 
+	- Power Toys overview: https://learn.microsoft.com/en-us/windows/powertoys/
+	- Paste as Plain Text (OCR): https://learn.microsoft.com/en-us/windows/powertoys/paste-as-plain-text
