@@ -110,14 +110,7 @@ namespace Reversi.Logic
 
                 if (playerList.DoesConnectionExist(userId)) return;
 
-                if (!playerList.HasBlackPlayer())
-                {
-                    playerList.AddBlackPlayer(userId);
-                }
-                else if (!playerList.HasWhitePlayer())
-                {
-                    playerList.AddWhitePlayer(userId);
-                }
+                playerList.Add(userId);
 
                 if (!_setInitialStatus && playerList.IsGameFull)
                 {
@@ -130,9 +123,7 @@ namespace Reversi.Logic
 
         public void RemovePlayer(string userId)
         {
-            var player = playerList.SingleOrDefault(x => x.UserId == userId);
-            if (player != null) 
-                playerList.Remove(player);
+            playerList.Remove(userId);
         }
 
         #endregion

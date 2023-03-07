@@ -26,19 +26,34 @@ namespace Reversi.Logic
             return Players.Any(x => x.UserId == userId);
         }
 
-        public void AddBlackPlayer(string userId)
+        public void Add(string userId)
+        {
+            if (!HasBlackPlayer())
+            {
+                AddBlackPlayer(userId);
+            }
+            else if (!HasWhitePlayer())
+            {
+                AddWhitePlayer(userId);
+            }
+        }
+
+
+        private void AddBlackPlayer(string userId)
         {
             BlackPlayer.UserId = userId;
         }
 
-        public void AddWhitePlayer(string userId)
+        private void AddWhitePlayer(string userId)
         {
             WhitePlayer.UserId = userId;
         }
 
-        public void Remove(Player player)
+        public void Remove(string userId)
         {
-            player.UserId = null;
+            var player = Players.SingleOrDefault(x => x.UserId == userId);
+            if (player != null)            
+                player.UserId = null;
         }
 
         public IEnumerator<Player> GetEnumerator()
@@ -51,12 +66,12 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        public bool HasBlackPlayer()
+        private bool HasBlackPlayer()
         {
             return BlackPlayer.UserId != null;
         }
 
-        public bool HasWhitePlayer()
+        private bool HasWhitePlayer()
         {
             return WhitePlayer.UserId != null;
         }
