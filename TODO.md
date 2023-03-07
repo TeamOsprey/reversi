@@ -510,6 +510,11 @@ Refactored Game.cs and PlayerList.cs:
 - Add and Remove player are now more encapsulated in PlayerList
 - [ ] Fix this in PlayerCollection class: "DO NOT use ArrayList or List<T> in public APIs." (from .NET Guidelines for collections)
 	- don't expose the list of players property that is inside the PlayerCollection
+- [ ] Consider refactoring the Add Player functionality further (in Game.cs and PlayerCollection.cs): 
+	  Change PlayerCollection.AddPlayer to .TryAddPlayer and return a bool indicating if the player was added or not.
+	  This would allow us to:
+	  - Delete the field _setInitialStatus (and check instead of using that field, just check the result of TryAddPlayer).
+	  - Move "if (_players.HasAllPlayers || _players.Contains(userId)) return;" into TryAddPlayer and return false in that case.
 - Tip: Install Microsoft Power Toys and use Win+Shift+T to get OCR on rectangle of screen. (We used this to get all the checkin comments 
   and paste into this todo document.) Links: 
 	- Power Toys overview: https://learn.microsoft.com/en-us/windows/powertoys/
