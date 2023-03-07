@@ -12,7 +12,7 @@ namespace Reversi.Logic
         
         public Player Turn() => _turn;
 
-        private Player _opponent => _turn is WhitePlayer ? playerList.BlackPlayer : playerList.WhitePlayer;
+        private Player _opponent => _turn is WhitePlayer ? _players.BlackPlayer : _players.WhitePlayer;
         
         private readonly List<Vector> directions = Direction.GetDirections();
         public State State;
@@ -24,7 +24,7 @@ namespace Reversi.Logic
                 new[] { 4,3 },
         };
 
-        private PlayerList playerList = new();
+        private PlayerCollection _players = new();
         private bool _setInitialStatus;
 
         #endregion
@@ -32,12 +32,12 @@ namespace Reversi.Logic
         private Game(string[] board, bool isTurnBlack)
         {
             ReversiBoard = new Board(board);
-            _turn = isTurnBlack ? playerList.BlackPlayer : playerList.WhitePlayer;
+            _turn = isTurnBlack ? _players.BlackPlayer : _players.WhitePlayer;
         }
         public Game()
         {
             ReversiBoard = Board.InitializeBoard();
-            _turn = playerList.BlackPlayer;
+            _turn = _players.BlackPlayer;
         }
         public static Game Load(string[] board, bool isTurnBlack)
         {
@@ -65,7 +65,7 @@ namespace Reversi.Logic
 
         public Player GetPlayer(string userId)
         {
-            return playerList.SingleOrDefault(x => x.UserId == userId);
+            return _players.SingleOrDefault(x => x.UserId == userId);
         }
         public Player GetCurrentPlayer()
         {
@@ -73,7 +73,7 @@ namespace Reversi.Logic
         }
         public string[] GetOutput()
         {
-            if(playerList.HasAllPlayers)
+            if(_players.HasAllPlayers)
                 ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming
 
             var showLegalMoves = true; // maybe use this.IsPlayersTurn(userId)
@@ -84,7 +84,7 @@ namespace Reversi.Logic
             var white = GetNumberOfColor(Counters.WHITE);
             var black = GetNumberOfColor(Counters.BLACK);
 
-            return (white > black) ? playerList.WhitePlayer : playerList.BlackPlayer;
+            return (white > black) ? _players.WhitePlayer : _players.BlackPlayer;
         }
 
         public string[] DisplayBoard()
@@ -98,21 +98,21 @@ namespace Reversi.Logic
 
         public List<Player> GetPlayerList()
         {
-            return playerList.Players;
+            return _players.Players;
         }
 
         public void AddPlayer(string userId)
         {
-            lock (playerList)
+            lock (_players)
             {
-                if (playerList.HasAllPlayers)
+                if (_players.HasAllPlayers)
                     return;
 
-                if (playerList.DoesConnectionExist(userId)) return;
+                if (_players.DoesConnectionExist(userId)) return;
 
-                playerList.Add(userId);
+                _players.Add(userId);
 
-                if (!_setInitialStatus && playerList.HasAllPlayers)
+                if (!_setInitialStatus && _players.HasAllPlayers)
                 {
                     SetStatus();
                     ActOnStatus();
@@ -123,7 +123,7 @@ namespace Reversi.Logic
 
         public void RemovePlayer(string userId)
         {
-            playerList.Remove(userId);
+            _players.Remove(userId);
         }
 
         #endregion
@@ -167,7 +167,7 @@ namespace Reversi.Logic
 
         private bool ConfirmTwoPlayers()
         {
-            if (!playerList.HasAllPlayers)
+            if (!_players.HasAllPlayers)
             {
                 State = new InsufficientPlayers();
                 return false;
