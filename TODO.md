@@ -495,7 +495,7 @@ The method also sets state which doesn't seem to be the right responsibility of 
 ## 2023-02-14
 Refactoring changes to Player class.
 - [x] Replace PlayerType enum with subclassing
-- [ ] Remove PlayerType Enum (Roles.cs file)
+- [x] Remove PlayerType Enum (Roles.cs file)
 
 ## 2023-02-21
 We finished replacing PlayerType enum with subclassing, but still need some clean up. We are green and UI works.
