@@ -18,7 +18,7 @@ namespace Reversi.Logic
 
         public bool HasAllPlayers => Players.All(x=>x.UserId != null);
 
-        public bool DoesConnectionExist(string userId)
+        public bool Contains(string userId)
         {
             return Players.Any(x => x.UserId == userId);
         }

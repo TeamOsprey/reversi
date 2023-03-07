@@ -105,10 +105,8 @@ namespace Reversi.Logic
         {
             lock (_players)
             {
-                if (_players.HasAllPlayers)
+                if (_players.HasAllPlayers || _players.Contains(userId))
                     return;
-
-                if (_players.DoesConnectionExist(userId)) return;
 
                 _players.Add(userId);
 
