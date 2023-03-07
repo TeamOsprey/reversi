@@ -73,7 +73,7 @@ namespace Reversi.Logic
         }
         public string[] GetOutput()
         {
-            if(playerList.IsGameFull)
+            if(playerList.HasAllPlayers)
                 ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming
 
             var showLegalMoves = true; // maybe use this.IsPlayersTurn(userId)
@@ -105,14 +105,14 @@ namespace Reversi.Logic
         {
             lock (playerList)
             {
-                if (playerList.IsGameFull)
+                if (playerList.HasAllPlayers)
                     return;
 
                 if (playerList.DoesConnectionExist(userId)) return;
 
                 playerList.Add(userId);
 
-                if (!_setInitialStatus && playerList.IsGameFull)
+                if (!_setInitialStatus && playerList.HasAllPlayers)
                 {
                     SetStatus();
                     ActOnStatus();
@@ -167,7 +167,7 @@ namespace Reversi.Logic
 
         private bool ConfirmTwoPlayers()
         {
-            if (!playerList.IsGameFull)
+            if (!playerList.HasAllPlayers)
             {
                 State = new InsufficientPlayers();
                 return false;

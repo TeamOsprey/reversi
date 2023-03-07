@@ -19,7 +19,7 @@ namespace Reversi.Logic
         public WhitePlayer WhitePlayer => Players[1] as WhitePlayer;
 
 
-        public bool IsGameFull => Players.All(x=>x.UserId != null);
+        public bool HasAllPlayers => Players.All(x=>x.UserId != null);
 
         public bool DoesConnectionExist(string userId)
         {
