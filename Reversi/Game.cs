@@ -96,9 +96,9 @@ namespace Reversi.Logic
             return ReversiBoard.GetNumberOfSquaresByColor(color);
         }
 
-        public List<Player> GetPlayerList()
+        public PlayerCollection GetPlayerList()
         {
-            return _players.Players;
+            return _players;
         }
 
         public void AddPlayer(string userId)

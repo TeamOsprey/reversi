@@ -6,7 +6,7 @@ namespace Reversi.Logic
 {
     public class PlayerCollection : IEnumerable<Player>
     {
-        public List<Player> Players { get; set; } = new()
+        private List<Player> Players { get; set; } = new()
         {
             new BlackPlayer(null),
             new WhitePlayer(null) 

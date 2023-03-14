@@ -727,9 +727,10 @@ namespace Reversi.UnitTests
             var players = game.GetPlayerList();
             Assert.Multiple(()=>
             {
-                Assert.IsTrue(players[0] is BlackPlayer);
-                Assert.AreEqual(players[0].UserId, "1"); 
-                Assert.AreEqual(players[1].UserId, null);
+                Assert.IsTrue(players.HasBlackPlayer());
+                Assert.IsFalse(players.HasWhitePlayer());
+                Assert.AreEqual(players.BlackPlayer.UserId, "1"); 
+                Assert.AreEqual(players.WhitePlayer.UserId, null);
             });
 
         }
