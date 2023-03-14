@@ -18,6 +18,14 @@ namespace Reversi.Logic
 
         public bool HasAllPlayers => Players.All(x=>x.UserId != null);
 
+
+        public bool HasBlackPlayer => BlackPlayer.UserId != null;
+
+
+        public bool HasWhitePlayer => WhitePlayer.UserId != null;
+
+
+
         public bool Contains(string userId)
         {
             return Players.Any(x => x.UserId == userId);
@@ -25,11 +33,11 @@ namespace Reversi.Logic
 
         public void Add(string userId)
         {
-            if (!HasBlackPlayer())
+            if (!HasBlackPlayer)
             {
                 AddBlackPlayer(userId);
             }
-            else if (!HasWhitePlayer())
+            else if (!HasWhitePlayer)
             {
                 AddWhitePlayer(userId);
             }
@@ -63,14 +71,5 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        public bool HasBlackPlayer()
-        {
-            return BlackPlayer.UserId != null;
-        }
-
-        public bool HasWhitePlayer()
-        {
-            return WhitePlayer.UserId != null;
-        }
     }
 }
