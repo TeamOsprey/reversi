@@ -63,12 +63,12 @@ namespace Reversi.Logic
             return ((IEnumerable)Players).GetEnumerator();
         }
 
-        private bool HasBlackPlayer()
+        public bool HasBlackPlayer()
         {
             return BlackPlayer.UserId != null;
         }
 
-        private bool HasWhitePlayer()
+        public bool HasWhitePlayer()
         {
             return WhitePlayer.UserId != null;
         }
