@@ -519,3 +519,6 @@ Refactored Game.cs and PlayerList.cs:
   and paste into this todo document.) Links: 
 	- Power Toys overview: https://learn.microsoft.com/en-us/windows/powertoys/
 	- Paste as Plain Text (OCR): https://learn.microsoft.com/en-us/windows/powertoys/paste-as-plain-text
+
+## 2023-03-14 
+- Updated TargetFramework to net6.0 where not yet done	
