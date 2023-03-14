@@ -13,6 +13,7 @@ namespace Reversi.Logic
         };
 
         public BlackPlayer BlackPlayer => Players[0] as BlackPlayer;
+
         public WhitePlayer WhitePlayer => Players[1] as WhitePlayer;
 
 

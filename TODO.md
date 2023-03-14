@@ -508,7 +508,7 @@ Refactored Game.cs and PlayerList.cs:
 	- Source: https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/guidelines-for-collections
 - Renamed PlayerList.IsGameFull to .HasAllPlayers
 - Add and Remove player are now more encapsulated in PlayerList
-- [ ] Fix this in PlayerCollection class: "DO NOT use ArrayList or List<T> in public APIs." (from .NET Guidelines for collections)
+- [x] Fix this in PlayerCollection class: "DO NOT use ArrayList or List<T> in public APIs." (from .NET Guidelines for collections)
 	- don't expose the list of players property that is inside the PlayerCollection
 - [ ] Consider refactoring the Add Player functionality further (in Game.cs and PlayerCollection.cs): 
 	  Change PlayerCollection.AddPlayer to .TryAddPlayer and return a bool indicating if the player was added or not.

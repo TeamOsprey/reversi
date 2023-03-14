@@ -724,7 +724,7 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
             game.AddPlayer("1");
-            var players = game.GetPlayerList();
+            var players = game.Players;
             Assert.Multiple(()=>
             {
                 Assert.IsTrue(players.HasBlackPlayer);
@@ -741,7 +741,7 @@ namespace Reversi.UnitTests
             var game = new Game();
             game.AddPlayer("1");
             game.AddPlayer("2");
-            var players = game.GetPlayerList();
+            var players = game.Players;
             Assert.Multiple(() =>
             {
                 Assert.IsTrue(players.HasAllPlayers);
@@ -754,7 +754,7 @@ namespace Reversi.UnitTests
         public void NewGameHasNoPlayers()
         {
             var game = new Game();
-            var players = game.GetPlayerList();
+            var players = game.Players;
             Assert.IsTrue(players.All(x=>x.UserId == null));
         }
 
@@ -765,7 +765,7 @@ namespace Reversi.UnitTests
             game.AddPlayer("1");
             game.AddPlayer("2");
             game.AddPlayer("3");
-            var players = game.GetPlayerList();
+            var players = game.Players;
             Assert.IsTrue(players.HasAllPlayers);
             Assert.IsTrue(players.BlackPlayer.UserId == "1");
             Assert.IsTrue(players.WhitePlayer.UserId == "2");
