@@ -467,7 +467,7 @@ Why we are still able to see a player as an Observer?
 - [ ] We need to refactor ConfirmTwoPlayers method. We are getting the same information from different places. 
 The method also sets state which doesn't seem to be the right responsibility of this method.
 - [x] Consider refactoring State class.
-- [ ] We can watch this video next week and try to apply its practice to our code: https://www.youtube.com/watch?v=YtROlyWWhV0
+- [x] We can watch this video next week and try to apply its practice to our code: https://www.youtube.com/watch?v=YtROlyWWhV0
 
 ## 2023-01-31
 - We watched the first 15 minutes of the video mentioned last week (https://www.youtube.com/watch?v=YtROlyWWhV0),
@@ -513,8 +513,8 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Consider refactoring the Add Player functionality further (in Game.cs and PlayerCollection.cs): 
 	  Change PlayerCollection.AddPlayer to .TryAddPlayer and return a bool indicating if the player was added or not.
 	  This would allow us to:
-	  - Delete the field _setInitialStatus (and check instead of using that field, just check the result of TryAddPlayer).
-	  - Move "if (_players.HasAllPlayers || _players.Contains(userId)) return;" into TryAddPlayer and return false in that case.
+	  -[X]  Delete the field _setInitialStatus (and check instead of using that field, just check the result of TryAddPlayer).
+	  -[ ] Move "if (_players.HasAllPlayers || _players.Contains(userId)) return;" into TryAddPlayer and return false in that case.
 - Tip: Install Microsoft Power Toys and use Win+Shift+T to get OCR on rectangle of screen. (We used this to get all the checkin comments 
   and paste into this todo document.) Links: 
 	- Power Toys overview: https://learn.microsoft.com/en-us/windows/powertoys/
@@ -522,3 +522,4 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-03-14 
 - Updated TargetFramework to net6.0 where not yet done	
+- We continued refactoring and encapsulating PlayerCollection

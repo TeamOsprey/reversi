@@ -25,7 +25,6 @@ namespace Reversi.Logic
         };
 
         private PlayerCollection _players = new();
-        private bool _setInitialStatus;
 
         #endregion
         #region constructors
@@ -105,13 +104,12 @@ namespace Reversi.Logic
                 if (_players.HasAllPlayers || _players.Contains(userId))
                     return;
 
-                _players.Add(userId);
+                var addedPlayer = _players.TryAdd(userId);
 
-                if (!_setInitialStatus && _players.HasAllPlayers)
+                if (addedPlayer && _players.HasAllPlayers)
                 {
                     SetStatus();
                     ActOnStatus();
-                    _setInitialStatus = true;
                 }
             }
         }
