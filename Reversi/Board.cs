@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Reversi.Logic
 {
@@ -101,7 +100,7 @@ namespace Reversi.Logic
                 }
                 output[row] = new string(rowString);
             }
-            
+
             return output;
         }
 
@@ -169,7 +168,7 @@ namespace Reversi.Logic
                 "........",
                 "........",
                 "........"});
-            
+
             return ChooseInitialLayout(initialBoards);
         }
 

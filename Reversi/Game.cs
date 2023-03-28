@@ -23,7 +23,7 @@ namespace Reversi.Logic
                 new[] { 4,3 },
         };
 
-        private PlayerCollection _players = new();
+        private readonly PlayerCollection _players = new();
 
         #endregion
         #region constructors
@@ -116,10 +116,6 @@ namespace Reversi.Logic
 
         #endregion
         #region private methods
-        private bool PlaceInitialCounter(int row, int col)
-        {
-            return PlaceCounter(new Square(row, col));
-        }
 
         private bool PlaceCounter(Square selectedSquare)
         {

@@ -6,18 +6,18 @@ namespace Reversi.Logic
 {
     public class PlayerCollection : IEnumerable<Player>
     {
-        private List<Player> Players { get; set; } = new()
+        private readonly List<Player> _players = new()
         {
             new BlackPlayer(null),
             new WhitePlayer(null) 
         };
 
-        public BlackPlayer BlackPlayer => Players[0] as BlackPlayer;
+        public BlackPlayer BlackPlayer => _players[0] as BlackPlayer;
 
-        public WhitePlayer WhitePlayer => Players[1] as WhitePlayer;
+        public WhitePlayer WhitePlayer => _players[1] as WhitePlayer;
 
 
-        public bool HasAllPlayers => Players.All(x=>x.UserId != null);
+        public bool HasAllPlayers => _players.All(x=>x.UserId != null);
 
 
         public bool HasBlackPlayer => BlackPlayer.UserId != null;
@@ -47,7 +47,7 @@ namespace Reversi.Logic
 
         private bool Contains(string userId)
         {
-            return Players.Any(x => x.UserId == userId);
+            return _players.Any(x => x.UserId == userId);
         }
         private void AddBlackPlayer(string userId)
         {
@@ -61,19 +61,19 @@ namespace Reversi.Logic
 
         public void Remove(string userId)
         {
-            var player = Players.SingleOrDefault(x => x.UserId == userId);
+            var player = _players.SingleOrDefault(x => x.UserId == userId);
             if (player != null)            
                 player.UserId = null;
         }
 
         public IEnumerator<Player> GetEnumerator()
         {
-            return ((IEnumerable<Player>)Players).GetEnumerator();
+            return ((IEnumerable<Player>)_players).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable)Players).GetEnumerator();
+            return ((IEnumerable)_players).GetEnumerator();
         }
 
     }

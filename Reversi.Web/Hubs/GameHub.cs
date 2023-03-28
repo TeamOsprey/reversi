@@ -1,10 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Net.Sockets;
-using System.Security.Principal;
 using System.Threading.Tasks;
 
 namespace Reversi.Web.Hubs
@@ -18,6 +13,7 @@ namespace Reversi.Web.Hubs
         {
             await Clients.All.SendAsync("RefreshUI");
         }
+        
         public async Task AddPlayerTask(string newUserId)
         {
             await Clients.All.SendAsync("AddPlayer", newUserId);
