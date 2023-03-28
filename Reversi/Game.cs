@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System;
 using System.Linq;
 
 namespace Reversi.Logic
@@ -12,11 +11,11 @@ namespace Reversi.Logic
         
         public Player Turn() => _turn;
 
-        private Player _opponent => _turn is WhitePlayer ? _players.BlackPlayer : _players.WhitePlayer;
+        private Player Opponent => _turn is WhitePlayer ? _players.BlackPlayer : _players.WhitePlayer;
         
-        private readonly List<Vector> directions = Direction.GetDirections();
+        private readonly List<Vector> _directions = Direction.GetDirections();
         public State State;
-        private static readonly List<int[]> initialValues = new()
+        private readonly List<int[]> _initialValues = new()
         {
                 new[] { 3,3 },
                 new[] { 3,4 },
@@ -75,8 +74,7 @@ namespace Reversi.Logic
             if(_players.HasAllPlayers)
                 ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming
 
-            var showLegalMoves = true; // maybe use this.IsPlayersTurn(userId)
-            return ReversiBoard.GetCurrentState(showLegalMoves);
+            return ReversiBoard.GetCurrentState();
         }
         public Player GetWinner()
         {
@@ -166,22 +164,6 @@ namespace Reversi.Logic
             return true;
         }
 
-        private void RandomlyPlaceInitialCounters()
-        {
-            var visited = new HashSet<int>();
-
-            var random = new Random();
-            do
-            {
-                var selected = random.Next(0, 4);
-                if (!visited.Contains(selected))
-                {
-                    visited.Add(selected);
-                    PlaceInitialCounter(initialValues[selected][0], initialValues[selected][1]);
-                }
-
-            } while (visited.Count < 4);
-        }
         private void EndTurn()
         {
             ChangeTurn();
@@ -200,7 +182,7 @@ namespace Reversi.Logic
         }
         private void ChangeTurn()
         {
-            _turn = _opponent;
+            _turn = Opponent;
         }
         private void SetStatus()
         {
@@ -217,11 +199,11 @@ namespace Reversi.Logic
         }
         private bool IsGameOver()
         {
-            return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(_opponent).Count < 1);
+            return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(Opponent).Count < 1);
         }
         private void CaptureCounters(Square selectedSquare)
         {
-            foreach (var direction in directions)
+            foreach (var direction in _directions)
             {
                 Square currentSquare = ReversiBoard.Add(selectedSquare, direction);
                 List<Square> currentLine = new List<Square>();
@@ -272,16 +254,16 @@ namespace Reversi.Logic
         {
             foreach (var startSquare in ReversiBoard.GetBlankSquares())
             {
-                foreach (var direction in directions)
+                foreach (var direction in _directions)
                 {
                     if (IsNextSquareValid(startSquare, returnValue, direction, color))
                         break;
                 }
             }
         }
-        private static void AddBlankCentreSquares(HashSet<Square> returnValue, List<Square> blankSquares)
+        private void AddBlankCentreSquares(HashSet<Square> returnValue, List<Square> blankSquares)
         {
-            foreach(var init in initialValues)
+            foreach(var init in _initialValues)
             {
                 Square square = new Square(init[0], init[1]);
                 if (blankSquares.Contains(square))

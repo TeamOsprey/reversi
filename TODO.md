@@ -526,3 +526,4 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-03-28
 - Refactored AddPlayer: removed redundant check from Game.AddPlayer and moved existing userId check to PlayerCollection class.
+- [ ] 

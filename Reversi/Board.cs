@@ -84,7 +84,7 @@ namespace Reversi.Logic
             _legalSquares = legalSquares;
         }
 
-        public string[] GetCurrentState(bool showLegalMoves = true)
+        public string[] GetCurrentState()
         {
             string[] output = new string[8];
             char[] rowString = new char[8];
@@ -94,7 +94,7 @@ namespace Reversi.Logic
                 for (int col = 0; col < 8; col++)
                 {
                     rowString[col] = _squares[row, col].Colour;
-                    if (showLegalMoves && _legalSquares != null && _legalSquares.Contains(new Square(row, col)))
+                    if (_legalSquares != null && _legalSquares.Contains(new Square(row, col)))
                     {
                         rowString[col] = '0';
                     }
