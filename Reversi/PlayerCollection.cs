@@ -25,29 +25,30 @@ namespace Reversi.Logic
 
         public bool HasWhitePlayer => WhitePlayer.UserId != null;
 
-
-
-        public bool Contains(string userId)
-        {
-            return Players.Any(x => x.UserId == userId);
-        }
-
         public bool TryAdd(string userId)
         {
-            if (!HasBlackPlayer)
+            if (!Contains(userId))
             {
-                AddBlackPlayer(userId);
-                return true;
+                if (!HasBlackPlayer)
+                {
+                    AddBlackPlayer(userId);
+                    return true;
+                }
+                else if (!HasWhitePlayer)
+                {
+                    AddWhitePlayer(userId);
+                    return true;
+                }
             }
-            else if (!HasWhitePlayer)
-            {
-                AddWhitePlayer(userId);
-                return true;
-            }
+
             return false;
         }
 
 
+        private bool Contains(string userId)
+        {
+            return Players.Any(x => x.UserId == userId);
+        }
         private void AddBlackPlayer(string userId)
         {
             BlackPlayer.UserId = userId;
