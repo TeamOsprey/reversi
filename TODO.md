@@ -526,4 +526,6 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-03-28
 - Refactored AddPlayer: removed redundant check from Game.AddPlayer and moved existing userId check to PlayerCollection class.
-- [ ] 
+- WIP: Run Extensions > ReSharper > Inspect > Code Issues in Solution
+	- [ ] Review all warnings and refactor as appropriate
+- [ ] Docker image in GitHub (CI/CD) (discuss if desired)
