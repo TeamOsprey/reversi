@@ -1,12 +1,6 @@
 ﻿using NUnit.Framework;
-using Reversi.App;
 using Reversi.Logic;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reversi.UnitTests
 {
