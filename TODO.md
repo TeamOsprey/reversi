@@ -499,7 +499,7 @@ Refactoring changes to Player class.
 
 ## 2023-02-21
 We finished replacing PlayerType enum with subclassing, but still need some clean up. We are green and UI works.
-- [ ] Do more cleanup in Game.cs and PlayerList.cs - refactoring, consider ideas from video (if-thens/responsibility of subclasses, etc.)
+- [X] Do more cleanup in Game.cs and PlayerList.cs - refactoring, consider ideas from video (if-thens/responsibility of subclasses, etc.)
 
 ## 2023-03-07
 Refactored Game.cs and PlayerList.cs:
@@ -529,3 +529,6 @@ Refactored Game.cs and PlayerList.cs:
 - WIP: Run Extensions > ReSharper > Inspect > Code Issues in Solution
 	- [ ] Review all warnings and refactor as appropriate
 - [ ] Docker image in GitHub (CI/CD) (discuss if desired)
+
+## 2023-04-04
+- Refactor Board's CreateInitialBoard method to something more compact (algorithm)
