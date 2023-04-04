@@ -78,8 +78,8 @@ namespace Reversi.Logic
         }
         public Player GetWinner()
         {
-            var white = GetNumberOfColor(Counters.WHITE);
-            var black = GetNumberOfColor(Counters.BLACK);
+            var white = GetNumberOfColor(Counters.White);
+            var black = GetNumberOfColor(Counters.Black);
 
             return (white > black) ? _players.WhitePlayer : _players.BlackPlayer;
         }
@@ -224,7 +224,7 @@ namespace Reversi.Logic
         }
         private bool SquareIsOtherColour(Square currentSquare, char color)
         {
-            return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.NONE;
+            return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.None;
         }
         private HashSet<Square> GetLegalSquares(Player player)
         {

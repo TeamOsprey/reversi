@@ -8,7 +8,7 @@ namespace Reversi.Logic
         public int Column { get; }
         public char Colour { get; set; }
 
-        public Square(int row, int col, char colour = Counters.NONE)
+        public Square(int row, int col, char colour = Counters.None)
         {
             Row = row;
             Column = col;

@@ -58,7 +58,7 @@ namespace Reversi.Logic
 
             foreach (Square item in _squares)
             {
-                if (item.Colour == Counters.NONE)
+                if (item.Colour == Counters.None)
                     blankSquares.Add(item);
             }
 

@@ -2,8 +2,8 @@
 {
     public static class Counters
     {
-        public const char BLACK = 'B';
-        public const char WHITE = 'W';
-        public const char NONE = '.';
+        public const char Black = 'B';
+        public const char White = 'W';
+        public const char None = '.';
     }
 }

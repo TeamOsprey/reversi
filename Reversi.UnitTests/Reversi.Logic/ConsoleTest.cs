@@ -836,8 +836,8 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
 
-            var blackCounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.BLACK);
-            var whiteCounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.WHITE);
+            var blackCounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.Black);
+            var whiteCounters = game.ReversiBoard.GetNumberOfSquaresByColor(Counters.White);
 
             Assert.IsTrue((blackCounters == whiteCounters && blackCounters == 2));            
         }

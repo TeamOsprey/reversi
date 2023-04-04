@@ -11,7 +11,7 @@ namespace Reversi.App
             do
             {
                 gameBoardUi.TakeTurn();
-            } while (!(gameBoardUi.reversi.State is GameOver));
+            } while (!(gameBoardUi.Reversi.State is GameOver));
         }
     }
 }

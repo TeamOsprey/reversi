@@ -20,7 +20,7 @@
         {
         }
         
-        public override char Counter => Counters.BLACK;
+        public override char Counter => Counters.Black;
         public override string ToString()
         {
             return "Black";
@@ -32,7 +32,7 @@
         public WhitePlayer(string userId) : base(userId)
         {
         }
-        public override char Counter => Counters.WHITE;
+        public override char Counter => Counters.White;
         public override string ToString()
         {
             return "White";

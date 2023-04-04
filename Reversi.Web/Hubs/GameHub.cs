@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace Reversi.Web.Hubs
@@ -13,11 +14,12 @@ namespace Reversi.Web.Hubs
         {
             await Clients.All.SendAsync("RefreshUI");
         }
-        
+
         public async Task AddPlayerTask(string newUserId)
         {
             await Clients.All.SendAsync("AddPlayer", newUserId);
         }
+
         public async Task RemovePlayerTask()
         {            
             await Clients.All.SendAsync("RemovePlayer", UnusedParameterToGetAroundRuntimeErrorMystery);
@@ -31,10 +33,14 @@ namespace Reversi.Web.Hubs
 
             await base.OnConnectedAsync();
         }
+
+#nullable enable
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
             //await Groups.RemoveFromGroupAsync(UserId, "Game1");
             await base.OnDisconnectedAsync(exception);
         }
+#nullable disable
+
     }
 }

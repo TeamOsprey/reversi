@@ -7,12 +7,12 @@ namespace Reversi.App
 {
     public class GameBoardUi
     {
-        public IEnumerable<string> guidedBoard;
-        public Game reversi;
+        public IEnumerable<string> GuidedBoard;
+        public Game Reversi;
 
         public GameBoardUi()
         {
-            reversi = new Game();
+            Reversi = new Game();
             SetupBoard();
         }
 
@@ -25,18 +25,18 @@ namespace Reversi.App
 
         private void SetupBoard()
         {
-            var board = reversi.DisplayBoard();
-            guidedBoard = PrependGuidesToStringArrays(board);
+            var board = Reversi.DisplayBoard();
+            GuidedBoard = PrependGuidesToStringArrays(board);
         }
  
-        private IEnumerable<string> PrependGuidesToStringArrays(string[] Original)
+        private IEnumerable<string> PrependGuidesToStringArrays(string[] original)
         {
             string[] guidedArray = new string[8];
             int counter = 0;
 
-            foreach (string S in Original)
+            foreach (string item in original)
             {
-                guidedArray[counter] = counter + S;
+                guidedArray[counter] = counter + item;
                 counter++;
             }
             var finalArray = guidedArray.Prepend(" 01234567");
@@ -45,19 +45,19 @@ namespace Reversi.App
         }
         private void DisplayBoard()
         {
-            Console.WriteLine(string.Join('\n', guidedBoard));
+            Console.WriteLine(string.Join('\n', GuidedBoard));
             Console.WriteLine();
             Console.WriteLine();
 
 
-            if (reversi.State is MoveInvalid)
+            if (Reversi.State is MoveInvalid)
                 WriteErrorMessage("Invalid Move!");
-            if (reversi.State is PassOccurred)
+            if (Reversi.State is PassOccurred)
                 WriteErrorMessage("User had no possible moves. Turn passed!");
-            if (reversi.State is GameOver)
+            if (Reversi.State is GameOver)
                 WriteErrorMessage("Game Over!");
 
-            Console.WriteLine("Current turn: " + reversi.Turn());
+            Console.WriteLine("Current turn: " + Reversi.Turn());
             Console.Write("Enter coordinates (row,col): ");
         }
  
@@ -65,7 +65,7 @@ namespace Reversi.App
         {
             var coords = Console.ReadLine();
             var coordsSplit = coords.Split(',');
-            reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]), "");
+            Reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]), "");
             Console.Clear();
         }
         

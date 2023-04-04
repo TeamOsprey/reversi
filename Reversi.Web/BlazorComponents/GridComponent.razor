@@ -22,7 +22,7 @@
 				@for (int col = 0; col < DisplayedBoard[row].Length; col++)
 				{
 					<td>
-                        <TileComponent message="@DisplayedBoard[row][col].ToString()" row="@row" column="@col" OnMoveSelected="MoveSelected" 
+                        <TileComponent Message="@DisplayedBoard[row][col].ToString()" Row="@row" Column="@col" OnMoveSelected="MoveSelected" 
                                        ShowLegalSquares="@IsUsersTurn"></TileComponent>
 					</td>
 				}
@@ -53,17 +53,17 @@
     }
 
     //hub stuff
-    private HubConnection hubConnection;
+    private HubConnection _hubConnection;
 
     protected override async Task OnInitializedAsync()
     {
-        hubConnection = new HubConnectionBuilder()
+        _hubConnection = new HubConnectionBuilder()
             .WithUrl(NavigationManager.ToAbsoluteUri("/gamehub")).Build();
 
-        await hubConnection.StartAsync();
+        await _hubConnection.StartAsync();
 
         // Add listener for future connections
-        hubConnection.On<string>("AddPlayer",
+        _hubConnection.On<string>("AddPlayer",
             async (newUserId) =>
             {
                 GameService.AddPlayer(newUserId);
@@ -72,7 +72,7 @@
             }
         );
 
-        hubConnection.On<string>("RemovePlayer", _ =>
+        _hubConnection.On<string>("RemovePlayer", _ =>
         {
             GameService.RemovePlayer(UserId);
             InvokeAsync(StateHasChanged);
@@ -87,25 +87,25 @@
     {
         if (firstRender)
         {
-            hubConnection.On("RefreshUI", async () =>
+            _hubConnection.On("RefreshUI", async () =>
             {
                 await InvokeAsync(StateHasChanged);
             });
 
-            await hubConnection.SendAsync("AddPlayerTask", UserId); // todo: consider unhardcoding the string, maybe using nameof keyword?
+            await _hubConnection.SendAsync("AddPlayerTask", UserId); // todo: consider unhardcoding the string, maybe using nameof keyword?
         }
     }
 
-    async Task RefreshUI() => await hubConnection.SendAsync("RefreshUITask");
+    async Task RefreshUI() => await _hubConnection.SendAsync("RefreshUITask");
 
-    public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
+    public bool IsConnected => _hubConnection.State == HubConnectionState.Connected;
 
     public async ValueTask DisposeAsync()
     {
-        if (hubConnection is not null)
+        if (_hubConnection is not null)
         {
             // await hubConnection.SendAsync("RemovePlayerTask");
-            await hubConnection.DisposeAsync();
+            await _hubConnection.DisposeAsync();
         }
     }
 

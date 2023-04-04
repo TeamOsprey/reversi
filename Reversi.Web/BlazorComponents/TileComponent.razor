@@ -2,25 +2,25 @@
 
 @using Microsoft.AspNetCore.Components.Web
 
-<button style="background: @color; height: 40px; width: 40px;" @onclick="MakeMove"></button>
+<button style="background: @Color; height: 40px; width: 40px;" @onclick="MakeMove"></button>
 
 @code {
     [Parameter]
-    public string message { get; set; }
+    public string Message { get; set; }
     [Parameter]
-    public int row { get; set; }
+    public int Row { get; set; }
     [Parameter]
-    public int column { get; set; }
+    public int Column { get; set; }
     [Parameter]
     public EventCallback<string> OnMoveSelected { get; set; }
     [Parameter]
     public bool ShowLegalSquares { get; set; }
 
-    public string color => GetColorFromMessage();
+    public string Color => GetColorFromMessage();
 
     private string GetColorFromMessage()
     {
-        return message switch
+        return Message switch
         {
             "B" => "Black",
             "W" => "White",
@@ -31,7 +31,7 @@
 
     public async Task MakeMove()
     {
-        await OnMoveSelected.InvokeAsync($"{row},{column}");
+        await OnMoveSelected.InvokeAsync($"{Row},{Column}");
     }
 
 }
