@@ -531,4 +531,4 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Docker image in GitHub (CI/CD) (discuss if desired)
 
 ## 2023-04-04
-- Refactor Board's CreateInitialBoard method to something more compact (algorithm)
+- [ ] Refactor Board's CreateInitialBoard method to something more compact (algorithm)
