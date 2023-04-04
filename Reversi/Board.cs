@@ -113,6 +113,7 @@ namespace Reversi.Logic
         {
             var initialBoards = new List<string[]>
             {
+                
                 new string[]{
                     "........",
                     "........",
@@ -177,6 +178,23 @@ namespace Reversi.Logic
             var random = new Random();
             var selected = random.Next(0, 6);
             return initialBoards[selected];
+        }
+
+        private char[] RandomlyPlaceInitialCounters()
+        {
+            var visited = new HashSet<int>();
+
+            var random = new Random();
+            do
+            {
+                var selected = random.Next(0, 4);
+                if (!visited.Contains(selected))
+                {
+                    visited.Add(selected);
+                    PlaceInitialCounter(initialValues[selected][0], initialValues[selected][1]);
+                }
+
+            } while (visited.Count < 4);
         }
     }
 }
