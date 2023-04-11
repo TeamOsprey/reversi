@@ -534,4 +534,5 @@ Refactored Game.cs and PlayerList.cs:
 - Created new branch for updating creation of initial board. (Branch: RefactorCreateInitialBoard)
 - [ ] Refactor Board's CreateInitialBoard method to something more compact (algorithm)
 		- Restored RandomlyPlaceInitialCounters method to Board.cs, next session we will discuss how to proceed with either refactoring this method or choosing a different path.
-			- (possible solution: https://stackoverflow.com/questions/19201489/using-linq-to-shuffle-a-deck )
+			- Possible solution: https://stackoverflow.com/questions/19201489/using-linq-to-shuffle-a-deck 
+			- See also: https://dotnetfiddle.net/4vs69H
