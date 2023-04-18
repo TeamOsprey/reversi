@@ -132,8 +132,11 @@ namespace Reversi.Logic
             var myString = "BBWW";
             var shuffledString = Shuffle(myString);
 
+            var initRowOne = shuffledString.Substring(2);
+            var initRowTwo = shuffledString.Substring(2, 2);
+
             var board = new string[] {
-                "........",
+                    "........",
                     "........",
                     "........",
                     "...--...",
@@ -142,92 +145,10 @@ namespace Reversi.Logic
                     "........",
                     "........"};
 
-            var initialBoards = new List<string[]>
-            {
-                
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WW...",
-                    "...BB...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "...WB...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "...BW...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BW...",
-                    "...WB...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...WW...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BW...",
-                    "...BW...",
-                    "........",
-                    "........",
-                    "........"}
-            };
+            board[3] = board[3].Replace("--",initRowOne);
+            board[4] = board[4].Replace("--",initRowTwo);
 
-            return ChooseInitialLayout(initialBoards);
-        }
-
-
-
-        private static string[] ChooseInitialLayout(List<string[]> initialBoards)
-        {
-            var random = new Random();
-            var selected = random.Next(0, 6);
-            return initialBoards[selected];
-        }
-
-        private char[] RandomlyPlaceInitialCounters()
-        {
-            var visited = new HashSet<int>();
-
-            var random = new Random();
-            do
-            {
-                var selected = random.Next(0, 4);
-                if (!visited.Contains(selected))
-                {
-                    visited.Add(selected);
-                    PlaceInitialCounter(initialValues[selected][0], initialValues[selected][1]);
-                }
-
-            } while (visited.Count < 4);
+            return board;
         }
     }
 }
