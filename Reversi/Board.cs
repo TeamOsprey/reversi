@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Reversi.Logic
 {
@@ -109,8 +110,38 @@ namespace Reversi.Logic
             _squares[selectedSquareRow, selectedSquareColumn].Colour = turn;
         }
 
+        // this shuffle any Enumerable
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            
+            Random random = new Random();
+            return source.OrderBy(x => random.Next());
+        }
+
+        // this shuffle a string
+        public static string Shuffle(this string str)
+        {
+ 
+            char[] chars = str.ToCharArray();
+            var shuffledChars = Shuffle(chars);
+            return new string(shuffledChars.ToArray());
+        }
+
         private static string[] CreateInitialBoard()
         {
+            var myString = "BBWW";
+            var shuffledString = Shuffle(myString);
+
+            var board = new string[] {
+                "........",
+                    "........",
+                    "........",
+                    "...--...",
+                    "...--...",
+                    "........",
+                    "........",
+                    "........"};
+
             var initialBoards = new List<string[]>
             {
                 
@@ -172,6 +203,8 @@ namespace Reversi.Logic
 
             return ChooseInitialLayout(initialBoards);
         }
+
+
 
         private static string[] ChooseInitialLayout(List<string[]> initialBoards)
         {
