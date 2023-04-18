@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Reversi.Logic
 {
@@ -109,74 +110,44 @@ namespace Reversi.Logic
             _squares[selectedSquareRow, selectedSquareColumn].Colour = turn;
         }
 
-        private static string[] CreateInitialBoard()
+        // this shuffle any Enumerable
+        public static IEnumerable<T> Shuffle<T>(IEnumerable<T> source)
         {
-            var initialBoards = new List<string[]>
-            {
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WW...",
-                    "...BB...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "...WB...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "...BW...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BW...",
-                    "...WB...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BB...",
-                    "...WW...",
-                    "........",
-                    "........",
-                    "........"},
-                new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...BW...",
-                    "...BW...",
-                    "........",
-                    "........",
-                    "........"}
-            };
-
-            return ChooseInitialLayout(initialBoards);
+            
+            Random random = new Random();
+            return source.OrderBy(x => random.Next());
         }
 
-        private static string[] ChooseInitialLayout(List<string[]> initialBoards)
+        // this shuffle a string
+        public static string Shuffle(string str)
         {
-            var random = new Random();
-            var selected = random.Next(0, 6);
-            return initialBoards[selected];
+ 
+            char[] chars = str.ToCharArray();
+            var shuffledChars = Shuffle(chars);
+            return new string(shuffledChars.ToArray());
+        }
+
+        private static string[] CreateInitialBoard()
+        {
+            var shuffledCounters = Shuffle("BBWW");
+
+            var initRowOne = shuffledCounters.Substring(0, 2);
+            var initRowTwo = shuffledCounters.Substring(2, 2);
+
+            var board = new string[] {
+                    "........",
+                    "........",
+                    "........",
+                    "...--...",
+                    "...--...",
+                    "........",
+                    "........",
+                    "........"};
+
+            board[3] = board[3].Replace("--",initRowOne);
+            board[4] = board[4].Replace("--",initRowTwo);
+
+            return board;
         }
     }
 }
