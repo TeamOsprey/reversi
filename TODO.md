@@ -532,7 +532,15 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-04-04
 - Created new branch for updating creation of initial board. (Branch: RefactorCreateInitialBoard)
-- [ ] Refactor Board's CreateInitialBoard method to something more compact (algorithm)
+- [x] Refactor Board's CreateInitialBoard method to something more compact (algorithm)
 		- Restored RandomlyPlaceInitialCounters method to Board.cs, next session we will discuss how to proceed with either refactoring this method or choosing a different path.
 			- Possible solution: https://stackoverflow.com/questions/19201489/using-linq-to-shuffle-a-deck 
 			- See also: https://dotnetfiddle.net/4vs69H
+
+## 2023-04-18
+- We finished refactoring the createInitialBoard
+- [ ] consider the way we access co-ordinates of the boad in a class?
+  - a board has a class with cells, with method, 'GetMiddleCells'
+  - consider a BoardFactory in case it helps
+  - discover areas where the 'Game' is doing task which are in the domain of the 'Board' (Seperation of responsibility)
+- [ ] Consider the 'Game' engine, and how it re-initialize when people want to play again. (Do we re-randomize the board?)
