@@ -129,10 +129,10 @@ namespace Reversi.Logic
 
         private static string[] CreateInitialBoard()
         {
-            var shuffledString = Shuffle("BBWW");
+            var shuffledCounters = Shuffle("BBWW");
 
-            var initRowOne = shuffledString.Substring(0, 2);
-            var initRowTwo = shuffledString.Substring(2, 2);
+            var initRowOne = shuffledCounters.Substring(0, 2);
+            var initRowTwo = shuffledCounters.Substring(2, 2);
 
             var board = new string[] {
                     "........",
