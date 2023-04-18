@@ -132,7 +132,7 @@ namespace Reversi.Logic
             var myString = "BBWW";
             var shuffledString = Shuffle(myString);
 
-            var initRowOne = shuffledString.Substring(2);
+            var initRowOne = shuffledString.Substring(0, 2);
             var initRowTwo = shuffledString.Substring(2, 2);
 
             var board = new string[] {
