@@ -111,7 +111,7 @@ namespace Reversi.Logic
         }
 
         // this shuffle any Enumerable
-        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        public static IEnumerable<T> Shuffle<T>(IEnumerable<T> source)
         {
             
             Random random = new Random();
@@ -119,7 +119,7 @@ namespace Reversi.Logic
         }
 
         // this shuffle a string
-        public static string Shuffle(this string str)
+        public static string Shuffle(string str)
         {
  
             char[] chars = str.ToCharArray();
