@@ -231,7 +231,7 @@ namespace Reversi.Logic
             HashSet<Square> returnValue = new HashSet<Square>();
             if (!AllInitialTilesPlaced())
             {
-                AddBlankCentreSquares(returnValue, ReversiBoard.GetBlankSquares());
+                AddToBlankCentreSquares(returnValue, ReversiBoard.GetBlankSquares());
             }
             else
             {
@@ -257,7 +257,7 @@ namespace Reversi.Logic
                 }
             }
         }
-        private void AddBlankCentreSquares(HashSet<Square> returnValue, List<Square> blankSquares)
+        private void AddToBlankCentreSquares(HashSet<Square> returnValue, List<Square> blankSquares)
         {
             foreach(var init in _initialValues)
             {
