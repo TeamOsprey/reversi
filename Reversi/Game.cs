@@ -15,13 +15,6 @@ namespace Reversi.Logic
         
         private readonly List<Vector> _directions = Direction.GetDirections();
         public State State;
-        private readonly List<int[]> _initialValues = new()
-        {
-                new[] { 3,3 },
-                new[] { 3,4 },
-                new[] { 4,4 },
-                new[] { 4,3 },
-        };
 
         private readonly PlayerCollection _players = new();
 
@@ -253,15 +246,7 @@ namespace Reversi.Logic
                 }
             }
         }
-        private void AddToBlankCentreSquares(HashSet<Square> returnValue, List<Square> blankSquares)
-        {
-            foreach(var init in _initialValues)
-            {
-                Square square = new Square(init[0], init[1]);
-                if (blankSquares.Contains(square))
-                    returnValue.Add(square);
-            }
-        }
+
         private bool IsNextSquareValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
         {
             bool result = false;

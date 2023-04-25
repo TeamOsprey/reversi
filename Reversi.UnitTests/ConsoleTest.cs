@@ -38,8 +38,8 @@ namespace Reversi.UnitTests
             "........",
             "........",
             "........",
-            "........",
-            "........",
+            "...BW...",
+            "...BW...",
             "....W...",
             "....W...",
             "....B..."};
@@ -47,7 +47,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, true);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4, "1"));
+            Assert.IsTrue(reversi.PlaceCounter(2, 4, "1"));
         }
 
         [Test]
@@ -89,8 +89,8 @@ namespace Reversi.UnitTests
             "........",
             "........",
             "........",
-            "........",
-            "........",
+            "...WB...",
+            "...WB...",
             "....B...",
             "....B...",
             "....W..."};
@@ -98,14 +98,14 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, false);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4, "2"));
+            Assert.IsTrue(reversi.PlaceCounter(2, 4, "2"));
 
             var expected = new string[]{
             "........",
             "........",
-            "........",
-            "........",
             "....W...",
+            "...WW...",
+            "...WW...",
             "....W...",
             "....W...",
             "....W..."};
