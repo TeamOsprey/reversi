@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace Reversi.Logic
@@ -124,7 +125,7 @@ namespace Reversi.Logic
 
         private bool ConfirmLegalMove(Square selectedSquare)
         {
-            if (AllInitialTilesPlaced() && !ConfirmTwoPlayers()) return false;
+            if (ReversiBoard.AllInitialTilesPlaced() && !ConfirmTwoPlayers()) return false;
 
             if (!ConfirmLegalPosition(selectedSquare)) return false;
 
@@ -221,30 +222,19 @@ namespace Reversi.Logic
         }
         private HashSet<Square> GetLegalSquares(Player player)
         {
-            HashSet<Square> returnValue = new HashSet<Square>();
-            if (AllInitialTilesPlaced())
+            HashSet<Square> legalSquares = new HashSet<Square>();
+            if (ReversiBoard.AllInitialTilesPlaced())
             {
-                AddLegalSquaresToSet(returnValue, player.Counter);
-            }
-            return returnValue;
-        }
-
-        private bool AllInitialTilesPlaced()
-        {
-            var blankSquares = ReversiBoard.GetBlankSquares();
-            return blankSquares.Count <= 60;
-        }
-
-        private void AddLegalSquaresToSet(HashSet<Square> returnValue, char color)
-        {
-            foreach (var startSquare in ReversiBoard.GetBlankSquares())
-            {
-                foreach (var direction in _directions)
+                foreach (var startSquare in ReversiBoard.GetBlankSquares())
                 {
-                    if (IsNextSquareValid(startSquare, returnValue, direction, color))
-                        break;
+                    foreach (var direction in _directions)
+                    {
+                        if (IsNextSquareValid(startSquare, legalSquares, direction, player.Counter))
+                            break;
+                    }
                 }
             }
+            return legalSquares;
         }
 
         private bool IsNextSquareValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)

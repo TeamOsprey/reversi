@@ -149,5 +149,10 @@ namespace Reversi.Logic
 
             return board;
         }
+        public bool AllInitialTilesPlaced()
+        {
+            var blankSquares = GetBlankSquares();
+            return blankSquares.Count <= 60;
+        }
     }
 }
