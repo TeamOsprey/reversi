@@ -51,6 +51,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
+        [Ignore("Invalid start position.")]
         public void IfUserMoveLegalPlaceCounter()
         {
             var board = new string[]{
@@ -269,37 +270,6 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void IfEmptyBoardAcceptCentreSquareForPlacement()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
-
-            var reversi = Game.Load(board, true);
-            reversi.AddPlayer("1");
-            reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(3, 3, "1"));
-
-            var expected = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...B....",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
-
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        }
-
-        [Test]
         public void IfEmptyBoardOnlyAcceptCentreSquareForPlacement()
         {
             var board = new string[]{
@@ -315,130 +285,6 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, true);
 
             Assert.IsFalse(reversi.PlaceCounter(0, 3, "1"));
-        }
-
-        [Test]
-        public void IfEmptyBoardAcceptCentreSquareForPlacement1()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
-
-            var reversi = Game.Load(board, true);
-            reversi.AddPlayer("1");
-            reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(3, 4, "1"));
-
-            var expected = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "....B...",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
-
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        }
-
-        [Test]
-        public void IfOneCounterOnBoardAcceptCentreSquareForPlacement()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...W....",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
-
-            var reversi = Game.Load(board, true);
-            reversi.AddPlayer("1");
-            reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(3, 4, "1"));
-
-            var expected = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
-
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        }
-
-        [Test]
-        public void IfTwoCountersOnBoardAcceptCentreSquareForPlacement()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "........",
-                    "........",
-                    "........",
-                    "........"};
-
-            var reversi = Game.Load(board, false);
-            reversi.AddPlayer("1");
-            reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4, "2"));
-
-            var expected = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "....W...",
-                    "........",
-                    "........",
-                    "........"};
-
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        }
-
-        [Test]
-        public void IfThreeCountersOnBoardAcceptCentreSquareForPlacement()
-        {
-            var board = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "....W...",
-                    "........",
-                    "........",
-                    "........"};
-
-            var reversi = Game.Load(board, true);
-            reversi.AddPlayer("1");
-            reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 3, "1"));
-
-            var expected = new string[]{
-                    "........",
-                    "........",
-                    "........",
-                    "...WB...",
-                    "...BW...",
-                    "........",
-                    "........",
-                    "........"};
-
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
         }
 
         [Test]

@@ -229,11 +229,7 @@ namespace Reversi.Logic
         private HashSet<Square> GetLegalSquares(Player player)
         {
             HashSet<Square> returnValue = new HashSet<Square>();
-            if (!AllInitialTilesPlaced())
-            {
-                AddToBlankCentreSquares(returnValue, ReversiBoard.GetBlankSquares());
-            }
-            else
+            if (AllInitialTilesPlaced())
             {
                 AddLegalSquaresToSet(returnValue, player.Counter);
             }
