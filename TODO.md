@@ -544,3 +544,9 @@ Refactored Game.cs and PlayerList.cs:
   - consider a BoardFactory in case it helps
   - discover areas where the 'Game' is doing task which are in the domain of the 'Board' (Seperation of responsibility)
 - [ ] Consider the 'Game' engine, and how it re-initialize when people want to play again. (Do we re-randomize the board?)
+
+## 2023-04-25
+- We removed the code not needed with the current initial squares business rules
+- We refactored Game and Board and changed some names to make them more understandable
+- [ ] IsAdjacentSquareValid is both validating and adding to legal squares. We will need to fix it so it doesn't do more than one thing.
+- [ ] Consider clearning two models of representing the board. One as a list of strings and other is two dimensional array of squares.
