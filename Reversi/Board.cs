@@ -33,7 +33,7 @@ namespace Reversi.Logic
 
 
 
-        public Square Add(Square originalSquare, Vector direction)
+        public Square GetAdjacentSquare(Square originalSquare, Vector direction)
         {
             int row = originalSquare.Row + direction.Vertical;
             int column = originalSquare.Column + direction.Horizontal;

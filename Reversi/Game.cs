@@ -195,13 +195,13 @@ namespace Reversi.Logic
         {
             foreach (var direction in _directions)
             {
-                Square currentSquare = ReversiBoard.Add(selectedSquare, direction);
+                Square currentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
                 List<Square> currentLine = new List<Square>();
                 var colourOfTurnPlayer = GetCurrentPlayer().Counter;
                 while (SquareIsOtherColour(currentSquare, colourOfTurnPlayer))
                 {
                     currentLine.Add(currentSquare);
-                    currentSquare = ReversiBoard.Add(currentSquare, direction);
+                    currentSquare = ReversiBoard.GetAdjacentSquare(currentSquare, direction);
                 }
                 if (SquareIsSameColour(currentSquare, colourOfTurnPlayer))
                 {
@@ -225,11 +225,11 @@ namespace Reversi.Logic
             HashSet<Square> legalSquares = new HashSet<Square>();
             if (ReversiBoard.AllInitialTilesPlaced())
             {
-                foreach (var startSquare in ReversiBoard.GetBlankSquares())
+                foreach (var blankSquare in ReversiBoard.GetBlankSquares())
                 {
                     foreach (var direction in _directions)
                     {
-                        if (IsNextSquareValid(startSquare, legalSquares, direction, player.Counter))
+                        if (IsAdjacentSquareValid(blankSquare, legalSquares, direction, player.Counter))
                             break;
                     }
                 }
@@ -237,16 +237,16 @@ namespace Reversi.Logic
             return legalSquares;
         }
 
-        private bool IsNextSquareValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
+        private bool IsAdjacentSquareValid(Square startSquare, HashSet<Square> returnValue, Vector direction, char color)
         {
             bool result = false;
-            var nextSquare = ReversiBoard.Add(startSquare, direction);
+            var adjacentSquare = ReversiBoard.GetAdjacentSquare(startSquare, direction);
 
-            while (SquareIsOtherColour(nextSquare, color))
+            while (SquareIsOtherColour(adjacentSquare, color))
             {
-                nextSquare = ReversiBoard.Add(nextSquare, direction);
+                adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
 
-                if (SquareIsSameColour(nextSquare, color))
+                if (SquareIsSameColour(adjacentSquare, color))
                 {
                     returnValue.Add(startSquare);
                     result = true;
