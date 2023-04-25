@@ -270,7 +270,7 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void IfEmptyBoardOnlyAcceptCentreSquareForPlacement()
+        public void IfEmptyBoardDoNotAcceptCentreSquareForPlacement()
         {
             var board = new string[]{
                     "........",
