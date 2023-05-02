@@ -225,20 +225,19 @@ namespace Reversi.Logic
             HashSet<Square> legalSquares = new HashSet<Square>();
             if (ReversiBoard.AllInitialTilesPlaced())
             {
-                foreach (var blankSquare in ReversiBoard.GetBlankSquares())
+                foreach (var square in ReversiBoard.GetBlankSquares())
                 {
                     foreach (var direction in _directions)
                     {
-                        if (IsAdjacentSquareValid(blankSquare, direction, player.Counter))
-                            legalSquares.Add(blankSquare);
-                            break;
+                        if (WouldMoveCauseCaptureInGivenDirection(square, direction, player.Counter))
+                            legalSquares.Add(square);
                     }
                 }
             }
             return legalSquares;
         }
 
-        private bool IsAdjacentSquareValid(Square startSquare, Vector direction, char color)
+        private bool WouldMoveCauseCaptureInGivenDirection(Square startSquare, Vector direction, char color)
         {
             var adjacentSquare = ReversiBoard.GetAdjacentSquare(startSquare, direction);
 

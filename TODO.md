@@ -548,8 +548,12 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-04-25
 - We removed the code not needed with the current initial squares business rules
 - We refactored Game and Board and changed some names to make them more understandable
-- [ ] IsAdjacentSquareValid is both validating and adding to legal squares. We will need to fix it so it doesn't do more than one thing.
+- [x] IsAdjacentSquareValid is both validating and adding to legal squares. We will need to fix it so it doesn't do more than one thing.
 - [ ] Consider clearning two models of representing the board. One as a list of strings and other is two dimensional array of squares.
 - [ ] See also additional board refactoring above (line 542+)
 
 ## 2023-05-02
+- We continued refactoring the board
+- [ ] Game.WouldMoveCauseCaptureInGivenDirection duplicates code. This method currently just called from GetLegalSquares, but we do 
+      something similar for when we are actually capturing squares. (We need to find this other code.) Also, consider more 
+	  renaming/refactoring of GetLegalSquares and WouldMoveCauseCaptureInGivenDirection.
