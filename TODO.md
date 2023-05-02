@@ -550,3 +550,6 @@ Refactored Game.cs and PlayerList.cs:
 - We refactored Game and Board and changed some names to make them more understandable
 - [ ] IsAdjacentSquareValid is both validating and adding to legal squares. We will need to fix it so it doesn't do more than one thing.
 - [ ] Consider clearning two models of representing the board. One as a list of strings and other is two dimensional array of squares.
+- [ ] See also additional board refactoring above (line 542+)
+
+## 2023-05-02
