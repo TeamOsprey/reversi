@@ -229,9 +229,8 @@ namespace Reversi.Logic
                 {
                     foreach (var direction in _directions)
                     {
-                        var adjacentSquare = ReversiBoard.GetAdjacentSquare(blankSquare, direction);
                         if (IsAdjacentSquareValid(blankSquare, direction, player.Counter))
-                            legalSquares.Add(adjacentSquare);
+                            legalSquares.Add(blankSquare);
                             break;
                     }
                 }
@@ -241,7 +240,6 @@ namespace Reversi.Logic
 
         private bool IsAdjacentSquareValid(Square startSquare, Vector direction, char color)
         {
-            bool result = false;
             var adjacentSquare = ReversiBoard.GetAdjacentSquare(startSquare, direction);
 
             while (SquareIsOtherColour(adjacentSquare, color))
@@ -249,11 +247,10 @@ namespace Reversi.Logic
                 adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
 
                 if (SquareIsSameColour(adjacentSquare, color))
-                {
-                    result = true;
-                }
+                    return true;
             }
-            return result;
+
+            return false;
         }
 
         #endregion
