@@ -116,7 +116,15 @@ namespace Reversi.Logic
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
             ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, GetCurrentPlayer().Counter);
-            CaptureCounters(selectedSquare);
+            var capturableSquares = GetCapturableSquares(selectedSquare);
+
+            if (capturableSquares.Count() > 0)
+            {
+                foreach (var square in capturableSquares)
+                {
+                    square.Colour = GetCurrentPlayer().Counter;
+                }
+            }
 
             EndTurn();
 
@@ -191,13 +199,17 @@ namespace Reversi.Logic
         {
             return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(Opponent).Count < 1);
         }
-        private void CaptureCounters(Square selectedSquare)
+        private List<Square> GetCapturableSquares(Square selectedSquare)
         {
+
+            var capturableSquares = new List<Square>();
+            var colourOfTurnPlayer = GetCurrentPlayer().Counter;
+
             foreach (var direction in _directions)
             {
                 Square adjacentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
                 List<Square> currentLine = new List<Square>();
-                var colourOfTurnPlayer = GetCurrentPlayer().Counter;
+                
                 while (SquareIsOtherColour(adjacentSquare, colourOfTurnPlayer))
                 {
                     currentLine.Add(adjacentSquare);
@@ -205,13 +217,14 @@ namespace Reversi.Logic
                 }
                 if (SquareIsSameColour(adjacentSquare, colourOfTurnPlayer))
                 {
-                    foreach (var square in currentLine)
-                    {
-                        square.Colour = colourOfTurnPlayer;
-                    }
+                    capturableSquares.AddRange(currentLine);
+                    
                 }
             }
+
+            return capturableSquares;
         }
+
         private bool SquareIsSameColour(Square currentSquare, char color)
         {
             return currentSquare != null && currentSquare.Colour == color;
