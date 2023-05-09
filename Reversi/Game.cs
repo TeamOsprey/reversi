@@ -195,15 +195,15 @@ namespace Reversi.Logic
         {
             foreach (var direction in _directions)
             {
-                Square currentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
+                Square adjacentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
                 List<Square> currentLine = new List<Square>();
                 var colourOfTurnPlayer = GetCurrentPlayer().Counter;
-                while (SquareIsOtherColour(currentSquare, colourOfTurnPlayer))
+                while (SquareIsOtherColour(adjacentSquare, colourOfTurnPlayer))
                 {
-                    currentLine.Add(currentSquare);
-                    currentSquare = ReversiBoard.GetAdjacentSquare(currentSquare, direction);
+                    currentLine.Add(adjacentSquare);
+                    adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
                 }
-                if (SquareIsSameColour(currentSquare, colourOfTurnPlayer))
+                if (SquareIsSameColour(adjacentSquare, colourOfTurnPlayer))
                 {
                     foreach (var square in currentLine)
                     {
