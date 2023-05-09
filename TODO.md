@@ -557,3 +557,7 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Game.WouldMoveCauseCaptureInGivenDirection duplicates code. This method currently just called from GetLegalSquares, but we do 
       something similar for when we are actually capturing squares. (We need to find this other code.) Also, consider more 
 	  renaming/refactoring of GetLegalSquares and WouldMoveCauseCaptureInGivenDirection.
+
+## 2023-05-09
+- [ ] Think about refactoring AllInitialTilesPlaced() method and move it to Board.cs instead of Game.cs
+
