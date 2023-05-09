@@ -51,38 +51,6 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        [Ignore("Invalid start position.")]
-        public void IfUserMoveLegalPlaceCounter()
-        {
-            var board = new string[]{
-            "........",
-            "........",
-            "........",
-            "........",
-            "........",
-            "....W...",
-            "....W...",
-            "....B..."};
-
-            var reversi = Game.Load(board, true);
-            reversi.AddPlayer("1");
-            reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.PlaceCounter(4, 4, "1"));
-
-            var expected = new string[]{
-            "........",
-            "........",
-            "........",
-            "........",
-            "....B...",
-            "....B...",
-            "....B...",
-            "....B..."};
-
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
-        }
-
-        [Test]
         public void IfWhiteUserMoveLegalPlaceCounter()
         {
             var board = new string[]{

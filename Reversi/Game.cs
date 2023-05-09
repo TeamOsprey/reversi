@@ -201,7 +201,6 @@ namespace Reversi.Logic
         }
         private List<Square> GetCapturableSquares(Square selectedSquare)
         {
-
             var capturableSquares = new List<Square>();
             var colourOfTurnPlayer = GetCurrentPlayer().Counter;
 
