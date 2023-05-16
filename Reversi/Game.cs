@@ -66,7 +66,7 @@ namespace Reversi.Logic
         public string[] GetOutput()
         {
             if(_players.HasAllPlayers)
-                ReversiBoard.SetLegalSquares(GetLegalSquares(_turn)); // todo: consider renaming
+                ReversiBoard.SetLegalSquares(GetLegalSquares(_turn).Keys.ToHashSet()); // todo: consider renaming
 
             return ReversiBoard.GetCurrentState();
         }
