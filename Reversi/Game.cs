@@ -142,7 +142,7 @@ namespace Reversi.Logic
 
         private bool ConfirmLegalPosition(Square selectedSquare)
         {
-            if (!GetLegalSquares(_turn).Contains(selectedSquare))
+            if (!GetLegalSquares(_turn).ContainsKey(selectedSquare))
             {
                 State = new MoveInvalid();
                 return false;
@@ -234,16 +234,17 @@ namespace Reversi.Logic
         // todo: don't call this many times - just once there is a new turn
         private Dictionary<Square, HashSet<Square>> GetLegalSquares(Player player)
         {
-            HashSet<Square> legalSquares = new HashSet<Square>();
+            var legalSquareDictionary = new Dictionary<Square, HashSet<Square>>();
+
             if (ReversiBoard.AllInitialTilesPlaced())
             {
                 foreach (var square in ReversiBoard.GetBlankSquares())
                 {
                     var capturableSquares = GetCapturableSquares(square);
-                    legalSquares.Add(square);
+                    legalSquareDictionary.Add(square, capturableSquares);
                 }
             }
-            return legalSquares;
+            return legalSquareDictionary;
         }
 
         //private HashSet<Square> WouldMoveCauseCaptureInGivenDirection(Square startSquare, Vector direction, char color)
