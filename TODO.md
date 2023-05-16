@@ -564,3 +564,7 @@ Refactored Game.cs and PlayerList.cs:
 - [X] GetCapturableSquares and GetLegalSquares do essentially the same thing; They build lines. 
       Can we refactor out the 'line builder' from these two. (Place the loop in a single function that is called from both.)
 	  Optionally - Refactor out the loop that goes in all directions. This might require passing in a deligate, or using a factory/polymorphism.
+
+## 2023-05-16
+- Deduplicated GetLegalSquares logic. 
+- [ ] Create a property for Game to hold the LegalSquares Dictionary
