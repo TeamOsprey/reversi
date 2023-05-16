@@ -232,7 +232,8 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.None;
         }
-        private HashSet<Square> GetLegalSquares(Player player)
+        // todo: don't call this many times - just once there is a new turn
+        private Dictionary<Square, HashSet<Square>> GetLegalSquares(Player player)
         {
             HashSet<Square> legalSquares = new HashSet<Square>();
             if (ReversiBoard.AllInitialTilesPlaced())
@@ -249,7 +250,7 @@ namespace Reversi.Logic
             return legalSquares;
         }
 
-        private bool WouldMoveCauseCaptureInGivenDirection(Square startSquare, Vector direction, char color)
+        private HashSet<Square> WouldMoveCauseCaptureInGivenDirection(Square startSquare, Vector direction, char color)
         {
             var adjacentSquare = ReversiBoard.GetAdjacentSquare(startSquare, direction);
 
@@ -258,6 +259,7 @@ namespace Reversi.Logic
                 adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
 
                 if (SquareIsSameColour(adjacentSquare, color))
+                    // todo: build up hashset
                     return true;
             }
 
