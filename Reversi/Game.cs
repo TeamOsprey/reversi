@@ -199,15 +199,15 @@ namespace Reversi.Logic
         {
             return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(Opponent).Count < 1);
         }
-        private List<Square> GetCapturableSquares(Square selectedSquare)
+        private HashSet<Square> GetCapturableSquares(Square selectedSquare)
         {
-            var capturableSquares = new List<Square>();
+            var capturableSquares = new HashSet<Square>();
             var colourOfTurnPlayer = GetCurrentPlayer().Counter;
 
             foreach (var direction in _directions)
             {
                 Square adjacentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
-                List<Square> currentLine = new List<Square>();
+                var currentLine = new HashSet<Square>();
                 
                 while (SquareIsOtherColour(adjacentSquare, colourOfTurnPlayer))
                 {
@@ -216,8 +216,7 @@ namespace Reversi.Logic
                 }
                 if (SquareIsSameColour(adjacentSquare, colourOfTurnPlayer))
                 {
-                    capturableSquares.AddRange(currentLine);
-                    
+                    capturableSquares.UnionWith(currentLine);                    
                 }
             }
 
@@ -240,31 +239,30 @@ namespace Reversi.Logic
             {
                 foreach (var square in ReversiBoard.GetBlankSquares())
                 {
-                    foreach (var direction in _directions)
-                    {
-                        if (WouldMoveCauseCaptureInGivenDirection(square, direction, player.Counter))
-                            legalSquares.Add(square);
-                    }
+                    var capturableSquares = GetCapturableSquares(square);
+                    legalSquares.Add(square);
                 }
             }
             return legalSquares;
         }
 
-        private HashSet<Square> WouldMoveCauseCaptureInGivenDirection(Square startSquare, Vector direction, char color)
-        {
-            var adjacentSquare = ReversiBoard.GetAdjacentSquare(startSquare, direction);
+        //private HashSet<Square> WouldMoveCauseCaptureInGivenDirection(Square startSquare, Vector direction, char color)
+        //{
+        //    var adjacentSquare = ReversiBoard.GetAdjacentSquare(startSquare, direction);
+        //    var capturableSquares = new HashSet<Square>();
 
-            while (SquareIsOtherColour(adjacentSquare, color))
-            {
-                adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
+        //    while (SquareIsOtherColour(adjacentSquare, color))
+        //    {
+        //        adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
 
-                if (SquareIsSameColour(adjacentSquare, color))
-                    // todo: build up hashset
-                    return true;
-            }
+        //        if (SquareIsSameColour(adjacentSquare, color))
+        //        {
+        //            capturableSquares.Add();
+        //        }
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         #endregion
     }
