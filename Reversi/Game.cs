@@ -116,7 +116,7 @@ namespace Reversi.Logic
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
             ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, GetCurrentPlayer().Counter);
-            var capturableSquares = GetCapturableSquares(selectedSquare);
+            var capturableSquares = GetCapturableSquares(selectedSquare, GetCurrentPlayer());
 
             if (capturableSquares.Count() > 0)
             {
@@ -199,22 +199,22 @@ namespace Reversi.Logic
         {
             return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(Opponent).Count < 1);
         }
-        private HashSet<Square> GetCapturableSquares(Square selectedSquare)
+        private HashSet<Square> GetCapturableSquares(Square selectedSquare, Player player)
         {
             var capturableSquares = new HashSet<Square>();
-            var colourOfTurnPlayer = GetCurrentPlayer().Counter;
+            var counterColour = player.Counter;
 
             foreach (var direction in _directions)
             {
                 Square adjacentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
                 var currentLine = new HashSet<Square>();
                 
-                while (SquareIsOtherColour(adjacentSquare, colourOfTurnPlayer))
+                while (SquareIsOtherColour(adjacentSquare, counterColour))
                 {
                     currentLine.Add(adjacentSquare);
                     adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
                 }
-                if (SquareIsSameColour(adjacentSquare, colourOfTurnPlayer))
+                if (SquareIsSameColour(adjacentSquare, counterColour))
                 {
                     capturableSquares.UnionWith(currentLine);                    
                 }
@@ -240,31 +240,15 @@ namespace Reversi.Logic
             {
                 foreach (var square in ReversiBoard.GetBlankSquares())
                 {
-                    var capturableSquares = GetCapturableSquares(square);
-                    legalSquareDictionary.Add(square, capturableSquares);
+                    var capturableSquares = GetCapturableSquares(square, player);
+                    if (capturableSquares.Count() > 0) 
+                    { 
+                        legalSquareDictionary.Add(square, capturableSquares);
+                    }
                 }
             }
             return legalSquareDictionary;
         }
-
-        //private HashSet<Square> WouldMoveCauseCaptureInGivenDirection(Square startSquare, Vector direction, char color)
-        //{
-        //    var adjacentSquare = ReversiBoard.GetAdjacentSquare(startSquare, direction);
-        //    var capturableSquares = new HashSet<Square>();
-
-        //    while (SquareIsOtherColour(adjacentSquare, color))
-        //    {
-        //        adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
-
-        //        if (SquareIsSameColour(adjacentSquare, color))
-        //        {
-        //            capturableSquares.Add();
-        //        }
-        //    }
-
-        //    return false;
-        //}
-
         #endregion
     }
 }
