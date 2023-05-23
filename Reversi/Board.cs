@@ -86,12 +86,12 @@ namespace Reversi.Logic
 
         public string[] GetCurrentState()
         {
-            string[] output = new string[8];
-            char[] rowString = new char[8];
+            string[] output = new string[Size];
+            char[] rowString = new char[Size];
 
-            for (int row = 0; row < 8; row++)
+            for (int row = 0; row < Size; row++)
             {
-                for (int col = 0; col < 8; col++)
+                for (int col = 0; col < Size; col++)
                 {
                     rowString[col] = _squares[row, col].Colour;
                     if (_legalSquares != null && _legalSquares.Contains(new Square(row, col)))
