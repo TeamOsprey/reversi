@@ -554,13 +554,13 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-05-02
 - We continued refactoring the board
-- [ ] Game.WouldMoveCauseCaptureInGivenDirection duplicates code. This method currently just called from GetLegalSquares, but we do 
+- [X] Game.WouldMoveCauseCaptureInGivenDirection duplicates code. This method currently just called from GetLegalSquares, but we do 
       something similar for when we are actually capturing squares. (We need to find this other code.) Also, consider more 
 	  renaming/refactoring of GetLegalSquares and WouldMoveCauseCaptureInGivenDirection.
 
 ## 2023-05-09
 - We worked on refactoring GetCapturableSquares and GetLegalSquares
-- [ ] Think about refactoring AllInitialTilesPlaced() method and move it to Board.cs instead of Game.cs
+- [X] Think about refactoring AllInitialTilesPlaced() method and move it to Board.cs instead of Game.cs
 - [X] GetCapturableSquares and GetLegalSquares do essentially the same thing; They build lines. 
       Can we refactor out the 'line builder' from these two. (Place the loop in a single function that is called from both.)
 	  Optionally - Refactor out the loop that goes in all directions. This might require passing in a deligate, or using a factory/polymorphism.
