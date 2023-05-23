@@ -9,7 +9,8 @@ namespace Reversi.Logic
         #region fields
         public Board ReversiBoard { get; set; }
         private Player _turn;
-        
+        private Dictionary<Square, HashSet<Square>> _legalSquareDictionary;
+
         public Player Turn() => _turn;
 
         private Player Opponent => _turn is WhitePlayer ? _players.BlackPlayer : _players.WhitePlayer;
@@ -25,11 +26,13 @@ namespace Reversi.Logic
         {
             ReversiBoard = new Board(board);
             _turn = isTurnBlack ? _players.BlackPlayer : _players.WhitePlayer;
+            _legalSquareDictionary = GetLegalSquares(_turn);
         }
         public Game()
         {
             ReversiBoard = Board.InitializeBoard();
             _turn = _players.BlackPlayer;
+            _legalSquareDictionary = GetLegalSquares(_turn);
         }
         public static Game Load(string[] board, bool isTurnBlack)
         {
@@ -66,7 +69,7 @@ namespace Reversi.Logic
         public string[] GetOutput()
         {
             if(_players.HasAllPlayers)
-                ReversiBoard.SetLegalSquares(GetLegalSquares(_turn).Keys.ToHashSet()); // todo: consider renaming
+                ReversiBoard.SetLegalSquares(_legalSquareDictionary.Keys.ToHashSet()); // todo: consider renaming
 
             return ReversiBoard.GetCurrentState();
         }
@@ -142,7 +145,7 @@ namespace Reversi.Logic
 
         private bool ConfirmLegalPosition(Square selectedSquare)
         {
-            if (!GetLegalSquares(_turn).ContainsKey(selectedSquare))
+            if (!_legalSquareDictionary.ContainsKey(selectedSquare))
             {
                 State = new MoveInvalid();
                 return false;
@@ -181,6 +184,8 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             _turn = Opponent;
+            _legalSquareDictionary = GetLegalSquares(_turn);
+
         }
         private void SetStatus()
         {
@@ -193,11 +198,11 @@ namespace Reversi.Logic
         }
         private bool IsPass()
         {
-            return GetLegalSquares(_turn).Count < 1;
+            return _legalSquareDictionary.Count < 1;
         }
         private bool IsGameOver()
         {
-            return ReversiBoard.GetBlankSquares().Count == 0 || (GetLegalSquares(_turn).Count < 1 && GetLegalSquares(Opponent).Count < 1);
+            return ReversiBoard.GetBlankSquares().Count == 0 || (_legalSquareDictionary.Count < 1 && GetLegalSquares(Opponent).Count < 1);
         }
         private HashSet<Square> GetCapturableSquares(Square selectedSquare, Player player)
         {
