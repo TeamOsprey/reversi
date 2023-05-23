@@ -9,7 +9,8 @@ namespace Reversi.Logic
         #region fields
         public Board ReversiBoard { get; set; }
         private Player _turn;
-        private Dictionary<Square, HashSet<Square>> _legalSquareDictionary;
+        private Dictionary<Square, HashSet<Square>> _whiteLegalSquareDictionary;
+        private Dictionary<Square, HashSet<Square>> _blackLegalSquareDictionary;
 
         public Player Turn() => _turn;
 
@@ -26,13 +27,15 @@ namespace Reversi.Logic
         {
             ReversiBoard = new Board(board);
             _turn = isTurnBlack ? _players.BlackPlayer : _players.WhitePlayer;
-            _legalSquareDictionary = GetLegalSquares(_turn);
+            _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
+            _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
         }
         public Game()
         {
             ReversiBoard = Board.InitializeBoard();
             _turn = _players.BlackPlayer;
-            _legalSquareDictionary = GetLegalSquares(_turn);
+            _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
+            _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
         }
         public static Game Load(string[] board, bool isTurnBlack)
         {
@@ -69,7 +72,7 @@ namespace Reversi.Logic
         public string[] GetOutput()
         {
             if(_players.HasAllPlayers)
-                ReversiBoard.SetLegalSquares(_legalSquareDictionary.Keys.ToHashSet()); // todo: consider renaming
+                ReversiBoard.SetLegalSquares(GetPlayerMoveDictionary(_turn).Keys.ToHashSet()); // todo: consider renaming
 
             return ReversiBoard.GetCurrentState();
         }
@@ -114,6 +117,14 @@ namespace Reversi.Logic
         #endregion
         #region private methods
 
+        private Dictionary<Square, HashSet<Square>> GetPlayerMoveDictionary(Player player)
+        {
+            if (player is WhitePlayer)
+                return _whiteLegalSquareDictionary;
+            else
+                return _blackLegalSquareDictionary;
+        }
+
         private bool PlaceCounter(Square selectedSquare)
         {
             if (!ConfirmLegalMove(selectedSquare)) return false;
@@ -145,7 +156,7 @@ namespace Reversi.Logic
 
         private bool ConfirmLegalPosition(Square selectedSquare)
         {
-            if (!_legalSquareDictionary.ContainsKey(selectedSquare))
+            if (!GetPlayerMoveDictionary(_turn).ContainsKey(selectedSquare))
             {
                 State = new MoveInvalid();
                 return false;
@@ -184,8 +195,8 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             _turn = Opponent;
-            _legalSquareDictionary = GetLegalSquares(_turn);
-
+            _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
+            _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
         }
         private void SetStatus()
         {
@@ -198,11 +209,11 @@ namespace Reversi.Logic
         }
         private bool IsPass()
         {
-            return _legalSquareDictionary.Count < 1;
+            return GetPlayerMoveDictionary(_turn).Count < 1;
         }
         private bool IsGameOver()
         {
-            return ReversiBoard.GetBlankSquares().Count == 0 || (_legalSquareDictionary.Count < 1 && GetLegalSquares(Opponent).Count < 1);
+            return ReversiBoard.GetBlankSquares().Count == 0 || (_whiteLegalSquareDictionary.Count < 1 && _blackLegalSquareDictionary.Count < 1);
         }
         private HashSet<Square> GetCapturableSquares(Square selectedSquare, Player player)
         {
