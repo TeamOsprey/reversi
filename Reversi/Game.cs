@@ -12,7 +12,7 @@ namespace Reversi.Logic
         private Dictionary<Square, HashSet<Square>> _whiteLegalSquareDictionary;
         private Dictionary<Square, HashSet<Square>> _blackLegalSquareDictionary;
 
-        public Player Turn() => _turn;
+        public Player Turn => _turn;
 
         private Player Opponent => _turn is WhitePlayer ? _players.BlackPlayer : _players.WhitePlayer;
         
@@ -64,10 +64,6 @@ namespace Reversi.Logic
         public Player GetPlayer(string userId)
         {
             return _players.SingleOrDefault(x => x.UserId == userId);
-        }
-        public Player GetCurrentPlayer()
-        {
-            return _turn;
         }
         public string[] GetOutput()
         {
@@ -129,14 +125,14 @@ namespace Reversi.Logic
         {
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
-            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, GetCurrentPlayer().Counter);
-            var capturableSquares = GetCapturableSquares(selectedSquare, GetCurrentPlayer());
+            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, _turn.Counter);
+            var capturableSquares = GetCapturableSquares(selectedSquare, _turn);
 
             if (capturableSquares.Count() > 0)
             {
                 foreach (var square in capturableSquares)
                 {
-                    square.Colour = GetCurrentPlayer().Counter;
+                    square.Colour = _turn.Counter;
                 }
             }
 

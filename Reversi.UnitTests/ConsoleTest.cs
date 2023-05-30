@@ -323,7 +323,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("2");
             reversi.PlaceCounter(5, 4, "1");
 
-            Assert.IsTrue(reversi.Turn() is WhitePlayer);
+            Assert.IsTrue(reversi.Turn is WhitePlayer);
         }
 
 
@@ -344,14 +344,14 @@ namespace Reversi.UnitTests
 
             reversi.PlaceCounter(7, 6, "1");
 
-            Assert.IsTrue(reversi.Turn() is BlackPlayer);
+            Assert.IsTrue(reversi.Turn is BlackPlayer);
         }
 
         [Test]
         public void InitiateGameWithTurnColourBlack()
         {
             var reversi = new Game();
-            Assert.IsTrue(reversi.Turn() is BlackPlayer);
+            Assert.IsTrue(reversi.Turn is BlackPlayer);
         }
 
         [Test]
@@ -408,7 +408,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, true);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            Assert.IsTrue(reversi.Turn() is WhitePlayer);
+            Assert.IsTrue(reversi.Turn is WhitePlayer);
         }
         [Test]
         public void WhenStatusIsGameOverDeclareWinner()

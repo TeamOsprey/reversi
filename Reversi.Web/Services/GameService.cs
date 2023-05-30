@@ -40,7 +40,7 @@ namespace Reversi.Web.Services
 
         public string GetCurrentPlayer()
         {
-            return ConvertPlayerTypeToString(Game.Turn());
+            return ConvertPlayerTypeToString(Game.Turn);
         }
 
         public string GetPlayerColourString(string userId)

@@ -571,6 +571,6 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-05-23
 - Refactored legal squares further and unhardcoded redundant board size constants
-- [ ] Refactor redundant code Turn() and GetCurrentPlayer()
+- [X] Refactor redundant code Turn() and GetCurrentPlayer()
 - [ ] If possible, encapsulate _whiteLegalSquareDictionary and _blackLegalSquareDictionary into a property (with getter/setter).
 	- [ ] Consider redundancy of always making 2 calls to set the 2 dictionaries (instead of 1 call)

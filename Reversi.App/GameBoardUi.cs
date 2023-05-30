@@ -57,7 +57,7 @@ namespace Reversi.App
             if (Reversi.State is GameOver)
                 WriteErrorMessage("Game Over!");
 
-            Console.WriteLine("Current turn: " + Reversi.Turn());
+            Console.WriteLine("Current turn: " + Reversi.Turn);
             Console.Write("Enter coordinates (row,col): ");
         }
  

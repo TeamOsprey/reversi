@@ -31,7 +31,7 @@ namespace Reversi.UnitTests
             Assert.AreEqual(Counters.Black, output[4][5]);
             Assert.AreEqual(Counters.White, output[5][4]);
             Assert.AreEqual(Counters.White, output[5][5]);
-            Assert.IsTrue(reversi.Turn() is BlackPlayer);
+            Assert.IsTrue(reversi.Turn is BlackPlayer);
         }
      
         [Test]
