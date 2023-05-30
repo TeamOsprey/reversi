@@ -246,7 +246,6 @@ namespace Reversi.Logic
         {
             return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.None;
         }
-        // todo: don't call this many times - just once there is a new turn
         private Dictionary<Square, HashSet<Square>> GetLegalSquares(Player player)
         {
             var legalSquareDictionary = new Dictionary<Square, HashSet<Square>>();

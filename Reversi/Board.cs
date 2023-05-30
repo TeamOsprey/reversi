@@ -9,11 +9,10 @@ namespace Reversi.Logic
         private HashSet<Square> _legalSquares;
 
         private readonly Square[,] _squares;
-        public int Size { get; }
+        public int Size => 8;
 
         public Board(string[] board)
         {
-            Size = 8;
             _squares = new Square[Size, Size];
 
             for (int row = 0; row < Size; row++)
@@ -24,7 +23,6 @@ namespace Reversi.Logic
                 }
             }
         }
-
 
         public static Board InitializeBoard()
         {
