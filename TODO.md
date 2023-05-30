@@ -574,3 +574,8 @@ Refactored Game.cs and PlayerList.cs:
 - [X] Refactor redundant code Turn() and GetCurrentPlayer()
 - [X] If possible, encapsulate _whiteLegalSquareDictionary and _blackLegalSquareDictionary into a property (with getter/setter).
 	- [X] Consider redundancy of always making 2 calls to set the 2 dictionaries (instead of 1 call)
+
+## 2023-05-30
+- Refactored Turn() and GetCurrentPlayer()
+- Combined _whiteLegalSquareDictionary and _blackLegalSquareDictionary into a single method.
+- We finished in Red. Some unit tests are failing after we removed DisplayBoard method and used GetOutput method instead. We also moved the HasAllPlayers check to UI.
