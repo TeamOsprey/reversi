@@ -63,6 +63,11 @@ namespace Reversi.Web.Services
             return Game.GetNumberOfColor(color);
         }
 
+        public bool HasAllPlayers()
+        {
+            return Game.Players.HasAllPlayers;
+        }
+
         private string ConvertPlayerTypeToString(Player player)
         {
             return player != null ? player.ToString() : "Observer";

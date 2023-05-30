@@ -61,9 +61,6 @@ namespace Reversi.Logic
         }
         public string[] GetOutput()
         {
-            if(_players.HasAllPlayers)
-                ReversiBoard.SetLegalSquares(GetPlayerMoveDictionary(_turn).Keys.ToHashSet()); // todo: consider renaming
-
             return ReversiBoard.GetCurrentState();
         }
         public Player GetWinner()
@@ -74,10 +71,6 @@ namespace Reversi.Logic
             return (white > black) ? _players.WhitePlayer : _players.BlackPlayer;
         }
 
-        public string[] DisplayBoard()
-        {
-            return ReversiBoard.GetCurrentState();
-        }
         public int GetNumberOfColor(char color)
         {
             return ReversiBoard.GetNumberOfSquaresByColor(color);
@@ -115,6 +108,7 @@ namespace Reversi.Logic
         {
             _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
             _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
+            ReversiBoard.SetLegalSquares(GetPlayerMoveDictionary(_turn).Keys.ToHashSet());
         }
 
         private Dictionary<Square, HashSet<Square>> GetPlayerMoveDictionary(Player player)

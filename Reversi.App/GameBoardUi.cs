@@ -25,7 +25,7 @@ namespace Reversi.App
 
         private void SetupBoard()
         {
-            var board = Reversi.DisplayBoard();
+            var board = Reversi.GetOutput();
             GuidedBoard = PrependGuidesToStringArrays(board);
         }
  

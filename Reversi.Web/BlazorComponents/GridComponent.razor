@@ -23,7 +23,7 @@
 				{
 					<td>
                         <TileComponent Message="@DisplayedBoard[row][col].ToString()" Row="@row" Column="@col" OnMoveSelected="MoveSelected" 
-                                       ShowLegalSquares="@IsUsersTurn"></TileComponent>
+                                       ShowLegalSquares="@(IsUsersTurn && HasAllPlayers)"></TileComponent>
 					</td>
 				}
 			</tr>
@@ -39,6 +39,7 @@
     public string[] DisplayedBoard => GameService.GetOutput();
 
     private bool IsUsersTurn => WhatColourAmI == GameService.GetCurrentPlayer();
+    private bool HasAllPlayers => GameService.HasAllPlayers();
 
     protected async Task MoveSelected(string move)
     {

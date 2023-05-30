@@ -12,5 +12,6 @@
         public string GetMessage();
         public string GetPersonalMessage();
         public int GetScoreByColor(char color);
+        public bool HasAllPlayers();
     }
 }
