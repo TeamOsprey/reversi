@@ -27,15 +27,14 @@ namespace Reversi.Logic
         {
             ReversiBoard = new Board(board);
             _turn = isTurnBlack ? _players.BlackPlayer : _players.WhitePlayer;
-            _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
-            _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
+            SetLegalSquareDictionaries();
         }
+
         public Game()
         {
             ReversiBoard = Board.InitializeBoard();
             _turn = _players.BlackPlayer;
-            _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
-            _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
+            SetLegalSquareDictionaries();
         }
         public static Game Load(string[] board, bool isTurnBlack)
         {
@@ -54,11 +53,6 @@ namespace Reversi.Logic
             }
 
             return PlaceCounter(new Square(row, col));
-        }
-
-        private bool IsPlayersTurn(string userId)
-        {
-            return _turn.UserId == userId;
         }
 
         public Player GetPlayer(string userId)
@@ -112,6 +106,16 @@ namespace Reversi.Logic
 
         #endregion
         #region private methods
+        private bool IsPlayersTurn(string userId)
+        {
+            return _turn.UserId == userId;
+        }
+
+        private void SetLegalSquareDictionaries()
+        {
+            _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
+            _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
+        }
 
         private Dictionary<Square, HashSet<Square>> GetPlayerMoveDictionary(Player player)
         {
@@ -191,8 +195,7 @@ namespace Reversi.Logic
         private void ChangeTurn()
         {
             _turn = Opponent;
-            _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
-            _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
+            SetLegalSquareDictionaries();
         }
         private void SetStatus()
         {
