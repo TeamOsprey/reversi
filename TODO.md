@@ -583,3 +583,4 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-06-06
 - Fix failing unit tests with helper function to remove legal squares
 - Added waiting for second player message when first player joins
+- We are now using "[ Outdated? ]" to mark TODO.md items that may no longer be relevant.
