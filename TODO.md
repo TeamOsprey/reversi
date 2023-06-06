@@ -549,7 +549,7 @@ Refactored Game.cs and PlayerList.cs:
 - We removed the code not needed with the current initial squares business rules
 - We refactored Game and Board and changed some names to make them more understandable
 - [x] IsAdjacentSquareValid is both validating and adding to legal squares. We will need to fix it so it doesn't do more than one thing.
-- [ ] Consider clearning two models of representing the board. One as a list of strings and other is two dimensional array of squares.
+- [ ] Consider cleaning two models of representing the board. One as a list of strings and other is two dimensional array of squares.
 - [ ] See also additional board refactoring above (line 542+)
 
 ## 2023-05-02
@@ -584,3 +584,4 @@ Refactored Game.cs and PlayerList.cs:
 - Fix failing unit tests with helper function to remove legal squares
 - Added waiting for second player message when first player joins
 - We are now using "[ Outdated? ]" to mark TODO.md items that may no longer be relevant.
+- [ ] Create helper methods in Board.cs to convert to and from Square[,] and string[] representations of the board.
