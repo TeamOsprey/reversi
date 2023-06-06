@@ -13,6 +13,11 @@ namespace Reversi.UnitTests
         //    Console.WriteLine(File.Exists(path));
         //}
 
+        private string[] RemoveLegalSquares(string[] board)
+        {
+            return board.Select(row => row.Replace("0", ".")).ToArray();
+        }
+
         [Test]
         public void DisplayCurrentBoard()
         {
@@ -203,7 +208,7 @@ namespace Reversi.UnitTests
             "..B.W...",
             "....W..."};
 
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+            CollectionAssert.AreEqual(expected, RemoveLegalSquares(reversi.ReversiBoard.GetCurrentState()));
         }
 
         [Test]
@@ -234,7 +239,7 @@ namespace Reversi.UnitTests
                     "..B.W...",
                     ".B..W..."};
 
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+            CollectionAssert.AreEqual(expected, RemoveLegalSquares(reversi.ReversiBoard.GetCurrentState()));
         }
 
         [Test]
@@ -301,7 +306,7 @@ namespace Reversi.UnitTests
                     "........",
                     "........"};
 
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentState());
+            CollectionAssert.AreEqual(expected, RemoveLegalSquares(reversi.ReversiBoard.GetCurrentState()));
 
         }
 
