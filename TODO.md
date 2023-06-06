@@ -260,7 +260,7 @@ but in Square class, where we can define operator method, we don't have that inf
 ## 2022-07-05
 - [X] ConvertColourCharToString method; use it in grid component to see who the user is for that active browser.
 - [X] Use a different error message when first player tries to make a move and second player has not joined yet.
-- [ ] Add waiting for second player message when first player joins.
+- [X] Add waiting for second player message when first player joins.
 
 ## 2022-07-12
 - Discovered that OnAfterRenderAsync runs twice, so you need to use the firstRender parameter with a guard to avoid 
@@ -579,3 +579,7 @@ Refactored Game.cs and PlayerList.cs:
 - Refactored Turn() and GetCurrentPlayer()
 - Combined _whiteLegalSquareDictionary and _blackLegalSquareDictionary into a single method.
 - We finished in Red. Some unit tests are failing after we removed DisplayBoard method and used GetOutput method instead. We also moved the HasAllPlayers check to UI.
+
+## 2023-06-06
+- Fix failing unit tests with helper function to remove legal squares
+- Added waiting for second player message when first player joins

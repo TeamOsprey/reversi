@@ -3,7 +3,7 @@
 
 @if (IsMyTurn)
 {
-    <label>It is your turn!</label>
+    <label>@MyTurnMessage</label>
 }
 else
 {
@@ -20,6 +20,8 @@ else
     
     public string CurrentPlayer => GameService.GetCurrentPlayer();
     private bool IsMyTurn => (CurrentPlayer == GameService.GetPlayerColourString(UserId));
+    private bool HasAllPlayers => GameService.HasAllPlayers();
+    private string MyTurnMessage => HasAllPlayers ? "It is your turn!" : "Waiting for opponent to join the game.";
 
     public void Refresh()
     {
