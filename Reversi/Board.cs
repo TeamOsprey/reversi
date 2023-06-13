@@ -9,7 +9,8 @@ namespace Reversi.Logic
         private HashSet<Square> _legalSquares;
 
         private readonly Square[,] _squares;
-        public int Size => 8;
+
+        const int Size = 8;
         
         public Board(string[] board)
         {
@@ -137,6 +138,24 @@ namespace Reversi.Logic
 
         private static string[] CreateInitialBoard()
         {
+            var squares = new Square[Size,Size];
+
+            // initialize blank board
+            for (int row = 0; row < Size; row++)
+            {
+                for (int col = 0; col < Size; col++)
+                {
+                    squares[row, col] = new Square(row, col, Counters.None);
+                }
+            }
+
+            // Get middle four squares
+            var middleFourSquares = new Square[4];
+            middleFourSquares[0] = squares[3, 3];
+            middleFourSquares[1] = squares[3, 4];
+            middleFourSquares[2] = squares[4, 3];
+            middleFourSquares[3] = squares[4, 4];
+
             var shuffledCounters = Shuffle("BBWW");
 
             var initRowOne = shuffledCounters.Substring(0, 2);
