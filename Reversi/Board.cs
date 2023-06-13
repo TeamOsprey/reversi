@@ -33,7 +33,7 @@ namespace Reversi.Logic
                 return null;
         }
 
-        private Square[,] ConvertToSquares(string[] board)
+        private static Square[,] ConvertToSquares(string[] board)
         {
             var squares = new Square[Size, Size];
 
@@ -48,7 +48,7 @@ namespace Reversi.Logic
             return squares;
         }
 
-        private string[] ConvertToStringArray(Square[,] squares, HashSet<Square> legalSquares)
+        private static string[] ConvertToStringArray(Square[,] squares, HashSet<Square> legalSquares)
         {
             string[] output = new string[Size];
             char[] rowString = new char[Size];
@@ -156,25 +156,16 @@ namespace Reversi.Logic
             middleFourSquares[2] = squares[4, 3];
             middleFourSquares[3] = squares[4, 4];
 
+            // Shuffle middle four squares
             var shuffledCounters = Shuffle("BBWW");
 
-            var initRowOne = shuffledCounters.Substring(0, 2);
-            var initRowTwo = shuffledCounters.Substring(2, 2);
+            // Place shuffled counters in middle four squares
+            for (int i = 0; i < 4; i++)
+            {
+                middleFourSquares[i].Colour = shuffledCounters[i];
+            }
 
-            var board = new string[] {
-                    "........",
-                    "........",
-                    "........",
-                    "...--...",
-                    "...--...",
-                    "........",
-                    "........",
-                    "........"};
-
-            board[3] = board[3].Replace("--",initRowOne);
-            board[4] = board[4].Replace("--",initRowTwo);
-
-            return board;
+            return ConvertToStringArray(squares, null);
         }
         public bool AllInitialTilesPlaced()
         {
