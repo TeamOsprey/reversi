@@ -594,3 +594,5 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Consider using public override ToString() instead of ConvertToStringArray for converting Square[] to 
       board string[]. If so, we can return a string with `Environment.NewLine` characters instead of string[], 
       and also have a parameter for whether or not to include legal square characters in the returned string. 
+- [ ] Consider finding a way to not store Row and Column as properties of the Square class, which would simplify
+	  some code (but need to make sure Object.Equals is still working correctly).
