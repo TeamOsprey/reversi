@@ -10,6 +10,27 @@ namespace Reversi.Logic
 
         private readonly Square[,] _squares;
         public int Size => 8;
+        
+        public Board(string[] board)
+        {
+            _squares = ConvertToSquares(board);
+        }
+
+        public static Board InitializeBoard()
+        {
+            return new Board(CreateInitialBoard());
+        }
+        
+        public Square GetAdjacentSquare(Square originalSquare, Vector direction)
+        {
+            int row = originalSquare.Row + direction.Vertical;
+            int column = originalSquare.Column + direction.Horizontal;
+
+            if (IsRowInBounds(row) && IsColumnInBounds(column))
+                return _squares[row, column];
+            else
+                return null;
+        }
 
         private Square[,] ConvertToSquares(string[] board)
         {
@@ -45,29 +66,6 @@ namespace Reversi.Logic
             }
 
             return output;
-        }
-
-        public Board(string[] board)
-        {
-            _squares = ConvertToSquares(board);
-        }
-
-        public static Board InitializeBoard()
-        {
-            return new Board(CreateInitialBoard());
-        }
-
-
-
-        public Square GetAdjacentSquare(Square originalSquare, Vector direction)
-        {
-            int row = originalSquare.Row + direction.Vertical;
-            int column = originalSquare.Column + direction.Horizontal;
-
-            if (IsRowInBounds(row) && IsColumnInBounds(column))
-                return _squares[row, column];
-            else
-                return null;
         }
 
         private bool IsRowInBounds(int row)
@@ -112,23 +110,7 @@ namespace Reversi.Logic
 
         public string[] GetCurrentState()
         {
-            string[] output = new string[Size];
-            char[] rowString = new char[Size];
-
-            for (int row = 0; row < Size; row++)
-            {
-                for (int col = 0; col < Size; col++)
-                {
-                    rowString[col] = _squares[row, col].Colour;
-                    if (_legalSquares != null && _legalSquares.Contains(new Square(row, col)))
-                    {
-                        rowString[col] = '0';
-                    }
-                }
-                output[row] = new string(rowString);
-            }
-
-            return output;
+            return ConvertToStringArray(_squares, _legalSquares);
         }
 
         public void ChangeSquareColour(int selectedSquareRow, int selectedSquareColumn, char turn)
