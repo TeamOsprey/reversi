@@ -11,17 +11,45 @@ namespace Reversi.Logic
         private readonly Square[,] _squares;
         public int Size => 8;
 
-        public Board(string[] board)
+        private Square[,] ConvertToSquares(string[] board)
         {
-            _squares = new Square[Size, Size];
+            var squares = new Square[Size, Size];
 
             for (int row = 0; row < Size; row++)
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    _squares[row, col] = new Square(row, col, board[row][col]);
+                    squares[row, col] = new Square(row, col, board[row][col]);
                 }
             }
+
+            return squares;
+        }
+
+        private string[] ConvertToStringArray(Square[,] squares, HashSet<Square> legalSquares)
+        {
+            string[] output = new string[Size];
+            char[] rowString = new char[Size];
+
+            for (int row = 0; row < Size; row++)
+            {
+                for (int col = 0; col < Size; col++)
+                {
+                    rowString[col] = squares[row, col].Colour;
+                    if (legalSquares != null && legalSquares.Contains(new Square(row, col)))
+                    {
+                        rowString[col] = '0';
+                    }
+                }
+                output[row] = new string(rowString);
+            }
+
+            return output;
+        }
+
+        public Board(string[] board)
+        {
+            _squares = ConvertToSquares(board);
         }
 
         public static Board InitializeBoard()
