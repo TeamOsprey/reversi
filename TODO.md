@@ -584,4 +584,13 @@ Refactored Game.cs and PlayerList.cs:
 - Fix failing unit tests with helper function to remove legal squares
 - Added waiting for second player message when first player joins
 - We are now using "[ Outdated? ]" to mark TODO.md items that may no longer be relevant.
-- [ ] Create helper methods in Board.cs to convert to and from Square[,] and string[] representations of the board.
+- [x] Create helper methods in Board.cs to convert to and from Square[,] and string[] representations of the board.
+
+## 2023-06-13
+- We added methods in Board.cs to convert to and from Square[,] and string[] representations of the board.
+- [ ] Revisit how the string[] representation of the board is used outside of Board.cs. 
+	- [ ] In GridComponent.razor, see if can use the Square[,] representation instead of the string[] representation.	      see: `public string[] DisplayedBoard => GameService.GetOutput();`
+	- [ ] Other places...
+- [ ] Consider using public override ToString() instead of ConvertToStringArray for converting Square[] to 
+      board string[]. If so, we can return a string with `Environment.NewLine` characters instead of string[], 
+      and also have a parameter for whether or not to include legal square characters in the returned string. 
