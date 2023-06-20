@@ -63,6 +63,11 @@ namespace Reversi.Logic
         {
             return ReversiBoard.GetCurrentStateAsStringArray();
         }
+        public Square[,] GetOutputAsSquares()
+        {
+            return ReversiBoard.GetCurrentStateAsSquares();
+        }
+
         public Player GetWinner()
         {
             var white = GetNumberOfColor(Counters.White);

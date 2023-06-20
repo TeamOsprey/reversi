@@ -37,6 +37,10 @@ namespace Reversi.Web.Services
         {
             return Game.GetOutputAsStringArray();
         }
+        public Square[,] GetOutputAsSquares()
+        {
+            return Game.GetOutputAsSquares();
+        }
 
         public string GetCurrentPlayer()
         {
@@ -72,6 +76,16 @@ namespace Reversi.Web.Services
         {
             return player != null ? player.ToString() : "Observer";
 
+        }
+
+        public string[] GetOutput()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        string[] IGameService.GetOutputAsSquares()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

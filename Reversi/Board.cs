@@ -113,6 +113,10 @@ namespace Reversi.Logic
         {
             return ConvertToStringArray(_squares, _legalSquares);
         }
+        public Square[,] GetCurrentStateAsSquares()
+        {
+            return _squares;
+        }
 
         public void ChangeSquareColour(int selectedSquareRow, int selectedSquareColumn, char turn)
         {
