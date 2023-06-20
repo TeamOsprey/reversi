@@ -6,7 +6,7 @@
         public void RemovePlayer(string userId);
         public void PlaceCounter(int row, int col, string userId);
         public bool IsLastMoveValid();
-        public string[] GetOutput();
+        public string[] GetOutputAsStringArray();
         public string GetCurrentPlayer();
         public string GetPlayerColourString(string userId);
         public string GetMessage();

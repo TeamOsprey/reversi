@@ -25,7 +25,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            var output = reversi.GetOutput();
+            var output = reversi.GetOutputAsStringArray();
 
             Assert.AreEqual(Counters.Black, output[4][4]);
             Assert.AreEqual(Counters.Black, output[4][5]);
@@ -59,7 +59,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, true);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -90,7 +90,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -120,7 +120,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -150,7 +150,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -180,7 +180,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -210,7 +210,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -240,7 +240,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -270,7 +270,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
 
         [Test]
@@ -300,7 +300,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, reversi.GetOutput());
+            CollectionAssert.AreEqual(expected, reversi.GetOutputAsStringArray());
         }
     }
 }

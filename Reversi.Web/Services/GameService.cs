@@ -33,9 +33,9 @@ namespace Reversi.Web.Services
             Game.PlaceCounter(row, col, userId);
         }
 
-        public string[] GetOutput()
+        public string[] GetOutputAsStringArray()
         {
-            return Game.GetOutput();
+            return Game.GetOutputAsStringArray();
         }
 
         public string GetCurrentPlayer()

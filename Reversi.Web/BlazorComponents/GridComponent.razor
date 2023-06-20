@@ -36,7 +36,7 @@
     public string UserId { get; set; }
     
     public string WhatColourAmI;
-    public string[] DisplayedBoard => GameService.GetOutput();
+    public string[] DisplayedBoard => GameService.GetOutputAsStringArray();
 
     private bool IsUsersTurn => WhatColourAmI == GameService.GetCurrentPlayer();
     private bool HasAllPlayers => GameService.HasAllPlayers();

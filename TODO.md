@@ -589,7 +589,8 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-06-13
 - We added methods in Board.cs to convert to and from Square[,] and string[] representations of the board.
 - [ ] Revisit how the string[] representation of the board is used outside of Board.cs. 
-	- [ ] In GridComponent.razor, see if can use the Square[,] representation instead of the string[] representation.	      see: `public string[] DisplayedBoard => GameService.GetOutput();`
+	- [ ] In GridComponent.razor, see if can use the Square[,] representation instead of the string[] representation.
+	      see: `public string[] DisplayedBoard => GameService.GetOutput();`
 	- [ ] Other places...
 - [ ] Consider using public override ToString() instead of ConvertToStringArray for converting Square[] to 
       board string[]. If so, we can return a string with `Environment.NewLine` characters instead of string[], 
