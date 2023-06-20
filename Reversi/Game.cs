@@ -61,7 +61,7 @@ namespace Reversi.Logic
         }
         public string[] GetOutputAsStringArray()
         {
-            return ReversiBoard.GetCurrentState();
+            return ReversiBoard.GetCurrentStateAsStringArray();
         }
         public Player GetWinner()
         {

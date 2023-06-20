@@ -109,7 +109,7 @@ namespace Reversi.Logic
             _legalSquares = legalSquares;
         }
 
-        public string[] GetCurrentState()
+        public string[] GetCurrentStateAsStringArray()
         {
             return ConvertToStringArray(_squares, _legalSquares);
         }
