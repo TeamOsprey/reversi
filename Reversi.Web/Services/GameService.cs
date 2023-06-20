@@ -1,6 +1,7 @@
 ﻿using Reversi.Logic;
 using Reversi.Web.Services.Interfaces;
-
+using System;
+using System.Drawing;
 
 namespace Reversi.Web.Services
 {
@@ -37,9 +38,23 @@ namespace Reversi.Web.Services
         {
             return Game.GetOutputAsStringArray();
         }
-        public Square[,] GetOutputAsSquares()
+        public SquareDto[,] GetOutputAsSquares()
         {
-            return Game.GetOutputAsSquares();
+            return ConvertToDto(Game.GetOutputAsSquares());
+        }
+
+        private SquareDto[,] ConvertToDto(Square[,] squares)
+        {
+            var dtoArray = new SquareDto[squares.GetLength(0), squares.GetLength(1)];
+            for (int row = 0; row < squares.GetLength(0); row++)
+            {
+                for (int col = 0; col < squares.GetLength(1); col++)
+                {
+                    dtoArray[row, col] = new SquareDto(row, col, squares[row,col].Colour);
+                }
+            }
+
+            return dtoArray;
         }
 
         public string GetCurrentPlayer()
@@ -76,16 +91,6 @@ namespace Reversi.Web.Services
         {
             return player != null ? player.ToString() : "Observer";
 
-        }
-
-        public string[] GetOutput()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        string[] IGameService.GetOutputAsSquares()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

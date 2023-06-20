@@ -1,4 +1,6 @@
-﻿namespace Reversi.Web.Services.Interfaces
+﻿using Reversi.Logic;
+
+namespace Reversi.Web.Services.Interfaces
 {
     public interface IGameService
     {
@@ -7,7 +9,7 @@
         public void PlaceCounter(int row, int col, string userId);
         public bool IsLastMoveValid();
         public string[] GetOutputAsStringArray();
-        public string[] GetOutputAsSquares();
+        public SquareDto[,] GetOutputAsSquares();
         public string GetCurrentPlayer();
         public string GetPlayerColourString(string userId);
         public string GetMessage();

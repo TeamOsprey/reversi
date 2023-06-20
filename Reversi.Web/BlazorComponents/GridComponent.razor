@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.SignalR.Client
 @using Reversi.Web.Services.Interfaces
+@using Reversi.Web.Services;
 @inject IGameService GameService
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
@@ -16,13 +17,13 @@
 </CascadingValue>
 <div class="flex">
 	<table>
-		@for (int row = 0; row < DisplayedBoard.Length; row++)
+		@for (int row = 0; row < DisplayedBoard.GetLength(0); row++)
 		{
 			<tr>
-				@for (int col = 0; col < DisplayedBoard[row].Length; col++)
+				@for (int col = 0; col < DisplayedBoard.GetLength(1); col++)
 				{
 					<td>
-                        <TileComponent Message="@DisplayedBoard[row][col].ToString()" Row="@row" Column="@col" OnMoveSelected="MoveSelected" 
+                        <TileComponent Message="@DisplayedBoard[row,col].ToString()" Row="@row" Column="@col" OnMoveSelected="MoveSelected" 
                                        ShowLegalSquares="@(IsUsersTurn && HasAllPlayers)"></TileComponent>
 					</td>
 				}
@@ -36,7 +37,7 @@
     public string UserId { get; set; }
     
     public string WhatColourAmI;
-    public string[] DisplayedBoard => GameService.GetOutputAsStringArray();
+    public SquareDto[,] DisplayedBoard => GameService.GetOutputAsSquares();
 
     private bool IsUsersTurn => WhatColourAmI == GameService.GetCurrentPlayer();
     private bool HasAllPlayers => GameService.HasAllPlayers();

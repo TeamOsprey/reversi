@@ -597,3 +597,10 @@ Refactored Game.cs and PlayerList.cs:
       and also have a parameter for whether or not to include legal square characters in the returned string. 
 - [ ] Consider finding a way to not store Row and Column as properties of the Square class, which would simplify
 	  some code (but need to make sure Object.Equals is still working correctly).
+
+## 2023-06-20
+- We worked on the idea to use array of SquareDto in UI instead of string[].
+	- it's a work in progress and currently UI is not working. This might be due not square's colour property is not set.
+	- We will probably get rid of GetOutputAsStringArray as soon as the output of GetOutputAsSquares working
+- [ ] Consider moving service(s) and DTO(s) to a separate project (and/or namespace) to separate from the UI.
+- [ ] Add a new constant for legal square character (instead of using '0' for legal square).
