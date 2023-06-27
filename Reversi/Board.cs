@@ -107,6 +107,19 @@ namespace Reversi.Logic
         public void SetLegalSquares(HashSet<Square> legalSquares)
         {
             _legalSquares = legalSquares;
+            // Clear legal square characters first.
+            foreach (Square square in _squares)
+            {
+                if(square.Colour == '0')
+                {
+                    square.Colour = '.';
+                }
+            }
+            // Update legal square characters
+            foreach(Square square in _legalSquares)
+            {
+                square.Colour = '0';
+            }
         }
 
         public string[] GetCurrentStateAsStringArray()
