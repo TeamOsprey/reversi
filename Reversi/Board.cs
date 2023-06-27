@@ -84,7 +84,7 @@ namespace Reversi.Logic
 
             foreach (Square item in _squares)
             {
-                if (item.Colour == Counters.None)
+                if (item.Colour == Counters.None || item.Colour == '0') 
                     blankSquares.Add(item);
             }
 
@@ -118,7 +118,7 @@ namespace Reversi.Logic
             // Update legal square characters
             foreach(Square square in _legalSquares)
             {
-                square.Colour = '0';
+                _squares[square.Row, square.Column].Colour = '0';
             }
         }
 
