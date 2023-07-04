@@ -2,11 +2,11 @@
 
 @using Microsoft.AspNetCore.Components.Web
 
-<button style="background: @Color; height: 40px; width: 40px;" @onclick="MakeMove"></button>
+<button style="background: @BackgroundColour; height: 40px; width: 40px;" @onclick="MakeMove"></button>
 
 @code {
     [Parameter]
-    public string Message { get; set; }
+    public char Colour { get; set; }
     [Parameter]
     public int Row { get; set; }
     [Parameter]
@@ -16,15 +16,15 @@
     [Parameter]
     public bool ShowLegalSquares { get; set; }
 
-    public string Color => GetColorFromMessage();
+    public string BackgroundColour => GetColorFromMessage();
 
     private string GetColorFromMessage()
     {
-        return Message switch
+        return Colour switch
         {
-            "B" => "Black",
-            "W" => "White",
-            "0" => ShowLegalSquares ? "Green" : "Gray",
+            'B' => "Black",
+            'W' => "White",
+            '0' => ShowLegalSquares ? "Green" : "Gray",
             _ => "Gray"
         };
     }

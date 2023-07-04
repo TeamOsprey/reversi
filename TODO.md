@@ -614,5 +614,5 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Rename Counters class and/or change Square.Colour property; e.g., introduce new class called Counter with a property of color
 	  (i.e., Square.Counter = null or instance of Counter with .Colour of .Black or .White, with .Colour as an enum with just White & Black,
 	  no None)
-- [ ] In TileComponent.razor, delete @Color & public string Color => GetColorFromMessage(); and rename @Message to @Colour
+- [X] In TileComponent.razor, delete @Color & public string Color => GetColorFromMessage(); and rename @Message to @Colour
 

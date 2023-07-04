@@ -23,7 +23,7 @@
 				@for (int col = 0; col < DisplayedBoard.GetLength(1); col++)
 				{
 					<td>
-                        <TileComponent Message="@DisplayedBoard[row,col].Colour.ToString()" Row="@row" Column="@col"  OnMoveSelected="MoveSelected" 
+                        <TileComponent Colour="@DisplayedBoard[row,col].Colour" Row="@row" Column="@col"  OnMoveSelected="MoveSelected" 
                                        ShowLegalSquares="@(IsUsersTurn && HasAllPlayers)"></TileComponent>
                         @*Colour="@DisplayedBoard[row,col].Colour"*@
 					</td>
