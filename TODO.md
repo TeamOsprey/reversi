@@ -616,3 +616,10 @@ Refactored Game.cs and PlayerList.cs:
 	  no None)
 - [X] In TileComponent.razor, delete @Color & public string Color => GetColorFromMessage(); and rename @Message to @Colour
 
+## 2023-07-04
+- We fixed the failing unit test and the UI is now working with the new SquareDto after we fixed the Square.Colour property.
+- [ ] Discuss eliminating GetOutputAsStringArray (see also line # 591 in TODO).
+- [ ] Remove UI's dependency to SquareContents
+- [ ] Consider splitting SquareContents into mutiple classes (two concepts in one class right now: a Square can has a Counter or not, or it can be legal)
+	- [ ] Something to work on after other Board refactoring.
+- [ ] Refactor SquareIsOtherColour
