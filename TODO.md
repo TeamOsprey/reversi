@@ -623,3 +623,4 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Consider splitting SquareContents into mutiple classes (two concepts in one class right now: a Square can has a Counter or not, or it can be legal)
 	- [ ] Something to work on after other Board refactoring.
 - [ ] Refactor SquareIsOtherColour
+- [ ] Merge the branch when we are done with Board related refactoring.
