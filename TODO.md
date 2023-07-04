@@ -609,7 +609,7 @@ Refactored Game.cs and PlayerList.cs:
 - We continued working on getting legal squares to display in the UI correctly. We now see legal squares but in the
   wrong places after the first move. We also have one failing unit test.
 - [ ] Consider renaming GetBlankSquares to something that makes it clear it could be '.' or '0' (not just '.')
-- [ ] Review Game.SquareIsOtherColour and everywhere else we check Counters.None - in case we also need to check
+- [X] Review Game.SquareIsOtherColour and everywhere else we check Counters.None - in case we also need to check
       for '0' (not just '.').
 - [ ] Rename Counters class and/or change Square.Colour property; e.g., introduce new class called Counter with a property of color
 	  (i.e., Square.Counter = null or instance of Counter with .Colour of .Black or .White, with .Colour as an enum with just White & Black,

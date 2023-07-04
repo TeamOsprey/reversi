@@ -243,7 +243,7 @@ namespace Reversi.Logic
         }
         private bool SquareIsOtherColour(Square currentSquare, char color)
         {
-            return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.None;
+            return currentSquare != null && currentSquare.Colour != color && currentSquare.Colour != Counters.None && currentSquare.Colour != '0';
         }
         private Dictionary<Square, HashSet<Square>> GetLegalSquares(Player player)
         {
