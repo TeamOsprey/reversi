@@ -16,16 +16,16 @@
     [Parameter]
     public bool ShowLegalSquares { get; set; }
 
-    public string BackgroundColour => GetColorFromMessage();
+    public string BackgroundColour => GetBackgroundColour();
 
-    private string GetColorFromMessage()
+    private string GetBackgroundColour()
     {
         return Colour switch
         {
             'B' => "Black",
             'W' => "White",
             '0' => ShowLegalSquares ? "Green" : "Gray",
-            _ => "Gray"
+             _ => "Gray"
         };
     }
 

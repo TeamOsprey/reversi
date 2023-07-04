@@ -603,7 +603,7 @@ Refactored Game.cs and PlayerList.cs:
 	- it's a work in progress and currently UI is not working. This might be due not square's colour property is not set.
 	- We will probably get rid of GetOutputAsStringArray as soon as the output of GetOutputAsSquares working
 - [ ] Consider moving service(s) and DTO(s) to a separate project (and/or namespace) to separate from the UI.
-- [ ] Add a new constant for legal square character (instead of using '0' for legal square).
+- [X] Add a new constant for legal square character (instead of using '0' for legal square).
 
 ## 2023-06-27
 - We continued working on getting legal squares to display in the UI correctly. We now see legal squares but in the
@@ -611,7 +611,7 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Consider renaming GetBlankSquares to something that makes it clear it could be '.' or '0' (not just '.')
 - [X] Review Game.SquareIsOtherColour and everywhere else we check Counters.None - in case we also need to check
       for '0' (not just '.').
-- [ ] Rename Counters class and/or change Square.Colour property; e.g., introduce new class called Counter with a property of color
+- [X] Rename Counters class and/or change Square.Colour property; e.g., introduce new class called Counter with a property of color
 	  (i.e., Square.Counter = null or instance of Counter with .Colour of .Black or .White, with .Colour as an enum with just White & Black,
 	  no None)
 - [X] In TileComponent.razor, delete @Color & public string Color => GetColorFromMessage(); and rename @Message to @Colour

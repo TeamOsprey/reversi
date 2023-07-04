@@ -50,7 +50,7 @@ namespace Reversi.Web.Services
             {
                 for (int col = 0; col < squares.GetLength(1); col++)
                 {
-                    dtoArray[row, col] = new SquareDto(row, col, squares[row,col].Colour);
+                    dtoArray[row, col] = new SquareDto(row, col, squares[row,col].Contents);
                 }
             }
 

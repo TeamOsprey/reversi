@@ -57,10 +57,10 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    rowString[col] = squares[row, col].Colour;
+                    rowString[col] = squares[row, col].Contents;
                     if (legalSquares != null && legalSquares.Contains(new Square(row, col)))
                     {
-                        rowString[col] = '0';
+                        rowString[col] = SquareContents.Legal;
                     }
                 }
                 output[row] = new string(rowString);
@@ -84,7 +84,7 @@ namespace Reversi.Logic
 
             foreach (Square item in _squares)
             {
-                if (item.Colour == Counters.None || item.Colour == '0') 
+                if (item.Contents == SquareContents.None || item.Contents == SquareContents.Legal) 
                     blankSquares.Add(item);
             }
 
@@ -97,7 +97,7 @@ namespace Reversi.Logic
 
             foreach (Square item in _squares)
             {
-                if (item.Colour == color)
+                if (item.Contents == color)
                     count++;
             }
 
@@ -110,15 +110,15 @@ namespace Reversi.Logic
             // Clear legal square characters first.
             foreach (Square square in _squares)
             {
-                if(square.Colour == '0')
+                if(square.Contents == SquareContents.Legal)
                 {
-                    square.Colour = '.';
+                    square.Contents = '.';
                 }
             }
             // Update legal square characters
             foreach(Square square in _legalSquares)
             {
-                _squares[square.Row, square.Column].Colour = '0';
+                _squares[square.Row, square.Column].Contents = SquareContents.Legal;
             }
         }
 
@@ -133,7 +133,7 @@ namespace Reversi.Logic
 
         public void ChangeSquareColour(int selectedSquareRow, int selectedSquareColumn, char turn)
         {
-            _squares[selectedSquareRow, selectedSquareColumn].Colour = turn;
+            _squares[selectedSquareRow, selectedSquareColumn].Contents = turn;
         }
 
         // this shuffle any Enumerable
@@ -162,7 +162,7 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    squares[row, col] = new Square(row, col, Counters.None);
+                    squares[row, col] = new Square(row, col, SquareContents.None);
                 }
             }
 
@@ -179,7 +179,7 @@ namespace Reversi.Logic
             // Place shuffled counters in middle four squares
             for (int i = 0; i < 4; i++)
             {
-                middleFourSquares[i].Colour = shuffledCounters[i];
+                middleFourSquares[i].Contents = shuffledCounters[i];
             }
 
             return ConvertToStringArray(squares, null);

@@ -27,10 +27,10 @@ namespace Reversi.UnitTests
 
             var output = reversi.GetOutputAsStringArray();
 
-            Assert.AreEqual(Counters.Black, output[4][4]);
-            Assert.AreEqual(Counters.Black, output[4][5]);
-            Assert.AreEqual(Counters.White, output[5][4]);
-            Assert.AreEqual(Counters.White, output[5][5]);
+            Assert.AreEqual(SquareContents.Black, output[4][4]);
+            Assert.AreEqual(SquareContents.Black, output[4][5]);
+            Assert.AreEqual(SquareContents.White, output[5][4]);
+            Assert.AreEqual(SquareContents.White, output[5][5]);
             Assert.IsTrue(reversi.Turn is BlackPlayer);
         }
      
