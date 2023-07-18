@@ -9,9 +9,9 @@ namespace Reversi.Web.Services
     {
         public Game Game;
 
-        public GameService(Game game)
+        public GameService()
         {
-            Game = game;
+            Game = new Game();
         }
 
         public void AddPlayer(string userId)
