@@ -637,3 +637,5 @@ Refactored Game.cs and PlayerList.cs:
 - Split Reversi.Web.Services to a separate project (Reversi.Services)
 - Fixed console app					
 - [ ] Remove Console UI's dependencies to Reversi.Logic (use Reversi.Services instead) - See line # 622 in TODO.md
+- [ ] Try using tool to remove all unused usings in entire solution
+- [ ] Rename Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp
