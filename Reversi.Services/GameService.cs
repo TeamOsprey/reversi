@@ -34,10 +34,6 @@ namespace Reversi.Services
             Game.PlaceCounter(row, col, userId);
         }
 
-        //public string[] GetOutputAsStringArray()
-        //{
-        //    return Game.GetOutputAsStringArray();
-        //}
         public SquareDto[,] GetOutputAsSquares()
         {
             return ConvertToDto(Game.GetOutputAsSquares());

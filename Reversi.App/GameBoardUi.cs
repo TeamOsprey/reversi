@@ -13,6 +13,8 @@ namespace Reversi.App
         public GameBoardUi()
         {
             Reversi = new Game();
+            Reversi.AddPlayer("1");
+            Reversi.AddPlayer("2");
             SetupBoard();
         }
 
@@ -65,7 +67,8 @@ namespace Reversi.App
         {
             var coords = Console.ReadLine();
             var coordsSplit = coords.Split(',');
-            Reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]), "");
+            var userId = Reversi.Turn.UserId;
+            Reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]), userId);
             Console.Clear();
         }
         

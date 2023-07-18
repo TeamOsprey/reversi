@@ -8,7 +8,6 @@ namespace Reversi.Services.Interfaces
         public void RemovePlayer(string userId);
         public void PlaceCounter(int row, int col, string userId);
         public bool IsLastMoveValid();
-        //public string[] GetOutputAsStringArray();
         public SquareDto[,] GetOutputAsSquares();
         public string GetCurrentPlayer();
         public string GetPlayerColourString(string userId);

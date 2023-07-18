@@ -608,7 +608,8 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-06-27
 - We continued working on getting legal squares to display in the UI correctly. We now see legal squares but in the
   wrong places after the first move. We also have one failing unit test.
-- [ ] Consider renaming GetBlankSquares to something that makes it clear it could be '.' or '0' (not just '.')
+- [ ] Consider renaming GetBlankSquares to something that makes it clear it could be '.' or '0' (not just '.'). 
+      (See also line # 624 in TODO.md)
 - [X] Review Game.SquareIsOtherColour and everywhere else we check Counters.None - in case we also need to check
       for '0' (not just '.').
 - [X] Rename Counters class and/or change Square.Colour property; e.g., introduce new class called Counter with a property of color
@@ -618,13 +619,21 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-07-04
 - We fixed the failing unit test and the UI is now working with the new SquareDto after we fixed the Square.Colour property.
-- [ ] Discuss eliminating GetOutputAsStringArray (see also line # 591 in TODO).
+- [ ] Discuss eliminating GetOutputAsStringArray (see also line # 591 in TODO). Possible approaches:
+	- Move all logic for returning string array to:
+		- New project Reversi.Converters
+		- Console app (which is already referenced by Reversit.UnitTests)
+		- Subfolder under Reversi.Logic (e.g., Reversi.Logic.Converters) and expose via Reversi.Services
+	      for the Console app, while the Unit Tests could continue to directly reference it	
 - [X] Remove UI's dependencies on Reversi.Logic (e.g. SquareContents)
 - [ ] Consider splitting SquareContents into mutiple classes (two concepts in one class right now: a Square can has a Counter or not, or it can be legal)
 	- [ ] Something to work on after other Board refactoring.
+	- [ ] See also line # 611 in TODO.md
 - [ ] Refactor SquareIsOtherColour
 - [ ] Merge the branch when we are done with Board related refactoring.
 
 ## 2023-07-18
-- Removed UI's dependencies to Reversi.Logic
+- Removed Web UI's dependencies to Reversi.Logic
 - Split Reversi.Web.Services to a separate project (Reversi.Services)
+- Fixed console app					
+- [ ] Remove Console UI's dependencies to Reversi.Logic (use Reversi.Services instead) - See line # 622 in TODO.md
