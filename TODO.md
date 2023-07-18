@@ -602,7 +602,7 @@ Refactored Game.cs and PlayerList.cs:
 - We worked on the idea to use array of SquareDto in UI instead of string[].
 	- it's a work in progress and currently UI is not working. This might be due not square's colour property is not set.
 	- We will probably get rid of GetOutputAsStringArray as soon as the output of GetOutputAsSquares working
-- [ ] Consider moving service(s) and DTO(s) to a separate project (and/or namespace) to separate from the UI.
+- [X] Consider moving service(s) and DTO(s) to a separate project (and/or namespace) to separate from the UI.
 - [X] Add a new constant for legal square character (instead of using '0' for legal square).
 
 ## 2023-06-27
