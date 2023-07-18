@@ -1,4 +1,4 @@
-﻿namespace Reversi.Web.Services
+﻿namespace Reversi.Services
 {
     public static class SquareContentsDto
     {

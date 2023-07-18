@@ -1,9 +1,9 @@
 ﻿using Reversi.Logic;
-using Reversi.Web.Services.Interfaces;
+using Reversi.Services.Interfaces;
 using System;
 using System.Drawing;
 
-namespace Reversi.Web.Services
+namespace Reversi.Services
 {
     public class GameService : IGameService
     {
@@ -50,7 +50,7 @@ namespace Reversi.Web.Services
             {
                 for (int col = 0; col < squares.GetLength(1); col++)
                 {
-                    dtoArray[row, col] = new SquareDto(row, col, squares[row,col].Contents);
+                    dtoArray[row, col] = new SquareDto(row, col, squares[row, col].Contents);
                 }
             }
 

@@ -6,8 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Reversi.Web.Hubs;
-using Reversi.Web.Services;
-using Reversi.Web.Services.Interfaces;
+using Reversi.Services;
+using Reversi.Services.Interfaces;
 
 namespace Reversi.Web
 {
