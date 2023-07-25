@@ -639,3 +639,13 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Remove Console UI's dependencies to Reversi.Logic (use Reversi.Services instead) - See line # 622 in TODO.md
 - [ ] Try using tool to remove all unused usings in entire solution
 - [ ] Rename Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp
+
+## 2023-07-25
+- We prepared to move the string array conversion functions out of Board.cs. We created a subfolder in 
+  Reversi.Logic called Converters. Our new plan is to put the conversion functions there, and use them 
+  directly in the Console app and Unit Tests. Steps:
+  - [ ] Delete GetOutputAsStringArray method from Game.cs
+  - [ ] From consumers (starting with Console App), call GetOutputAsSquares and then call the new conversion function 
+	    (to string array)
+  - [ ] Delete GetCurrentStateAsStringArray from Board.cs
+  - [ ] More refactoring/cleanup, e.g., make the Board class internal and change Game.Board property accessibility
