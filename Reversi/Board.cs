@@ -48,7 +48,7 @@ namespace Reversi.Logic
             return squares;
         }
 
-        private static string[] ConvertToStringArray(Square[,] squares, HashSet<Square> legalSquares)
+        public static string[] ConvertToStringArray(Square[,] squares, HashSet<Square> legalSquares)
         {
             string[] output = new string[Size];
             char[] rowString = new char[Size];

@@ -61,7 +61,9 @@ namespace Reversi.Logic
         }
         public string[] GetOutputAsStringArray()
         {
-            return ReversiBoard.GetCurrentStateAsStringArray();
+            var output = ReversiBoard.GetCurrentStateAsSquares();
+            return Board.ConvertToStringArray(output, GetPlayerMoveDictionary(_turn).Keys.ToHashSet());
+            //return ReversiBoard.GetCurrentStateAsStringArray();
         }
         public Square[,] GetOutputAsSquares()
         {
