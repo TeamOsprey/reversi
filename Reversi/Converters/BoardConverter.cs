@@ -11,10 +11,10 @@
             for (int row = 0; row < size; row++)
             {
                 for (int col = 0; col < size; col++)
-                {
+{
                     rowString[col] = squares[row, col].Contents;
                     if (squares[row, col].Contents == SquareContents.Legal)
-                    {
+    {
                         rowString[col] = SquareContents.Legal;
                     }
                 }
