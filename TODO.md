@@ -647,6 +647,15 @@ Refactored Game.cs and PlayerList.cs:
   - [ ] Delete GetOutputAsStringArray method from Game.cs
   - [ ] From consumers (starting with Console App), call GetOutputAsSquares and then call the new conversion function 
 	    (to string array)
+		- [X] Console app
+		- [ ] Unit Tests (make helper function in tests) 
   - [ ] Remove second parameter from ConvertToStringArray (i.e., only pass in squares, not also legal square info)
   - [ ] Delete GetCurrentStateAsStringArray from Board.cs
   - [ ] More refactoring/cleanup, e.g., make the Board class internal and change Game.Board property accessibility
+
+## 2023-08-01
+- We made a new BoardConverter class and moved the conversion functions to/from string array and squares there, and 
+  removed an unused parameter (legal squares) from the convert to string array function. 
+- [ ] Add to ReversiTest: tests for the 2 functions BoardConverter, e.g.:
+      pass array of strings into ConvertToSquares, then take that output and pass it to 
+      ConvertToStringArray, and compare the output to the original input. (round trip test)

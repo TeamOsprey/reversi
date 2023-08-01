@@ -22,5 +22,21 @@ namespace Reversi.Logic.Converters
             return output;
         }
 
+        public static Square[,] ConvertToSquares(string[] board)
+        {
+            var size = board.Length;
+
+            var squares = new Square[size, size];
+
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    squares[row, col] = new Square(row, col, board[row][col]);
+                }
+            }
+
+            return squares;
+        }
     }
 }

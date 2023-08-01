@@ -15,7 +15,7 @@ namespace Reversi.Logic
         
         public Board(string[] board)
         {
-            _squares = ConvertToSquares(board);
+            _squares = BoardConverter.ConvertToSquares(board);
         }
 
         public static Board InitializeBoard()
@@ -32,21 +32,6 @@ namespace Reversi.Logic
                 return _squares[row, column];
             else
                 return null;
-        }
-
-        private static Square[,] ConvertToSquares(string[] board)
-        {
-            var squares = new Square[Size, Size];
-
-            for (int row = 0; row < Size; row++)
-            {
-                for (int col = 0; col < Size; col++)
-                {
-                    squares[row, col] = new Square(row, col, board[row][col]);
-                }
-            }
-
-            return squares;
         }
 
         private bool IsRowInBounds(int row)
