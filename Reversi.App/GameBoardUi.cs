@@ -28,7 +28,7 @@ namespace Reversi.App
 
         private void SetupBoard()
         {
-            var board = BoardConverter.GetOutputAsStringArray(Reversi.GetOutputAsSquares());
+            var board = Reversi.GetOutputAsStringArray(); //BoardConverter.GetOutputAsStringArray(Reversi.GetOutputAsSquares());
             GuidedBoard = PrependGuidesToStringArrays(board);
         }
  

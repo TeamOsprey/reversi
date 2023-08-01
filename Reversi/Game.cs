@@ -59,12 +59,12 @@ namespace Reversi.Logic
         {
             return _players.SingleOrDefault(x => x.UserId == userId);
         }
-        //public string[] GetOutputAsStringArray()
-        //{
-        //    var output = ReversiBoard.GetCurrentStateAsSquares();
-        //    return Board.ConvertToStringArray(output, GetPlayerMoveDictionary(_turn).Keys.ToHashSet());
-        //    //return ReversiBoard.GetCurrentStateAsStringArray();
-        //}
+        public string[] GetOutputAsStringArray()
+        {
+            var output = ReversiBoard.GetCurrentStateAsSquares();
+            return Board.ConvertToStringArray(output, GetPlayerMoveDictionary(_turn).Keys.ToHashSet());
+            //return ReversiBoard.GetCurrentStateAsStringArray();
+        }
         public Square[,] GetOutputAsSquares()
         {
             return ReversiBoard.GetCurrentStateAsSquares();
