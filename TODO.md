@@ -646,6 +646,7 @@ Refactored Game.cs and PlayerList.cs:
   directly in the Console app and Unit Tests. Steps:
   - [ ] Delete GetOutputAsStringArray method from Game.cs
   - [ ] From consumers (starting with Console App), call GetOutputAsSquares and then call the new conversion function 
-	    (to string array)  - [ ] Remove second parameter from ConvertToStringArray (i.e., only pass in squares, not also legal square info)
+	    (to string array)
+  - [ ] Remove second parameter from ConvertToStringArray (i.e., only pass in squares, not also legal square info)
   - [ ] Delete GetCurrentStateAsStringArray from Board.cs
   - [ ] More refactoring/cleanup, e.g., make the Board class internal and change Game.Board property accessibility
