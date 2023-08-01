@@ -2,6 +2,7 @@
 using Reversi.Logic;
 using System.Collections.Generic;
 using System.Linq;
+using Reversi.Logic.Converters;
 
 namespace Reversi.App
 {
@@ -27,7 +28,7 @@ namespace Reversi.App
 
         private void SetupBoard()
         {
-            var board = Reversi.GetOutputAsStringArray();
+            var board = BoardConverter.GetOutputAsStringArray(Reversi.GetOutputAsSquares());
             GuidedBoard = PrependGuidesToStringArrays(board);
         }
  
