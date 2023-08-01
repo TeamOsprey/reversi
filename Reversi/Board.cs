@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Reversi.Logic.Converters;
 
 namespace Reversi.Logic
 {
@@ -46,22 +47,6 @@ namespace Reversi.Logic
             }
 
             return squares;
-        }
-
-        public static string[] ConvertToStringArray(Square[,] squares)
-        {
-            string[] output = new string[Size];
-            char[] rowString = new char[Size];
-
-            for (int row = 0; row < Size; row++)
-            {
-                for (int col = 0; col < Size; col++)
-                  rowString[col] = squares[row, col].Contents;
-                
-                output[row] = new string(rowString);
-            }
-
-            return output;
         }
 
         private bool IsRowInBounds(int row)
@@ -119,7 +104,7 @@ namespace Reversi.Logic
 
         public string[] GetCurrentStateAsStringArray()
         {
-            return ConvertToStringArray(_squares);
+            return BoardConverter.ConvertToStringArray(_squares);
         }
         public Square[,] GetCurrentStateAsSquares()
         {
@@ -177,7 +162,7 @@ namespace Reversi.Logic
                 middleFourSquares[i].Contents = shuffledCounters[i];
             }
 
-            return ConvertToStringArray(squares);
+            return BoardConverter.ConvertToStringArray(squares);
         }
         public bool AllInitialTilesPlaced()
         {

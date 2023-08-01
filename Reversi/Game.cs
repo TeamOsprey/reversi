@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Reversi.Logic.Converters;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -61,9 +62,8 @@ namespace Reversi.Logic
         }
         public string[] GetOutputAsStringArray()
         {
-            var output = ReversiBoard.GetCurrentStateAsSquares();
-            return Board.ConvertToStringArray(output);
-            //return ReversiBoard.GetCurrentStateAsStringArray();
+            var squares = ReversiBoard.GetCurrentStateAsSquares();
+            return BoardConverter.ConvertToStringArray(squares);
         }
         public Square[,] GetOutputAsSquares()
         {
