@@ -48,7 +48,7 @@ namespace Reversi.Logic
             return squares;
         }
 
-        public static string[] ConvertToStringArray(Square[,] squares, HashSet<Square> legalSquares)
+        public static string[] ConvertToStringArray(Square[,] squares)
         {
             string[] output = new string[Size];
             char[] rowString = new char[Size];
@@ -56,13 +56,8 @@ namespace Reversi.Logic
             for (int row = 0; row < Size; row++)
             {
                 for (int col = 0; col < Size; col++)
-                {
-                    rowString[col] = squares[row, col].Contents;
-                    if (legalSquares != null && legalSquares.Contains(new Square(row, col)))
-                    {
-                        rowString[col] = SquareContents.Legal;
-                    }
-                }
+                  rowString[col] = squares[row, col].Contents;
+                
                 output[row] = new string(rowString);
             }
 
@@ -124,7 +119,7 @@ namespace Reversi.Logic
 
         public string[] GetCurrentStateAsStringArray()
         {
-            return ConvertToStringArray(_squares, _legalSquares);
+            return ConvertToStringArray(_squares);
         }
         public Square[,] GetCurrentStateAsSquares()
         {
@@ -182,7 +177,7 @@ namespace Reversi.Logic
                 middleFourSquares[i].Contents = shuffledCounters[i];
             }
 
-            return ConvertToStringArray(squares, null);
+            return ConvertToStringArray(squares);
         }
         public bool AllInitialTilesPlaced()
         {
