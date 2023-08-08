@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Reversi.Logic.Converters
+﻿namespace Reversi.Logic.Converters
 {
     public static class BoardConverter
     {

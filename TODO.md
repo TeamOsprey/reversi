@@ -588,10 +588,10 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-06-13
 - We added methods in Board.cs to convert to and from Square[,] and string[] representations of the board.
-- [ ] Revisit how the string[] representation of the board is used outside of Board.cs. 
-	- [ ] In GridComponent.razor, see if can use the Square[,] representation instead of the string[] representation.
+- [X] Revisit how the string[] representation of the board is used outside of Board.cs. 
+	- [X] In GridComponent.razor, see if can use the Square[,] representation instead of the string[] representation.
 	      see: `public string[] DisplayedBoard => GameService.GetOutput();`
-	- [ ] Other places...
+	- [X] Other places...
 - [ ] Consider using public override ToString() instead of ConvertToStringArray for converting Square[] to 
       board string[]. If so, we can return a string with `Environment.NewLine` characters instead of string[], 
       and also have a parameter for whether or not to include legal square characters in the returned string. 
@@ -619,7 +619,7 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-07-04
 - We fixed the failing unit test and the UI is now working with the new SquareDto after we fixed the Square.Colour property.
-- [ ] Discuss eliminating GetOutputAsStringArray (see also line # 591 in TODO). Possible approaches:
+- [X] Discuss eliminating GetOutputAsStringArray. Possible approaches:
 	- Move all logic for returning string array to:
 		- New project Reversi.Converters
 		- Console app (which is already referenced by Reversit.UnitTests)
@@ -636,7 +636,7 @@ Refactored Game.cs and PlayerList.cs:
 - Removed Web UI's dependencies to Reversi.Logic
 - Split Reversi.Web.Services to a separate project (Reversi.Services)
 - Fixed console app					
-- [ ] Remove Console UI's dependencies to Reversi.Logic (use Reversi.Services instead) - See line # 622 in TODO.md
+- [-] Remove Console UI's dependencies to Reversi.Logic (use Reversi.Services instead) - See line # 622 in TODO.md
 - [ ] Try using tool to remove all unused usings in entire solution
 - [ ] Rename Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp
 
@@ -649,7 +649,7 @@ Refactored Game.cs and PlayerList.cs:
 	    (to string array)
 		- [X] Console app
 		- [ ] Unit Tests (make helper function in tests) 
-  - [ ] Remove second parameter from ConvertToStringArray (i.e., only pass in squares, not also legal square info)
+  - [X] Remove second parameter from ConvertToStringArray (i.e., only pass in squares, not also legal square info)
   - [ ] Delete GetCurrentStateAsStringArray from Board.cs
   - [ ] More refactoring/cleanup, e.g., make the Board class internal and change Game.Board property accessibility
 
