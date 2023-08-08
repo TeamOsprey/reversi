@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using Reversi.Logic;
 using Reversi.Logic.Converters;
+using System.Reflection.Metadata;
 
 namespace Reversi.UnitTests
 {
@@ -9,9 +10,9 @@ namespace Reversi.UnitTests
     public class ReversiTest
     {
         [Test]
-        public void convert_string_to_square_and_back_retains_data()
+        public void convert_strings_to_squares_and_back_retains_data()
         {
-            var expected = new string[]{
+            var original = new string[]{
                 "........",
                 "........",
                 "....0...",
@@ -21,10 +22,24 @@ namespace Reversi.UnitTests
                 "........",
                 "........"};
 
-            var firstStep = BoardConverter.ConvertToSquares(expected);
+            var firstStep = BoardConverter.ConvertToSquares(original);
             var secondStep = BoardConverter.ConvertToStringArray(firstStep);
             
-            Assert.AreEqual(expected, secondStep);
+            Assert.AreEqual(original, secondStep);
+        }
+
+        [Test]
+        public void convert_squares_to_strings_and_back_retains_data()
+        {
+            var original = new Square[8,8];
+            original[3,3] = new Square(3,3, SquareContents.Black);
+            original[4, 0] = new Square(4, 0, SquareContents.White);
+            original[2, 0] = new Square(2, 0, SquareContents.None);
+            original[1, 5] = new Square(1, 5, SquareContents.Legal);
+            var firstStep = BoardConverter.ConvertToStringArray(original);
+            var secondStep = BoardConverter.ConvertToSquares(firstStep);
+
+            Assert.AreEqual(original, secondStep);
         }
 
         [Test]
