@@ -9,6 +9,15 @@ namespace Reversi.UnitTests
     [TestFixture]
     public class ReversiTest
     {
+        private Square[,] CreateEmptyBoard()
+        {
+            var board = new Square[8, 8];
+            for (int row = 0; row < 8; row++)
+                for (int col = 0; col < 8; col++)
+                    board[row, col] = new Square(row, col, SquareContents.None);
+            return board;
+        }
+
         [Test]
         public void convert_strings_to_squares_and_back_retains_data()
         {
@@ -31,7 +40,7 @@ namespace Reversi.UnitTests
         [Test]
         public void convert_squares_to_strings_and_back_retains_data()
         {
-            var original = new Square[8,8];
+            var original = CreateEmptyBoard();
             original[3,3] = new Square(3,3, SquareContents.Black);
             original[4, 0] = new Square(4, 0, SquareContents.White);
             original[2, 0] = new Square(2, 0, SquareContents.None);

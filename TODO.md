@@ -656,6 +656,6 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-08-01
 - We made a new BoardConverter class and moved the conversion functions to/from string array and squares there, and 
   removed an unused parameter (legal squares) from the convert to string array function. 
-- [ ] Add to ReversiTest: tests for the 2 functions BoardConverter, e.g.:
+- [X] Add to ReversiTest: tests for the 2 functions BoardConverter, e.g.:
       pass array of strings into ConvertToSquares, then take that output and pass it to 
       ConvertToStringArray, and compare the output to the original input. (round trip test)
