@@ -1,6 +1,6 @@
 ﻿using Reversi.Logic;
 
-namespace Reversi.App
+namespace Reversi.ConsoleApp
 {
     public class Program
     {

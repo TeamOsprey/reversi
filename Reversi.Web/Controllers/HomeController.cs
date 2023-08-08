@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Reversi.Web.Models;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using Reversi.WebApp.Models;
 
-namespace Reversi.Web.Controllers
+namespace Reversi.WebApp.Controllers
 {
     public class HomeController : Controller
     {

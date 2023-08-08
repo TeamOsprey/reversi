@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
 
-namespace Reversi.Web.Hubs
+namespace Reversi.WebApp.Hubs
 {
     public class GameHub : Hub
     {

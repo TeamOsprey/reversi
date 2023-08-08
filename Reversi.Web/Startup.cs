@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Reversi.Web.Hubs;
 using Reversi.Services;
 using Reversi.Services.Interfaces;
+using Reversi.WebApp.Hubs;
 
-namespace Reversi.Web
+namespace Reversi.WebApp
 {
     public class Startup
     {

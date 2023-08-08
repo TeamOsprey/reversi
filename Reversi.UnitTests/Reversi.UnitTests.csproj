@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Reversi.App\Reversi.App.csproj" />
+    <ProjectReference Include="..\Reversi.App\Reversi.ConsoleApp.csproj" />
     <ProjectReference Include="..\Reversi\Reversi.Logic.csproj" />
   </ItemGroup>
 

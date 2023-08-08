@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Reversi.Web.Hubs
+namespace Reversi.WebApp.Hubs
 {
     public class ChatHub : Hub
     {

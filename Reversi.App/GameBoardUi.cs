@@ -1,10 +1,10 @@
 ﻿using System;
-using Reversi.Logic;
 using System.Collections.Generic;
 using System.Linq;
+using Reversi.Logic;
 using Reversi.Logic.Converters;
 
-namespace Reversi.App
+namespace Reversi.ConsoleApp
 {
     public class GameBoardUi
     {

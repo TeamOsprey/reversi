@@ -638,7 +638,7 @@ Refactored Game.cs and PlayerList.cs:
 - Fixed console app					
 - [-] Remove Console UI's dependencies to Reversi.Logic (use Reversi.Services instead) - See line # 622 in TODO.md
 - [ ] Try using tool to remove all unused usings in entire solution
-- [ ] Rename Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp
+- [X] Rename Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp
 
 ## 2023-07-25
 - We prepared to move the string array conversion functions out of Board.cs. We created a subfolder in 

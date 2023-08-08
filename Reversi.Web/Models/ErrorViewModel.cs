@@ -1,6 +1,4 @@
-using System;
-
-namespace Reversi.Web.Models
+namespace Reversi.WebApp.Models
 {
     public class ErrorViewModel
     {
