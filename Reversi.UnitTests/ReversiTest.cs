@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using Reversi.Logic;
 using Reversi.Logic.Converters;
-using System.Reflection.Metadata;
 
 namespace Reversi.UnitTests
 {

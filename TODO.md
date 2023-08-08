@@ -637,7 +637,7 @@ Refactored Game.cs and PlayerList.cs:
 - Split Reversi.Web.Services to a separate project (Reversi.Services)
 - Fixed console app					
 - [-] Remove Console UI's dependencies to Reversi.Logic (use Reversi.Services instead) - See line # 622 in TODO.md
-- [ ] Try using tool to remove all unused usings in entire solution
+- [X] Try using tool to remove all unused usings in entire solution
 - [X] Rename Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp
 
 ## 2023-07-25
@@ -659,3 +659,10 @@ Refactored Game.cs and PlayerList.cs:
 - [X] Add to ReversiTest: tests for the 2 functions BoardConverter, e.g.:
       pass array of strings into ConvertToSquares, then take that output and pass it to 
       ConvertToStringArray, and compare the output to the original input. (round trip test)
+	
+## 2023-08-08- 
+- Added tests for the 2 functions in BoardConverter.
+- Renamed Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp.
+- Minor refactoring of GridComponent.
+- Used tool to remove all unused usings in entire solution, but had to revert just for the WebApp
+  which was causing runtime errors (probably since that project has runtime dependencies on those usings).

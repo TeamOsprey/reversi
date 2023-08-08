@@ -1,7 +1,5 @@
 ﻿using Reversi.Logic;
 using Reversi.Services.Interfaces;
-using System;
-using System.Drawing;
 
 namespace Reversi.Services
 {

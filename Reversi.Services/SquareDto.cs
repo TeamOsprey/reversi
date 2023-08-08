@@ -1,6 +1,4 @@
-﻿using Reversi.Logic;
-
-namespace Reversi.Services
+﻿namespace Reversi.Services
 {
     public class SquareDto
     {

@@ -1,6 +1,5 @@
 ﻿using Reversi.Logic.Converters;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 
 namespace Reversi.Logic

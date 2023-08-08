@@ -1,6 +1,4 @@
-﻿using Reversi.Logic;
-
-namespace Reversi.Services.Interfaces
+﻿namespace Reversi.Services.Interfaces
 {
     public interface IGameService
     {
