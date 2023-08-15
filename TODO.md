@@ -660,9 +660,12 @@ Refactored Game.cs and PlayerList.cs:
       pass array of strings into ConvertToSquares, then take that output and pass it to 
       ConvertToStringArray, and compare the output to the original input. (round trip test)
 	
-## 2023-08-08- 
+## 2023-08-08
 - Added tests for the 2 functions in BoardConverter.
 - Renamed Reversi.App and Reversi.Web to Reversi.ConsoleApp and Reversi.WebApp.
 - Minor refactoring of GridComponent.
-- Used tool to remove all unused usings in entire solution, but had to revert just for the WebApp
+- Used Resharper to remove all unused usings in entire solution, but had to revert just for the WebApp
   which was causing runtime errors (probably since that project has runtime dependencies on those usings).
+
+## 2023-08-15
+- Ran VS Code Cleanup; unlike Resharper, VS tool didn't remove used dependency from WebApp
