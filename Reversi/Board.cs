@@ -87,10 +87,6 @@ namespace Reversi.Logic
             }
         }
 
-        public string[] GetCurrentStateAsStringArray()
-        {
-            return BoardConverter.ConvertToStringArray(_squares);
-        }
         public Square[,] GetCurrentStateAsSquares()
         {
             return _squares;

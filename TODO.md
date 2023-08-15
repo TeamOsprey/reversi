@@ -645,12 +645,12 @@ Refactored Game.cs and PlayerList.cs:
   Reversi.Logic called Converters. Our new plan is to put the conversion functions there, and use them 
   directly in the Console app and Unit Tests. Steps:
   - [X] Delete GetOutputAsStringArray method from Game.cs
-  - [ ] From consumers (starting with Console App), call GetOutputAsSquares and then call the new conversion function 
+  - [X] From consumers (starting with Console App), call GetOutputAsSquares and then call the new conversion function 
 	    (to string array)
 		- [X] Console app
-		- [ ] Unit Tests (make helper function in tests) 
+		- [X] Unit Tests (make helper function in tests) 
   - [X] Remove second parameter from ConvertToStringArray (i.e., only pass in squares, not also legal square info)
-  - [ ] Delete GetCurrentStateAsStringArray from Board.cs
+  - [X] Delete GetCurrentStateAsStringArray from Board.cs
   - [ ] More refactoring/cleanup, e.g., make the Board class internal and change Game.Board property accessibility
 
 ## 2023-08-01
@@ -669,3 +669,6 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2023-08-15
 - Ran VS Code Cleanup; unlike Resharper, VS tool didn't remove used dependency from WebApp
+- We deleted GetOutputAsStringArray and GetCurrentStateAsStringArray methods from Game and Board classes and 
+  instead created a Helper class in UnitTests project with one method to conver to string of array.
+- [ ] move RemoveLegalSquares from ConsoleTest class to Helper class

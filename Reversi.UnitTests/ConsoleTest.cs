@@ -33,7 +33,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, true);
 
-            CollectionAssert.AreEqual(board, reversi.ReversiBoard.GetCurrentStateAsStringArray());
+            CollectionAssert.AreEqual(board, Helper.GetOutputAsStringArray(reversi.ReversiBoard));
         }
 
         [Test]
@@ -83,7 +83,7 @@ namespace Reversi.UnitTests
             "....W...",
             "....W..."};
 
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentStateAsStringArray());
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.ReversiBoard));
         }
 
         [Test]
@@ -113,7 +113,7 @@ namespace Reversi.UnitTests
             "....B...",
             "....W..."};
 
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentStateAsStringArray());
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.ReversiBoard));
         }
 
         [Test]
@@ -144,7 +144,7 @@ namespace Reversi.UnitTests
             "....B...",
             "....B..."};
 
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentStateAsStringArray());
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.ReversiBoard));
         }
 
 
@@ -177,7 +177,7 @@ namespace Reversi.UnitTests
             "....B...",
             "....B..."};
 
-            CollectionAssert.AreEqual(expected, reversi.ReversiBoard.GetCurrentStateAsStringArray());
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.ReversiBoard));
         }
 
         [Test]
@@ -208,7 +208,7 @@ namespace Reversi.UnitTests
             "..B.W...",
             "....W..."};
 
-            CollectionAssert.AreEqual(expected, RemoveLegalSquares(reversi.ReversiBoard.GetCurrentStateAsStringArray()));
+            CollectionAssert.AreEqual(expected, RemoveLegalSquares(Helper.GetOutputAsStringArray(reversi.ReversiBoard)));
         }
 
         [Test]
@@ -239,7 +239,7 @@ namespace Reversi.UnitTests
                     "..B.W...",
                     ".B..W..."};
 
-            CollectionAssert.AreEqual(expected, RemoveLegalSquares(reversi.ReversiBoard.GetCurrentStateAsStringArray()));
+            CollectionAssert.AreEqual(expected, RemoveLegalSquares(Helper.GetOutputAsStringArray(reversi.ReversiBoard)));
         }
 
         [Test]
@@ -306,7 +306,7 @@ namespace Reversi.UnitTests
                     "........",
                     "........"};
 
-            CollectionAssert.AreEqual(expected, RemoveLegalSquares(reversi.ReversiBoard.GetCurrentStateAsStringArray()));
+            CollectionAssert.AreEqual(expected, RemoveLegalSquares(Helper.GetOutputAsStringArray(reversi.ReversiBoard)));
 
         }
 
