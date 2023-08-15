@@ -673,3 +673,5 @@ Refactored Game.cs and PlayerList.cs:
   instead created a Helper class in UnitTests project with one method to conver to string of array.
 - [X] move RemoveLegalSquares from ConsoleTest class to Helper class
 - [ ] Review how Board methods are used in Game and move logic to Board as appropriate for better encapsulation
+- [ ] Board.Squares property is a public array, so it's elements can be changed by consumers. Consider using ChatGPT/	
+      Copilot to make it a read-only collection (or other fix). 

@@ -5,18 +5,18 @@ namespace Reversi.Logic
 {
     public class Game
     {
+        public Board Board { get; }
+        public Player Turn => _turn;
+        public State State { get; private set; }
+
         #region fields
-        public Board Board { get; set; }
         private Player _turn;
         private Dictionary<Square, HashSet<Square>> _whiteLegalSquareDictionary;
         private Dictionary<Square, HashSet<Square>> _blackLegalSquareDictionary;
 
-        public Player Turn => _turn;
-
         private Player Opponent => _turn is WhitePlayer ? _players.BlackPlayer : _players.WhitePlayer;
 
         private readonly List<Vector> _directions = Direction.GetDirections();
-        public State State;
 
         private readonly PlayerCollection _players = new();
 
