@@ -644,7 +644,7 @@ Refactored Game.cs and PlayerList.cs:
 - We prepared to move the string array conversion functions out of Board.cs. We created a subfolder in 
   Reversi.Logic called Converters. Our new plan is to put the conversion functions there, and use them 
   directly in the Console app and Unit Tests. Steps:
-  - [ ] Delete GetOutputAsStringArray method from Game.cs
+  - [X] Delete GetOutputAsStringArray method from Game.cs
   - [ ] From consumers (starting with Console App), call GetOutputAsSquares and then call the new conversion function 
 	    (to string array)
 		- [X] Console app
