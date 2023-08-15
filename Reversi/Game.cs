@@ -59,11 +59,7 @@ namespace Reversi.Logic
         {
             return _players.SingleOrDefault(x => x.UserId == userId);
         }
-        public string[] GetOutputAsStringArray()
-        {
-            var squares = ReversiBoard.GetCurrentStateAsSquares();
-            return BoardConverter.ConvertToStringArray(squares);
-        }
+
         public Square[,] GetOutputAsSquares()
         {
             return ReversiBoard.GetCurrentStateAsSquares();
