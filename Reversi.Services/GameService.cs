@@ -34,7 +34,7 @@ namespace Reversi.Services
 
         public SquareDto[,] GetOutputAsSquares()
         {
-            return ConvertToDto(Game.GetOutputAsSquares());
+            return ConvertToDto(Game.Board.Squares);
         }
 
         private SquareDto[,] ConvertToDto(Square[,] squares)

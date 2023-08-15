@@ -671,5 +671,5 @@ Refactored Game.cs and PlayerList.cs:
 - Ran VS Code Cleanup; unlike Resharper, VS tool didn't remove used dependency from WebApp
 - We deleted GetOutputAsStringArray and GetCurrentStateAsStringArray methods from Game and Board classes and 
   instead created a Helper class in UnitTests project with one method to conver to string of array.
-- [ ] move RemoveLegalSquares from ConsoleTest class to Helper class
+- [X] move RemoveLegalSquares from ConsoleTest class to Helper class
 - [ ] Review how Board methods are used in Game and move logic to Board as appropriate for better encapsulation

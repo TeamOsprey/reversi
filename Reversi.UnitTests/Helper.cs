@@ -1,5 +1,6 @@
 ﻿using Reversi.Logic;
 using Reversi.Logic.Converters;
+using System.Linq;
 
 namespace Reversi.UnitTests
 {
@@ -7,8 +8,17 @@ namespace Reversi.UnitTests
     {
         internal static string[] GetOutputAsStringArray(Board reversiBoard)
         {
-            var squares = reversiBoard.GetCurrentStateAsSquares();
-            return BoardConverter.ConvertToStringArray(squares);
+            return BoardConverter.ConvertToStringArray(reversiBoard.Squares);
+        }
+        internal static string[] GetOutputAsStringArrayWithoutLegalSquares(Board reversiBoard)
+        {
+            var stringArray = GetOutputAsStringArray(reversiBoard);
+            return RemoveLegalSquares(stringArray);
+        }
+
+        private static string[] RemoveLegalSquares(string[] board)
+        {
+            return board.Select(row => row.Replace("0", ".")).ToArray();
         }
     }
 }

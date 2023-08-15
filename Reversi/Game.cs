@@ -1,5 +1,4 @@
-﻿using Reversi.Logic.Converters;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Reversi.Logic
@@ -7,7 +6,7 @@ namespace Reversi.Logic
     public class Game
     {
         #region fields
-        public Board ReversiBoard { get; set; }
+        public Board Board { get; set; }
         private Player _turn;
         private Dictionary<Square, HashSet<Square>> _whiteLegalSquareDictionary;
         private Dictionary<Square, HashSet<Square>> _blackLegalSquareDictionary;
@@ -25,14 +24,14 @@ namespace Reversi.Logic
         #region constructors
         private Game(string[] board, bool isTurnBlack)
         {
-            ReversiBoard = new Board(board);
+            Board = new Board(board);
             _turn = isTurnBlack ? _players.BlackPlayer : _players.WhitePlayer;
             SetLegalSquareDictionaries();
         }
 
         public Game()
         {
-            ReversiBoard = Board.InitializeBoard();
+            Board = Board.InitializeBoard();
             _turn = _players.BlackPlayer;
             SetLegalSquareDictionaries();
         }
@@ -60,11 +59,6 @@ namespace Reversi.Logic
             return _players.SingleOrDefault(x => x.UserId == userId);
         }
 
-        public Square[,] GetOutputAsSquares()
-        {
-            return ReversiBoard.GetCurrentStateAsSquares();
-        }
-
         public Player GetWinner()
         {
             var white = GetNumberOfColor(SquareContents.White);
@@ -75,7 +69,7 @@ namespace Reversi.Logic
 
         public int GetNumberOfColor(char color)
         {
-            return ReversiBoard.GetNumberOfSquaresByColor(color);
+            return Board.GetNumberOfSquaresByColor(color);
         }
 
         public PlayerCollection Players => _players;
@@ -110,7 +104,7 @@ namespace Reversi.Logic
         {
             _whiteLegalSquareDictionary = GetLegalSquares(_players.WhitePlayer);
             _blackLegalSquareDictionary = GetLegalSquares(_players.BlackPlayer);
-            ReversiBoard.SetLegalSquares(GetPlayerMoveDictionary(_turn).Keys.ToHashSet());
+            Board.SetLegalSquares(GetPlayerMoveDictionary(_turn).Keys.ToHashSet());
         }
 
         private Dictionary<Square, HashSet<Square>> GetPlayerMoveDictionary(Player player)
@@ -125,7 +119,7 @@ namespace Reversi.Logic
         {
             if (!ConfirmLegalMove(selectedSquare)) return false;
 
-            ReversiBoard.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, _turn.Counter);
+            Board.ChangeSquareColour(selectedSquare.Row, selectedSquare.Column, _turn.Counter);
             var capturableSquares = GetCapturableSquares(selectedSquare, _turn);
 
             if (capturableSquares.Count() > 0)
@@ -143,7 +137,7 @@ namespace Reversi.Logic
 
         private bool ConfirmLegalMove(Square selectedSquare)
         {
-            if (ReversiBoard.AllInitialTilesPlaced() && !ConfirmTwoPlayers()) return false;
+            if (Board.AllInitialTilesPlaced() && !ConfirmTwoPlayers()) return false;
 
             if (!ConfirmLegalPosition(selectedSquare)) return false;
 
@@ -208,7 +202,7 @@ namespace Reversi.Logic
         }
         private bool IsGameOver()
         {
-            return ReversiBoard.GetBlankSquares().Count == 0 || (_whiteLegalSquareDictionary.Count < 1 && _blackLegalSquareDictionary.Count < 1);
+            return Board.GetBlankSquares().Count == 0 || (_whiteLegalSquareDictionary.Count < 1 && _blackLegalSquareDictionary.Count < 1);
         }
         private HashSet<Square> GetCapturableSquares(Square selectedSquare, Player player)
         {
@@ -217,13 +211,13 @@ namespace Reversi.Logic
 
             foreach (var direction in _directions)
             {
-                Square adjacentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
+                Square adjacentSquare = Board.GetAdjacentSquare(selectedSquare, direction);
                 var currentLine = new HashSet<Square>();
 
                 while (SquareIsOtherColour(adjacentSquare, counterColour))
                 {
                     currentLine.Add(adjacentSquare);
-                    adjacentSquare = ReversiBoard.GetAdjacentSquare(adjacentSquare, direction);
+                    adjacentSquare = Board.GetAdjacentSquare(adjacentSquare, direction);
                 }
                 if (SquareIsSameColour(adjacentSquare, counterColour))
                 {
@@ -246,9 +240,9 @@ namespace Reversi.Logic
         {
             var legalSquareDictionary = new Dictionary<Square, HashSet<Square>>();
 
-            if (ReversiBoard.AllInitialTilesPlaced())
+            if (Board.AllInitialTilesPlaced())
             {
-                foreach (var square in ReversiBoard.GetBlankSquares())
+                foreach (var square in Board.GetBlankSquares())
                 {
                     var capturableSquares = GetCapturableSquares(square, player);
                     if (capturableSquares.Count() > 0)

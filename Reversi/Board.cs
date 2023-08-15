@@ -7,6 +7,8 @@ namespace Reversi.Logic
 {
     public class Board
     {
+        public Square[,] Squares => _squares;
+
         private HashSet<Square> _legalSquares;
 
         private readonly Square[,] _squares;
@@ -77,11 +79,6 @@ namespace Reversi.Logic
             {
                 _squares[square.Row, square.Column].Contents = SquareContents.Legal;
             }
-        }
-
-        public Square[,] GetCurrentStateAsSquares()
-        {
-            return _squares;
         }
 
         public void ChangeSquareColour(int selectedSquareRow, int selectedSquareColumn, char turn)
