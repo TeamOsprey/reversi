@@ -19,7 +19,7 @@
         public BlackPlayer(string userId) : base(userId)
         {
         }
-        
+
         public override char Counter => SquareContents.Black;
         public override string ToString()
         {

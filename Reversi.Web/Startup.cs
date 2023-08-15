@@ -1,4 +1,3 @@
-using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -8,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Reversi.Services;
 using Reversi.Services.Interfaces;
 using Reversi.WebApp.Hubs;
+using System.Linq;
 
 namespace Reversi.WebApp
 {
@@ -24,7 +24,7 @@ namespace Reversi.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            
+
             services.AddServerSideBlazor();
             services.AddSingleton<IGameService, GameService>(op =>
             {

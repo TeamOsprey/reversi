@@ -538,11 +538,11 @@ namespace Reversi.UnitTests
             var game = new Game();
             game.AddPlayer("1");
             var players = game.Players;
-            Assert.Multiple(()=>
+            Assert.Multiple(() =>
             {
                 Assert.IsTrue(players.HasBlackPlayer);
                 Assert.IsFalse(players.HasWhitePlayer);
-                Assert.AreEqual(players.BlackPlayer.UserId, "1"); 
+                Assert.AreEqual(players.BlackPlayer.UserId, "1");
                 Assert.AreEqual(players.WhitePlayer.UserId, null);
             });
 
@@ -568,7 +568,7 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
             var players = game.Players;
-            Assert.IsTrue(players.All(x=>x.UserId == null));
+            Assert.IsTrue(players.All(x => x.UserId == null));
         }
 
         [Test]
@@ -652,7 +652,7 @@ namespace Reversi.UnitTests
             var blackCounters = game.ReversiBoard.GetNumberOfSquaresByColor(SquareContents.Black);
             var whiteCounters = game.ReversiBoard.GetNumberOfSquaresByColor(SquareContents.White);
 
-            Assert.IsTrue((blackCounters == whiteCounters && blackCounters == 2));            
+            Assert.IsTrue((blackCounters == whiteCounters && blackCounters == 2));
         }
     }
 }

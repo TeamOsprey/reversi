@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.SignalR;
+using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.SignalR;
 
 namespace Reversi.WebApp.Hubs
 {
@@ -20,7 +20,7 @@ namespace Reversi.WebApp.Hubs
         }
 
         public async Task RemovePlayerTask()
-        {            
+        {
             await Clients.All.SendAsync("RemovePlayer", UnusedParameterToGetAroundRuntimeErrorMystery);
         }
 
@@ -28,7 +28,7 @@ namespace Reversi.WebApp.Hubs
         {
             //await Groups.AddToGroupAsync(UserId, "Game1");
             // TODO: consider call to AddPlayer to be conditional to still needing two players
-            await Clients.All.SendAsync("AddPlayer"); 
+            await Clients.All.SendAsync("AddPlayer");
 
             await base.OnConnectedAsync();
         }

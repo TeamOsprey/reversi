@@ -9,7 +9,7 @@ namespace Reversi.Logic
         private readonly List<Player> _players = new()
         {
             new BlackPlayer(null),
-            new WhitePlayer(null) 
+            new WhitePlayer(null)
         };
 
         public BlackPlayer BlackPlayer => _players[0] as BlackPlayer;
@@ -17,7 +17,7 @@ namespace Reversi.Logic
         public WhitePlayer WhitePlayer => _players[1] as WhitePlayer;
 
 
-        public bool HasAllPlayers => _players.All(x=>x.UserId != null);
+        public bool HasAllPlayers => _players.All(x => x.UserId != null);
 
 
         public bool HasBlackPlayer => BlackPlayer.UserId != null;
@@ -62,7 +62,7 @@ namespace Reversi.Logic
         public void Remove(string userId)
         {
             var player = _players.SingleOrDefault(x => x.UserId == userId);
-            if (player != null)            
+            if (player != null)
                 player.UserId = null;
         }
 

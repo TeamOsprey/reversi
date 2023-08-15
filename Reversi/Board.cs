@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Reversi.Logic.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Reversi.Logic.Converters;
 
 namespace Reversi.Logic
 {
@@ -12,7 +12,7 @@ namespace Reversi.Logic
         private readonly Square[,] _squares;
 
         const int Size = 8;
-        
+
         public Board(string[] board)
         {
             _squares = BoardConverter.ConvertToSquares(board);
@@ -22,7 +22,7 @@ namespace Reversi.Logic
         {
             return new Board(CreateInitialBoard());
         }
-        
+
         public Square GetAdjacentSquare(Square originalSquare, Vector direction)
         {
             int row = originalSquare.Row + direction.Vertical;
@@ -49,7 +49,7 @@ namespace Reversi.Logic
 
             foreach (Square item in _squares)
             {
-                if (item.Contents == SquareContents.None || item.Contents == SquareContents.Legal) 
+                if (item.Contents == SquareContents.None || item.Contents == SquareContents.Legal)
                     blankSquares.Add(item);
             }
 
@@ -75,13 +75,13 @@ namespace Reversi.Logic
             // Clear legal square characters first.
             foreach (Square square in _squares)
             {
-                if(square.Contents == SquareContents.Legal)
+                if (square.Contents == SquareContents.Legal)
                 {
                     square.Contents = '.';
                 }
             }
             // Update legal square characters
-            foreach(Square square in _legalSquares)
+            foreach (Square square in _legalSquares)
             {
                 _squares[square.Row, square.Column].Contents = SquareContents.Legal;
             }
@@ -104,7 +104,7 @@ namespace Reversi.Logic
         // this shuffle any Enumerable
         public static IEnumerable<T> Shuffle<T>(IEnumerable<T> source)
         {
-            
+
             Random random = new Random();
             return source.OrderBy(x => random.Next());
         }
@@ -112,7 +112,7 @@ namespace Reversi.Logic
         // this shuffle a string
         public static string Shuffle(string str)
         {
- 
+
             char[] chars = str.ToCharArray();
             var shuffledChars = Shuffle(chars);
             return new string(shuffledChars.ToArray());
@@ -120,7 +120,7 @@ namespace Reversi.Logic
 
         private static string[] CreateInitialBoard()
         {
-            var squares = new Square[Size,Size];
+            var squares = new Square[Size, Size];
 
             // initialize blank board
             for (int row = 0; row < Size; row++)

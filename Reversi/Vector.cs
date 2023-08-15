@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Reversi.Logic
-{ 
+{
     public class Vector : IEquatable<Vector>
     {
         public int Horizontal { get; }

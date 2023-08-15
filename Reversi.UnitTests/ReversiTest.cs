@@ -32,7 +32,7 @@ namespace Reversi.UnitTests
 
             var firstStep = BoardConverter.ConvertToSquares(original);
             var secondStep = BoardConverter.ConvertToStringArray(firstStep);
-            
+
             Assert.AreEqual(original, secondStep);
         }
 
@@ -40,7 +40,7 @@ namespace Reversi.UnitTests
         public void convert_squares_to_strings_and_back_retains_data()
         {
             var original = CreateEmptyBoard();
-            original[3,3] = new Square(3,3, SquareContents.Black);
+            original[3, 3] = new Square(3, 3, SquareContents.Black);
             original[4, 0] = new Square(4, 0, SquareContents.White);
             original[2, 0] = new Square(2, 0, SquareContents.None);
             original[1, 5] = new Square(1, 5, SquareContents.Legal);
@@ -76,7 +76,7 @@ namespace Reversi.UnitTests
             Assert.AreEqual(SquareContents.White, output[5][5]);
             Assert.IsTrue(reversi.Turn is BlackPlayer);
         }
-     
+
         [Test]
         public void return_the_only_legal_square()
         {

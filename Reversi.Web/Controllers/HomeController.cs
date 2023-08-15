@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Reversi.WebApp.Models;
+using System.Diagnostics;
 
 namespace Reversi.WebApp.Controllers
 {

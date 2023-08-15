@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Reversi.Logic
-{ 
+{
     public class Square : IEquatable<Square>
     {
         public int Row { get; }

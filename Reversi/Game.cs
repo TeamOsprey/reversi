@@ -15,7 +15,7 @@ namespace Reversi.Logic
         public Player Turn => _turn;
 
         private Player Opponent => _turn is WhitePlayer ? _players.BlackPlayer : _players.WhitePlayer;
-        
+
         private readonly List<Vector> _directions = Direction.GetDirections();
         public State State;
 
@@ -223,7 +223,7 @@ namespace Reversi.Logic
             {
                 Square adjacentSquare = ReversiBoard.GetAdjacentSquare(selectedSquare, direction);
                 var currentLine = new HashSet<Square>();
-                
+
                 while (SquareIsOtherColour(adjacentSquare, counterColour))
                 {
                     currentLine.Add(adjacentSquare);
@@ -231,7 +231,7 @@ namespace Reversi.Logic
                 }
                 if (SquareIsSameColour(adjacentSquare, counterColour))
                 {
-                    capturableSquares.UnionWith(currentLine);                    
+                    capturableSquares.UnionWith(currentLine);
                 }
             }
 
@@ -255,8 +255,8 @@ namespace Reversi.Logic
                 foreach (var square in ReversiBoard.GetBlankSquares())
                 {
                     var capturableSquares = GetCapturableSquares(square, player);
-                    if (capturableSquares.Count() > 0) 
-                    { 
+                    if (capturableSquares.Count() > 0)
+                    {
                         legalSquareDictionary.Add(square, capturableSquares);
                     }
                 }

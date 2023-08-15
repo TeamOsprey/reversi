@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Reversi.Logic;
+using Reversi.Logic.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Reversi.Logic;
-using Reversi.Logic.Converters;
 
 namespace Reversi.ConsoleApp
 {
@@ -31,7 +31,7 @@ namespace Reversi.ConsoleApp
             var board = BoardConverter.ConvertToStringArray(Reversi.GetOutputAsSquares());
             GuidedBoard = PrependGuidesToStringArrays(board);
         }
- 
+
         private IEnumerable<string> PrependGuidesToStringArrays(string[] original)
         {
             string[] guidedArray = new string[8];
@@ -63,7 +63,7 @@ namespace Reversi.ConsoleApp
             Console.WriteLine("Current turn: " + Reversi.Turn);
             Console.Write("Enter coordinates (row,col): ");
         }
- 
+
         private void GetPlayerInput()
         {
             var coords = Console.ReadLine();
@@ -72,7 +72,7 @@ namespace Reversi.ConsoleApp
             Reversi.PlaceCounter(int.Parse(coordsSplit[0]), int.Parse(coordsSplit[1]), userId);
             Console.Clear();
         }
-        
+
         private void WriteErrorMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
