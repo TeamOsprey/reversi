@@ -18,6 +18,7 @@ namespace Reversi.Logic
             _squares = BoardConverter.ConvertToSquares(board);
         }
 
+        #region Public methods
         public static Board InitializeBoard()
         {
             return new Board(CreateInitialBoard());
@@ -32,15 +33,6 @@ namespace Reversi.Logic
                 return _squares[row, column];
             else
                 return null;
-        }
-
-        private bool IsRowInBounds(int row)
-        {
-            return 0 <= row && row < Size;
-        }
-        private bool IsColumnInBounds(int column)
-        {
-            return 0 <= column && column < Size;
         }
 
         public List<Square> GetBlankSquares()
@@ -114,6 +106,23 @@ namespace Reversi.Logic
             return new string(shuffledChars.ToArray());
         }
 
+        public bool AllInitialTilesPlaced()
+        {
+            var blankSquares = GetBlankSquares();
+            return blankSquares.Count <= 60;
+        }
+        #endregion
+
+        #region Private methods
+        private bool IsRowInBounds(int row)
+        {
+            return 0 <= row && row < Size;
+        }
+        
+        private bool IsColumnInBounds(int column)
+        {
+            return 0 <= column && column < Size;
+        }
         private static string[] CreateInitialBoard()
         {
             var squares = new Square[Size, Size];
@@ -145,10 +154,6 @@ namespace Reversi.Logic
 
             return BoardConverter.ConvertToStringArray(squares);
         }
-        public bool AllInitialTilesPlaced()
-        {
-            var blankSquares = GetBlankSquares();
-            return blankSquares.Count <= 60;
-        }
+        #endregion
     }
 }
