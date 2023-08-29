@@ -548,8 +548,8 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-04-25
 - We removed the code not needed with the current initial squares business rules
 - We refactored Game and Board and changed some names to make them more understandable
-- [x] IsAdjacentSquareValid is both validating and adding to legal squares. We will need to fix it so it doesn't do more than one thing.
-- [ ] Consider cleaning two models of representing the board. One as a list of strings and other is two dimensional array of squares.
+- [X] IsAdjacentSquareValid is both validating and adding to legal squares. We will need to fix it so it doesn't do more than one thing.
+- [X] Consider cleaning two models of representing the board. One as a list of strings and other is two dimensional array of squares.
 - [ ] See also additional board refactoring above (line 542+)
 
 ## 2023-05-02
@@ -670,7 +670,7 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-08-15
 - Ran VS Code Cleanup; unlike Resharper, VS tool didn't remove used dependency from WebApp
 - We deleted GetOutputAsStringArray and GetCurrentStateAsStringArray methods from Game and Board classes and 
-  instead created a Helper class in UnitTests project with one method to conver to string of array.
+  instead created a Helper class in UnitTests project with one method to convert to string of array.
 - [X] move RemoveLegalSquares from ConsoleTest class to Helper class
 - [ ] Review how Board methods are used in Game and move logic to Board as appropriate for better encapsulation
 - [ ] Board.Squares property is a public array, so it's elements can be changed by consumers. Consider using ChatGPT/	
