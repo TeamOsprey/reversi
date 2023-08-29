@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Reversi.Logic
 {
-    public class Board
+    internal class Board
     {
         public Square[,] Squares => _squares;
 

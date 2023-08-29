@@ -13,8 +13,8 @@
 @code {
     [CascadingParameter]
     public IGameService GameService { get; set; }
-    public int NumberOfBlack => GameService.GetScoreByColor(SquareContentsDto.Black);
-    public int NumberOfWhite => GameService.GetScoreByColor(SquareContentsDto.White);
+    public int NumberOfBlack => GameService.GetScoreByColour(SquareContentsDto.Black);
+    public int NumberOfWhite => GameService.GetScoreByColour(SquareContentsDto.White);
     public void Refresh()
     {
         StateHasChanged();

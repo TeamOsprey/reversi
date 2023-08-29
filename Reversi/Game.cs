@@ -5,9 +5,11 @@ namespace Reversi.Logic
 {
     public class Game
     {
-        public Board Board { get; }
+        private Board Board { get; }
         public Player Turn => _turn;
         public State State { get; private set; }
+        public Square[,] Squares => Board.Squares;
+        public PlayerCollection Players => _players;
 
         #region fields
         private Player _turn;
@@ -61,18 +63,16 @@ namespace Reversi.Logic
 
         public Player GetWinner()
         {
-            var white = GetNumberOfColor(SquareContents.White);
-            var black = GetNumberOfColor(SquareContents.Black);
+            var white = GetScoreByColour(SquareContents.White);
+            var black = GetScoreByColour(SquareContents.Black);
 
             return (white > black) ? _players.WhitePlayer : _players.BlackPlayer;
         }
 
-        public int GetNumberOfColor(char color)
+        public int GetScoreByColour(char color)
         {
             return Board.GetNumberOfSquaresByColor(color);
         }
-
-        public PlayerCollection Players => _players;
 
         public void AddPlayer(string userId)
         {

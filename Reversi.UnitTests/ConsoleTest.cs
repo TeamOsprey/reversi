@@ -22,7 +22,7 @@ namespace Reversi.UnitTests
 
             var reversi = Game.Load(board, true);
 
-            CollectionAssert.AreEqual(board, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(board, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace Reversi.UnitTests
             "....W...",
             "....W..."};
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -102,7 +102,7 @@ namespace Reversi.UnitTests
             "....B...",
             "....W..."};
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -133,7 +133,7 @@ namespace Reversi.UnitTests
             "....B...",
             "....B..."};
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
 
@@ -166,7 +166,7 @@ namespace Reversi.UnitTests
             "....B...",
             "....B..."};
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -197,7 +197,7 @@ namespace Reversi.UnitTests
             "..B.W...",
             "....W..."};
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArrayWithoutLegalSquares(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArrayWithoutLegalSquares(reversi.Squares));
         }
 
         [Test]
@@ -228,7 +228,7 @@ namespace Reversi.UnitTests
                     "..B.W...",
                     ".B..W..."};
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArrayWithoutLegalSquares(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArrayWithoutLegalSquares(reversi.Squares));
         }
 
         [Test]
@@ -295,7 +295,7 @@ namespace Reversi.UnitTests
                     "........",
                     "........"};
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArrayWithoutLegalSquares(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArrayWithoutLegalSquares(reversi.Squares));
 
         }
 
@@ -638,8 +638,8 @@ namespace Reversi.UnitTests
         {
             var game = new Game();
 
-            var blackCounters = game.Board.GetNumberOfSquaresByColor(SquareContents.Black);
-            var whiteCounters = game.Board.GetNumberOfSquaresByColor(SquareContents.White);
+            var blackCounters = game.GetScoreByColour(SquareContents.Black);
+            var whiteCounters = game.GetScoreByColour(SquareContents.White);
 
             Assert.IsTrue((blackCounters == whiteCounters && blackCounters == 2));
         }

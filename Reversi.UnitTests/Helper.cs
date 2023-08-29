@@ -6,13 +6,13 @@ namespace Reversi.UnitTests
 {
     internal static class Helper
     {
-        internal static string[] GetOutputAsStringArray(Board reversiBoard)
+        internal static string[] GetOutputAsStringArray(Square[,] squares)
         {
-            return BoardConverter.ConvertToStringArray(reversiBoard.Squares);
+            return BoardConverter.ConvertToStringArray(squares);
         }
-        internal static string[] GetOutputAsStringArrayWithoutLegalSquares(Board reversiBoard)
+        internal static string[] GetOutputAsStringArrayWithoutLegalSquares(Square[,] squares)
         {
-            var stringArray = GetOutputAsStringArray(reversiBoard);
+            var stringArray = GetOutputAsStringArray(squares);
             return RemoveLegalSquares(stringArray);
         }
 

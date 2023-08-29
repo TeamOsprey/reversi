@@ -34,7 +34,7 @@ namespace Reversi.Services
 
         public SquareDto[,] GetOutputAsSquares()
         {
-            return ConvertToDto(Game.Board.Squares);
+            return ConvertToDto(Game.Squares);
         }
 
         private SquareDto[,] ConvertToDto(Square[,] squares)
@@ -71,9 +71,9 @@ namespace Reversi.Services
             return Game.State is { IsPersonal: true } ? Game.State.ErrorMessage : "";
         }
 
-        public int GetScoreByColor(char color)
+        public int GetScoreByColour(char color)
         {
-            return Game.GetNumberOfColor(color);
+            return Game.GetScoreByColour(color);
         }
 
         public bool HasAllPlayers()

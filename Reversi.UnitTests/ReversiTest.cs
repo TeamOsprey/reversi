@@ -68,7 +68,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            var output = Helper.GetOutputAsStringArray(reversi.Board);
+            var output = Helper.GetOutputAsStringArray(reversi.Squares);
 
             Assert.AreEqual(SquareContents.Black, output[4][4]);
             Assert.AreEqual(SquareContents.Black, output[4][5]);
@@ -102,7 +102,7 @@ namespace Reversi.UnitTests
             var reversi = Game.Load(board, true);
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -133,7 +133,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -163,7 +163,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -193,7 +193,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -223,7 +223,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -253,7 +253,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -283,7 +283,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -313,7 +313,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
 
         [Test]
@@ -343,7 +343,7 @@ namespace Reversi.UnitTests
             reversi.AddPlayer("1");
             reversi.AddPlayer("2");
 
-            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Board));
+            CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
     }
 }

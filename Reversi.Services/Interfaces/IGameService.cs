@@ -11,7 +11,7 @@
         public string GetPlayerColourString(string userId);
         public string GetMessage();
         public string GetPersonalMessage();
-        public int GetScoreByColor(char color);
+        public int GetScoreByColour(char color);
         public bool HasAllPlayers();
     }
 }

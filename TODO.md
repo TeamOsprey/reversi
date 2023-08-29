@@ -651,7 +651,7 @@ Refactored Game.cs and PlayerList.cs:
 		- [X] Unit Tests (make helper function in tests) 
   - [X] Remove second parameter from ConvertToStringArray (i.e., only pass in squares, not also legal square info)
   - [X] Delete GetCurrentStateAsStringArray from Board.cs
-  - [ ] More refactoring/cleanup, e.g., make the Board class internal and change Game.Board property accessibility
+  - [X] More refactoring/cleanup, e.g., make the Board class internal and change Game.Board property accessibility
 
 ## 2023-08-01
 - We made a new BoardConverter class and moved the conversion functions to/from string array and squares there, and 
@@ -675,3 +675,12 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Review how Board methods are used in Game and move logic to Board as appropriate for better encapsulation
 - [ ] Board.Squares property is a public array, so it's elements can be changed by consumers. Consider using ChatGPT/	
       Copilot to make it a read-only collection (or other fix). 
+
+## 2023-08-29
+- [ ] We started reviewing the methods in the game that get information from the board and make it available to the service.
+  - checking for naming consistency, and deciding if it should be a prop or a method.
+	- updated game.getnumberbycolor(str c)
+- [X] We decided to encapsulate Board as a property of game (make it internal instead of public),
+  - This forced us to add a new property 'Squares' on the Game class. 
+- [ ] We considered renaming 'GetScoreByColour' to 'GetScoreByPlayer' because players are part of game, but colour is part of Board.
+	 
