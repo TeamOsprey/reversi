@@ -686,7 +686,10 @@ Refactored Game.cs and PlayerList.cs:
 	 
 ## 2023-09-05
 - Next session when all are present: 
-  We want to take a different approach, including design and diagrams - putting the code aside
+  1. Remove main branch (see line 692)
+  2. We want to take a different approach, including design and diagrams - putting the code aside
   and focusing on diagrams etc.
+- [ ] Remove main branch (confusing to have it in addition to master)
 - [ ] Create object hierarchy for Square: FilledSquare, EmptySquare, both inheriting from an abstract Square class,
    	  EmptySquare would have a boolean Legal property, and FilledSquare would have subclasses: BlackSquare and WhiteSquare.
+- [ ] Set up pipeline - GitHub actions to prevent merging into master if unit tests fail.
