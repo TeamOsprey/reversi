@@ -630,7 +630,7 @@ Refactored Game.cs and PlayerList.cs:
 	- [ ] Something to work on after other Board refactoring.
 	- [ ] See also line # 611 in TODO.md
 - [ ] Refactor SquareIsOtherColour
-- [ ] Merge the branch when we are done with Board related refactoring.
+- [X] Merge the branch when we are done with Board related refactoring.
 
 ## 2023-07-18
 - Removed Web UI's dependencies to Reversi.Logic
