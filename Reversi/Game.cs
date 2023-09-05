@@ -234,7 +234,7 @@ namespace Reversi.Logic
         }
         private bool SquareIsOtherColour(Square currentSquare, char color)
         {
-            return currentSquare != null && currentSquare.Contents != color && currentSquare.Contents != SquareContents.None && currentSquare.Contents != SquareContents.Legal;
+            return currentSquare != null && currentSquare.Contents != color && currentSquare.Contents != SquareContents.BlankAndNotLegal && currentSquare.Contents != SquareContents.BlankAndLegal;
         }
         private Dictionary<Square, HashSet<Square>> GetLegalSquares(Player player)
         {

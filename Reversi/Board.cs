@@ -43,7 +43,7 @@ namespace Reversi.Logic
 
             foreach (Square item in _squares)
             {
-                if (item.Contents == SquareContents.None || item.Contents == SquareContents.Legal)
+                if (item.Contents == SquareContents.BlankAndNotLegal || item.Contents == SquareContents.BlankAndLegal)
                     blankSquares.Add(item);
             }
 
@@ -69,7 +69,7 @@ namespace Reversi.Logic
             // Clear legal square characters first.
             foreach (Square square in _squares)
             {
-                if (square.Contents == SquareContents.Legal)
+                if (square.Contents == SquareContents.BlankAndLegal)
                 {
                     square.Contents = '.';
                 }
@@ -77,7 +77,7 @@ namespace Reversi.Logic
             // Update legal square characters
             foreach (Square square in _legalSquares)
             {
-                _squares[square.Row, square.Column].Contents = SquareContents.Legal;
+                _squares[square.Row, square.Column].Contents = SquareContents.BlankAndLegal;
             }
         }
 
@@ -129,7 +129,7 @@ namespace Reversi.Logic
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    squares[row, col] = new Square(row, col, SquareContents.None);
+                    squares[row, col] = new Square(row, col, SquareContents.BlankAndNotLegal);
                 }
             }
 

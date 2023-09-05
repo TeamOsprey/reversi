@@ -13,7 +13,7 @@ namespace Reversi.UnitTests
             var board = new Square[8, 8];
             for (int row = 0; row < 8; row++)
                 for (int col = 0; col < 8; col++)
-                    board[row, col] = new Square(row, col, SquareContents.None);
+                    board[row, col] = new Square(row, col, SquareContents.BlankAndNotLegal);
             return board;
         }
 
@@ -42,8 +42,8 @@ namespace Reversi.UnitTests
             var original = CreateEmptyBoard();
             original[3, 3] = new Square(3, 3, SquareContents.Black);
             original[4, 0] = new Square(4, 0, SquareContents.White);
-            original[2, 0] = new Square(2, 0, SquareContents.None);
-            original[1, 5] = new Square(1, 5, SquareContents.Legal);
+            original[2, 0] = new Square(2, 0, SquareContents.BlankAndNotLegal);
+            original[1, 5] = new Square(1, 5, SquareContents.BlankAndLegal);
             var firstStep = BoardConverter.ConvertToStringArray(original);
             var secondStep = BoardConverter.ConvertToSquares(firstStep);
 

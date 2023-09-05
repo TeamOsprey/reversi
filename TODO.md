@@ -608,8 +608,8 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-06-27
 - We continued working on getting legal squares to display in the UI correctly. We now see legal squares but in the
   wrong places after the first move. We also have one failing unit test.
-- [ ] Consider renaming GetBlankSquares to something that makes it clear it could be '.' or '0' (not just '.'). 
-      (See also line # 624 in TODO.md)
+- [X] Consider renaming GetBlankSquares to something that makes it clear it could be '.' or '0' (not just '.'). 
+   	  (See also line # 624 in TODO.md). Instead we renamed the constants for '.' and '0' to be more clear.
 - [X] Review Game.SquareIsOtherColour and everywhere else we check Counters.None - in case we also need to check
       for '0' (not just '.').
 - [X] Rename Counters class and/or change Square.Colour property; e.g., introduce new class called Counter with a property of color
@@ -684,3 +684,9 @@ Refactored Game.cs and PlayerList.cs:
   - This forced us to add a new property 'Squares' on the Game class. 
 - [ ] We considered renaming 'GetScoreByColour' to 'GetScoreByPlayer' because players are part of game, but colour is part of Board.
 	 
+## 2023-09-05
+- Next session when all are present: 
+  We want to take a different approach, including design and diagrams - putting the code aside
+  and focusing on diagrams etc.
+- [ ] Create object hierarchy for Square: FilledSquare, EmptySquare, both inheriting from an abstract Square class,
+   	  EmptySquare would have a boolean Legal property, and FilledSquare would have subclasses: BlackSquare and WhiteSquare.
