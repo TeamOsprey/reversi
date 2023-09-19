@@ -700,3 +700,8 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Research how to generate a UML / class diagram from existing (C#) code.
 - [ ] Answer the question, how do you keep diagrams in sync with code as a project goes on.
 - [ ] Consider an explicit process with TDD. (Red/green, refactor <-- consider not just the code, but the arch diagram)
+- Next session
+  - Try Class Designer tool on a new or an existing .Net Framework code
+  - Event storming (example of this and other diagrams can be found here https://openpracticelibrary.com/)
+  - Re line 702, we can try it on a new Kata (when Joel is back)
+    - A unit test to assert inconclusive when the class diagram needs to be regenerated and reviewed
