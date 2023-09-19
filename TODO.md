@@ -693,3 +693,10 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Create object hierarchy for Square: FilledSquare, EmptySquare, both inheriting from an abstract Square class,
    	  EmptySquare would have a boolean Legal property, and FilledSquare would have subclasses: BlackSquare and WhiteSquare.
 - [ ] Set up pipeline - GitHub actions to prevent merging into master if unit tests fail.
+
+## 2023-09-19
+- [ ] Watch a video from RedHat on design and documenting. (A development team shares their method of design)
+- [ ] Do a brainstorm on a shared tool
+- [ ] Research how to generate a UML / class diagram from existing (C#) code.
+- [ ] Answer the question, how do you keep diagrams in sync with code as a project goes on.
+- [ ] Consider an explicit process with TDD. (Red/green, refactor <-- consider not just the code, but the arch diagram)
