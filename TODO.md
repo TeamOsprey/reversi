@@ -711,3 +711,13 @@ Refactored Game.cs and PlayerList.cs:
 - We started modeling the game using Event Storming event. The diagram is here: https://miro.com/app/board/uXjVMhMFUu4=/?share_link_id=172413838820
 - Next session:
 	- We will continue working on the Event Storming diagram
+
+## 2023-10-10
+- We continued working on the Event Storming diagram
+- Some questions about Event Storming:
+	- How to deal with loops?
+- Next session:
+	- Shall we use mob timer to help us with taking turn to discuss about the diagram?
+	- Review the basics of Event Storming rules
+	- Check some Event Sorming diagram samples
+	- Definition of Boundry, Aggregate, and Entity
