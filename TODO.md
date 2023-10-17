@@ -721,3 +721,11 @@ Refactored Game.cs and PlayerList.cs:
 	- Review the basics of Event Storming rules
 	- Check some Event Sorming diagram samples
 	- Definition of Boundry, Aggregate, and Entity
+
+## 2023-10-17
+- We worked on loops and tried to remove them from the model
+- We researched on the differences between Policy and "Aggregate/Business rules"
+- We talked about Aggregates and domains and how to translate them to a dot net application(projects/folders/classes)
+- Next session:
+	- We will review some implementations of aggregates
+	- Here is one example we can check from Microsoft: https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/introduce-eshoponcontainers-reference-app
