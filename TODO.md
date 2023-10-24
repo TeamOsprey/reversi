@@ -729,3 +729,11 @@ Refactored Game.cs and PlayerList.cs:
 - Next session:
 	- We will review some implementations of aggregates
 	- Here is one example we can check from Microsoft: https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/introduce-eshoponcontainers-reference-app
+
+## 2023-10-24
+- We continued with reorganizing the Event Storming diagram
+- We talked about how to show the integration with external systems in the diagram
+- We discussed the differences between a user (someone with identity) and a player (a claim for a game) and how to seperate them in the diagram
+- Next session:
+    - We will continue with reorganizing and cleaning the diagram (remove UI related terminologies, e.g. click and button)
+	- We will start adding Aggregates to the diagram
