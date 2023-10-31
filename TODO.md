@@ -735,5 +735,12 @@ Refactored Game.cs and PlayerList.cs:
 - We talked about how to show the integration with external systems in the diagram
 - We discussed the differences between a user (someone with identity) and a player (a claim for a game) and how to seperate them in the diagram
 - Next session:
-    - We will continue with reorganizing and cleaning the diagram (remove UI related terminologies, e.g. click and button)
-	- We will start adding Aggregates to the diagram
+    - [ ] We will continue with reorganizing and cleaning the diagram (remove UI related terminologies, e.g. click and button)
+	- [ ] We will start adding Aggregates to the diagram
+
+## 2023-10-31
+- Created a drawing of a building with a lobby and rooms which can contain users and games; and started updating the event storming
+  diagram accordingly
+- Next session: 
+	- [ ] Continue updating diagram with the new model for the lobby and rooms
+	- [ ] See checkboxes from prior session(s)
