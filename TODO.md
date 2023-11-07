@@ -744,3 +744,8 @@ Refactored Game.cs and PlayerList.cs:
 - Next session: 
 	- [ ] Continue updating diagram with the new model for the lobby and rooms
 	- [ ] See checkboxes from prior session(s)
+	- [ ] 
+## 2023-11-07
+- Decided to follow just MVP requirements within MIRO board. Non-MVP features will be separated to sections on the bottom of the board to be integrated later.
+- Working towards expanding to allow for multiple games within the application. (Concurrent or consequetive) 
+- Next session: discuss wether to switch back to coding after the current phase of MIRO adjustments.
