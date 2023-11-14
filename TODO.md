@@ -748,4 +748,13 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-11-07
 - Decided to follow just MVP requirements within MIRO board. Non-MVP features will be separated to sections on the bottom of the board to be integrated later.
 - Working towards expanding to allow for multiple games within the application. (Concurrent or consequetive) 
-- Next session: discuss wether to switch back to coding after the current phase of MIRO adjustments.
+- Next session: 
+    - [ ] discuss wether to switch back to coding after the current phase of MIRO adjustments.
+
+## 2023-11-14
+- We continued with cleaning the MIRO board following MVP approach
+- We started adding aggregates
+- Next session:
+    - [ ] talk about bounded contexts and try to apply the concept to our MIRO board
+	- [ ] review aggregates
+	- [ ] start coding
