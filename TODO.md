@@ -755,6 +755,12 @@ Refactored Game.cs and PlayerList.cs:
 - We continued with cleaning the MIRO board following MVP approach
 - We started adding aggregates
 - Next session:
-    - [ ] talk about bounded contexts and try to apply the concept to our MIRO board
-	- [ ] review aggregates
+    - [X] talk about bounded contexts and try to apply the concept to our MIRO board
+	- [X] review aggregates
 	- [ ] start coding
+
+## 2023-11-21
+- We discussed bounded contexts and determined that our system is too simple at this point to have multiple bounded contexts.
+  (We reviewed an article about bounded contexts: https://martinfowler.com/bliki/BoundedContext.html)
+- [ ] Remove InsufficientPlayers state. Instead don't show game board to 1st player until 2nd player joins.
+- Next week: Start coding, starting with the Lobby aggregate with TDD.
