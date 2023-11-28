@@ -347,9 +347,14 @@ namespace Reversi.UnitTests
         }
 
         [Test]
-        public void WhenYouEnterLobbyLobbyHasNoRooms()
+        public void NewLobbyHasNoRooms()
         {
-
+            var lobby = new Lobby();
+            Assert.AreEqual(0, lobby.Rooms.Count);
         }
+
+        [Test]
+        public void Temp()
+        { }
     }
 }
