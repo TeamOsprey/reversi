@@ -345,5 +345,11 @@ namespace Reversi.UnitTests
 
             CollectionAssert.AreEqual(expected, Helper.GetOutputAsStringArray(reversi.Squares));
         }
+
+        [Test]
+        public void WhenYouEnterLobbyLobbyHasNoRooms()
+        {
+
+        }
     }
 }
