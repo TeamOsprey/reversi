@@ -744,8 +744,23 @@ Refactored Game.cs and PlayerList.cs:
 - Next session: 
 	- [ ] Continue updating diagram with the new model for the lobby and rooms
 	- [ ] See checkboxes from prior session(s)
-	- [ ] 
+
 ## 2023-11-07
 - Decided to follow just MVP requirements within MIRO board. Non-MVP features will be separated to sections on the bottom of the board to be integrated later.
 - Working towards expanding to allow for multiple games within the application. (Concurrent or consequetive) 
-- Next session: discuss wether to switch back to coding after the current phase of MIRO adjustments.
+- Next session: 
+    - [ ] discuss wether to switch back to coding after the current phase of MIRO adjustments.
+
+## 2023-11-14
+- We continued with cleaning the MIRO board following MVP approach
+- We started adding aggregates
+- Next session:
+    - [X] talk about bounded contexts and try to apply the concept to our MIRO board
+	- [X] review aggregates
+	- [ ] start coding
+
+## 2023-11-21
+- We discussed bounded contexts and determined that our system is too simple at this point to have multiple bounded contexts.
+  (We reviewed an article about bounded contexts: https://martinfowler.com/bliki/BoundedContext.html)
+- [ ] Remove InsufficientPlayers state. Instead don't show game board to 1st player until 2nd player joins.
+- Next week: Start coding, starting with the Lobby aggregate with TDD.
