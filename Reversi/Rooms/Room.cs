@@ -1,4 +1,4 @@
-﻿namespace Reversi.Logic
+﻿namespace Reversi.Logic.Rooms
 {
     public class Room
     {
