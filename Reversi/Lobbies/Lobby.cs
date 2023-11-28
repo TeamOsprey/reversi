@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Reversi.Logic.Rooms;
 
 namespace Reversi.Logic.Lobbies
@@ -9,6 +10,11 @@ namespace Reversi.Logic.Lobbies
         public Lobby()
         {
             Rooms = new List<Room>();
+        }
+
+        public void AddRoom(string userId)
+        {
+            Rooms.Add(new Room(userId));            
         }
     }
 }

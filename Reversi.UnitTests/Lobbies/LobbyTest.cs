@@ -14,7 +14,13 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
-        public void Temp()
-        { }
+        public void UserEntersNewRoom()
+        {
+            var lobby = new Lobby();
+            var userId = "1";
+            lobby.AddRoom(userId);
+            Assert.AreEqual(1, lobby.Rooms.Count);
+            Assert.AreEqual(1, lobby.Rooms[0].Users.Count);
+        }
     }
 }
