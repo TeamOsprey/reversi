@@ -6,7 +6,7 @@ namespace Reversi.Logic.Lobbies
 {
     public class Lobby
     {
-        public List<Room> Rooms { get; set; }
+        public List<Room> Rooms { get; private set; }
         public Lobby()
         {
             Rooms = new List<Room>();
@@ -16,5 +16,6 @@ namespace Reversi.Logic.Lobbies
         {
             Rooms.Add(new Room(userId));            
         }
+
     }
 }

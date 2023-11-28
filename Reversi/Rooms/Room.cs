@@ -6,9 +6,9 @@ namespace Reversi.Logic.Rooms
     {
         public List<string> Users { get; set; }
 
-
         public Room(string userId)
         {
+            Users = new List<string>();
             Users.Add(userId);          
         }
     }
