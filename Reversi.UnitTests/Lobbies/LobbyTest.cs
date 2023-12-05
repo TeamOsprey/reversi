@@ -19,7 +19,7 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.AddRoom(userId);
+            lobby.AddRoom("Room1", userId);
             Assert.AreEqual(1, lobby.Rooms.Count);
             Assert.AreEqual(1, lobby.Rooms[0].Users.Count);
         }
@@ -29,17 +29,17 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.AddRoom(userId);
+            lobby.AddRoom("Room1", userId);
             Assert.AreEqual(userId, lobby.Rooms[0].Users[0]);
         }
 
         [Test]
-        public void NextUserSeesExistingRooms_MaybeRoomNamesAndOrUsersInTheRoom()
+        public void RoomNameSetCorrectly()
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.AddRoom(userId);
-            Assert.AreEqual("Room:1", string.Join(',', lobby.Rooms));
+            var room = lobby.AddRoom("Room1", userId);
+            Assert.AreEqual("Room1", room.Name);
         }
 
         [Test]
@@ -47,10 +47,10 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId1 = "1";
-            lobby.AddRoom(userId1);
+            var room = lobby.AddRoom("Room1", userId1);
             var userId2 = "2";
-            lobby.JoinRoom(userId2, 0);
-            Assert.AreEqual(2, lobby.Rooms[0].Users.Count);
+            lobby.JoinRoom(userId2, room);
+            Assert.AreEqual(2, room.Users.Count);
         }
     }
 }

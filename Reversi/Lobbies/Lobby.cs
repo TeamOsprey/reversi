@@ -13,14 +13,16 @@ namespace Reversi.Logic.Lobbies
             Rooms = new List<Room>();
         }
 
-        public void AddRoom(string userId)
+        public Room AddRoom(string name, string userId)
         {
-            Rooms.Add(new Room(userId));            
+            var room = new Room(name, userId);
+            Rooms.Add(room);
+            return room;
         }
 
-        public void JoinRoom(string userId, int roomIndex) 
+        public void JoinRoom(string userId, Room room)
         {
-            Rooms[roomIndex].JoinRoom(userId);
+            room.JoinRoom(userId);
         }
     }
 }
