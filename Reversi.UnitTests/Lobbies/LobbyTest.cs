@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Reversi.Logic.Lobbies;
+using System.Linq;
 
 namespace Reversi.UnitTests.Lobbies
 {
@@ -35,14 +36,10 @@ namespace Reversi.UnitTests.Lobbies
         [Test]
         public void NextUserSeesExistingRooms_MaybeRoomNamesAndOrUsersInTheRoom()
         {
-            //var lobby = new Lobby();
-            //var userId = "1";
-            //lobby.AddRoom(userId);
-            ////var userId2 = "2";
-            ////lobby.AddRoom(userId2);
-            ////Assert.AreEqual(2, lobby.Rooms.Count);
-            ////Assert.AreEqual(1, lobby.Rooms[0].Users.Count);
-            ////Assert.AreEqual(1, lobby.Rooms[1].Users.Count);
+            var lobby = new Lobby();
+            var userId = "1";
+            lobby.AddRoom(userId);
+            Assert.AreEqual("Room:1", string.Join(',', lobby.Rooms));
         }
 
     }

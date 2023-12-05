@@ -11,5 +11,10 @@ namespace Reversi.Logic.Rooms
             Users = new List<string>();
             Users.Add(userId);          
         }
+
+        public override string ToString()
+        {
+            return "Room:" + string.Join(", ", Users);
+        }
     }
 }
