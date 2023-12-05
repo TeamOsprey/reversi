@@ -42,5 +42,15 @@ namespace Reversi.UnitTests.Lobbies
             Assert.AreEqual("Room:1", string.Join(',', lobby.Rooms));
         }
 
+        [Test]
+        public void WhenSecondUserJoinsRoom_UserCountUpdatesCorrectly()
+        {
+            var lobby = new Lobby();
+            var userId1 = "1";
+            lobby.AddRoom(userId1);
+            var userId2 = "2";
+            lobby.JoinRoom(userId2, 0);
+            Assert.AreEqual(2, lobby.Rooms[0].Users.Count);
+        }
     }
 }

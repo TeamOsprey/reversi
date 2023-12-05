@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Reversi.Logic.Rooms
 {
@@ -9,12 +10,12 @@ namespace Reversi.Logic.Rooms
         public Room(string userId)
         {
             Users = new List<string>();
-            Users.Add(userId);          
+            Users.Add(userId);
         }
 
-        public override string ToString()
+        public void JoinRoom(string userId)
         {
-            return "Room:" + string.Join(", ", Users);
+            Users.Add(userId);
         }
     }
 }

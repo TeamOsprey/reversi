@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Reversi.Logic.Rooms;
 
 namespace Reversi.Logic.Lobbies
@@ -17,5 +18,9 @@ namespace Reversi.Logic.Lobbies
             Rooms.Add(new Room(userId));            
         }
 
+        public void JoinRoom(string userId, int roomIndex) 
+        {
+            Rooms[roomIndex].JoinRoom(userId);
+        }
     }
 }
