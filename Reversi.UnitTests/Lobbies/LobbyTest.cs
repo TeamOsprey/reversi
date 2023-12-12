@@ -20,7 +20,7 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.AddRoom("Room1", userId);
+            lobby.TryAddRoom("Room1", userId, out Room room);
             Assert.AreEqual(1, lobby.Rooms.Count);
             Assert.AreEqual(1, lobby.Rooms[0].Users.Count);
         }
@@ -30,7 +30,7 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.AddRoom("Room1", userId);
+            lobby.TryAddRoom("Room1", userId, out Room room);
             Assert.AreEqual(userId, lobby.Rooms[0].Users[0]);
         }
 
@@ -39,7 +39,7 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            var room = lobby.AddRoom("Room1", userId);
+            lobby.TryAddRoom("Room1", userId, out Room room);
             Assert.AreEqual("Room1", room.Name);
         }
 
@@ -48,7 +48,7 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            var room1 = lobby.AddRoom("Room1", userId);
+            lobby.TryAddRoom("Room1", userId, out Room room1);
             Room room;
 
             var result = lobby.TryAddRoom("Room1", userId, out room);
@@ -60,7 +60,7 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            var room1 = lobby.AddRoom("Room", userId);
+            lobby.TryAddRoom("Room", userId, out Room room1);
             Room room;
 
             var result = lobby.TryAddRoom("Room1", userId, out room);
@@ -72,7 +72,7 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId1 = "1";
-            var room = lobby.AddRoom("Room1", userId1);
+            lobby.TryAddRoom("Room1", userId1, out Room room);
             var userId2 = "2";
             lobby.JoinRoom(userId2, room);
             Assert.AreEqual(2, room.Users.Count);

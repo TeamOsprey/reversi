@@ -14,13 +14,6 @@ namespace Reversi.Logic.Lobbies
             Rooms = new List<Room>();
         }
 
-        public Room AddRoom(string name, string userId)
-        {
-            var room = new Room(name, userId);
-            Rooms.Add(room);
-            return room;
-        }
-
         public void JoinRoom(string userId, Room room)
         {
             room.JoinRoom(userId);
@@ -29,7 +22,7 @@ namespace Reversi.Logic.Lobbies
         public bool TryAddRoom(string name, string userId, out Room room)
         {
             room = new Room(name, userId);
-            if (Rooms.Where(x => x.Name == name).FirstOrDefault() == null)
+            if (!Rooms.Exists(x => x.Name == name))
             {
                 Rooms.Add(room);
                 return true;

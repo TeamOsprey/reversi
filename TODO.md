@@ -780,3 +780,7 @@ Refactored Game.cs and PlayerList.cs:
 	- 1. disallow, or 
 	- 2. append an available number to the name (e.g., Room1, Room2, etc.)
 - [ ] Encapsulate properties in Room and Lobby classes (too accessible right now)
+
+## 2023-12-12
+- [ ] Check if duplicate user id is trying to join a room
+- [ ] Add assertion to test number of rooms didn't go up after a failed TryAddRoom
