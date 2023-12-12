@@ -1,6 +1,7 @@
 ﻿using Reversi.Logic.Rooms;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Reversi.Logic.Lobbies
@@ -28,8 +29,12 @@ namespace Reversi.Logic.Lobbies
         public bool TryAddRoom(string name, string userId, out Room room)
         {
             room = new Room(name, userId);
-            Rooms.Add(room);
-            return true;
+            if (Rooms.Where(x => x.Name == name).FirstOrDefault() == null)
+            {
+                Rooms.Add(room);
+                return true;
+            }
+            return false;
         }
     }
 }
