@@ -53,6 +53,7 @@ namespace Reversi.UnitTests.Lobbies
 
             var result = lobby.TryAddRoom("Room1", userId, out room);
             Assert.IsFalse(result);
+            Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
         [Test]
@@ -65,6 +66,7 @@ namespace Reversi.UnitTests.Lobbies
 
             var result = lobby.TryAddRoom("Room1", userId, out room);
             Assert.IsTrue(result);
+            Assert.AreEqual(2, lobby.Rooms.Count);
         }
 
         [Test]
