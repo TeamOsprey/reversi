@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Reversi.Logic.Lobbies;
+using Reversi.Logic.Rooms;
 using System.Linq;
 
 namespace Reversi.UnitTests.Lobbies
@@ -40,6 +41,18 @@ namespace Reversi.UnitTests.Lobbies
             var userId = "1";
             var room = lobby.AddRoom("Room1", userId);
             Assert.AreEqual("Room1", room.Name);
+        }
+
+        [Test]
+        public void RoomNameDuplicatedReturnError()
+        {
+            var lobby = new Lobby();
+            var userId = "1";
+            var room1 = lobby.AddRoom("Room1", userId);
+            Room room;
+
+            var result = lobby.TryAddRoom("Room1", userId, out room);
+            Assert.IsFalse(result);
         }
 
         [Test]
