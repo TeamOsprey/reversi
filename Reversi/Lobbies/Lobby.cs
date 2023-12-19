@@ -21,7 +21,7 @@ namespace Reversi.Logic.Lobbies
 
         public bool TryAddRoom(string name, string userId, out Room room)
         {
-            room = new Room(name, userId);
+            room = new Room(name.Trim(), userId);
             if (!Rooms.Exists(x => x.Name.ToLower() == name.ToLower()))
             {
                 Rooms.Add(room);

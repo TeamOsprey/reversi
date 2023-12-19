@@ -787,7 +787,7 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Make room list thread safe
 - [X] Consider make TryAddRoom case-insensitive to the name
 - [ ] Consider validating room names: e.g. no empty names, or just white space
-- [ ] Standardizing the room name: e.g. trimming the name
+- [X] Standardizing the room name: e.g. trimming the name
 - [ ] As there are more than one scenario for TryAddRoom to fail, we need to return error messages. 
 	  One possible solution is use of Result parttern in functional programming.
 	  https://github.com/vkhorikov/CSharpFunctionalExtensions
