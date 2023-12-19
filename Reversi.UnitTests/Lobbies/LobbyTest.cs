@@ -116,12 +116,13 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
-        public void WhenRoomNameInvalidReturnError()
+        public void WhenRoomNameIsAllWhiteSpaceReturnError()
         {
             var lobby = new Lobby();
             var userId1 = "1";
             var result = lobby.TryAddRoom("  ", userId1, out Room room);
 
+            Assert.IsNull(room);
             Assert.IsFalse(result);
         }
     }
