@@ -785,7 +785,7 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Check if duplicate user id is trying to join a room
 - [X] Add assertion to test number of rooms didn't go up after a failed TryAddRoom
 - [ ] Make room list thread safe
-- [ ] Consider make TryAddRoom case-insensitive to the name
+- [X] Consider make TryAddRoom case-insensitive to the name
 - [ ] Consider validating room names: e.g. no empty names, or just white space
 - [ ] Standardizing the room name: e.g. trimming the name
 - [ ] As there are more than one scenario for TryAddRoom to fail, we need to return error messages. 
