@@ -30,6 +30,11 @@ namespace Reversi.Logic.Lobbies
 
         public bool TryAddRoom(string name, string userId, out Room room)
         {
+            if (!ValidateRoomName(name))
+            {
+                room = null;
+                return false;
+            }
             room = new Room(name.Trim(), userId);
             if (!Rooms.Exists(x => x.Name.ToLower() == name.ToLower()))
             {
@@ -37,6 +42,17 @@ namespace Reversi.Logic.Lobbies
                 return true;
             }
             return false;
+        }
+
+        private bool ValidateRoomName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return false;
+
+            }
+
+            return true;
         }
     }
 }

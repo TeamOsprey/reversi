@@ -786,7 +786,7 @@ Refactored Game.cs and PlayerList.cs:
 - [X] Add assertion to test number of rooms didn't go up after a failed TryAddRoom
 - [ ] Make room list thread safe
 - [X] Consider make TryAddRoom case-insensitive to the name
-- [ ] Consider validating room names: e.g. no empty names, or just white space
+- [X] Consider validating room names: e.g. no empty names, or just white space
 - [X] Standardizing the room name: e.g. trimming the name
 - [ ] As there are more than one scenario for TryAddRoom to fail, we need to return error messages. 
 	  One possible solution is use of Result parttern in functional programming.
