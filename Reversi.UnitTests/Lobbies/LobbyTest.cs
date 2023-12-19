@@ -84,6 +84,17 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
+        public void TrimRoomNamesWhenCreated()
+        {
+            var lobby = new Lobby();
+            var userId = "1";
+            lobby.TryAddRoom(" Room ", userId, out Room room1);
+
+            Assert.AreEqual("Room", room1.Name);
+        }
+
+
+        [Test]
         public void WhenSecondUserJoinsRoom_UserCountUpdatesCorrectly()
         {
             var lobby = new Lobby();
