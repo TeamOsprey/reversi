@@ -14,19 +14,18 @@ namespace Reversi.Logic.Lobbies
             Rooms = new List<Room>();
         }
 
-        public void JoinRoom(string userId, Room room)
-        {
-            room.JoinRoom(userId);
-        }
-
         public bool TryJoinRoom(Room room, string userId)
         {
-            var exists = room.Users.Exists(x => x == userId);
-            if (!exists)
-            {
-                room.JoinRoom(userId);
-            }
-            return !exists;
+            if (UserAlreadyInRoom(room, userId))
+                return false;
+            room.JoinRoom(userId);
+
+            return true;
+        }
+
+        private static bool UserAlreadyInRoom(Room room, string userId)
+        {
+            return room.Users.Exists(x => x == userId);
         }
 
         public bool TryAddRoom(string name, string userId, out Room room)

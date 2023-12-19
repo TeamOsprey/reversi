@@ -111,8 +111,18 @@ namespace Reversi.UnitTests.Lobbies
             var userId1 = "1";
             lobby.TryAddRoom("Room1", userId1, out Room room);
             var userId2 = "2";
-            lobby.JoinRoom(userId2, room);
+            lobby.TryJoinRoom(room, userId2);
             Assert.AreEqual(2, room.Users.Count);
+        }
+
+        [Test]
+        public void WhenRoomNameInvalidReturnError()
+        {
+            var lobby = new Lobby();
+            var userId1 = "1";
+            var result = lobby.TryAddRoom("  ", userId1, out Room room);
+
+            Assert.IsFalse(result);
         }
     }
 }
