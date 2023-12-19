@@ -29,5 +29,11 @@ namespace Reversi.Logic.Lobbies
             }
             return false;
         }
+
+        public bool TryJoinRoom(Room room, string userId)
+        {
+            room.JoinRoom(userId);
+            return true;
+        }
     }
 }

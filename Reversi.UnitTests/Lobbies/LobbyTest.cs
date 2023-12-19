@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Reversi.Logic.Lobbies;
 using Reversi.Logic.Rooms;
+using System;
 using System.Linq;
 
 namespace Reversi.UnitTests.Lobbies
@@ -93,6 +94,15 @@ namespace Reversi.UnitTests.Lobbies
             Assert.AreEqual("Room", room1.Name);
         }
 
+        [Test]
+        public void DuplicateUserIdNotAllowedToJoinSameRoom()
+        {
+            var lobby = new Lobby();
+            var userId = "1";
+            lobby.TryAddRoom("Room1", userId, out Room room);
+            var result = lobby.TryJoinRoom("Room1", userId, out room);
+            Assert.IsFalse(result);
+        }
 
         [Test]
         public void WhenSecondUserJoinsRoom_UserCountUpdatesCorrectly()
