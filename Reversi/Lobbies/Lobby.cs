@@ -19,6 +19,16 @@ namespace Reversi.Logic.Lobbies
             room.JoinRoom(userId);
         }
 
+        public bool TryJoinRoom(Room room, string userId)
+        {
+            var exists = room.Users.Exists(x => x == userId);
+            if (!exists)
+            {
+                room.JoinRoom(userId);
+            }
+            return !exists;
+        }
+
         public bool TryAddRoom(string name, string userId, out Room room)
         {
             room = new Room(name.Trim(), userId);
@@ -28,12 +38,6 @@ namespace Reversi.Logic.Lobbies
                 return true;
             }
             return false;
-        }
-
-        public bool TryJoinRoom(Room room, string userId)
-        {
-            room.JoinRoom(userId);
-            return true;
         }
     }
 }

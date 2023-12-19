@@ -100,7 +100,7 @@ namespace Reversi.UnitTests.Lobbies
             var lobby = new Lobby();
             var userId = "1";
             lobby.TryAddRoom("Room1", userId, out Room room);
-            var result = lobby.TryJoinRoom("Room1", userId, out room);
+            var result = lobby.TryJoinRoom(room, userId);
             Assert.IsFalse(result);
         }
 
