@@ -30,6 +30,12 @@ namespace Reversi.Logic.Lobbies
 
         public bool TryAddRoom(string name, string userId, out Room room)
         {
+            if (UserAlreadyInAnyRoom(userId))
+            {
+                room = null;
+                return false;
+            }
+
             if (IsRoomNameValid(name))
             {
                 room = new Room(name.Trim(), userId);
@@ -38,6 +44,16 @@ namespace Reversi.Logic.Lobbies
             }
             
             room = null;
+            return false;
+        }
+
+        private bool UserAlreadyInAnyRoom(string userId)
+        {
+            foreach (var room in Rooms)
+            {
+                if (UserAlreadyInRoom(room, userId))
+                    return true;
+            }
             return false;
         }
 

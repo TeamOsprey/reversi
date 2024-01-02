@@ -105,6 +105,16 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
+        public void DuplicateUserIdNotAllowedToJoinSecondRoom()
+        {
+            var lobby = new Lobby();
+            var userId = "1";
+            lobby.TryAddRoom("Room1", userId, out Room room1);
+            var result = lobby.TryAddRoom("Room2", userId, out Room room2);
+            Assert.IsFalse(result);
+        }
+
+        [Test]
         public void WhenSecondUserJoinsRoom_UserCountUpdatesCorrectly()
         {
             var lobby = new Lobby();
