@@ -75,11 +75,10 @@ namespace Reversi.UnitTests.Lobbies
         public void UniqueRoomNameAddedToLobby()
         {
             var lobby = new Lobby();
-            var userId = "1";
-            lobby.TryAddRoom("Room", userId, out Room room1);
+            lobby.TryAddRoom("Room", "User1", out Room room1);
             Room room;
 
-            var result = lobby.TryAddRoom("Room1", userId, out room);
+            var result = lobby.TryAddRoom("Room1", "User2", out room);
             Assert.IsTrue(result);
             Assert.AreEqual(2, lobby.Rooms.Count);
         }

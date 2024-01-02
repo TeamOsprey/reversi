@@ -782,7 +782,7 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Encapsulate properties in Room and Lobby classes (too accessible right now)
 
 ## 2023-12-12
-- [ ] Check if duplicate user id is trying to join a room
+- [X] Check if duplicate user id is trying to join a room
 - [X] Add assertion to test number of rooms didn't go up after a failed TryAddRoom
 - [ ] Make room list thread safe
 - [X] Consider make TryAddRoom case-insensitive to the name
