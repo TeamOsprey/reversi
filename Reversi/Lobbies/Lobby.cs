@@ -29,23 +29,24 @@ namespace Reversi.Logic.Lobbies
             return room.Users.Exists(x => x == userId);
         }
 
-        public bool TryAddRoom(string name, string userId, out Room room)
+        public Result<Room> TryAddRoom(string name, string userId, out Room room)
         {
             if (UserAlreadyInAnyRoom(userId))
             {
                 room = null;
-                return false;
+                return new Result<Room>(false, "", null);
             }
 
             if (IsRoomNameValid(name))
             {
                 room = new Room(name.Trim(), userId);
                 Rooms.Add(room);
-                return true;
+                return new Result<Room>(true, "", room);
             }
             
             room = null;
-            return false;
+            // todo: modify this to have a different error message for whitespace/empty room names
+            return new Result<Room>(false, "Room name already exists.", null);
         }
 
         private bool UserAlreadyInAnyRoom(string userId)
@@ -66,6 +67,20 @@ namespace Reversi.Logic.Lobbies
             }
 
             return true;
+        }
+    }
+
+    public class Result<T>
+    {
+        public bool Success { get; }
+        public string Error { get; }
+        public T Value { get; }
+
+        public Result(bool success, string error, T value)
+        {
+            Success = success;
+            Error = error;
+            Value = value;
         }
     }
 }

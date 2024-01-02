@@ -52,8 +52,9 @@ namespace Reversi.UnitTests.Lobbies
             lobby.TryAddRoom("Room1", userId, out Room room1);
             Room room;
 
-            var result = lobby.TryAddRoom("Room1", userId, out room);
-            Assert.IsFalse(result);
+            Result<Room> result = lobby.TryAddRoom("Room1", userId, out room);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Room name already exists.", result.Error);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
@@ -66,7 +67,7 @@ namespace Reversi.UnitTests.Lobbies
             Room room;
 
             var result = lobby.TryAddRoom("ROOM1", userId, out room);
-            Assert.IsFalse(result);
+            Assert.IsFalse(result.Success);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
@@ -79,7 +80,7 @@ namespace Reversi.UnitTests.Lobbies
             Room room;
 
             var result = lobby.TryAddRoom("Room1", "User2", out room);
-            Assert.IsTrue(result);
+            Assert.IsTrue(result.Success);
             Assert.AreEqual(2, lobby.Rooms.Count);
         }
 
@@ -110,7 +111,7 @@ namespace Reversi.UnitTests.Lobbies
             var userId = "1";
             lobby.TryAddRoom("Room1", userId, out Room room1);
             var result = lobby.TryAddRoom("Room2", userId, out Room room2);
-            Assert.IsFalse(result);
+            Assert.IsFalse(result.Success);
         }
 
         [Test]
@@ -132,7 +133,7 @@ namespace Reversi.UnitTests.Lobbies
             var result = lobby.TryAddRoom("  ", userId1, out Room room);
 
             Assert.IsNull(room);
-            Assert.IsFalse(result);
+            Assert.IsFalse(result.Success);
         }
     }
 }
