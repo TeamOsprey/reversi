@@ -23,7 +23,7 @@ namespace Reversi.UnitTests.Lobbies
             var userId = "1";
             lobby.TryAddRoom("Room1", userId, out Room room);
             Assert.AreEqual(1, lobby.Rooms.Count);
-            Assert.AreEqual(1, lobby.Rooms[0].Users.Count);
+            Assert.AreEqual(1, room.Users.Count);
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace Reversi.UnitTests.Lobbies
             var lobby = new Lobby();
             var userId = "1";
             lobby.TryAddRoom("Room1", userId, out Room room);
-            Assert.AreEqual(userId, lobby.Rooms[0].Users[0]);
+            Assert.AreEqual(userId, room.Users[0]);
         }
 
         [Test]

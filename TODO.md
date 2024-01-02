@@ -784,7 +784,7 @@ Refactored Game.cs and PlayerList.cs:
 ## 2023-12-12
 - [X] Check if duplicate user id is trying to join a room
 - [X] Add assertion to test number of rooms didn't go up after a failed TryAddRoom
-- [ ] Make room list thread safe
+- [X] Make room list (add/remove) thread safe
 - [X] Consider make TryAddRoom case-insensitive to the name
 - [X] Consider validating room names: e.g. no empty names, or just white space
 - [X] Standardizing the room name: e.g. trimming the name
@@ -792,3 +792,8 @@ Refactored Game.cs and PlayerList.cs:
 	  One possible solution is use of Result parttern in functional programming.
 	  https://github.com/vkhorikov/CSharpFunctionalExtensions
 	  Other possiblity is to use a tuple as the output parameter
+
+## 2024-01-02
+- [ ] Check all list functionalities for thread safe
+	[ ] - Rooms
+	[ ] - Users

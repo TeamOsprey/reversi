@@ -1,5 +1,6 @@
 ﻿using Reversi.Logic.Rooms;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -8,10 +9,10 @@ namespace Reversi.Logic.Lobbies
 {
     public class Lobby
     {
-        public List<Room> Rooms { get; private set; }
+        public ConcurrentBag<Room> Rooms { get; private set; }
         public Lobby()
         {
-            Rooms = new List<Room>();
+            Rooms = new ConcurrentBag<Room>();
         }
 
         public bool TryJoinRoom(Room room, string userId)
@@ -59,7 +60,7 @@ namespace Reversi.Logic.Lobbies
 
         private bool IsRoomNameValid(string name)
         {
-            if (string.IsNullOrWhiteSpace(name) || Rooms.Exists(x => x.Name.ToLower() == name.ToLower()))
+            if (string.IsNullOrWhiteSpace(name) || Rooms.Any(x => x.Name.ToLower() == name.ToLower()))
             {
                 return false;
             }
