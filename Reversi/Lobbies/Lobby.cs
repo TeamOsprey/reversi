@@ -34,7 +34,7 @@ namespace Reversi.Logic.Lobbies
             if (UserAlreadyInAnyRoom(userId))
             {
                 room = null;
-                return new Result<Room>(false, "", null);
+                return new Result<Room>(false, "User already exists in a different room.", null);
             }
 
             if (IsRoomNameValid(name))
@@ -46,6 +46,7 @@ namespace Reversi.Logic.Lobbies
             
             room = null;
             // todo: modify this to have a different error message for whitespace/empty room names
+            //       "Room name cannot be empty."
             return new Result<Room>(false, "Room name already exists.", null);
         }
 

@@ -49,12 +49,27 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
+            var userId2 = "2";
             lobby.TryAddRoom("Room1", userId, out Room room1);
             Room room;
 
-            Result<Room> result = lobby.TryAddRoom("Room1", userId, out room);
+            Result<Room> result = lobby.TryAddRoom("Room1", userId2, out room);
             Assert.IsFalse(result.Success);
             Assert.AreEqual("Room name already exists.", result.Error);
+            Assert.AreEqual(1, lobby.Rooms.Count);
+        }
+
+        [Test]
+        public void WhenCreatingRoomIfUserIsInOtherRoomReturnError()
+        {
+            var lobby = new Lobby();
+            var userId = "1";
+            lobby.TryAddRoom("Room1", userId, out Room room1);
+            Room room;
+
+            Result<Room> result = lobby.TryAddRoom("Room2", userId, out room);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("User already exists in a different room.", result.Error);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
@@ -134,6 +149,7 @@ namespace Reversi.UnitTests.Lobbies
 
             Assert.IsNull(room);
             Assert.IsFalse(result.Success);
+            Assert.AreEqual("Room name cannot be empty.", result.Error);
         }
     }
 }

@@ -757,7 +757,7 @@ Refactored Game.cs and PlayerList.cs:
 - Next session:
     - [X] talk about bounded contexts and try to apply the concept to our MIRO board
 	- [X] review aggregates
-	- [ ] start coding
+	- [X] start coding
 
 ## 2023-11-21
 - We discussed bounded contexts and determined that our system is too simple at this point to have multiple bounded contexts.
