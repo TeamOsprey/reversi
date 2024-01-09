@@ -42,16 +42,17 @@ namespace Reversi.Logic.Lobbies
                 room = null;
                 return new Result<Room>(false, "Room name cannot be empty.", null);
             }
-
-            if (IsRoomNameValid(name))
+            if (RoomNameExists(name))
             {
-                room = new Room(name.Trim(), userId);
-                Rooms.Add(room);
-                return new Result<Room>(true, "", room);
+                room = null;
+                return new Result<Room>(false, "Room name already exists.", null);
             }
-            
-            room = null;
-            return new Result<Room>(false, "Room name already exists.", null);
+
+            room = new Room(name.Trim(), userId);
+            Rooms.Add(room);
+            return new Result<Room>(true, "", room);
+
+
         }
 
         private bool UserAlreadyInAnyRoom(string userId)
@@ -64,14 +65,9 @@ namespace Reversi.Logic.Lobbies
             return false;
         }
 
-        private bool IsRoomNameValid(string name)
+        private bool RoomNameExists(string name)
         {
-            if (Rooms.Any(x => x.Name.ToLower() == name.ToLower()))
-            {
-                return false;
-            }
-
-            return true;
+            return Rooms.Any(x => x.Name.ToLower() == name.ToLower());
         }
     }
 

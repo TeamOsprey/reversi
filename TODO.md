@@ -795,7 +795,7 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2024-01-02
 - We finished with a failing test (WIP). Resume there. After modifying TryAddRoom to return a Result.
-- [ ] Return a different error message for whitespace/empty room names
+- [x] Return a different error message for whitespace/empty room names
 - [ ] Move Result class to separate class and maybe move to different project
 - [ ] Check all list functionalities for thread safe
 	[ ] - Rooms
