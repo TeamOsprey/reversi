@@ -800,3 +800,10 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Check all list functionalities for thread safe
 	[ ] - Rooms
 	[ ] - Users
+	- [ ] 
+	
+## 2024-01-09
+ - Should we be tracking what room a user is in within the User? They should also know which player in that room they are linked to.
+ - Look into BDD (Behaviour Driven Development) as another option.
+ - [ ] Remove the loopyness of Lobby actions.
+ - [ ] Refactoring - [ ] remove out parameter from tryaddroom.																					           - [ ] deduplicate code from tryaddroom.				   - [ ] Move related tests from testfile together to improve readability.				   - [ ] Error messages should be replaced with constants or with error codes. - [ ] When adding a room, we are trimming, but this is not done when looking for duplicates.
