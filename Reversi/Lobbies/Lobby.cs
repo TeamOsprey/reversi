@@ -37,6 +37,12 @@ namespace Reversi.Logic.Lobbies
                 return new Result<Room>(false, "User already exists in a different room.", null);
             }
 
+            if(string.IsNullOrWhiteSpace(name))
+            {
+                room = null;
+                return new Result<Room>(false, "Room name cannot be empty.", null);
+            }
+
             if (IsRoomNameValid(name))
             {
                 room = new Room(name.Trim(), userId);
@@ -45,8 +51,6 @@ namespace Reversi.Logic.Lobbies
             }
             
             room = null;
-            // todo: modify this to have a different error message for whitespace/empty room names
-            //       "Room name cannot be empty."
             return new Result<Room>(false, "Room name already exists.", null);
         }
 
@@ -62,7 +66,7 @@ namespace Reversi.Logic.Lobbies
 
         private bool IsRoomNameValid(string name)
         {
-            if (string.IsNullOrWhiteSpace(name) || Rooms.Any(x => x.Name.ToLower() == name.ToLower()))
+            if (Rooms.Any(x => x.Name.ToLower() == name.ToLower()))
             {
                 return false;
             }
