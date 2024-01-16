@@ -807,7 +807,10 @@ Refactored Game.cs and PlayerList.cs:
  - Look into BDD (Behaviour Driven Development) as another option.
  - [ ] Remove the loopyness of Lobby actions.
  - [ ] Refactoring - [x] remove out parameter from tryaddroom.																			
-		           - [ ] deduplicate code from tryaddroom.
+		           - [x] deduplicate code from tryaddroom.
 				   - [ ] Move related tests from testfile together to improve readability.
 				   - [ ] Error messages should be replaced with constants or with error codes.
  - [ ] When adding a room, we are trimming, but this is not done when looking for duplicates.
+
+## 2024-01-16
+- Refactored tryaddroom

@@ -33,23 +33,22 @@ namespace Reversi.Logic.Lobbies
         {
             if (UserAlreadyInAnyRoom(userId))
             {
-                return new Result<Room>(false, "User already exists in a different room.", null);
+                return Result<Room>.CreateFailedResult("User already exists in a different room.");
             }
 
             if (string.IsNullOrWhiteSpace(name))
             {
-                return new Result<Room>(false, "Room name cannot be empty.", null);
+                return Result<Room>.CreateFailedResult("Room name cannot be empty.");
             }
 
             if (RoomNameExists(name))
             {
-                return new Result<Room>(false, "Room name already exists.", null);
+                return Result<Room>.CreateFailedResult("Room name already exists.");
             }
 
             var room = new Room(name.Trim(), userId);
             Rooms.Add(room);
-            return new Result<Room>(true, "", room);
-
+            return Result<Room>.CreateSuccessfulResult(room);
 
         }
 
@@ -75,7 +74,7 @@ namespace Reversi.Logic.Lobbies
         public string Error { get; }
         public T Value { get; }
 
-        public Result(bool success, string error, T value)
+        private Result(bool success, string error, T value)
         {
             Success = success;
             Error = error;
