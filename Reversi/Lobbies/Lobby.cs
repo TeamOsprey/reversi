@@ -36,10 +36,11 @@ namespace Reversi.Logic.Lobbies
                 return new Result<Room>(false, "User already exists in a different room.", null);
             }
 
-            if(string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
                 return new Result<Room>(false, "Room name cannot be empty.", null);
             }
+
             if (RoomNameExists(name))
             {
                 return new Result<Room>(false, "Room name already exists.", null);
@@ -68,7 +69,7 @@ namespace Reversi.Logic.Lobbies
         }
     }
 
-    public class Result<T>
+    public class Result<T> where T : class
     {
         public bool Success { get; }
         public string Error { get; }
@@ -79,6 +80,15 @@ namespace Reversi.Logic.Lobbies
             Success = success;
             Error = error;
             Value = value;
+        }
+
+        public static Result<T> CreateSuccessfulResult(T value)
+        {
+            return new Result<T>(true, "", value);
+        }
+        public static Result<T> CreateFailedResult(string error)
+        {
+            return new Result<T>(false, error, null);
         }
     }
 }
