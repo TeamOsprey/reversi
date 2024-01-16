@@ -21,9 +21,9 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.TryAddRoom("Room1", userId, out Room room);
+            var result = lobby.TryAddRoom("Room1", userId);
             Assert.AreEqual(1, lobby.Rooms.Count);
-            Assert.AreEqual(1, room.Users.Count);
+            Assert.AreEqual(1, result.Value.Users.Count);
         }
 
         [Test]
@@ -31,8 +31,8 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.TryAddRoom("Room1", userId, out Room room);
-            Assert.AreEqual(userId, room.Users[0]);
+            var result = lobby.TryAddRoom("Room1", userId);
+            Assert.AreEqual(userId, result.Value.Users[0]);
         }
 
         [Test]
@@ -40,22 +40,20 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.TryAddRoom("Room1", userId, out Room room);
-            Assert.AreEqual("Room1", room.Name);
+            var result = lobby.TryAddRoom("Room1", userId);
+            Assert.AreEqual("Room1", result.Value.Name);
         }
 
         [Test]
         public void RoomNameDuplicatedReturnError()
         {
             var lobby = new Lobby();
-            var userId = "1";
+            var userId1 = "1";
             var userId2 = "2";
-            lobby.TryAddRoom("Room1", userId, out Room room1);
-            Room room;
-
-            Result<Room> result = lobby.TryAddRoom("Room1", userId2, out room);
-            Assert.IsFalse(result.Success);
-            Assert.AreEqual("Room name already exists.", result.Error);
+            lobby.TryAddRoom("Room1", userId1);
+            var result2 = lobby.TryAddRoom("Room1", userId2);
+            Assert.IsFalse(result2.Success);
+            Assert.AreEqual("Room name already exists.", result2.Error);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
@@ -64,12 +62,10 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.TryAddRoom("Room1", userId, out Room room1);
-            Room room;
-
-            Result<Room> result = lobby.TryAddRoom("Room2", userId, out room);
-            Assert.IsFalse(result.Success);
-            Assert.AreEqual("User already exists in a different room.", result.Error);
+            lobby.TryAddRoom("Room1", userId);
+            var result2 = lobby.TryAddRoom("Room2", userId);
+            Assert.IsFalse(result2.Success);
+            Assert.AreEqual("User already exists in a different room.", result2.Error);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
@@ -77,12 +73,10 @@ namespace Reversi.UnitTests.Lobbies
         public void RoomNameDuplicatedWithDifferentCases()
         {
             var lobby = new Lobby();
-            var userId = "1";
-            lobby.TryAddRoom("Room1", userId, out Room room1);
-            Room room;
-
-            var result = lobby.TryAddRoom("ROOM1", userId, out room);
-            Assert.IsFalse(result.Success);
+            var userId1 = "1";
+            lobby.TryAddRoom("Room1", userId1);
+            var result2 = lobby.TryAddRoom("ROOM1", userId1);
+            Assert.IsFalse(result2.Success);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
@@ -91,11 +85,11 @@ namespace Reversi.UnitTests.Lobbies
         public void UniqueRoomNameAddedToLobby()
         {
             var lobby = new Lobby();
-            lobby.TryAddRoom("Room", "User1", out Room room1);
-            Room room;
+            var result1 = lobby.TryAddRoom("Room1", "User1");
+            var result2 = lobby.TryAddRoom("Room2", "User2");
+            Assert.IsTrue(result1.Success);
+            Assert.IsTrue(result2.Success);
 
-            var result = lobby.TryAddRoom("Room1", "User2", out room);
-            Assert.IsTrue(result.Success);
             Assert.AreEqual(2, lobby.Rooms.Count);
         }
 
@@ -103,10 +97,10 @@ namespace Reversi.UnitTests.Lobbies
         public void TrimRoomNamesWhenCreated()
         {
             var lobby = new Lobby();
-            var userId = "1";
-            lobby.TryAddRoom(" Room ", userId, out Room room1);
+            var userId1 = "1";
+            var result = lobby.TryAddRoom(" Room ", userId1);
 
-            Assert.AreEqual("Room", room1.Name);
+            Assert.AreEqual("Room", result.Value.Name);
         }
 
         [Test]
@@ -114,9 +108,9 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.TryAddRoom("Room1", userId, out Room room);
-            var result = lobby.TryJoinRoom(room, userId);
-            Assert.IsFalse(result);
+            var result1 = lobby.TryAddRoom("Room1", userId);
+            var result2 = lobby.TryJoinRoom(result1.Value, userId);
+            Assert.IsFalse(result2);
         }
 
         [Test]
@@ -124,9 +118,9 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId = "1";
-            lobby.TryAddRoom("Room1", userId, out Room room1);
-            var result = lobby.TryAddRoom("Room2", userId, out Room room2);
-            Assert.IsFalse(result.Success);
+            lobby.TryAddRoom("Room1", userId);
+            var result2 = lobby.TryAddRoom("Room2", userId);
+            Assert.IsFalse(result2.Success);
         }
 
         [Test]
@@ -134,10 +128,10 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId1 = "1";
-            lobby.TryAddRoom("Room1", userId1, out Room room);
+            var result = lobby.TryAddRoom("Room1", userId1);
             var userId2 = "2";
-            lobby.TryJoinRoom(room, userId2);
-            Assert.AreEqual(2, room.Users.Count);
+            lobby.TryJoinRoom(result.Value, userId2);
+            Assert.AreEqual(2, result.Value.Users.Count);
         }
 
         [Test]
@@ -145,9 +139,9 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId1 = "1";
-            var result = lobby.TryAddRoom("  ", userId1, out Room room);
+            var result = lobby.TryAddRoom("  ", userId1);
 
-            Assert.IsNull(room);
+            Assert.IsNull(result.Value);
             Assert.IsFalse(result.Success);
             Assert.AreEqual("Room name cannot be empty.", result.Error);
         }

@@ -29,26 +29,23 @@ namespace Reversi.Logic.Lobbies
             return room.Users.Exists(x => x == userId);
         }
 
-        public Result<Room> TryAddRoom(string name, string userId, out Room room)
+        public Result<Room> TryAddRoom(string name, string userId)
         {
             if (UserAlreadyInAnyRoom(userId))
             {
-                room = null;
                 return new Result<Room>(false, "User already exists in a different room.", null);
             }
 
             if(string.IsNullOrWhiteSpace(name))
             {
-                room = null;
                 return new Result<Room>(false, "Room name cannot be empty.", null);
             }
             if (RoomNameExists(name))
             {
-                room = null;
                 return new Result<Room>(false, "Room name already exists.", null);
             }
 
-            room = new Room(name.Trim(), userId);
+            var room = new Room(name.Trim(), userId);
             Rooms.Add(room);
             return new Result<Room>(true, "", room);
 
