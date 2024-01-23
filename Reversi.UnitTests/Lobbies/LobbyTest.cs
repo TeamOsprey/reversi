@@ -145,5 +145,21 @@ namespace Reversi.UnitTests.Lobbies
             Assert.IsFalse(result.Success);
             Assert.AreEqual("Room name cannot be empty.", result.Error);
         }
+
+        [Test]
+        public void WhenSearchContainsWhiteSpaceReturnError()
+        {
+            var lobby = new Lobby();
+            var userId1 = "1";
+            var userId2 = "2";
+            var result = lobby.TryAddRoom("Room1", userId1);
+            
+            var result2 = lobby.TryAddRoom("Room1 ", userId2);
+
+            Assert.IsNotNull(result.Value);
+            Assert.IsTrue(result.Success);
+
+            Assert.IsFalse(result2.Success);
+        }
     }
 }
