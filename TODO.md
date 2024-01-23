@@ -814,9 +814,20 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2024-01-16
 - Refactored tryaddroom
+
+## 2024-01-23
 - Some thoughts from Joel:
 	- RoomName 
-		- implement IComparable and/or override Object.Equals and Object.GetHashcode
-		- maybe struct instead of class
-	- Result class move to own file
-	- Revisit the test name WhenSearchContainsWhiteSpaceReturnError
+		- [ ] implement IComparable and/or override Object.Equals and Object.GetHashcode
+		- [ ] maybe struct instead of class
+	- [ ] Result class move to own file
+	- [ ] Revisit the test name WhenSearchContainsWhiteSpaceReturnError
+- RoomName:
+	- [ ] Use Value as a public property of it instead of Name.
+	- [ ] With Value, we will no longer need ToString method
+- Discuss roles and respopnsibilities of Lobby and Room
+	- [ ] Review validations under TryAddRoom and move them to right classes
+- [ ] Adding a statric HashSet to Room for all RoomNames
+- [ ] Add User Entity
+	- [ ] Considering a pproperty for User and Room to keep track of what room is in 
+	- [ ] Other option is to add a dictionary to Lobby to store all users and which room they are in
