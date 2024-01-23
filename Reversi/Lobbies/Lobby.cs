@@ -29,9 +29,9 @@ namespace Reversi.Logic.Lobbies
             return room.Users.Exists(x => x == userId);
         }
 
-        public Result<Room> TryAddRoom(string name, string userId)
+        public Result<Room> TryAddRoom(RoomName name, string userId)
         {
-            var trimmedName = name.Trim();
+            var trimmedName = name.ToString();
 
             if (UserAlreadyInAnyRoom(userId))
             {
