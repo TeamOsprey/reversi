@@ -160,6 +160,7 @@ namespace Reversi.UnitTests.Lobbies
             Assert.IsTrue(result.Success);
 
             Assert.IsFalse(result2.Success);
+            Assert.AreEqual("Room name already exists.", result2.Error);
         }
     }
 }
