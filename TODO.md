@@ -814,3 +814,9 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2024-01-16
 - Refactored tryaddroom
+- Some thoughts from Joel:
+	- RoomName 
+		- implement IComparable and/or override Object.Equals and Object.GetHashcode
+		- maybe struct instead of class
+	- Result class move to own file
+	- Revisit the test name WhenSearchContainsWhiteSpaceReturnError
