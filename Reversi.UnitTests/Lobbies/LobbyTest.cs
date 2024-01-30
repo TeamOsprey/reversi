@@ -127,7 +127,7 @@ namespace Reversi.UnitTests.Lobbies
             var userId1 = "1";
             var userId2 = "2";
             var result = lobby.TryAddRoom("Room1", userId1);
-            
+
             var result2 = lobby.TryAddRoom("Room1 ", userId2);
 
             Assert.IsNotNull(result.Value);
@@ -160,6 +160,13 @@ namespace Reversi.UnitTests.Lobbies
             Assert.IsFalse(result2.Success);
             Assert.AreEqual("User already exists in a different room.", result2.Error);
             Assert.AreEqual(1, lobby.Rooms.Count);
+        }
+
+        [Test]
+        public void RoomNameAlwaysGetsTrimmed()
+        {
+            var roomName = new RoomName("    test    ");
+            Assert.AreEqual("test", roomName.Value);
         }
     }
 }
