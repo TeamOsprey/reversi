@@ -111,9 +111,7 @@ namespace Reversi.UnitTests.Lobbies
         [Test]
         public void ErrorWhenRoomNameIsAllWhiteSpace()
         {
-            var lobby = new Lobby();
-            var userId1 = "1";
-            var result = lobby.TryAddRoom("  ", userId1);
+            var result = RoomName.Create("  ");
 
             Assert.IsNull(result.Value);
             Assert.IsFalse(result.Success);
@@ -165,8 +163,9 @@ namespace Reversi.UnitTests.Lobbies
         [Test]
         public void RoomNameAlwaysGetsTrimmed()
         {
-            var roomName = RoomName.Create("    test    ");
-            Assert.AreEqual("test", roomName.Value);
+            var roomNameResult = RoomName.Create("    test    ");
+            Assert.IsTrue(roomNameResult.Success);
+            Assert.AreEqual("test", roomNameResult.Value.Value);
         }
     }
 }

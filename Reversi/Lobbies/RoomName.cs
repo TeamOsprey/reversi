@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using Reversi.Logic.Rooms;
+using System.Runtime.InteropServices;
 
 namespace Reversi.Logic.Lobbies
 {
@@ -10,14 +11,18 @@ namespace Reversi.Logic.Lobbies
         {
             Value = name.Trim();
         }
-
-        public static RoomName Create(string name)
+        public static Result<RoomName> Create(string name)
         {
-            var newRoom = new RoomName(name);
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return Result<RoomName>.CreateFailedResult("Room name cannot be empty.");
+            }
+
+            var newRoom = Result<RoomName>.CreateSuccessfulResult(name);
 
             return newRoom;
         }
-
+        
         public static implicit operator RoomName(string s) => new RoomName(s);
     }
 }

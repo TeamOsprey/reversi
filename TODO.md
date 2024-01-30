@@ -831,3 +831,6 @@ Refactored Game.cs and PlayerList.cs:
 - [ ] Add User Entity
 	- [ ] Considering a property for User and Room to keep track of what room is in 
 	- [ ] Other option is to add a dictionary to Lobby to store all users and which room they are in
+	
+## 2024-01-30
+- [ ] Add a test for TryAddRoom where you pass a null RoomName
