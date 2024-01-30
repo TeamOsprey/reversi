@@ -45,31 +45,6 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
-        public void RoomNameDuplicatedReturnError()
-        {
-            var lobby = new Lobby();
-            var userId1 = "1";
-            var userId2 = "2";
-            lobby.TryAddRoom("Room1", userId1);
-            var result2 = lobby.TryAddRoom("Room1", userId2);
-            Assert.IsFalse(result2.Success);
-            Assert.AreEqual("Room name already exists.", result2.Error);
-            Assert.AreEqual(1, lobby.Rooms.Count);
-        }
-
-        [Test]
-        public void WhenCreatingRoomIfUserIsInOtherRoomReturnError()
-        {
-            var lobby = new Lobby();
-            var userId = "1";
-            lobby.TryAddRoom("Room1", userId);
-            var result2 = lobby.TryAddRoom("Room2", userId);
-            Assert.IsFalse(result2.Success);
-            Assert.AreEqual("User already exists in a different room.", result2.Error);
-            Assert.AreEqual(1, lobby.Rooms.Count);
-        }
-
-        [Test]
         public void RoomNameDuplicatedWithDifferentCases()
         {
             var lobby = new Lobby();
@@ -79,7 +54,6 @@ namespace Reversi.UnitTests.Lobbies
             Assert.IsFalse(result2.Success);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
-
 
         [Test]
         public void UniqueRoomNameAddedToLobby()
@@ -135,7 +109,7 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
-        public void WhenRoomNameIsAllWhiteSpaceReturnError()
+        public void ErrorWhenRoomNameIsAllWhiteSpace()
         {
             var lobby = new Lobby();
             var userId1 = "1";
@@ -147,7 +121,7 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
-        public void WhenSearchContainsWhiteSpaceReturnError()
+        public void ErrorWhenSearchContainsWhiteSpace()
         {
             var lobby = new Lobby();
             var userId1 = "1";
@@ -161,6 +135,31 @@ namespace Reversi.UnitTests.Lobbies
 
             Assert.IsFalse(result2.Success);
             Assert.AreEqual("Room name already exists.", result2.Error);
+        }
+
+        [Test]
+        public void ErrorRoomNameDuplicated()
+        {
+            var lobby = new Lobby();
+            var userId1 = "1";
+            var userId2 = "2";
+            lobby.TryAddRoom("Room1", userId1);
+            var result2 = lobby.TryAddRoom("Room1", userId2);
+            Assert.IsFalse(result2.Success);
+            Assert.AreEqual("Room name already exists.", result2.Error);
+            Assert.AreEqual(1, lobby.Rooms.Count);
+        }
+
+        [Test]
+        public void ErrorWhenCreatingRoomIfUserIsInOtherRoom()
+        {
+            var lobby = new Lobby();
+            var userId = "1";
+            lobby.TryAddRoom("Room1", userId);
+            var result2 = lobby.TryAddRoom("Room2", userId);
+            Assert.IsFalse(result2.Success);
+            Assert.AreEqual("User already exists in a different room.", result2.Error);
+            Assert.AreEqual(1, lobby.Rooms.Count);
         }
     }
 }
