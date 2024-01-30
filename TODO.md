@@ -823,11 +823,11 @@ Refactored Game.cs and PlayerList.cs:
 	- [ ] Result class move to own file
 	- [ ] Revisit the test name WhenSearchContainsWhiteSpaceReturnError
 - RoomName:
-	- [ ] Use Value as a public property of it instead of Name.
-	- [ ] With Value, we will no longer need ToString method
+	- [x] Use Value as a public property of it instead of Name.
+	- [x] With Value, we will no longer need ToString method
 - Discuss roles and respopnsibilities of Lobby and Room
 	- [ ] Review validations under TryAddRoom and move them to right classes
-- [ ] Adding a statric HashSet to Room for all RoomNames
+- [ ] Adding a static HashSet to Room for all RoomNames
 - [ ] Add User Entity
-	- [ ] Considering a pproperty for User and Room to keep track of what room is in 
+	- [ ] Considering a property for User and Room to keep track of what room is in 
 	- [ ] Other option is to add a dictionary to Lobby to store all users and which room they are in

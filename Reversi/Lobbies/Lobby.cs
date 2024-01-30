@@ -31,7 +31,7 @@ namespace Reversi.Logic.Lobbies
 
         public Result<Room> TryAddRoom(RoomName name, string userId)
         {
-            var trimmedName = name.ToString();
+            var trimmedName = name.Value;
 
             if (UserAlreadyInAnyRoom(userId))
             {
