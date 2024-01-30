@@ -165,7 +165,7 @@ namespace Reversi.UnitTests.Lobbies
         [Test]
         public void RoomNameAlwaysGetsTrimmed()
         {
-            var roomName = new RoomName("    test    ");
+            var roomName = RoomName.Create("    test    ");
             Assert.AreEqual("test", roomName.Value);
         }
     }
