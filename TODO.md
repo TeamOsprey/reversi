@@ -808,9 +808,9 @@ Refactored Game.cs and PlayerList.cs:
  - [ ] Remove the loopyness of Lobby actions.
  - [ ] Refactoring - [x] remove out parameter from tryaddroom.																			
 		           - [x] deduplicate code from tryaddroom.
-				   - [ ] Move related tests from testfile together to improve readability.
+				   - [x] Move related tests from testfile together to improve readability.
 				   - [ ] Error messages should be replaced with constants or with error codes.
- - [ ] When adding a room, we are trimming, but this is not done when looking for duplicates.
+ - [x] When adding a room, we are trimming, but this is not done when looking for duplicates.
 
 ## 2024-01-16
 - Refactored tryaddroom
@@ -834,3 +834,4 @@ Refactored Game.cs and PlayerList.cs:
 	
 ## 2024-01-30
 - [ ] Add a test for TryAddRoom where you pass a null RoomName
+- [ ] Remove public static implicit operator RoomName(string s) => new RoomName(s); // or make sure it calls .Create() for validation
