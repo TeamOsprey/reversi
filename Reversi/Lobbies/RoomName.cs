@@ -18,11 +18,9 @@ namespace Reversi.Logic.Lobbies
                 return Result<RoomName>.CreateFailedResult("Room name cannot be empty.");
             }
 
-            var newRoom = Result<RoomName>.CreateSuccessfulResult(name);
+            var newRoom = Result<RoomName>.CreateSuccessfulResult(new RoomName(name));
 
             return newRoom;
         }
-        
-        //public static implicit operator RoomName(string s) => new RoomName(s);
     }
 }
