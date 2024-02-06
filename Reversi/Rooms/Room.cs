@@ -5,8 +5,8 @@ namespace Reversi.Logic.Rooms
 {
     public class Room
     {
-        public List<string> Users { get; set; }
-        public string Name { get; set; }
+        public List<string> Users { get; private set; }
+        public string Name { get; private set; }
 
         public Room(string name, string userId)
         {

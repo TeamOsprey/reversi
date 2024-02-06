@@ -749,7 +749,7 @@ Refactored Game.cs and PlayerList.cs:
 - Decided to follow just MVP requirements within MIRO board. Non-MVP features will be separated to sections on the bottom of the board to be integrated later.
 - Working towards expanding to allow for multiple games within the application. (Concurrent or consequetive) 
 - Next session: 
-    - [ ] discuss wether to switch back to coding after the current phase of MIRO adjustments.
+    - [X] discuss wether to switch back to coding after the current phase of MIRO adjustments.
 
 ## 2023-11-14
 - We continued with cleaning the MIRO board following MVP approach
@@ -776,10 +776,10 @@ Refactored Game.cs and PlayerList.cs:
 - Tested adding a second user to room.
 - Added the Room.Name property.
 - Added Room.Join method for adding a user to a room.
-- [ ] How do we handle duplicate Room Names? Maybe either: 
+- [X] How do we handle duplicate Room Names? Maybe either: 
 	- 1. disallow, or 
 	- 2. append an available number to the name (e.g., Room1, Room2, etc.)
-- [ ] Encapsulate properties in Room and Lobby classes (too accessible right now)
+- [X] Encapsulate properties in Room and Lobby classes (too accessible right now)
 
 ## 2023-12-12
 - [X] Check if duplicate user id is trying to join a room
@@ -788,7 +788,7 @@ Refactored Game.cs and PlayerList.cs:
 - [X] Consider make TryAddRoom case-insensitive to the name
 - [X] Consider validating room names: e.g. no empty names, or just white space
 - [X] Standardizing the room name: e.g. trimming the name
-- [ ] As there are more than one scenario for TryAddRoom to fail, we need to return error messages. 
+- [X] As there are more than one scenario for TryAddRoom to fail, we need to return error messages. 
 	  One possible solution is use of Result parttern in functional programming.
 	  https://github.com/vkhorikov/CSharpFunctionalExtensions
 	  Other possiblity is to use a tuple as the output parameter
