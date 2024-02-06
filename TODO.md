@@ -820,7 +820,7 @@ Refactored Game.cs and PlayerList.cs:
 	- RoomName 
 		- [ ] implement IComparable and/or override Object.Equals and Object.GetHashcode
 		- [ ] maybe struct instead of class
-	- [ ] Result class move to own file
+	- [X] Result class move to own file
 	- [ ] Revisit the test name WhenSearchContainsWhiteSpaceReturnError
 - RoomName:
 	- [x] Use Value as a public property of it instead of Name.
