@@ -834,4 +834,10 @@ Refactored Game.cs and PlayerList.cs:
 	
 ## 2024-01-30
 - [ ] Add a test for TryAddRoom where you pass a null RoomName
-- [ ] Remove public static implicit operator RoomName(string s) => new RoomName(s); // or make sure it calls .Create() for validation
+- [X] Remove public static implicit operator RoomName(string s) => new RoomName(s); // or make sure it calls .Create() for validation
+
+## 2024-02-06
+- [ ] Revisit WIP RoomName and Room changes, including `if (RoomNameExists(room.Value.Name.Value)) //todo: not clear`
+	- Consider design (throw/catch vs. Result<T>.Error; etc.)
+	- Note: Trimming is still happening in one place; and to keep it this way, we had to reorder code in TryAddRoom: 
+	  to check for the existence of the room name before adding the room to the room list
