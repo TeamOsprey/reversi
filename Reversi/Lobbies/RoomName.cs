@@ -23,6 +23,6 @@ namespace Reversi.Logic.Lobbies
             return newRoom;
         }
         
-        public static implicit operator RoomName(string s) => new RoomName(s);
+        //public static implicit operator RoomName(string s) => new RoomName(s);
     }
 }

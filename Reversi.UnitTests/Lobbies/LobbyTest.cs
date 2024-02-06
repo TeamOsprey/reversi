@@ -72,9 +72,20 @@ namespace Reversi.UnitTests.Lobbies
         {
             var lobby = new Lobby();
             var userId1 = "1";
-            var result = lobby.TryAddRoom(" Room ", userId1);
+            var result = lobby.TryAddRoom(CreateRoomNameOrFail(" Room "), userId1);
 
             Assert.AreEqual("Room", result.Value.Name);
+        }
+
+        private static RoomName CreateRoomNameOrFail(string roomName)
+        {
+            var result =  RoomName.Create(roomName);
+            if (!result.Success) 
+            {
+                Assert.Fail(result.Error);
+            }
+
+            return result.Value;
         }
 
         [Test]
