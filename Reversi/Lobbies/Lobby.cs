@@ -37,13 +37,14 @@ namespace Reversi.Logic.Lobbies
             }
 
             var result = Room.Create(name, userId);
+
+            if (!result.Success)
+            {
+                return result;
+            }
+
             var room = result.Value;
 
-            if (room == null)
-            {
-                return Result<Room>.CreateFailedResult(result.Error);
-            }
-            
             if (RoomNameExists(room.Name.Value)) //todo: not clear
             {
                 return Result<Room>.CreateFailedResult("Room name already exists.");

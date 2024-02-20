@@ -1,7 +1,4 @@
-﻿using Reversi.Logic.Rooms;
-using System.Runtime.InteropServices;
-
-namespace Reversi.Logic.Lobbies
+﻿namespace Reversi.Logic.Lobbies
 {
     public class RoomName
     {
