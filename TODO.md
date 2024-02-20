@@ -855,3 +855,8 @@ For libraries (with public APIs, which we don't have), in other hand, throwing e
 
 ## 2024-02-20
 - [X] Add test coverage for TryAddRoom with null RoomName (unless already have)
+- [ ] RoomNameTest.cs was added today. 
+	- [ ] Do we want to move it back to LobbyTest?
+- [ ] Shall we use TestCase to remove code duplication on all unit tests? If as the result of this exercise the test is no longer clear,
+	we can explore TestCase and Assert options for a solution.
+- [ ] Shall we keep TrimRoomNamesWhenCreated since it is already covered in RoomNameTest?
