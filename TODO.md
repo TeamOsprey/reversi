@@ -839,10 +839,10 @@ Refactored Game.cs and PlayerList.cs:
 ## 2024-02-06
 - [ ] Revisit WIP RoomName and Room changes, including `if (RoomNameExists(room.Value.Name.Value)) //todo: not clear`
 	- [X] Consider design (throw/catch vs. Result<T>.Error; etc.)
-	- [ ] Note: Trimming is still happening in one place; and to keep it this way, we had to reorder code in TryAddRoom: 
+	- Note: Trimming is still happening in one place; and to keep it this way, we had to reorder code in TryAddRoom: 
 	  to check for the existence of the room name before adding the room to the room list
 
-## 224-2-13
+## 2024-02-13
 - We reviewed Microsoft Guideline document on exceptions:
 	- https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/exceptions
 - We also checked Vladimir Khorikov blog post on similar topic:

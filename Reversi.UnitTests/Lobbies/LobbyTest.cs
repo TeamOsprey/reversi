@@ -41,7 +41,7 @@ namespace Reversi.UnitTests.Lobbies
             var lobby = new Lobby();
             var userId = "1";
             var result = lobby.TryAddRoom(CreateRoomNameOrFail("Room1"), userId);
-            Assert.AreEqual("Room1", result.Value.Name);
+            Assert.AreEqual("Room1", result.Value.Name.Value);
         }
 
         [Test]
@@ -74,10 +74,10 @@ namespace Reversi.UnitTests.Lobbies
             var userId1 = "1";
             var result = lobby.TryAddRoom(CreateRoomNameOrFail(" Room "), userId1);
 
-            Assert.AreEqual("Room", result.Value.Name);
+            Assert.AreEqual("Room", result.Value.Name.Value);
         }
 
-        private static RoomName CreateRoomNameOrFail(string roomName)
+        private static string CreateRoomNameOrFail(string roomName)
         {
             var result =  RoomName.Create(roomName);
             if (!result.Success) 
@@ -85,7 +85,7 @@ namespace Reversi.UnitTests.Lobbies
                 Assert.Fail(result.Error);
             }
 
-            return result.Value;
+            return result.Value.Value;
         }
 
         [Test]
