@@ -852,3 +852,6 @@ For libraries (with public APIs, which we don't have), in other hand, throwing e
 - [ ] thread safety in general for web applications (line 800). We need to look into broader situation than the list only 
 (e.g. duplicated room names in concurrent requests)
 - [ ] How thread safety is handled in SignalR
+
+## 2024-02-20
+- [ ] Add test coverage for TryAddRoom with null RoomName (unless already have)
