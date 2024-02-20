@@ -854,4 +854,4 @@ For libraries (with public APIs, which we don't have), in other hand, throwing e
 - [ ] How thread safety is handled in SignalR
 
 ## 2024-02-20
-- [ ] Add test coverage for TryAddRoom with null RoomName (unless already have)
+- [X] Add test coverage for TryAddRoom with null RoomName (unless already have)

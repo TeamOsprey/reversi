@@ -130,6 +130,16 @@ namespace Reversi.UnitTests.Lobbies
         }
 
         [Test]
+        public void ErrorWhenCreatingRoomWhenRoomNameIsAllWhiteSpace()
+        {
+            var result = new Lobby().TryAddRoom("  ", "1");
+
+            Assert.IsNull(result.Value);
+            Assert.IsFalse(result.Success);
+            Assert.AreEqual("Room name cannot be empty.", result.Error);
+        }
+
+        [Test]
         public void ErrorWhenSearchContainsWhiteSpace()
         {
             var lobby = new Lobby();
