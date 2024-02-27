@@ -6,6 +6,14 @@ namespace Reversi.UnitTests.Lobbies
     [TestFixture]
     public class LobbyTest
     {
+        private static Lobby CreateLobbyWith2Users(out string userId1, out string userId2)
+        {
+            var lobby = new Lobby();
+            userId1 = "1";
+            userId2 = "2";
+            return lobby;
+        }
+        
         [Test]
         public void NewLobbyHasNoRooms()
         {
@@ -124,9 +132,7 @@ namespace Reversi.UnitTests.Lobbies
         [TestCase("ROOM1", "room1")]
         public void ErrorWhenRoomNameDuplicated(string room1, string room2)
         {
-            var lobby = new Lobby();
-            var userId1 = "1";
-            var userId2 = "2";
+            var lobby = CreateLobbyWith2Users(out var userId1, out var userId2);
             var result = lobby.TryAddRoom(room1, userId1);
 
             var result2 = lobby.TryAddRoom(room2, userId2);
