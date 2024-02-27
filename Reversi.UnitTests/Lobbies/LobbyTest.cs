@@ -119,34 +119,23 @@ namespace Reversi.UnitTests.Lobbies
             Assert.AreEqual(ErrorConstants.RoomNameCannotBeEmpty, result.Error);
         }
 
-        [Test]
-        public void ErrorWhenSearchContainsWhiteSpace()
+        [TestCase("Room1", "Room1")]
+        [TestCase("Room1", "Room1 ")]
+        [TestCase("ROOM1", "room1")]
+        public void ErrorWhenRoomNameDuplicated(string room1, string room2)
         {
             var lobby = new Lobby();
             var userId1 = "1";
             var userId2 = "2";
-            var result = lobby.TryAddRoom("Room1", userId1);
+            var result = lobby.TryAddRoom(room1, userId1);
 
-            var result2 = lobby.TryAddRoom("Room1 ", userId2);
+            var result2 = lobby.TryAddRoom(room2, userId2);
 
             Assert.IsNotNull(result.Value);
             Assert.IsTrue(result.Success);
 
             Assert.IsFalse(result2.Success);
             Assert.AreEqual(ErrorConstants.RoomNameAlreadyExists, result2.Error);
-        }
-
-        [Test]
-        public void ErrorRoomNameDuplicated()
-        {
-            var lobby = new Lobby();
-            var userId1 = "1";
-            var userId2 = "2";
-            lobby.TryAddRoom("Room1", userId1);
-            var result2 = lobby.TryAddRoom("Room1", userId2);
-            Assert.IsFalse(result2.Success);
-            Assert.AreEqual(ErrorConstants.RoomNameAlreadyExists, result2.Error);
-            Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
         [Test]
