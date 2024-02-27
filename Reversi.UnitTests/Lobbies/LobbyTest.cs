@@ -116,7 +116,7 @@ namespace Reversi.UnitTests.Lobbies
 
             Assert.IsNull(result.Value);
             Assert.IsFalse(result.Success);
-            Assert.AreEqual("Room name cannot be empty.", result.Error);
+            Assert.AreEqual(ErrorConstants.RoomNameCannotBeEmpty, result.Error);
         }
 
         [Test]
@@ -133,7 +133,7 @@ namespace Reversi.UnitTests.Lobbies
             Assert.IsTrue(result.Success);
 
             Assert.IsFalse(result2.Success);
-            Assert.AreEqual("Room name already exists.", result2.Error);
+            Assert.AreEqual(ErrorConstants.RoomNameAlreadyExists, result2.Error);
         }
 
         [Test]
@@ -145,7 +145,7 @@ namespace Reversi.UnitTests.Lobbies
             lobby.TryAddRoom("Room1", userId1);
             var result2 = lobby.TryAddRoom("Room1", userId2);
             Assert.IsFalse(result2.Success);
-            Assert.AreEqual("Room name already exists.", result2.Error);
+            Assert.AreEqual(ErrorConstants.RoomNameAlreadyExists, result2.Error);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 
@@ -157,7 +157,7 @@ namespace Reversi.UnitTests.Lobbies
             lobby.TryAddRoom("Room1", userId);
             var result2 = lobby.TryAddRoom("Room2", userId);
             Assert.IsFalse(result2.Success);
-            Assert.AreEqual("User already exists in a different room.", result2.Error);
+            Assert.AreEqual(ErrorConstants.UserAlreadyExistsInDifferentRoom, result2.Error);
             Assert.AreEqual(1, lobby.Rooms.Count);
         }
 

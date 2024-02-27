@@ -795,9 +795,9 @@ Refactored Game.cs and PlayerList.cs:
 
 ## 2024-01-02
 - We finished with a failing test (WIP). Resume there. After modifying TryAddRoom to return a Result.
-- [x] Return a different error message for whitespace/empty room names
-- [ ] Move Result class to separate class and maybe move to different project
-- [ ] Check all list functionalities for thread safe
+- [X] Return a different error message for whitespace/empty room names
+- [X] Move Result class to separate class and maybe move to different project
+- [ ] Check all list functionalities for thread safety
 	[ ] - Rooms
 	[ ] - Users
 	- [ ] 
@@ -806,11 +806,11 @@ Refactored Game.cs and PlayerList.cs:
  - Should we be tracking what room a user is in within the User? They should also know which player in that room they are linked to.
  - Look into BDD (Behaviour Driven Development) as another option.
  - [ ] Remove the loopyness of Lobby actions.
- - [ ] Refactoring - [x] remove out parameter from tryaddroom.																			
-		           - [x] deduplicate code from tryaddroom.
-				   - [x] Move related tests from testfile together to improve readability.
-				   - [ ] Error messages should be replaced with constants or with error codes.
- - [x] When adding a room, we are trimming, but this is not done when looking for duplicates.
+ - [ ] Refactoring - [X] remove out parameter from tryaddroom.																			
+		           - [X] deduplicate code from tryaddroom.
+				   - [X] Move related tests from testfile together to improve readability.
+				   - [X] Error messages should be replaced with constants or with error codes.
+ - [X] When adding a room, we are trimming, but this is not done when looking for duplicates.
 
 ## 2024-01-16
 - Refactored tryaddroom
@@ -837,7 +837,7 @@ Refactored Game.cs and PlayerList.cs:
 - [X] Remove public static implicit operator RoomName(string s) => new RoomName(s); // or make sure it calls .Create() for validation
 
 ## 2024-02-06
-- [ ] Revisit WIP RoomName and Room changes, including `if (RoomNameExists(room.Value.Name.Value)) //todo: not clear`
+- [X] Revisit WIP RoomName and Room changes, including `if (RoomNameExists(room.Value.Name.Value)) //todo: not clear`
 	- [X] Consider design (throw/catch vs. Result<T>.Error; etc.)
 	- Note: Trimming is still happening in one place; and to keep it this way, we had to reorder code in TryAddRoom: 
 	  to check for the existence of the room name before adding the room to the room list

@@ -15,8 +15,9 @@ namespace Reversi.UnitTests.Lobbies
         public void RoomNameAlwaysGetsTrimmed()
         {
             var roomNameResult = RoomName.Create("    test    ");
+            var roomName = roomNameResult.Value;
             Assert.IsTrue(roomNameResult.Success);
-            Assert.AreEqual("test", roomNameResult.Value.Value);
+            Assert.AreEqual("test", roomName.Value);
         }
 
         [Test]
@@ -26,7 +27,7 @@ namespace Reversi.UnitTests.Lobbies
 
             Assert.IsNull(result.Value);
             Assert.IsFalse(result.Success);
-            Assert.AreEqual("Room name cannot be empty.", result.Error);
+            Assert.AreEqual(ErrorConstants.RoomNameCannotBeEmpty, result.Error);
         }
 
     }

@@ -12,7 +12,7 @@
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                return Result<RoomName>.CreateFailedResult("Room name cannot be empty.");
+                return Result<RoomName>.CreateFailedResult(ErrorConstants.RoomNameCannotBeEmpty);
             }
 
             var newRoom = Result<RoomName>.CreateSuccessfulResult(new RoomName(name));

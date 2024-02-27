@@ -33,7 +33,7 @@ namespace Reversi.Logic.Lobbies
         {
             if (UserAlreadyInAnyRoom(userId))
             {
-                return Result<Room>.CreateFailedResult("User already exists in a different room.");
+                return Result<Room>.CreateFailedResult(ErrorConstants.UserAlreadyExistsInDifferentRoom);
             }
 
             var result = Room.Create(name, userId);
@@ -47,7 +47,7 @@ namespace Reversi.Logic.Lobbies
 
             if (RoomNameExists(room.Name.Value)) //todo: not clear
             {
-                return Result<Room>.CreateFailedResult("Room name already exists.");
+                return Result<Room>.CreateFailedResult(ErrorConstants.RoomNameAlreadyExists);
             }
 
             Rooms.Add(room);
