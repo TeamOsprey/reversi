@@ -28,5 +28,6 @@
     <h1 class="display-4">Reversi Game</h1>
 </div>
 
-<div align="center">@(await Html.RenderComponentAsync<GridComponent>(RenderMode.ServerPrerendered, new { userId }))</div>
+<div align="center">@(await Html.RenderComponentAsync<LobbyComponent>(RenderMode.ServerPrerendered, new { userId }))</div>
+@* <div align="center">@(await Html.RenderComponentAsync<GridComponent>(RenderMode.ServerPrerendered, new { userId }))</div> *@
 <div align="center">@(await Html.RenderComponentAsync<Chat>(RenderMode.ServerPrerendered))</div>

@@ -868,3 +868,4 @@ For libraries (with public APIs, which we don't have), in other hand, throwing e
 ## 2024-03-19
 - We decided to start implementing UI for the Lobby functionalities we have implemented so far. We will continue with the development 
   of the other functionalities (eg. StartGame) later.
+- [] Create LobbyComponent.razor
