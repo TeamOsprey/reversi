@@ -864,3 +864,7 @@ For libraries (with public APIs, which we don't have), in other hand, throwing e
 - [ ] Shall we use TestCase to remove code duplication on all unit tests? If as the result of this exercise the test is no longer clear,
 	we can explore TestCase and Assert options for a solution.
 - [ ] Shall we keep TrimRoomNamesWhenCreated since it is already covered in RoomNameTest?
+
+## 2024-03-19
+- We decided to start implementing UI for the Lobby functionalities we have implemented so far. We will continue with the development 
+  of the other functionalities (eg. StartGame) later.
