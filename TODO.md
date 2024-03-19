@@ -868,4 +868,6 @@ For libraries (with public APIs, which we don't have), in other hand, throwing e
 ## 2024-03-19
 - We decided to start implementing UI for the Lobby functionalities we have implemented so far. We will continue with the development 
   of the other functionalities (eg. StartGame) later.
-- [] Create LobbyComponent.razor
+- We created two new razor components: LobbyComponent.razor and RoomComponent.razor. You now come to the lobby when you visit the website.
+  not the game. The RoomComponent contains the game but it is not yet accessible from LobbyComponent.
+	- [ ] Add a button to LobbyComponent to open RoomComponent (for start, we only start with one game room)

@@ -1,0 +1,23 @@
+﻿@using Reversi.WebApp.BlazorComponents;
+@using Reversi.Services
+@using Reversi.Services.Interfaces
+@using Microsoft.AspNetCore.Http
+@inject IGameService GameService
+
+<h3>RoomComponent</h3>
+
+<div class="text-center">
+    <h1 class="display-4">Reversi Game</h1>
+</div>
+
+<CascadingValue Value="@GameService">
+    <div class="flex col-md-5">
+        <GridComponent UserId="@UserId" />
+        <Chat/>
+    </div>
+</CascadingValue>
+
+@code {
+    [Parameter]
+    public string UserId { get; set; }
+}
