@@ -1,4 +1,8 @@
-﻿## 2021-07-27
+﻿## Useful links
+
+- Our mobtimer: https://mobti.me/halifaxcodingdojo
+
+## 2021-07-27
 - work with the board file to read the currect state of the board
 	- we decided not to proceed with this as it can work out of memory
 - eventually accept the next position from IO
