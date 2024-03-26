@@ -38,6 +38,7 @@ namespace Reversi.WebApp
             });
             services.AddHttpContextAccessor();
             services.AddSession();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +74,7 @@ namespace Reversi.WebApp
                 endpoints.MapBlazorHub();
                 endpoints.MapHub<ChatHub>("/chathub");
                 endpoints.MapHub<GameHub>("/gamehub");
+                endpoints.MapRazorPages();
             });
         }
     }
