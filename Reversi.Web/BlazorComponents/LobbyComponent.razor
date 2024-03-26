@@ -1,6 +1,13 @@
 ﻿<h3>Lobby</h3>
 <div>Welcome to the Lobby, User '@UserId'</div>
 
+@* <CascadingValue Value="@GameService">
+ *@    <div class="flex col-md-5">
+        <RoomComponent UserId="@UserId" />
+        <Chat />
+    </div>
+@* </CascadingValue> *@ 
+
 @code {
     [Parameter]
     public string UserId { get; set; }
