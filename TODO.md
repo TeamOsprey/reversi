@@ -871,3 +871,7 @@ For libraries (with public APIs, which we don't have), in other hand, throwing e
 - We created two new razor components: LobbyComponent.razor and RoomComponent.razor. You now come to the lobby when you visit the website.
   not the game. The RoomComponent contains the game but it is not yet accessible from LobbyComponent.
 	- [ ] Add a button to LobbyComponent to open RoomComponent (for start, we only start with one game room)
+
+## 2024-03-26
+We created a Room razor page and not-yet-working link to it from the Lobby
+- [] Get Room razor page working (and link to it from Lobby component)
